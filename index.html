@@ -1,295 +1,557 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>ChapterX Book Club</title>
-  <style>
-    /* RESET */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ChapterX Book Club</title>
+<style>
+   /* Reset & basics */
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+  body, html {
+    margin: 0; padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #121212;
+    color: #eee;
+    height: 100%;
+  }
+  
+  .page {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+    will-change: opacity, transform;
+  }
 
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      line-height: 1.6;
-      color: #333;
-      background-color: #f9f9f9;
-    }
+  .page.loaded {
+    opacity: 1;
+    transform: translateY(0);
+  }
 
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
+  
+  /* Lenis Scroll Styling */
+  html.lenis {
+    height: auto;
+  }
+  .lenis.lenis-smooth {
+    scroll-behavior: auto;
+  }
+  .lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+  }
+  .lenis.lenis-stopped {
+    overflow: hidden;
+  }
 
-    ul {
-      list-style: none;
-    }
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+  a:hover,
+  a:focus {
+    text-decoration: underline;
+  }
+  
+  /* Navbar */
+  nav {
+    position: sticky;
+    top: 0;
+    background: #1f1f1fcc;
+    backdrop-filter: saturate(180%) blur(12px);
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 3rem;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.5);
+  }
+  .logo {
+    font-weight: 700;
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+    color: #6EC1E4;
+    user-select: none;
+  }
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+  }
+  .nav-links a {
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 0.3rem 0.5rem;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  }
+  .nav-links a:hover,
+  .nav-links a:focus {
+    background-color: #6EC1E4;
+    color: #121212;
+    outline: none;
+  }
 
-    img {
-      max-width: 100%;
+  /* Hero Section */
+.hero {
+  position: relative;
+  min-height: 100vh;  /* Make it fit at least the full viewport height */
+  background: url('https://videocdn.cdnpk.net/videos/7f3837e8-d97e-5551-ac20-ac14b4f7032d/horizontal/thumbnails/small.jpg') 
+              no-repeat center center / cover;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* Ensure left alignment unless overridden */
+  padding: 0 5vw;
+  overflow: hidden;
+}
+
+/* Dark overlay */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.65);
+  z-index: 1;
+}
+
+/* Hero content */
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 600px;
+  color: #eee;
+}
+
+.hero-content h1 {
+  font-size: 3.5rem;
+  margin: 0 0 0.5rem 0;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: 1.2px;
+}
+
+.hero-content p {
+  font-size: 1.25rem;
+  line-height: 1.5;
+  color: #bbb;
+  margin-bottom: 2rem;
+}
+
+/* Call to action button */
+.btn {
+  background-color: #6EC1E4;
+  color: #121212;
+  font-weight: 600;
+  padding: 0.75rem 2rem;
+  border: none;
+  border-radius: 30px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn:hover,
+.btn:focus {
+  background-color: #4AA8CD;
+  outline: none;
+}
+
+/* Responsive hero text */
+@media (max-width: 768px) {
+  .hero-content h1 {
+    font-size: 2.8rem;
+  }
+  .hero-content p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    justify-content: center;
+    text-align: center;
+    padding: 0 2rem;
+  }
+  .hero-content {
+    max-width: 90vw;
+  }
+  .hero-content h1 {
+    font-size: 2.2rem;
+  }
+}
+
+
+  /* Sections below hero */
+  section {
+    max-width: 900px;
+    margin: 4rem auto;
+    padding: 0 1.5rem;
+  }
+  section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    color: #6EC1E4;
+  }
+  section p {
+    font-size: 1.15rem;
+    line-height: 1.6;
+    color: #ccc;
+    max-width: 700px;
+  }
+
+  .events-list {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+  }
+  .event-card {
+    background: #222;
+    border-radius: 12px;
+    padding: 1.5rem;
+    flex: 1 1 280px;
+    box-shadow: 0 4px 10px rgba(110,193,228,0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .event-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(110,193,228,0.5);
+  }
+  .event-card h3 {
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+    color: #6EC1E4;
+  }
+  .event-card p {
+    font-size: 1rem;
+    color: #ddd;
+  }
+
+  #join .btn {
+    font-size: 1.2rem;
+    padding: 1rem 2.5rem;
+  }
+
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  }
+  .fade-in.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  footer {
+    text-align: center;
+    padding: 2rem 1rem;
+    color: #666;
+    font-size: 0.9rem;
+    border-top: 1px solid #333;
+    margin-top: 4rem;
+  }
+  
+  .book-character {
+    max-width: 300px;
+    height: auto;
+    position: relative;
+    z-index: 2;
+    transition: transform 0.3s ease;
+    pointer-events: none; /* So it doesn't interfere with text links */
+  }
+
+  .book-character:hover {
+    transform: scale(1.05);
+  }
+
+  .book-character.left {
+    float: left;
+    margin: 1rem 2rem 1rem 0;
+  }
+
+  .book-character.right {
+    float: right;
+    margin: 1rem 0 1rem 2rem;
+  }
+
+  @media (max-width: 768px) {
+    .book-character {
+      float: none;
       display: block;
+      margin: 1rem auto;
     }
+  }
+  
+  .stats-wrapper {
+    position: relative;
+    z-index: 5;
+    max-width: 1000px;
+    margin: -80px auto 4rem;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    transform: translateY(50px);
+    padding: 0 1rem;
+  }
 
-    /* NAVIGATION */
-    header {
-      background-color: #1e1e2f;
-      color: white;
-      padding: 1rem 2rem;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
+  .stat-card {
+    background: #1e1e2f;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(110,193,228,0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    padding: 2rem 1.5rem;
+    width: 160px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
 
-    .nav-container {
-      max-width: 1200px;
-      margin: auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+  .stat-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 8px 20px rgba(110,193,228,0.5);
+  }
 
-    .logo {
-      font-size: 1.8rem;
-      font-weight: bold;
-      color: #ff5a5f;
-    }
+  .stat-number {
+    font-size: 2.2rem;
+    font-weight: bold;
+    color: #6EC1E4;
+  }
 
-    nav ul {
-      display: flex;
-      gap: 1.5rem;
-    }
+  .stat-label {
+    margin-top: 0.5rem;
+    font-size: 1rem;
+    color: #ccc;
+  }
 
-    nav a {
-      color: #fff;
-      font-weight: 500;
-      transition: color 0.3s;
-    }
-
-    nav a:hover {
-      color: #ff5a5f;
-    }
-
-    /* HERO SECTION */
-    .hero {
-      background: linear-gradient(to right, #ff5a5f, #fc9272);
-      color: white;
-      padding: 4rem 2rem;
-      text-align: center;
-    }
-
-    .hero h1 {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-    }
-
-    .hero p {
-      font-size: 1.2rem;
-      max-width: 600px;
-      margin: 0 auto;
-    }
-
-    /* SECTIONS */
-    section {
-      padding: 4rem 2rem;
-      max-width: 1200px;
-      margin: auto;
-    }
-
-    .section-title {
-      text-align: center;
-      margin-bottom: 2rem;
-      font-size: 2rem;
-      color: #333;
-    }
-
-    .about,
-    .events,
-    .books {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-    }
-
-    .card {
-      background: white;
-      border-radius: 10px;
-      padding: 1.5rem;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-      transition: transform 0.3s;
-    }
-
-    .card:hover {
-      transform: translateY(-5px);
-    }
-
-    .card h3 {
-      margin-bottom: 1rem;
-      color: #ff5a5f;
-    }
-
-    /* CONTACT */
-    .contact-form {
-      max-width: 600px;
-      margin: 0 auto;
-    }
-
-    .contact-form input,
-    .contact-form textarea {
+  /* Responsive */
+  @media (max-width: 600px) {
+    .stat-card {
       width: 100%;
-      padding: 1rem;
-      margin-bottom: 1rem;
-      border: 1px solid #ccc;
-      border-radius: 8px;
+      max-width: 300px;
     }
+  }
+  
+  .button {
+    background-color: #6EC1E4;
+    color: #121212;
+    border: none;
+    border-radius: 30px;
+    padding: 0.75rem 2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(110, 193, 228, 0.25);
+  }
 
-    .contact-form button {
-      background-color: #ff5a5f;
-      color: white;
-      border: none;
-      padding: 1rem 2rem;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background-color 0.3s;
-    }
+  .button:hover,
+  .button:focus {
+    background-color: #4AA8CD;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(110, 193, 228, 0.4);
+    outline: none;
+  }
 
-    .contact-form button:hover {
-      background-color: #e64950;
-    }
+  .button:active {
+    transform: scale(0.98);
+    box-shadow: 0 2px 8px rgba(110, 193, 228, 0.2);
+  }
 
-    /* FOOTER */
-    footer {
-      background-color: #1e1e2f;
-      color: white;
-      padding: 2rem;
-      text-align: center;
-      margin-top: 4rem;
-    }
 
-    @media (max-width: 768px) {
-      nav ul {
-        flex-direction: column;
-        background-color: #1e1e2f;
-        position: absolute;
-        right: 2rem;
-        top: 70px;
-        display: none;
-        padding: 1rem;
-        border-radius: 8px;
-      }
 
-      nav ul.active {
-        display: flex;
-      }
 
-      .menu-toggle {
-        display: block;
-        cursor: pointer;
-        font-size: 1.5rem;
-      }
-    }
-
-    .menu-toggle {
-      display: none;
-    }
-  </style>
+</style>
 </head>
 <body>
+<nav>
+  <div class="logo">ChapterX</div>
+  <div class="nav-links">
+    <a href="javascript:changePage(1);">Home</a>
+		<a href="javascript:changePage(2);">About</a>
+		
+  </div>
+</nav>
 
-  <!-- HEADER -->
-  <header>
-    <div class="nav-container">
-      <div class="logo">ChapterX</div>
-      <div class="menu-toggle" onclick="toggleMenu()">☰</div>
-      <nav>
-        <ul id="nav-links">
-          <li><a href="#home">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#events">Events</a></li>
-          <li><a href="#books">Books</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
-
-  <!-- HERO -->
-  <section class="hero" id="home">
+<div class="page">
+<section class="hero" role="banner" aria-label="ChapterX Book Club hero">
+  <div class="hero-content">
     <h1>Welcome to ChapterX</h1>
-    <p>A local book club for passionate readers, thinkers, and storytellers.</p>
-  </section>
+    <p>Where we enter into the world's first portals - books</p>
+    <a href="#join" class="btn">Learn More</a>
+  </div>
+</section>
 
-  <!-- ABOUT -->
-  <section id="about">
-    <h2 class="section-title">About Us</h2>
-    <div class="about">
-      <div class="card">
-        <h3>Our Mission</h3>
-        <p>To connect readers of all ages and backgrounds in a vibrant community of literary exploration and discussion.</p>
-      </div>
-      <div class="card">
-        <h3>Who We Are</h3>
-        <p>ChapterX is a grassroots book club that meets weekly in local cafes, libraries, and online to share the joy of reading.</p>
-      </div>
-    </div>
-  </section>
+<section class="stats-wrapper fade-in" aria-label="ChapterX Stats">
+  <div class="stat-card">
+    <div class="stat-number" data-target="10">0</div>
+    <div class="stat-label">Active Members</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-number" data-target="15">0</div>
+    <div class="stat-label">Books Discussed</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-number" data-target="3">0</div>
+    <div class="stat-label">Months Strong</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-number" data-target="1">0</div>
+    <div class="stat-label">Monthly Meetups</div>
+  </div>
+</section>
 
-  <!-- EVENTS -->
-  <section id="events">
-    <h2 class="section-title">Upcoming Events</h2>
-    <div class="events">
-      <div class="card">
-        <h3>October Meetup</h3>
-        <p>Join us for coffee and discussion on "The Midnight Library" by Matt Haig. Oct 12th, 6 PM @ Book Nook Cafe.</p>
-      </div>
-      <div class="card">
-        <h3>Author Q&A</h3>
-        <p>Live Zoom session with indie author Jane Doe. Submit your questions in advance. Oct 20th, 7 PM Online.</p>
-      </div>
-    </div>
-  </section>
 
-  <!-- BOOKS -->
-  <section id="books">
-    <h2 class="section-title">Our Reads</h2>
-    <div class="books">
-      <div class="card">
-        <h3>September</h3>
-        <p>"The Night Circus" by Erin Morgenstern — A magical tale of rival magicians and a dreamlike circus.</p>
-      </div>
-      <div class="card">
-        <h3>October</h3>
-        <p>"The Midnight Library" by Matt Haig — A journey through regret, choice, and the multiverse of life.</p>
-      </div>
-    </div>
-  </section>
 
-  <!-- CONTACT -->
-  <section id="contact">
-    <h2 class="section-title">Contact Us</h2>
-    <div class="contact-form">
-      <form>
-        <input type="text" placeholder="Your Name" required />
-        <input type="email" placeholder="Your Email" required />
-        <textarea rows="5" placeholder="Your Message" required></textarea>
-        <button type="submit">Send Message</button>
-      </form>
-    </div>
-  </section>
+<section id="about" tabindex="0">
+<img src="https://github.com/fairviewbookclub/fairviewbookclub.github.io/blob/main/ijl1k1b46kg781ju8p2o41pu97-952c8add5973bcc157f2c43951e49d64.png?raw=true" alt="Hermione Granger" class="book-character left fade-in" width="250px" />
 
-  <!-- FOOTER -->
-  <footer>
-    <p>&copy; 2025 ChapterX Book Club. All rights reserved.</p>
-  </footer>
+  <h2 class="fade-in">About ChapterX</h2>
+  <p class="fade-in">We are a humble band of homeschoolers who simply love to read. Brought together by a shared curiosity and a love for stories, we meet regularly to connect, chat, and journey through books that spark imagination and thoughtful conversation.</p>
+<p class="fade-in">
+Sometimes we explore timeless classics like Pride and Prejudice, and other times we dive into famous modern reads like Brave or Land of Stories. Whatever the book, each one brings fresh ideas to consider, in which we can discuss as a group, while having fun with it!</p>
+<p class="fade-in">
+Our book club is created by and for homeschoolers in Fairview, and it’s open to all who enjoy reading and sharing that joy with others. Whether you're a seasoned bookworm or just starting to fall in love with reading, you’re welcome here.</p>
+<button class="button" onClick="javascript:ChagePage(2)">Learn More</button>
 
-  <!-- SCRIPT FOR MOBILE MENU -->
-  <script>
-    function toggleMenu() {
-      const navLinks = document.getElementById('nav-links');
-      navLinks.classList.toggle('active');
+</section>
+
+<section id="events" class="fade-in" tabindex="0">
+  <h2>Upcoming Events</h2>
+  <div class="events-list">
+    <article class="event-card" tabindex="0">
+      <h3>Monthly Book Discussion</h3>
+      <p>Join us on the first Thursday of every month to discuss our selected book and share your thoughts.</p>
+    </article>
+    <article class="event-card" tabindex="0">
+      <h3>Author Meet & Greet</h3>
+      <p>Meet local authors and get your favorite books signed. Next event: August 15th.</p>
+    </article>
+    <article class="event-card" tabindex="0">
+      <h3>Book Swap</h3>
+      <p>Bring a book, take a book! A great way to discover new reads and clear your shelves.</p>
+    </article>
+  </div>
+</section>
+
+<section id="join" class="fade-in" tabindex="0">
+  <h2>Join ChapterX</h2>
+  <p>Ready to be part of our vibrant community? Signing up is easy and free. Receive event updates, book recommendations, and connect with fellow readers.</p>
+  <a href="mailto:contact@chapterx.com" class="btn" aria-label="Email ChapterX to join">Sign Up Now</a>
+</section>
+</div>
+
+<footer>
+  &copy; 2025 ChapterX Book Club — All rights reserved.
+</footer>
+
+<script>
+/** Fade-in-out scroll by Nicolas @nickrg **/
+document.addEventListener("DOMContentLoaded", () => {
+  const faders = document.querySelectorAll(".fade-in");
+
+  const appearOptions = {
+    threshold: 0.2,
+    rootMargin: "0px 0px -50px 0px",
+  };
+
+  function observerCallback(entries) {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("show");
+      } else {
+        entry.target.classList.remove("show");
+      }
+    });
+  }
+
+  const observer = new IntersectionObserver(observerCallback, appearOptions);
+  faders.forEach((fader) => observer.observe(fader));
+});
+</script>
+
+<!-- Lenis Smooth Scroll-->
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+<script type="module">
+  document.addEventListener('DOMContentLoaded', () => {
+    const lenis = new Lenis({
+      lerp: 0.05,
+      wheelMultiplier: 0.8,
+      duration: 1.5,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    });
+
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
     }
-  </script>
+
+    requestAnimationFrame(raf);
+  });
+  
+  document.addEventListener("DOMContentLoaded", () => {
+  const counters = document.querySelectorAll('.stat-number');
+
+  const options = {
+    threshold: 0.6
+  };
+
+  const animateCount = (el, target) => {
+    let start = 0;
+    const duration = 1500;
+    const startTime = performance.now();
+
+    const step = (currentTime) => {
+      const progress = Math.min((currentTime - startTime) / duration, 1);
+      el.textContent = Math.floor(progress * target);
+      if (progress < 1) {
+        requestAnimationFrame(step);
+      } else {
+        el.textContent = target;
+      }
+    };
+
+    requestAnimationFrame(step);
+  };
+
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const el = entry.target;
+        const target = parseInt(el.dataset.target);
+        animateCount(el, target);
+        obs.unobserve(el); // Only animate once
+      }
+    });
+  }, options);
+
+  counters.forEach(counter => {
+    observer.observe(counter);
+  });
+  
+  	var page = document.getElementsByClassName('page');
+		
+		function changePage(index) {
+			for (var i = 0; i < page.length; i++) {
+				page[i].style.display = 'none';
+			}
+			page[index - 1].style.display = 'block';
+			window.scroll(0, 0);
+		}
+		
+		changePage(1);
+        
+         
+});
+
+const page = document.querySelector(".page");
+    if (page) {
+      requestAnimationFrame(() => {
+        page.classList.add("loaded");
+      });
+    }
+</script>
+
 </body>
 </html>
