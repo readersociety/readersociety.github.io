@@ -719,7 +719,51 @@
 	    max-width: 90vw;
 	  }
 	}
+  /* Your existing styles omitted for brevity */
 
+  /* Music button style */
+  #music-button {
+    position: fixed;
+    top: 50px;
+    left: 50px;
+    background-color: #6EC1E4;
+    border-radius: 30px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(110, 193, 228, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #121212;
+    font-weight: 600;
+    font-size: 1rem;
+    user-select: none;
+    z-index: 9999;
+    padding: 0.75rem 1.5rem;
+    white-space: nowrap;
+    transition: background-color 0.3s ease, opacity 0.5s ease;
+  }
+  #music-button:hover {
+    background-color: #4AA8CD;
+  }
+
+  /* Hide on click */
+  #music-button.hide {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  /* Mobile fix: no follow, fixed bottom-right */
+  @media (max-width: 768px) {
+    #music-button {
+      top: auto !important;
+      left: auto !important;
+      bottom: 20px;
+      right: 20px;
+      border-radius: 30px;
+      font-size: 1.1rem;
+      padding: 1rem 2rem;
+    }
+  }
 </style>
 </head>
 <body>
@@ -747,6 +791,14 @@
   </div>
 </nav>
 
+<!-- Music button -->
+<div id="music-button" title="Click for background music">Click for background music</div>
+
+<!-- Audio element -->
+<audio id="background-music" loop preload="auto">
+  <source src="https://raw.githubusercontent.com/bandofbookworms/bandofbookworms.github.io/main/Daydreams-chosic.com_.mp3" type="audio/mpeg" />
+  Your browser does not support the audio element.
+</audio>
 <div class="page">
 
 <section class="hero-slideshow" role="banner" aria-label="ChapterX Book Club hero">
@@ -1062,6 +1114,29 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 </script>
+<script>
+  const btn = document.getElementById('music-button');
+  const audio = document.getElementById('background-music');
 
+  // On desktop, follow mouse
+  function updateButtonPosition(e) {
+    if(window.innerWidth > 768) {
+      btn.style.top = (e.clientY + 20) + 'px';
+      btn.style.left = (e.clientX + 20) + 'px';
+    }
+  }
+
+  if(window.innerWidth > 768) {
+    window.addEventListener('mousemove', updateButtonPosition);
+  }
+
+  btn.addEventListener('click', () => {
+    audio.play().catch(err => {
+      console.warn('Playback failed:', err);
+    });
+    btn.classList.add('hide');
+    window.removeEventListener('mousemove', updateButtonPosition);
+  });
+</script>
 </body>
 </html>
