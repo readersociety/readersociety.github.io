@@ -482,37 +482,7 @@
     margin-top: 4rem;
   }
   
-  .book-character {
-    max-width: 300px;
-    height: auto;
-    position: relative;
-    z-index: 2;
-    transition: transform 0.3s ease;
-    pointer-events: none; /* So it doesn't interfere with text links */
-  }
 
-  .book-character:hover {
-    transform: scale(1.05);
-  }
-
-  .book-character.left {
-    float: left;
-    margin: 1rem 2rem 1rem 0;
-  }
-
-  .book-character.right {
-    float: right;
-    margin: 1rem 0 1rem 2rem;
-  }
-
-  @media (max-width: 768px) {
-    .book-character {
-      float: none;
-      display: block;
-      margin: 1rem auto;
-    }
-  }
-  
   .stats-wrapper {
     position: relative;
     z-index: 5;
@@ -719,7 +689,7 @@
 	    max-width: 90vw;
 	  }
 	}
-  /* Your existing styles omitted for brevity */
+ 
   #music-button {
     position: fixed;
     bottom: 20px;
@@ -738,17 +708,72 @@
     z-index: 9999;
     padding: 1rem 2rem;
     white-space: nowrap;
-    transition: background-color 0.3s ease;
+    transition: all 0.4s ease;
+    gap: 0.5rem;
   }
+
   #music-button:hover {
     background-color: #4AA8CD;
   }
-  
-   /* Hide with fade */
-  #music-button.hide {
-    opacity: 0;
-    pointer-events: none;
+
+  /* PLAYING STATE */
+  #music-button.playing {
+    width: 60px;
+    height: 60px;
+    padding: 0;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    animation: spin 5s linear infinite;
+    gap: 0;
   }
+
+  /* HIDE text and play icon when playing */
+  #music-button.playing .music-text,
+  #music-button.playing .play-icon {
+    display: none;
+  }
+
+  /* SHOW pause icon when playing */
+  #music-button.playing .pause-icon {
+    display: inline-block;
+  }
+
+ /* Show both initially */
+  .play-icon,
+  .pause-icon {
+    display: inline-block;
+    font-size: 1.4rem;
+    color: #121212;
+  }
+
+  /* Hide pause icon initially */
+  .pause-icon {
+    display: none;
+  }
+
+  /* When playing: hide play icon and text, show pause */
+  #music-button.playing .play-icon,
+  #music-button.playing .music-text {
+    display: none;
+  }
+
+  #music-button.playing .pause-icon {
+    display: inline-block;
+  }
+
+
+  /* ROTATION ANIMATION */
+  @keyframes spin {
+    0%   { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  
+ 
+
+
+
+
 </style>
 </head>
 <body>
@@ -776,14 +801,33 @@
   </div>
 </nav>
 
-<!-- Music button -->
-<div id="music-button" title="Click for background music">Click for background music</div>
+<!-- ✅ SONG TITLE (separate from button) -->
+<div id="song-title" style="
+  position: fixed;
+  bottom: 100px;
+  right: 20px;
+  font-size: 1rem;
+  color: #ffffff;
+  background: rgba(0,0,0,0.5);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  display: none;
+">
+  Now playing: ...
+</div>
 
-<!-- Audio element -->
-<audio id="background-music" loop preload="auto">
-  <source src="https://github.com/bandofbookworms/bandofbookworms.github.io/raw/refs/heads/main/videoplayback.weba" type="audio/mpeg" />
-  Your browser does not support the audio element.
-</audio>
+<!-- ✅ MUSIC BUTTON -->
+<div id="music-button" title="Toggle background music">
+  <span class="music-text">Play Music</span>
+  <span class="play-icon">&#9658;</span>        <!-- ▶ -->
+  <span class="pause-icon">&#9208;</span>       <!-- ⏸ -->
+</div>
+
+<!-- ✅ AUDIO -->
+<audio id="background-music" preload="auto" loop></audio>
+
+
+
 <div class="page">
 
 <section class="hero-slideshow" role="banner" aria-label="ChapterX Book Club hero">
@@ -1013,9 +1057,17 @@ const page = document.querySelector(".page");
     
     // Slideshow hero
      const imageUrls = [
-    'https://videocdn.cdnpk.net/videos/7f3837e8-d97e-5551-ac20-ac14b4f7032d/horizontal/thumbnails/small.jpg',
-    'https://images.unsplash.com/photo-1512820790803-83ca734da794', // Example
-    'https://images.unsplash.com/photo-1524995997946-a1c2e315a42f'  // Example
+    'https://www.hollywoodreporter.com/wp-content/uploads/2015/04/The_Chronicals_of_Narnia_Still.jpg',
+    'https://i.ytimg.com/vi/S5MAejibg0g/sddefault.jpg', 
+    'https://www.slashfilm.com/img/gallery/tim-burton-made-box-office-history-with-one-of-his-most-divisive-movies/l-intro-1726177977.jpg',  'https://www.hollywoodreporter.com/wp-content/uploads/2024/08/the_wild_robot_01-H-2024.jpg',
+    'https://i.ytimg.com/vi/Xl3gCFyx8F4/maxresdefault.jpg',
+    'https://i.ytimg.com/vi/f7OC6ZpjVcs/maxresdefault.jpg',
+    'https://hips.hearstapps.com/hmg-prod/images/hobbit-movies-in-order-lord-of-the-rings-movies-in-order-2002-the-two-towers-1643217951.jpeg',
+    'https://storage.googleapis.com/stateless-thedailyfandom-org/2020/08/0ca1d34d-post_marquee_5b2ce6d95e7c2-scaled.jpg',
+    'https://www.intofilm.org/intofilm-production/scaledcropped/970x546https%3A/s3.eu-west-1.amazonaws.com/images.cdn.filmclub.org/film__2767-charlie-and-the-chocolate-factory--hi_res-0614503a.jpg/film__2767-charlie-and-the-chocolate-factory--hi_res-0614503a.jpg',
+    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSoyzsGeNsz6D-2qdD2aly7nxtMWXGutICxwQ&s',
+    'https://static0.colliderimages.com/wordpress/wp-content/uploads/2023/10/the-pacific-rami-malek-joseph-mazzello-1.jpg',
+
   ];
 
   const slideshowContainer = document.querySelector('.hero-slideshow');
@@ -1045,7 +1097,7 @@ const page = document.querySelector(".page");
   }
 
   createSlides();
-  setInterval(showNextSlide, 3000); // Change slide every 5 seconds
+  setInterval(showNextSlide, 3000); // Change slide every 3 seconds
 
 	  
     });
@@ -1100,15 +1152,76 @@ document.addEventListener('DOMContentLoaded', () => {
 
 </script>
 <script>
-   const btn = document.getElementById('music-button');
+  const btn = document.getElementById('music-button');
   const audio = document.getElementById('background-music');
+  const songTitle = document.getElementById('song-title');
+
+  const playlist = [
+    {
+      title: "Ambient Chill",
+      url: "https://github.com/bandofbookworms/bandofbookworms.github.io/raw/refs/heads/main/videoplayback.weba"
+    },
+    {
+      title: "SoundHelix 1",
+      url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
+    },
+    {
+      title: "Portals",
+      url: "https://github.com/bandofbookworms/bandofbookworms.github.io/raw/refs/heads/main/videoplayback.weba"
+    }
+  ];
+
+  let isPlaying = false;
 
   btn.addEventListener('click', () => {
-    audio.play().catch(err => {
-      console.warn('Playback failed:', err);
-    });
-    btn.classList.add('hide');
+    if (!isPlaying) {
+      // Pick a random song
+      const randomIndex = Math.floor(Math.random() * playlist.length);
+      const song = playlist[randomIndex];
+      audio.src = song.url;
+
+      // Update title
+      songTitle.textContent = "Now playing: " + song.title;
+      songTitle.style.display = "block";
+
+      // Play with fade in
+      audio.volume = 0;
+      audio.play().then(() => {
+        fadeAudio(1, 1000);
+        btn.classList.add('playing');
+        isPlaying = true;
+      }).catch(err => {
+        console.warn('Playback failed:', err);
+      });
+    } else {
+      // Fade out and pause
+      fadeAudio(0, 800, () => {
+        audio.pause();
+        btn.classList.remove('playing');
+        isPlaying = false;
+        songTitle.style.display = "none";
+      });
+    }
   });
+
+  function fadeAudio(targetVolume, duration, callback) {
+    const steps = 20;
+    const stepTime = duration / steps;
+    const volumeStep = (targetVolume - audio.volume) / steps;
+    let stepCount = 0;
+
+    const interval = setInterval(() => {
+      stepCount++;
+      audio.volume = Math.max(0, Math.min(1, audio.volume + volumeStep));
+      if (stepCount >= steps) {
+        clearInterval(interval);
+        audio.volume = targetVolume;
+        if (callback) callback();
+      }
+    }, stepTime);
+  }
 </script>
+
+
 </body>
 </html>
