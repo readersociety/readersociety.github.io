@@ -66,20 +66,27 @@
     padding: 1rem 3rem;
     box-shadow: 0 1px 6px rgba(0,0,0,0.5);
   }
-  .logo {
-    font-weight: 700;
-    font-size: 1.5rem;
-    letter-spacing: 2px;
-    color: #6EC1E4;
-    user-select: none;
+ 
+   .logo {
+    display: flex;
+    align-items: center;
+    height: 80px; /* Adjust height as needed */
   }
+
+  .logo img {
+    height: 100%;
+    width: auto;
+    display: block;
+  }
+
+ 
   .nav-links {
     display: flex;
     gap: 2rem;
   }
   .nav-links a {
     font-weight: 600;
-    font-size: 1rem;
+    font-size: 1.2rem;
     padding: 0.3rem 0.5rem;
     border-radius: 4px;
     transition: background-color 0.3s ease;
@@ -90,51 +97,225 @@
     color: #121212;
     outline: none;
   }
-
-  /* Hero Section */
-.hero {
+	
+/* Dropdown container */
+	.dropdown {
+	  position: relative;
+	  display: inline-block;
+	  font-size: 1.2rem;
+	  font-weight: 600;
+	}
+	
+	/* Dropdown button */
+	.dropbtn {
+	  background: none;
+	  border: none;
+	  color: inherit;
+	  padding: 0.3rem 0.5rem;
+	  cursor: pointer;
+	  border-radius: 4px;
+	  display: flex;
+	  align-items: center;
+	  gap: 0.3rem;
+	  transition: background-color 0.3s ease;
+	  font-family: inherit;
+	  font-weight: 600;
+	  font-size: 1.2rem;
+	}
+	
+	/* Hover & focus on button */
+/* Dropdown container */
+.dropdown {
   position: relative;
-  min-height: 100vh;  /* Make it fit at least the full viewport height */
-  background: url('https://videocdn.cdnpk.net/videos/7f3837e8-d97e-5551-ac20-ac14b4f7032d/horizontal/thumbnails/small.jpg') 
-              no-repeat center center / cover;
+  display: inline-block;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+/* Dropdown button */
+.dropbtn {
+  background: none;
+  border: none;
+  color: inherit;
+  padding: 0.3rem 0.5rem;
+  cursor: pointer;
+  border-radius: 4px;
   display: flex;
   align-items: center;
-  justify-content: flex-start; /* Ensure left alignment unless overridden */
-  padding: 0 5vw;
-  overflow: hidden;
+  gap: 0.3rem;
+  transition: background-color 0.3s ease;
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 1.2rem;
+  white-space: nowrap; /* Prevent button text wrap */
 }
 
-/* Dark overlay */
-.hero::before {
-  content: "";
+/* Hover & focus on button */
+.dropbtn:hover,
+.dropbtn:focus {
+  background-color: #6EC1E4;
+  color: #121212;
+  outline: none;
+}
+
+/* Dropdown content (hidden by default) */
+.dropdown-content {
+  display: none;
   position: absolute;
-  inset: 0;
-  background-color: rgba(0, 0, 0, 0.65);
-  z-index: 1;
+  background-color: #1f1f1f;
+  min-width: 160px;
+  max-width: 90vw; /* prevent overflow on small screens */
+  box-shadow: 0 4px 10px rgba(110, 193, 228, 0.3);
+  border-radius: 6px;
+  padding: 0.5rem 0;
+  top: 100%;
+  left: 0;
+  z-index: 100;
+  overflow-wrap: break-word; /* break long text if any */
 }
 
-/* Hero content */
-.hero-content {
-  position: relative;
-  z-index: 2;
-  max-width: 600px;
+/* Dropdown links */
+.dropdown-content a {
   color: #eee;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  display: block;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+  white-space: nowrap;
 }
 
-.hero-content h1 {
-  font-size: 3.5rem;
-  margin: 0 0 0.5rem 0;
-  font-weight: 700;
-  line-height: 1.1;
-  letter-spacing: 1.2px;
+/* Hover & focus on dropdown links */
+.dropdown-content a:hover,
+.dropdown-content a:focus {
+  background-color: #6EC1E4;
+  color: #121212;
+  outline: none;
 }
 
-.hero-content p {
-  font-size: 1.25rem;
-  line-height: 1.5;
-  color: #bbb;
-  margin-bottom: 2rem;
+/* Show dropdown on hover or focus */
+.dropdown:hover .dropdown-content,
+.dropdown:focus-within .dropdown-content {
+  display: block;
 }
+
+/* Responsive navbar adjustments */
+@media (max-width: 768px) {
+  nav {
+    flex-wrap: wrap;
+    padding: 1rem 1.5rem;
+    justify-content: center;
+  }
+
+  .nav-links {
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .dropdown-content {
+    position: static; /* Dropdown content flows with document on small screens */
+    box-shadow: none;
+    border-radius: 0;
+    max-width: 100%;
+    padding: 0;
+  }
+
+  .dropdown-content a {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid #333;
+  }
+
+  .dropdown:hover .dropdown-content,
+  .dropdown:focus-within .dropdown-content {
+    display: block; /* keep dropdown open on small screens */
+  }
+}
+
+
+
+  /* Hero Section */
+  .hero-slideshow {
+    position: relative;
+    min-height: 100vh;
+    overflow: hidden;
+  }
+
+  .hero-slide {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0 5vw;
+    z-index: 1;
+  }
+
+  .hero-slide::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.65); /* dark overlay */
+    z-index: 1;
+  }
+
+  .hero-slide.active {
+    opacity: 1;
+    z-index: 2;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 3;
+    max-width: 600px;
+    color: #eee;
+    animation: fadeInUp 1s ease forwards;
+  }
+
+  .hero-content h1 {
+    font-size: 3.5rem;
+    margin: 0 0 0.5rem 0;
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: 1.2px;
+  }
+
+  .hero-content p {
+    font-size: 1.25rem;
+    line-height: 1.5;
+    color: #bbb;
+    margin-bottom: 2rem;
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Responsive adjustments (optional) */
+  @media (max-width: 768px) {
+    .hero-content h1 {
+      font-size: 2.8rem;
+    }
+    .hero-content p {
+      font-size: 1rem;
+    }
+  }
+
 
 /* Call to action button */
 .btn {
@@ -184,7 +365,7 @@
 
   /* Sections below hero */
   section {
-    max-width: 95%;
+    max-width: 1500px;
     margin: 4rem auto;
     padding: 0 1.5rem;
   }
@@ -200,6 +381,54 @@
     color: #ccc;
     max-width: 700px;
   }
+  
+  /*Grid Content*/
+  .grid-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch; /* Make all items stretch to equal height */
+    gap: 2rem;
+    padding: 2rem 5vw;
+    position: relative;
+  }
+
+  .card-left,
+  .card-right {
+    flex: 1;
+    background: #1e1e1e;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    color: #ccc;
+    display: flex;
+    flex-direction: column; /* Allows content inside to layout properly */
+  }
+
+  .card-left h2,
+  .card-right h2 {
+    text-align: center;
+    color: #6EC1E4;
+    margin-top: 0;
+  }
+
+  .divider {
+    width: 2px;
+    background-color: #333;
+    height: auto;
+  }
+
+  /* Responsive: stack cards on small screens */
+  @media (max-width: 768px) {
+    .grid-section {
+      flex-direction: column;
+    }
+    .divider {
+      display: none;
+    }
+  }
+
+
+
 
   .events-list {
     display: flex;
@@ -359,29 +588,177 @@
     box-shadow: 0 2px 8px rgba(110, 193, 228, 0.2);
   }
 
+	.books-section {
+	  display: flex;
+	  gap: 3rem;
+	  justify-content: center;
+	  flex-wrap: wrap;
+	  margin: 3rem auto;
+	  max-width: 1000px;
+	  padding: 0 1rem;
+	}
 
-
+	/* Common card styles */
+	.card {
+	  background: #1e1e2f;
+	  border-radius: 12px;
+	  box-shadow: 0 0 15px rgba(110, 193, 228, 0.5);
+	  padding: 1.5rem 1.25rem 2rem;
+	  flex: 1 1 300px;
+	  max-width: 900px;
+	  color: #eee;
+	  text-align: center;
+	  position: relative;
+	  transition: box-shadow 0.3s ease;
+	}
+	
+	.card:hover {
+	  box-shadow: 0 0 25px rgba(110, 193, 228, 0.9);
+	}
+	
+	.card img {
+	  width: 250px;
+	  height: 350px;
+	  object-fit: cover;
+	  border-radius: 8px;
+	  margin-bottom: 1rem;
+	  user-select: none;
+	  pointer-events: none;
+	}
+	
+	/* Current Book Specific */
+	
+	.current-book h3,
+	.past-books h3 {
+	  font-size: 1.5rem;
+	  margin-bottom: 0.5rem;
+	  color: #6EC1E4;
+	  font-weight: 700;
+	}
+	
+	.book-description {
+	  font-size: 1rem;
+	  color: #ccc;
+	  margin: 0.5rem 0 1rem;
+	  line-height: 1.4;
+	  min-height: 60px; /* keep uniform height */
+	}
+	
+	.reading-dates {
+	  display: block;
+	  font-size: 0.9rem;
+	  font-weight: 600;
+	  color: #6EC1E4;
+	  margin-bottom: 1rem;
+	  letter-spacing: 0.5px;
+	}
+	
+	/* Progress Circle Wrapper */
+	.book-progress {
+	  display: flex;
+	  flex-direction: column;
+	  align-items: center;
+	  gap: 0.3rem;
+	  color: #6EC1E4;
+	  font-weight: 600;
+	  font-size: 1rem;
+	}
+	
+	/* Circular progress bar */
+	.progress-circle {
+	  --progress: 0deg;
+	  width: 100px;
+	  height: 100px;
+	  border-radius: 50%;
+	  background:
+	    conic-gradient(#6EC1E4 var(--progress), #222 var(--progress));
+	  display: flex;
+	  align-items: center;
+	  justify-content: center;
+	  color: #6EC1E4;
+	  font-weight: 700;
+	  font-size: 1.25rem;
+	  box-shadow: 0 0 15px #6EC1E4;
+	  transition: background 1.2s ease;
+	}
+	
+    .progress-value{
+    color:white}
+    
+	/* Past Books button */
+	.past-books .button {
+	  margin-top: 1rem;
+	  background-color: #6EC1E4;
+	  color: #121212;
+	  border: none;
+	  border-radius: 30px;
+	  padding: 0.75rem 1.5rem;
+	  font-weight: 600;
+	  font-size: 1rem;
+	  cursor: pointer;
+	  box-shadow: 0 0 12px #6EC1E4;
+	  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+	}
+	
+	.past-books .button:hover,
+	.past-books .button:focus {
+	  background-color: #4AA8CD;
+	  box-shadow: 0 0 20px #4AA8CD;
+	  outline: none;
+	}
+	
+	/* Responsive */
+	
+	@media (max-width: 650px) {
+	  .books-section {
+	    flex-direction: column;
+	    align-items: center;
+	  }
+	  
+	  .card {
+	    max-width: 90vw;
+	  }
+	}
 
 </style>
 </head>
 <body>
 <nav>
-  <div class="logo">ChapterX</div>
+  <div class="logo">
+  <img src="https://github.com/bandofbookworms/bandofbookworms.github.io/blob/main/band-of-bookworms-high-resolution-logo-transparent.png?raw=true" alt="Band of Bookworms Logo">
+</div>
+
   <div class="nav-links">
     <a href="javascript:changePage(1);">Home</a>
 		<a href="javascript:changePage(2);">About</a>
+        <a href="javascript:changePage(3);">Books</a>
+        <a href="javascript:changePage(4);">Members</a>
+         <div class="dropdown">
+    <button class="dropbtn">More 	&#9660
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a href="javascript:changePage(5);">Events Archive</a>
+      <a href="javascript:changePage(6);">Q/A</a>
+      <a href="javascript:changePage(7);">Badges</a>
+    </div>
+  </div> 
 		
   </div>
 </nav>
 
 <div class="page">
-<section class="hero" role="banner" aria-label="ChapterX Book Club hero">
-  <div class="hero-content">
-    <h1>Welcome to ChapterX</h1>
-    <p>Where we enter into the world's first portals - books</p>
-    <a href="#join" class="btn">Learn More</a>
+
+<section class="hero-slideshow" role="banner" aria-label="ChapterX Book Club hero">
+  <div class="hero-slide">
+    <div class="hero-content">
+      <h1>Welcome to Band of Bookworms</h1>
+      <p>Where we enter into the world's first portals — books</p>
+      <a href="#join" class="btn">Learn More</a>
+    </div>
   </div>
 </section>
+
 
 <section class="stats-wrapper fade-in" aria-label="ChapterX Stats">
   <div class="stat-card">
@@ -405,17 +782,26 @@
 
 
 <section id="about" tabindex="0">
-<img src="https://github.com/fairviewbookclub/fairviewbookclub.github.io/blob/main/ijl1k1b46kg781ju8p2o41pu97-952c8add5973bcc157f2c43951e49d64.png?raw=true" alt="Hermione Granger" class="book-character left fade-in" width="250px" />
 
-  <h2 class="fade-in">About ChapterX</h2>
-  <p class="fade-in">We are a humble band of homeschoolers who simply love to read. Brought together by a shared curiosity and a love for stories, we meet regularly to connect, chat, and journey through books that spark imagination and thoughtful conversation.</p>
-<p class="fade-in">
-Sometimes we explore timeless classics like Pride and Prejudice, and other times we dive into famous modern reads like Brave or Land of Stories. Whatever the book, each one brings fresh ideas to consider, in which we can discuss as a group, while having fun with it!</p>
-<p class="fade-in">
-Our book club is created by and for homeschoolers in Fairview, and it’s open to all who enjoy reading and sharing that joy with others. Whether you're a seasoned bookworm or just starting to fall in love with reading, you’re welcome here.</p>
-<button class="button" onClick="javascript:ChagePage(2)">Learn More</button>
 
+<section class="grid-section">
+  <div class="card-left">
+    <h2>About Band of Bookworms</h2>
+    <p>We are a humble band of homeschoolers who simply love to read. Brought together by a shared curiosity and a love for stories, we meet regularly to connect, chat, and journey through books that spark imagination and thoughtful conversation.</p>
+    <p>Sometimes we explore timeless classics like <em>Pride and Prejudice</em>, and other times we dive into modern reads like <em>Brave</em> or <em>Land of Stories</em>.</p>
+	  <button class="button" onclick="javascript:changePage(2)">Check out Our Story</button>
+  </div>
+
+  <div class="divider"></div> <!-- The vertical dividing line -->
+
+  <div class="card-right">
+    <h2>Our Mission</h2>
+    <p>We, the people of Band of Bookworms, declare our mission is to aim re-ignite a lifelong passion for reading by creating a welcoming and inspiring community for book lobing homeschoolers. We believe in the power of stories to open new worlds, foster curiosity, and spark meaningful conversations, all while having fun and making lifelong bonds. </p>
+    
+  </div>
 </section>
+
+
 
 <section id="events" class="fade-in" tabindex="0">
   <h2>Upcoming Events</h2>
@@ -435,10 +821,46 @@ Our book club is created by and for homeschoolers in Fairview, and it’s open t
   </div>
 </section>
 
+<section class="books-section">
+  <!-- Current Book Card -->
+  <div class="current-book card">
+    <img src="https://cdn.kobo.com/book-images/54f1aa69-e4ec-4640-afc9-60e7fe784f91/1200/1200/False/harry-potter-and-the-sorcerer-s-stone-the-first-book-in-the-phenomenal-internationally-bestselling-harry-potter-series-by-j-k-rowling.jpg" alt="Current Book Title" />
+    
+    <h3>Harry Potter: The Sorcerer's Stone</h3>
+    
+    <p class="book-description">
+     Harry Potter, a boy who learns on his eleventh birthday that he is the orphaned son of two powerful wizards and possesses unique magical powers of his own. He is summoned from his life as an unwanted child to become a student at Hogwarts, an English boarding school for wizards. There, he meets several friends who become his closest allies and help him discover the truth about his parents' mysterious deaths.
+    </p>
+    <p><b>Online Link</b>: <a href="https://archive.org/details/j.-k.-rowling-1.-harry-potter-and-the-philosophers-stone-2020/mode/2up?view=theater">Archive.org</a></p>
+    <span class="reading-dates">Reading from Sep 1 to Sep 30</span>
+
+    <!-- Progress stats inside current book card -->
+    <div class="book-progress">
+      <div class="progress-circle" data-progress="62">
+        <span class="progress-value">62%</span>
+      </div>
+      <p>Reading Progress</p>
+    </div>
+  </div>
+
+  <!-- Past Monthly Book Card -->
+  <div class="past-books card">
+    <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1308814830i/84369.jpg" alt="Past Book Title" />
+    <h3>Past Monthly Book</h3>
+    <p class="book-description">
+     An old ape, Shift, and a donkey, Puzzle, create a false Aslan by using a lion skin and claim that the true Aslan and the Calormene god Tash are the same. The King of Narnia, Tirian, and the children Jill and Eustace are caught in the conflict, and the story concludes with the death of all characters in the old Narnia and their passage through a stable door to enter the true, eternal Aslan's Country. 
+    </p>
+    <p><b>Online Link</b>: <a href="https://archive.org/download/TheLastBattle_201812/The%20Last%20Battle.pdf">Archive.org</a></p>
+    <span class="reading-dates">Reading from August 1 - August 31</span>
+    <button class="button">See Our Complete Archive</button>
+  </div>
+</section>
+
+
 <section id="join" class="fade-in" tabindex="0">
-  <h2>Join ChapterX</h2>
-  <p>Ready to be part of our vibrant community? Signing up is easy and free. Receive event updates, book recommendations, and connect with fellow readers.</p>
-  <a href="mailto:contact@chapterx.com" class="btn" aria-label="Email ChapterX to join">Sign Up Now</a>
+  <h2>The People of Band of Bookworms</h2>
+  <p>These are our members that make this club possible. Here you will find basic member information (things like birthdays etc), their biographies, a picture or two, contact information and more! Just click the button below. </p>
+  <a href="mailto:contact@chapterx.com" class="btn" aria-label="Email ChapterX to join">Check Us Out!</a>
 </section>
 </div>
 
@@ -528,7 +950,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   counters.forEach(counter => {
     observer.observe(counter);
-  });
+
   
   	var page = document.getElementsByClassName('page');
 		
@@ -551,6 +973,94 @@ const page = document.querySelector(".page");
         page.classList.add("loaded");
       });
     }
+    
+    // Slideshow hero
+     const imageUrls = [
+    'https://videocdn.cdnpk.net/videos/7f3837e8-d97e-5551-ac20-ac14b4f7032d/horizontal/thumbnails/small.jpg',
+    'https://images.unsplash.com/photo-1512820790803-83ca734da794', // Example
+    'https://images.unsplash.com/photo-1524995997946-a1c2e315a42f'  // Example
+  ];
+
+  const slideshowContainer = document.querySelector('.hero-slideshow');
+  let currentIndex = 0;
+  let slides = [];
+
+  function createSlides() {
+    imageUrls.forEach((url, index) => {
+      const slide = document.createElement('div');
+      slide.className = 'hero-slide';
+      slide.style.backgroundImage = `url('${url}')`;
+      if (index === 0) slide.classList.add('active');
+      slide.innerHTML = slideshowContainer.querySelector('.hero-slide').innerHTML;
+      slideshowContainer.appendChild(slide);
+      slides.push(slide);
+    });
+
+    // Remove the template slide
+    const templateSlide = slideshowContainer.querySelector('.hero-slide');
+    slideshowContainer.removeChild(templateSlide);
+  }
+
+  function showNextSlide() {
+    slides[currentIndex].classList.remove('active');
+    currentIndex = (currentIndex + 1) % slides.length;
+    slides[currentIndex].classList.add('active');
+  }
+
+  createSlides();
+  setInterval(showNextSlide, 3000); // Change slide every 5 seconds
+
+	  
+    });
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const progressCircle = document.querySelector('.progress-circle');
+  const progressValue = progressCircle ? progressCircle.querySelector('.progress-value') : null;
+  
+  if (!progressCircle || !progressValue) return;
+  
+  // Progress % to animate to (from data-progress attr or default)
+  const targetProgress = parseInt(progressCircle.getAttribute('data-progress')) || 0;
+  
+  // Initialize at zero progress
+  progressCircle.style.setProperty('--progress', '0deg');
+  progressValue.textContent = '0%';
+
+  // Animate progress function
+  function animateProgress() {
+    let progress = 0;
+    const animationDuration = 1200; // ms
+    const frameDuration = 16; // approx 60fps
+    const totalFrames = animationDuration / frameDuration;
+    let currentFrame = 0;
+
+    const animation = setInterval(() => {
+      currentFrame++;
+      progress = Math.min(targetProgress, Math.round((currentFrame / totalFrames) * targetProgress));
+      const degree = (progress / 100) * 360;
+      progressCircle.style.setProperty('--progress', `${degree}deg`);
+      progressValue.textContent = progress + '%';
+
+      if (progress >= targetProgress) {
+        clearInterval(animation);
+      }
+    }, frameDuration);
+  }
+
+  // Intersection Observer to trigger animation once when visible
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        animateProgress();
+        observer.unobserve(entry.target); // Animate only once
+      }
+    });
+  }, { threshold: 0.5 });
+
+  observer.observe(progressCircle);
+});
+
 </script>
 
 </body>
