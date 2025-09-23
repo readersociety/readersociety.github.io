@@ -98,114 +98,93 @@
     outline: none;
   }
 	
-/* Dropdown container */
-	.dropdown {
-	  position: relative;
-	  display: inline-block;
-	  font-size: 1.2rem;
-	  font-weight: 600;
-	}
 	
-	/* Dropdown button */
-	.dropbtn {
-	  background: none;
-	  border: none;
-	  color: inherit;
-	  padding: 0.3rem 0.5rem;
-	  cursor: pointer;
-	  border-radius: 4px;
-	  display: flex;
-	  align-items: center;
-	  gap: 0.3rem;
-	  transition: background-color 0.3s ease;
-	  font-family: inherit;
-	  font-weight: 600;
-	  font-size: 1.2rem;
-	}
-	
-	/* Hover & focus on button */
-/* Dropdown container */
-.dropdown {
-  position: relative;
-  display: inline-block;
-  font-size: 1.2rem;
-  font-weight: 600;
-}
-
-/* Dropdown button */
-.dropbtn {
-  background: none;
-  border: none;
-  color: inherit;
-  padding: 0.3rem 0.5rem;
-  cursor: pointer;
-  border-radius: 4px;
-  display: flex;
-  align-items: center;
-  gap: 0.3rem;
-  transition: background-color 0.3s ease;
-  font-family: inherit;
-  font-weight: 600;
-  font-size: 1.2rem;
-  white-space: nowrap; /* Prevent button text wrap */
-}
-
-/* Hover & focus on button */
-.dropbtn:hover,
-.dropbtn:focus {
-  background-color: #6EC1E4;
-  color: #121212;
-  outline: none;
-}
-
-/* Dropdown content (hidden by default) */
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #1f1f1f;
-  min-width: 160px;
-  max-width: 90vw; /* prevent overflow on small screens */
-  box-shadow: 0 4px 10px rgba(110, 193, 228, 0.3);
-  border-radius: 6px;
-  padding: 0.5rem 0;
-  top: 100%;
-  left: 0;
-  z-index: 100;
-  overflow-wrap: break-word; /* break long text if any */
-}
-
-/* Dropdown links */
-.dropdown-content a {
-  color: #eee;
-  padding: 0.5rem 1rem;
-  text-decoration: none;
-  display: block;
-  font-weight: 600;
-  transition: background-color 0.3s ease;
-  white-space: nowrap;
-}
-
-/* Hover & focus on dropdown links */
-.dropdown-content a:hover,
-.dropdown-content a:focus {
-  background-color: #6EC1E4;
-  color: #121212;
-  outline: none;
-}
-
-/* Show dropdown on hover or focus */
-.dropdown:hover .dropdown-content,
-.dropdown:focus-within .dropdown-content {
-  display: block;
-}
-
-/* Responsive navbar adjustments */
-@media (max-width: 768px) {
-  nav {
-    flex-wrap: wrap;
-    padding: 1rem 1.5rem;
-    justify-content: center;
+  /* Dropdown container */
+  .dropdown {
+    position: relative;
+    display: inline-block;
+    font-size: 1.2rem;
+    font-weight: 600;
   }
+
+  /* Dropdown button */
+  .dropbtn {
+    background: none;
+    border: none;
+    color: inherit;
+    padding: 0.3rem 0.5rem;
+    cursor: pointer;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    transition: background-color 0.3s ease;
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 1.2rem;
+    white-space: nowrap; /* Prevent button text wrap */
+  }
+
+  /* Hover & focus on button */
+  .dropbtn:hover,
+  .dropbtn:focus {
+    background-color: #6EC1E4;
+    color: #121212;
+    outline: none;
+  }
+
+  /* Dropdown content (hidden by default) */
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #1f1f1f;
+    min-width: 160px;
+    max-width: 90vw; /* prevent overflow on small screens */
+    box-shadow: 0 4px 10px rgba(110, 193, 228, 0.3);
+    border-radius: 6px;
+    padding: 0.5rem 0;
+    top: 100%;
+    left: 0;
+    z-index: 100;
+    overflow-wrap: break-word;
+    word-break: break-word; /* new */
+    box-sizing: border-box; /* new */
+  }
+
+
+  /* Dropdown links */
+  .dropdown-content a {
+    color: #eee;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    display: block;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+     white-space: normal; /* allow wrapping */
+    word-break: break-word;
+  }
+
+  /* Hover & focus on dropdown links */
+  .dropdown-content a:hover,
+  .dropdown-content a:focus {
+    background-color: #6EC1E4;
+    color: #121212;
+    outline: none;
+  }
+
+  /* Show dropdown on hover or focus */
+  .dropdown:hover .dropdown-content,
+  .dropdown:focus-within .dropdown-content {
+    display: block;
+  }
+
+  /* Responsive navbar adjustments */
+  @media (max-width: 768px) {
+    nav {
+      flex-wrap: wrap;
+      padding: 1rem 1.5rem;
+      justify-content: center;
+    }
 
   .nav-links {
     flex-wrap: wrap;
@@ -213,27 +192,6 @@
     justify-content: center;
     width: 100%;
   }
-
-  .dropdown-content {
-    position: static; /* Dropdown content flows with document on small screens */
-    box-shadow: none;
-    border-radius: 0;
-    max-width: 100%;
-    padding: 0;
-  }
-
-  .dropdown-content a {
-    padding: 0.75rem 1rem;
-    border-bottom: 1px solid #333;
-  }
-
-  .dropdown:hover .dropdown-content,
-  .dropdown:focus-within .dropdown-content {
-    display: block; /* keep dropdown open on small screens */
-  }
-}
-
-
 
   /* Hero Section */
   .hero-slideshow {
@@ -317,50 +275,40 @@
   }
 
 
-/* Call to action button */
-.btn {
-  background-color: #6EC1E4;
-  color: #121212;
-  font-weight: 600;
-  padding: 0.75rem 2rem;
-  border: none;
-  border-radius: 30px;
-  font-size: 1.1rem;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  text-decoration: none;
-  display: inline-block;
-}
+  /* Call to action button */
+  .btn {
+    background-color: #6EC1E4;
+    color: #121212;
+    font-weight: 600;
+    padding: 0.75rem 2rem;
+    border: none;
+    border-radius: 30px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+  }
 
-.btn:hover,
-.btn:focus {
-  background-color: #4AA8CD;
-  outline: none;
-}
+  .btn:hover,
+  .btn:focus {
+    background-color: #4AA8CD;
+    outline: none;
+  }
 
-/* Responsive hero text */
-@media (max-width: 768px) {
-  .hero-content h1 {
-    font-size: 2.8rem;
+  @media (max-width: 480px) {
+    .hero {
+      justify-content: center;
+      text-align: center;
+      padding: 0 2rem;
+    }
+    .hero-content {
+      max-width: 90vw;
+    }
+    .hero-content h1 {
+      font-size: 2.2rem;
+    }
   }
-  .hero-content p {
-    font-size: 1rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .hero {
-    justify-content: center;
-    text-align: center;
-    padding: 0 2rem;
-  }
-  .hero-content {
-    max-width: 90vw;
-  }
-  .hero-content h1 {
-    font-size: 2.2rem;
-  }
-}
 
 
   /* Sections below hero */
@@ -817,7 +765,7 @@
 </div>
 
 <!-- ✅ MUSIC BUTTON -->
-<div id="music-button" title="Toggle background music">
+<div id="music-button" class="fade-in" title="Play background music">
   <span class="music-text">Play Music</span>
   <span class="play-icon">&#9658;</span>        <!-- ▶ -->
   <span class="pause-icon">&#9208;</span>       <!-- ⏸ -->
@@ -835,13 +783,13 @@
     <div class="hero-content">
       <h1>Welcome to Band of Bookworms</h1>
       <p>Where we enter into the world's first portals — books</p>
-      <a href="#join" class="btn">Learn More</a>
+      <a href="#join"Learn More</a>
     </div>
   </div>
 </section>
 
 
-<section class="stats-wrapper fade-in" aria-label="ChapterX Stats">
+<section class="stats-wrapper fade-in" aria-label="Band of Bookworms Stats">
   <div class="stat-card">
     <div class="stat-number" data-target="10">0</div>
     <div class="stat-label">Active Members</div>
@@ -866,18 +814,18 @@
 
 
 <section class="grid-section">
-  <div class="card-left">
-    <h2>About Band of Bookworms</h2>
-    <p>We are a humble band of homeschoolers who simply love to read. Brought together by a shared curiosity and a love for stories, we meet regularly to connect, chat, and journey through books that spark imagination and thoughtful conversation.</p>
-    <p>Sometimes we explore timeless classics like <em>Pride and Prejudice</em>, and other times we dive into modern reads like <em>Brave</em> or <em>Land of Stories</em>.</p>
-	  <button class="button" onclick="javascript:changePage(2)">Check out Our Story</button>
+  <div class="card-left fade-in">
+    <h2 class="fade-in">About Band of Bookworms</h2>
+    <p class="fade-in">We are a humble band of homeschoolers who simply love to read. Brought together by a shared curiosity and a love for stories, we meet regularly to connect, chat, and journey through books that spark imagination and thoughtful conversation.</p>
+    <p class="fade-in" >Sometimes we explore timeless classics like <em>Pride and Prejudice</em>, and other times we dive into modern reads like <em>Brave</em> or <em>Land of Stories</em>.</p>
+	  <button class="button fade-in" onclick="javascript:changePage(2)">Check out Our Story</button>
   </div>
 
   <div class="divider"></div> <!-- The vertical dividing line -->
 
-  <div class="card-right">
-    <h2>Our Mission</h2>
-    <p>We, the people of Band of Bookworms, declare our mission is to aim re-ignite a lifelong passion for reading by creating a welcoming and inspiring community for book lobing homeschoolers. We believe in the power of stories to open new worlds, foster curiosity, and spark meaningful conversations, all while having fun and making lifelong bonds. </p>
+  <div class="card-right fade-in">
+    <h2 class="fade-in">Our Mission</h2>
+    <p class="fade-in">We, the people of Band of Bookworms, declare our mission is to aim re-ignite a lifelong passion for reading by creating a welcoming and inspiring community for book lobing homeschoolers. We believe in the power of stories to open new worlds, foster curiosity, and spark meaningful conversations, all while having fun and making lifelong bonds. </p>
     
   </div>
 </section>
@@ -885,15 +833,15 @@
 
 
 <section id="events" class="fade-in" tabindex="0">
-  <h2>Upcoming Events</h2>
+  <h2>What We Do</h2>
   <div class="events-list">
     <article class="event-card" tabindex="0">
       <h3>Monthly Book Discussion</h3>
-      <p>Join us on the first Thursday of every month to discuss our selected book and share your thoughts.</p>
+      <p>We meet up once every month to discuss the books we read, then vote on a new book, read it and then meet up again next month.</p>
     </article>
     <article class="event-card" tabindex="0">
-      <h3>Author Meet & Greet</h3>
-      <p>Meet local authors and get your favorite books signed. Next event: August 15th.</p>
+      <h3>Fun Stuff</h3>
+      <p>Aside from discussions, we also do activities. Sometimes, we meet in malls, other times in each other's houses. Ethier way, we make the most of it and have fun!</p>
     </article>
     <article class="event-card" tabindex="0">
       <h3>Book Swap</h3>
@@ -905,18 +853,19 @@
 <section class="books-section">
   <!-- Current Book Card -->
   <div class="current-book card">
-    <img src="https://cdn.kobo.com/book-images/54f1aa69-e4ec-4640-afc9-60e7fe784f91/1200/1200/False/harry-potter-and-the-sorcerer-s-stone-the-first-book-in-the-phenomenal-internationally-bestselling-harry-potter-series-by-j-k-rowling.jpg" alt="Current Book Title" />
+	   <h3 class="fade-in">This Month's Read</h3>
+    <img class="fade-in" src="https://cdn.kobo.com/book-images/54f1aa69-e4ec-4640-afc9-60e7fe784f91/1200/1200/False/harry-potter-and-the-sorcerer-s-stone-the-first-book-in-the-phenomenal-internationally-bestselling-harry-potter-series-by-j-k-rowling.jpg" alt="Current Book Title" />
     
-    <h3>Harry Potter: The Sorcerer's Stone</h3>
+    <h3 class="fade-in">Harry Potter: The Sorcerer's Stone</h3>
     
-    <p class="book-description">
+    <p class="book-description fade-in">
      Harry Potter, a boy who learns on his eleventh birthday that he is the orphaned son of two powerful wizards and possesses unique magical powers of his own. He is summoned from his life as an unwanted child to become a student at Hogwarts, an English boarding school for wizards. There, he meets several friends who become his closest allies and help him discover the truth about his parents' mysterious deaths.
     </p>
-    <p><b>Online Link</b>: <a href="https://archive.org/details/j.-k.-rowling-1.-harry-potter-and-the-philosophers-stone-2020/mode/2up?view=theater">Archive.org</a></p>
-    <span class="reading-dates">Reading from Sep 1 to Sep 30</span>
+    <p class="fade-in"><b>Online Link</b>: <a href="https://archive.org/details/j.-k.-rowling-1.-harry-potter-and-the-philosophers-stone-2020/mode/2up?view=theater">Archive.org</a></p>
+    <span class="reading-dates fade-in">Reading from Sep 1 to Sep 30</span>
 
     <!-- Progress stats inside current book card -->
-    <div class="book-progress">
+    <div class="book-progress fade-in">
       <div class="progress-circle" data-progress="62">
         <span class="progress-value">62%</span>
       </div>
@@ -926,26 +875,27 @@
 
   <!-- Past Monthly Book Card -->
   <div class="past-books card">
-    <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1308814830i/84369.jpg" alt="Past Book Title" />
-    <h3>Past Monthly Book</h3>
-    <p class="book-description">
+	  <h3 class="fade-in">Last Month's Read</h3>
+    <img class="fade-in" src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1308814830i/84369.jpg" alt="Past Book Title" />
+    <h3 class="fade-in">Past Monthly Book</h3>
+    <p class="book-description fade-in">
      An old ape, Shift, and a donkey, Puzzle, create a false Aslan by using a lion skin and claim that the true Aslan and the Calormene god Tash are the same. The King of Narnia, Tirian, and the children Jill and Eustace are caught in the conflict, and the story concludes with the death of all characters in the old Narnia and their passage through a stable door to enter the true, eternal Aslan's Country. 
     </p>
-    <p><b>Online Link</b>: <a href="https://archive.org/download/TheLastBattle_201812/The%20Last%20Battle.pdf">Archive.org</a></p>
-    <span class="reading-dates">Reading from August 1 - August 31</span>
-    <button class="button">See Our Complete Archive</button>
+    <p class="fade-in"><b>Online Link</b>: <a href="https://archive.org/download/TheLastBattle_201812/The%20Last%20Battle.pdf">Archive.org</a></p>
+    <span class="reading-dates fade-in">Reading from August 1 - August 31</span>
+    <button class="button fade-in" onClick="javascript:changePage(3);">See Our Complete Archive</button>
   </div>
 </section>
 
 
-<section id="join" class="fade-in" tabindex="0">
-  <h2>The People of Band of Bookworms</h2>
-  <p>These are our members that make this club possible. Here you will find basic member information (things like birthdays etc), their biographies, a picture or two, contact information and more! Just click the button below. </p>
-  <a href="mailto:contact@chapterx.com" class="btn" aria-label="Email ChapterX to join">Check Us Out!</a>
+<section id="join" tabindex="0">
+  <h2 class="fade-in">The People of Band of Bookworms</h2>
+  <p class="fade-in">These are our members that make this club possible. Here you will find basic member information (things like birthdays etc), their biographies, a picture or two, contact information and more! Just click the button below. </p>
+   <button class="button fade-in" onClick="javascript:changePage(4);">Check us Out!</button>
 </section>
 </div>
 
-<footer>
+<footer class="fade-in">
   &copy; 2025 ChapterX Book Club — All rights reserved.
 </footer>
 
@@ -1150,8 +1100,7 @@ document.addEventListener('DOMContentLoaded', () => {
   observer.observe(progressCircle);
 });
 
-</script>
-<script>
+</script><script>
   const btn = document.getElementById('music-button');
   const audio = document.getElementById('background-music');
   const songTitle = document.getElementById('song-title');
@@ -1162,43 +1111,129 @@ document.addEventListener('DOMContentLoaded', () => {
       url: "https://github.com/bandofbookworms/bandofbookworms.github.io/raw/refs/heads/main/Daydreams-chosic.com_.mp3"
     },
     {
-      title: "Portals",
+      title: "Love Story - Taylor Swift",
       url: "https://github.com/bandofbookworms/bandofbookworms.github.io/raw/refs/heads/main/videoplayback.weba"
+    },
+    {
+      title: "Portals Endgame - Alan Silvestri",
+      url: "https://github.com/bandofbookworms/bandofbookworms.github.io/raw/refs/heads/main/Portals-Endgame.weba"
     }
   ];
 
   let isPlaying = false;
 
   btn.addEventListener('click', () => {
-    if (!isPlaying) {
-      // Pick a random song
-      const randomIndex = Math.floor(Math.random() * playlist.length);
-      const song = playlist[randomIndex];
-      audio.src = song.url;
+  if (!isPlaying) {
+    // Pick a random song
+    const randomIndex = Math.floor(Math.random() * playlist.length);
+    const song = playlist[randomIndex];
+    audio.src = song.url;
 
-      // Update title
-      songTitle.textContent = "Now playing: " + song.title;
-      songTitle.style.display = "block";
+    // Update title
+    songTitle.textContent = "Now playing: " + song.title;
+    songTitle.style.display = "block";
 
-      // Play with fade in
-      audio.volume = 0;
-      audio.play().then(() => {
-        fadeAudio(1, 1000);
-        btn.classList.add('playing');
-        isPlaying = true;
-      }).catch(err => {
-        console.warn('Playback failed:', err);
-      });
-    } else {
-      // Fade out and pause
-      fadeAudio(0, 800, () => {
-        audio.pause();
-        btn.classList.remove('playing');
-        isPlaying = false;
-        songTitle.style.display = "none";
-      });
+    // ⏱️ Hide the song title after 5 seconds
+    setTimeout(() => {
+      songTitle.style.display = "none";
+    }, 5000);
+
+    // Play with fade in
+    audio.volume = 0;
+    audio.play().then(() => {
+      fadeAudio(1, 1000);
+      btn.classList.add('playing');
+      isPlaying = true;
+    }).catch(err => {
+      console.warn('Playback failed:', err);
+    });
+  } else {
+    // Fade out and pause
+    fadeAudio(0, 800, () => {
+      audio.pause();
+      btn.classList.remove('playing');
+      isPlaying = false;
+      songTitle.style.display = "none";
+    });
+  }
+});
+
+
+  function fadeAudio(targetVolume, duration, callback) {
+    const steps = 20;
+    const stepTime = duration / steps;
+    const volumeStep = (targetVolume - audio.volume) / steps;
+    let stepCount = 0;
+
+    const interval = setInterval(() => {
+      stepCount++;
+      audio.volume = Math.max(0, Math.min(1, audio.volume + volumeStep));
+      if (stepCount >= steps) {
+        clearInterval(interval);
+        audio.volume = targetVolume;
+        if (callback) callback();
+      }
+    }, stepTime);
+  }
+</script>
+	<script>
+  const btn = document.getElementById('music-button');
+  const audio = document.getElementById('background-music');
+  const songTitle = document.getElementById('song-title');
+
+  const playlist = [
+    {
+      title: "Daydreams",
+      url: "https://github.com/bandofbookworms/bandofbookworms.github.io/raw/refs/heads/main/Daydreams-chosic.com_.mp3"
+    },
+    {
+      title: "Love Story - Taylor Swift",
+      url: "https://github.com/bandofbookworms/bandofbookworms.github.io/raw/refs/heads/main/videoplayback.weba"
+    },
+    {
+      title: "Portals Endgame - Alan Silvestri",
+      url: "https://github.com/bandofbookworms/bandofbookworms.github.io/raw/refs/heads/main/Portals-Endgame.weba"
     }
-  });
+  ];
+
+  let isPlaying = false;
+
+  btn.addEventListener('click', () => {
+  if (!isPlaying) {
+    // Pick a random song
+    const randomIndex = Math.floor(Math.random() * playlist.length);
+    const song = playlist[randomIndex];
+    audio.src = song.url;
+
+    // Update title
+    songTitle.textContent = "Now playing: " + song.title;
+    songTitle.style.display = "block";
+
+    // ⏱️ Hide the song title after 5 seconds
+    setTimeout(() => {
+      songTitle.style.display = "none";
+    }, 5000);
+
+    // Play with fade in
+    audio.volume = 0;
+    audio.play().then(() => {
+      fadeAudio(1, 1000);
+      btn.classList.add('playing');
+      isPlaying = true;
+    }).catch(err => {
+      console.warn('Playback failed:', err);
+    });
+  } else {
+    // Fade out and pause
+    fadeAudio(0, 800, () => {
+      audio.pause();
+      btn.classList.remove('playing');
+      isPlaying = false;
+      songTitle.style.display = "none";
+    });
+  }
+});
+
 
   function fadeAudio(targetVolume, duration, callback) {
     const steps = 20;
