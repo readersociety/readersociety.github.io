@@ -235,108 +235,82 @@
 
 
 
-  /* Hero Section */
-  .hero-slideshow {
+   .hero-slideshow {
   position: relative;
-  min-height: 100vh;
-  overflow: hidden;
-  }
-
-  .hero-slide {
-  position: absolute;
-  top: 0; left: 0;
   width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  opacity: 0;
-  transition: opacity 1.5s ease-in-out;
+  height: 100vh;
+  overflow: hidden;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
   padding: 0 5vw;
-  z-index: 1;
-  }
+  background-color: #000; /* fallback */
+}
 
-  .hero-slide::before {
-  content: "";
+.hero-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  z-index: 0;
+  filter: brightness(0.9); /* darken video */
+}
+
+.hero-video-overlay {
   position: absolute;
   inset: 0;
-  background-color: rgba(0, 0, 0, 0.65); /* dark overlay */
+  background-color: rgba(0, 0, 0, 0.6); /* dark overlay */
   z-index: 1;
-  }
+}
 
-  .hero-slide.active {
-  opacity: 1;
-  z-index: 2;
-  }
-
-  .hero-content {
+.hero-content {
   position: relative;
-  z-index: 3;
+  z-index: 2;
   max-width: 600px;
   color: #eee;
-  animation: fadeInUp 1s ease forwards;
-  }
+}
+
 
   .hero-content h1 {
-  font-size: 3.5rem;
-  margin: 0 0 0.5rem 0;
-  font-weight: 700;
-  line-height: 1.1;
-  letter-spacing: 1.2px;
+    font-size: 3.5rem;
+    margin: 0 0 0.5rem 0;
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: 1.2px;
   }
 
   .hero-content p {
-  font-size: 1.25rem;
-  line-height: 1.5;
-  color: #bbb;
-  margin-bottom: 2rem;
+    font-size: 1.25rem;
+    line-height: 1.5;
+    color: #bbb;
+    margin-bottom: 2rem;
   }
 
-  @keyframes fadeInUp {
-  from {
-  opacity: 0;
-  transform: translateY(30px);
-  }
-  to {
-  opacity: 1;
-  transform: translateY(0);
-  }
-  }
-
-  /* Responsive adjustments (optional) */
-  @media (max-width: 768px) {
-  .hero-content h1 {
-  font-size: 2.8rem;
-  }
-  .hero-content p {
-  font-size: 1rem;
-  }
-  }
-
-
-  /* Call to action button */
   .btn {
-  background-color: #6EC1E4;
-  color: #121212;
-  font-weight: 600;
-  padding: 0.75rem 2rem;
-  border: none;
-  border-radius: 30px;
-  font-size: 1.1rem;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  text-decoration: none;
-  display: inline-block;
+    background-color: #6EC1E4;
+    color: #121212;
+    font-weight: 600;
+    padding: 0.75rem 2rem;
+    border: none;
+    border-radius: 30px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
   }
 
   .btn:hover,
   .btn:focus {
-  background-color: #4AA8CD;
-  outline: none;
+    background-color: #4AA8CD;
+    outline: none;
   }
+
+
 
   /* Responsive hero text */
   @media (max-width: 768px) {
@@ -939,15 +913,20 @@ Now playing: ...
 
 <div class="page">
 
-<section class="hero-slideshow" role="banner" aria-label="ChapterX Book Club hero">
-<div class="hero-slide">
-<div class="hero-content">
-<h1>Welcome to Band of Bookworms</h1>
-<p>Where we enter into the world's first portals — books</p>
-<a href="#join" class="btn">Learn More</a>
-</div>
-</div>
+<section class="hero-slideshow">
+  <video class="hero-video" autoplay muted loop playsinline>
+    <source src="https://github.com/bandofbookworms/bandofbookworms.github.io/raw/refs/heads/main/Narnia.mp4" type="video/mp4" />
+    <!-- Add webm or fallback if needed -->
+  </video>
+  <div class="hero-video-overlay"></div>
+  <div class="hero-content">
+    <h1>Welcome to Band of Bookworms</h1>
+    <p>Where we enter into the world's first portals - books</p>
+    <a href="#section-below" class="btn">Learn More</a>
+  </div>
 </section>
+
+
 
 
 <section class="stats-wrapper fade-in" aria-label="ChapterX Stats">
@@ -1227,50 +1206,6 @@ An old ape, Shift, and a donkey, Puzzle, create a false Aslan by using a lion sk
 	page.classList.add("loaded");
 	});
 	}
-	
-	// Slideshow hero
-	const imageUrls = [
-	'https://www.hollywoodreporter.com/wp-content/uploads/2015/04/The_Chronicals_of_Narnia_Still.jpg',
-	'https://i.ytimg.com/vi/S5MAejibg0g/sddefault.jpg', 
-	'https://www.slashfilm.com/img/gallery/tim-burton-made-box-office-history-with-one-of-his-most-divisive-movies/l-intro-1726177977.jpg',  'https://www.hollywoodreporter.com/wp-content/uploads/2024/08/the_wild_robot_01-H-2024.jpg',
-	'https://i.ytimg.com/vi/Xl3gCFyx8F4/maxresdefault.jpg',
-	'https://i.ytimg.com/vi/f7OC6ZpjVcs/maxresdefault.jpg',
-	'https://hips.hearstapps.com/hmg-prod/images/hobbit-movies-in-order-lord-of-the-rings-movies-in-order-2002-the-two-towers-1643217951.jpeg',
-	'https://storage.googleapis.com/stateless-thedailyfandom-org/2020/08/0ca1d34d-post_marquee_5b2ce6d95e7c2-scaled.jpg',
-	'https://www.intofilm.org/intofilm-production/scaledcropped/970x546https%3A/s3.eu-west-1.amazonaws.com/images.cdn.filmclub.org/film__2767-charlie-and-the-chocolate-factory--hi_res-0614503a.jpg/film__2767-charlie-and-the-chocolate-factory--hi_res-0614503a.jpg',
-	'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSoyzsGeNsz6D-2qdD2aly7nxtMWXGutICxwQ&s',
-	'https://static0.colliderimages.com/wordpress/wp-content/uploads/2023/10/the-pacific-rami-malek-joseph-mazzello-1.jpg',
-	
-	];
-	
-	const slideshowContainer = document.querySelector('.hero-slideshow');
-	let currentIndex = 0;
-	let slides = [];
-	
-	function createSlides() {
-	imageUrls.forEach((url, index) => {
-	const slide = document.createElement('div');
-	slide.className = 'hero-slide';
-	slide.style.backgroundImage = `url('${url}')`;
-	if (index === 0) slide.classList.add('active');
-	slide.innerHTML = slideshowContainer.querySelector('.hero-slide').innerHTML;
-	slideshowContainer.appendChild(slide);
-	slides.push(slide);
-	});
-	
-	// Remove the template slide
-	const templateSlide = slideshowContainer.querySelector('.hero-slide');
-	slideshowContainer.removeChild(templateSlide);
-	}
-	
-	function showNextSlide() {
-	slides[currentIndex].classList.remove('active');
-	currentIndex = (currentIndex + 1) % slides.length;
-	slides[currentIndex].classList.add('active');
-	}
-	
-	createSlides();
-	setInterval(showNextSlide, 3000); // Change slide every 3 seconds
 	
 	
 	});
