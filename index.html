@@ -15,20 +15,8 @@
   background-color: #121212;
   color: #eee;
   height: 100%;
+  overflow-x:hidden;
   }
-
-  .page {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
-  will-change: opacity, transform;
-  }
-
-  .page.loaded {
-  opacity: 1;
-  transform: translateY(0);
-  }
-
 
   /* Lenis Scroll Styling */
   html.lenis {
@@ -853,6 +841,108 @@
 	  font-weight: 600;
 	  font-size: 1rem;
 	}
+    
+ <style>
+   /* Default hidden state */
+  .page-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .page {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 100vh;
+    opacity: 0;
+    transform: translateX(100%);
+    transition: opacity 0.9s cubic-bezier(0.83, 0, 0.17, 1),
+                transform 0.9s cubic-bezier(0.83, 0, 0.17, 1);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .page.visible {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: auto;
+    z-index: 1;
+  }
+
+
+
+  .page.exiting {
+    transform: translateX(-100%);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+.animated-hero-text {
+  display: inline-block;
+  position: relative;
+  height: 1em;
+  overflow: hidden;
+  vertical-align: middle;
+  line-height: 1em;
+  white-space: nowrap;
+}
+
+/* Pseudo elements */
+.animated-hero-text::before,
+.animated-hero-text::after {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  opacity: 0;
+  transition: transform 0.6s ease-in-out, opacity 0.6s ease-in-out;
+  content: '';
+  white-space: nowrap;
+}
+
+/* Old text (before) */
+.animated-hero-text::before {
+  content: attr(data-prev);
+  transform: translateY(0%);
+  opacity: 1;
+  top: 0;
+}
+
+/* New text (after) */
+.animated-hero-text::after {
+  content: attr(data-text);
+  transform: translateY(100%);
+  top: 0;
+}
+
+/* When animating */
+.animated-hero-text.animate-slot::before {
+  transform: translateY(-100%);
+  opacity: 0;
+}
+
+.animated-hero-text.animate-slot::after {
+  transform: translateY(0%);
+  opacity: 1;
+}
+
+
+
+
+  @keyframes fadeInText {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
 	
 
 
@@ -860,27 +950,25 @@
 </head>
 <body>
 <nav>
-<div class="logo">
-<img src="https://github.com/bandofbookworms/bandofbookworms.github.io/blob/main/band-of-bookworms-high-resolution-logo-transparent.png?raw=true" alt="Band of Bookworms Logo">
-</div>
+  <div class="logo">
+    <img src="https://github.com/bandofbookworms/bandofbookworms.github.io/blob/main/band-of-bookworms-high-resolution-logo-transparent.png?raw=true" alt="Band of Bookworms Logo">
+  </div>
 
-<div class="nav-links">
-<a href="javascript:changePage(1);">Home</a>
-<a href="javascript:changePage(2);">About</a>
-<a href="javascript:changePage(3);">Books</a>
-<a href="javascript:changePage(4);">Members</a>
-<div class="dropdown">
-<button class="dropbtn">More 	&#9660
-<i class="fa fa-caret-down"></i>
-</button>
-<div class="dropdown-content">
-<a href="javascript:changePage(5);">Events Archive</a>
-<a href="javascript:changePage(6);">Q/A</a>
-<a href="javascript:changePage(7);">Badges</a>
-</div>
-</div> 
+  <div class="nav-links">
+    <a href="#" onclick="changePage(1)">Home</a>
+    <a href="#" onclick="changePage(2)">About</a>
+    <a href="#" onclick="changePage(3)">Books</a>
+    <a href="#" onclick="changePage(4)">Members</a>
 
-</div>
+    <div class="dropdown">
+      <button class="dropbtn">More &#9660;</button>
+      <div class="dropdown-content">
+        <a href="#" onclick="changePage(5)">Events Archive</a>
+        <a href="#" onclick="changePage(6)">Q/A</a>
+        <a href="#" onclick="changePage(7)">Badges</a>
+      </div>
+    </div>
+  </div>
 </nav>
 
 <!-- ✅ SONG TITLE (separate from button) -->
@@ -910,17 +998,17 @@ Now playing: ...
 <audio id="background-music" preload="auto" loop></audio>
 
 
-
+<div class="page-container">
 <div class="page">
-
-<section class="hero-slideshow">
+	<section class="hero-slideshow">
   <video class="hero-video" autoplay muted loop playsinline>
     <source src="https://github.com/bandofbookworms/bandofbookworms.github.io/raw/refs/heads/main/Narnia.mp4" type="video/mp4" />
     <!-- Add webm or fallback if needed -->
   </video>
   <div class="hero-video-overlay"></div>
   <div class="hero-content">
-    <h1>Welcome to Band of Bookworms</h1>
+   <h1>Welcome to the <span class="animated-hero-text" data-text="Band of Bookworms">Band of Bookworms</span></h1>
+
     <p>Where we enter into the world's first portals - books</p>
     <a href="#section-below" class="btn">Learn More</a>
   </div>
@@ -977,11 +1065,11 @@ Now playing: ...
 <div class="events-list">
 <article class="event-card" tabindex="0">
 <h3>Monthly Book Discussion</h3>
-<p>We mwwt up once a month to disucss what we have read. We then vote on a new book to read and the whole process starts again.</p>
+<p>We meet up once a month to disucss what we have read. We then vote on a new book to read and the whole process starts again.</p>
 </article>
 <article class="event-card" tabindex="0">
 <h3>Fun Stuff</h3>
-<p>MWe don't just discuss books, we alos do other stuff. Sometimes, if there's a movie adaptation, we watch it together or make crafts about the book.</p>
+<p>We don't just discuss books, we alos do other stuff. Sometimes, if there's a movie adaptation, we watch it together or make crafts about the book.</p>
 </article>
 <article class="event-card" tabindex="0">
 <h3>See More!</h3>
@@ -1094,12 +1182,31 @@ An old ape, Shift, and a donkey, Puzzle, create a false Aslan by using a lion sk
   </div>
 </section>
 
+	<footer class="fade-in">
+	&copy; 2025 ChapterX Book Club — All rights reserved.
+	</footer>
 
 </div>
+
+<div class="page">
+	<section class="hero-slideshow">
+  <video class="hero-video" autoplay muted loop playsinline>
+    <source src="https://github.com/bandofbookworms/bandofbookworms.github.io/raw/refs/heads/main/Harrypotter.mp4" type="video/mp4" />
+    <!-- Add webm or fallback if needed -->
+  </video>
+  <div class="hero-video-overlay"></div>
+  <div class="hero-content">
+    <h1>Welcome to the <span class="animated-hero-text" data-text="About Page">About Page</span></h1>
+    <p>Where you can find our story, leadership structure, timeline and more</p>
+  </div>
+</section>
 
 	<footer class="fade-in">
 	&copy; 2025 ChapterX Book Club — All rights reserved.
 	</footer>
+
+</div>
+</div>
 
 <script>
 	/** Fade-in-out scroll by Nicolas @nickrg **/
@@ -1185,27 +1292,6 @@ An old ape, Shift, and a donkey, Puzzle, create a false Aslan by using a lion sk
 	observer.observe(counter);
 	
 	
-	var page = document.getElementsByClassName('page');
-	
-	function changePage(index) {
-	for (var i = 0; i < page.length; i++) {
-	page[i].style.display = 'none';
-	}
-	page[index - 1].style.display = 'block';
-	window.scroll(0, 0);
-	}
-	
-	changePage(1);
-	
-	
-	});
-	
-	const page = document.querySelector(".page");
-	if (page) {
-	requestAnimationFrame(() => {
-	page.classList.add("loaded");
-	});
-	}
 	
 	
 	});
@@ -1436,7 +1522,198 @@ An old ape, Shift, and a donkey, Puzzle, create a false Aslan by using a lion sk
   initSlideshow('.slideshow', '.slide', 4000);
   initSlideshow('.testimonial-slideshow', '.testimonial-slide', 5000);
 </script>
+<!-- Progress Circle Animation -->
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const progressCircle = document.querySelector('.progress-circle');
+    const progressValue = progressCircle?.querySelector('.progress-value');
 
+    if (!progressCircle || !progressValue) return;
+
+    const targetProgress = parseInt(progressCircle.getAttribute('data-progress')) || 0;
+    progressCircle.style.setProperty('--progress', '0deg');
+    progressValue.textContent = '0%';
+
+    function animateProgress() {
+      let progress = 0;
+      const animationDuration = 1200;
+      const frameDuration = 16;
+      const totalFrames = animationDuration / frameDuration;
+      let currentFrame = 0;
+
+      const animation = setInterval(() => {
+        currentFrame++;
+        progress = Math.min(targetProgress, Math.round((currentFrame / totalFrames) * targetProgress));
+        const degree = (progress / 100) * 360;
+        progressCircle.style.setProperty('--progress', `${degree}deg`);
+        progressValue.textContent = `${progress}%`;
+
+        if (progress >= targetProgress) clearInterval(animation);
+      }, frameDuration);
+    }
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animateProgress();
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    observer.observe(progressCircle);
+  });
+</script>
+
+<!-- Music Player (single version) -->
+<script>
+  const btn = document.getElementById('music-button');
+  const audio = document.getElementById('background-music');
+  const songTitle = document.getElementById('song-title');
+
+  const playlist = [
+    {
+      title: "Daydreams",
+      url: "https://github.com/bandofbookworms/bandofbookworms.github.io/raw/refs/heads/main/Daydreams-chosic.com_.mp3"
+    },
+    {
+      title: "Love Story - Taylor Swift",
+      url: "https://github.com/bandofbookworms/bandofbookworms.github.io/raw/refs/heads/main/videoplayback.weba"
+    },
+    {
+      title: "Portals (From: Avengers Endgame) - Alan Silvestri",
+      url: "https://github.com/bandofbookworms/bandofbookworms.github.io/raw/refs/heads/main/Portals-Endgame.weba"
+    },
+	  {
+      title: "Swan Lake - Pyotr Tchaikovsky",
+      url: "https://github.com/bandofbookworms/bandofbookworms.github.io/raw/refs/heads/main/SwanLake.weba"
+    },
+	{
+      title: "Honor (From: The Pacific) - Hans Zimmer",
+      url: "https://github.com/bandofbookworms/bandofbookworms.github.io/raw/refs/heads/main/Honor.weba"
+    }
+  ];
+
+  let isPlaying = false;
+
+  btn?.addEventListener('click', () => {
+    if (!isPlaying) {
+      const song = playlist[Math.floor(Math.random() * playlist.length)];
+      audio.src = song.url;
+      songTitle.textContent = "Now playing: " + song.title;
+      songTitle.style.display = "block";
+
+      setTimeout(() => {
+        songTitle.style.display = "none";
+      }, 5000);
+
+      audio.volume = 0;
+      audio.play().then(() => {
+        fadeAudio(1, 1000);
+        btn.classList.add('playing');
+        isPlaying = true;
+      }).catch(err => {
+        console.warn('Playback failed:', err);
+      });
+    } else {
+      fadeAudio(0, 800, () => {
+        audio.pause();
+        btn.classList.remove('playing');
+        isPlaying = false;
+        songTitle.style.display = "none";
+      });
+    }
+  });
+
+  function fadeAudio(targetVolume, duration, callback) {
+    const steps = 20;
+    const stepTime = duration / steps;
+    const volumeStep = (targetVolume - audio.volume) / steps;
+    let stepCount = 0;
+
+    const interval = setInterval(() => {
+      stepCount++;
+      audio.volume = Math.max(0, Math.min(1, audio.volume + volumeStep));
+      if (stepCount >= steps) {
+        clearInterval(interval);
+        audio.volume = targetVolume;
+        if (callback) callback();
+      }
+    }, stepTime);
+  }
+</script>
+<!---Page Logic--->
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const pages = document.querySelectorAll(".page");
+  let currentPageIndex = 0;
+
+  function changePage(index) {
+    if (index < 1 || index > pages.length || index === currentPageIndex + 1) return;
+
+    const currentPage = pages[currentPageIndex];
+    const nextPage = pages[index - 1];
+
+    // Remove current
+    currentPage.classList.remove("visible");
+
+    setTimeout(() => {
+      nextPage.classList.add("visible");
+      currentPageIndex = index - 1;
+
+      // Get both hero texts (if available)
+      const oldHero = currentPage.querySelector(".animated-hero-text");
+      const newHero = nextPage.querySelector(".animated-hero-text");
+
+      if (newHero) {
+        const newText = newHero.getAttribute("data-text") || newHero.textContent.trim();
+        const oldText = oldHero?.getAttribute("data-text") || oldHero?.textContent.trim() || "";
+
+        // Set data attributes for animation
+        newHero.setAttribute("data-prev", oldText);
+        newHero.setAttribute("data-text", newText);
+
+        // Reset animation
+        newHero.classList.remove("animate-slot");
+        void newHero.offsetWidth; // force reflow
+        newHero.classList.add("animate-slot");
+      }
+    }, 500); // Match your page transition duration
+  }
+
+  // On initial load
+  pages[0].classList.add("visible");
+  currentPageIndex = 0;
+
+  window.changePage = changePage;
+});
+</script>
+
+
+
+<!-- Slideshow Logic -->
+<script>
+  function initSlideshow(containerSelector, slideSelector, interval) {
+    const containers = document.querySelectorAll(containerSelector);
+    
+    containers.forEach(container => {
+      const slides = container.querySelectorAll(slideSelector);
+      let currentIndex = 0;
+
+      slides.forEach((slide, i) => slide.classList.toggle('active', i === 0));
+
+      setInterval(() => {
+        slides[currentIndex].classList.remove('active');
+        currentIndex = (currentIndex + 1) % slides.length;
+        slides[currentIndex].classList.add('active');
+      }, interval);
+    });
+  }
+
+  // Initialize slideshows
+  initSlideshow('.slideshow', '.slide', 4000);
+  initSlideshow('.testimonial-slideshow', '.testimonial-slide', 5000);
+</script>
 
 
 
