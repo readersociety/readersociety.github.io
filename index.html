@@ -43,7 +43,8 @@
 
   /* Navbar */
   nav {
-  position: sticky;
+  position: fixed;
+  width:100%;
   top: 0;
   background: #1f1f1fcc;
   backdrop-filter: saturate(180%) blur(12px);
@@ -1235,7 +1236,7 @@ An old ape, Shift, and a donkey, Puzzle, create a false Aslan by using a lion sk
 	
 	<!-- Lenis Smooth Scroll-->
 	<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
-	<script type="module">
+	<script>
 	document.addEventListener('DOMContentLoaded', () => {
 	const lenis = new Lenis({
 	lerp: 0.05,
@@ -1251,7 +1252,8 @@ An old ape, Shift, and a donkey, Puzzle, create a false Aslan by using a lion sk
 	
 	requestAnimationFrame(raf);
 	});
-	
+	</script>
+    <script>
 	document.addEventListener("DOMContentLoaded", () => {
 	const counters = document.querySelectorAll('.stat-number');
 	
@@ -1343,11 +1345,8 @@ An old ape, Shift, and a donkey, Puzzle, create a false Aslan by using a lion sk
 	
 	observer.observe(progressCircle);
 	});
-	
-	</script>
-
-<script>
-  function initSlideshow(containerSelector, slideSelector, interval) {
+		/** Slideshow testimonials script **/
+	function initSlideshow(containerSelector, slideSelector, interval) {
     const containers = document.querySelectorAll(containerSelector);
     
     containers.forEach(container => {
@@ -1368,7 +1367,7 @@ An old ape, Shift, and a donkey, Puzzle, create a false Aslan by using a lion sk
   // Initialize slideshows
   initSlideshow('.slideshow', '.slide', 4000);
   initSlideshow('.testimonial-slideshow', '.testimonial-slide', 5000);
-</script>
+	</script>
 <!-- Progress Circle Animation -->
 <script>
   document.addEventListener('DOMContentLoaded', () => {
@@ -1535,33 +1534,6 @@ document.addEventListener("DOMContentLoaded", () => {
   window.changePage = changePage;
 });
 </script>
-
-
-
-<!-- Slideshow Logic -->
-<script>
-  function initSlideshow(containerSelector, slideSelector, interval) {
-    const containers = document.querySelectorAll(containerSelector);
-    
-    containers.forEach(container => {
-      const slides = container.querySelectorAll(slideSelector);
-      let currentIndex = 0;
-
-      slides.forEach((slide, i) => slide.classList.toggle('active', i === 0));
-
-      setInterval(() => {
-        slides[currentIndex].classList.remove('active');
-        currentIndex = (currentIndex + 1) % slides.length;
-        slides[currentIndex].classList.add('active');
-      }, interval);
-    });
-  }
-
-  // Initialize slideshows
-  initSlideshow('.slideshow', '.slide', 4000);
-  initSlideshow('.testimonial-slideshow', '.testimonial-slide', 5000);
-</script>
-
 
 
 </body>
