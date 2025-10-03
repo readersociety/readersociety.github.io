@@ -943,9 +943,125 @@
       transform: translateY(0);
     }
   }
-</style>
-	
 
+
+	.arc-timeline {
+	  max-width: 600px;
+	  margin: 6rem auto 4rem;
+	  text-align: center;
+	  position: relative;
+	}
+	
+	.timeline-arc {
+	  width: 100%;
+	  height: 250px;
+	  margin-bottom: 2rem;
+	}
+	
+	/* Arrows */
+	.timeline-arrow {
+	  background-color: #6EC1E4;
+	  color: #121212;
+	  border: none;
+	  font-size: 2rem;
+	  padding: 0.5rem 1rem;
+	  border-radius: 50%;
+	  cursor: pointer;
+	  transition: background 0.3s ease, transform 0.3s ease;
+	  box-shadow: 0 4px 10px rgba(110,193,228,0.3);
+	}
+	
+	.timeline-arrow:hover {
+	  background-color: #4AA8CD;
+	  transform: scale(1.1);
+	}
+	
+	.timeline-arrow:active {
+	  transform: scale(0.95);
+	}
+	
+.event-dot {
+    fill: #6EC1E4;
+    transition: cx 0.5s ease, cy 0.5s ease, r 0.5s ease, filter 0.5s ease;
+    cursor: pointer;
+  }
+
+  .event-dot.active {
+    fill: #FFAA00;
+    r: 10;
+    filter: drop-shadow(0 0 8px #FFAA00);
+    animation: shinePulse 2s infinite;
+  }
+
+  @keyframes shinePulse {
+    0%, 100% {
+      filter: drop-shadow(0 0 8px #FFAA00);
+    }
+    50% {
+      filter: drop-shadow(0 0 14px #FFAA00);
+    }
+  }
+	/* Paragraph animation */
+	.timeline-desc {
+	  opacity: 0;
+	  animation: fadeInText 0.6s ease forwards;
+	}
+	
+	@keyframes fadeInText {
+	  from {
+	    opacity: 0;
+	    transform: translateY(12px);
+	  }
+	  to {
+	    opacity: 1;
+	    transform: translateY(0);
+	  }
+	}
+
+
+	
+	.event-display h3 {
+	  font-size: 2rem;
+	  color: #6EC1E4;
+	  margin: 0.5rem 0;
+	  font-weight: 700;
+	}
+	
+	.event-display p {
+	  font-size: 1.1rem;
+	  color: #ccc;
+	  max-width: 500px;
+	  margin: 0 auto;
+	  line-height: 1.6;
+	}
+	
+	.gear-nav {
+	  display: flex;
+	  justify-content: center;
+	  gap: 1.5rem;
+	  margin-top: 1.5rem;
+	}
+	
+	.gear-button {
+	  background: #6EC1E4;
+	  border: none;
+	  color: #121212;
+	  padding: 0.75rem 1.2rem;
+	  font-size: 1.2rem;
+	  border-radius: 50%;
+	  cursor: pointer;
+	  transition: all 0.3s ease;
+	  box-shadow: 0 4px 12px rgba(110, 193, 228, 0.25);
+	}
+	
+	.gear-button:hover {
+	  background-color: #4AA8CD;
+	  transform: rotate(15deg);
+	  box-shadow: 0 6px 16px rgba(110, 193, 228, 0.4);
+	}
+	
+		
+	
 
 </style>
 </head>
@@ -1201,6 +1317,50 @@ An old ape, Shift, and a donkey, Puzzle, create a false Aslan by using a lion sk
     <p>Where you can find our story, leadership structure, timeline and more</p>
   </div>
 </section>
+<!---TIMELINE --->
+	
+<section id="timeline" style="margin-top: 6rem;">
+  <div class="timeline-container" style="text-align: center; position: relative;">
+
+    <!-- Timeline Arc with Dots -->
+    <svg viewBox="0 0 600 350" width="100%" height="350" style="max-width: 700px; margin: 0 auto;">
+      <!-- Bigger arc -->
+      <path d="M 70 300 A 250 250 0 0 1 530 300" fill="none" stroke="#6EC1E4" stroke-width="3" />
+
+      <!-- Timeline Dots -->
+      <circle class="event-dot active" data-index="0" cx="70" cy="300" r="6" />
+      <circle class="event-dot" data-index="1" cx="130" cy="240" r="6" />
+      <circle class="event-dot" data-index="2" cx="210" cy="180" r="6" />
+      <circle class="event-dot" data-index="3" cx="300" cy="150" r="6" />
+      <circle class="event-dot" data-index="4" cx="390" cy="180" r="6" />
+      <circle class="event-dot" data-index="5" cx="470" cy="240" r="6" />
+    </svg>
+
+    <!-- Text & Controls -->
+    <div class="timeline-info" style="display: flex; align-items: center; justify-content: center; gap: 1.5rem; margin-top: 2rem; flex-wrap: wrap;">
+
+      <!-- Left Arrow -->
+      <button id="prev-btn" class="timeline-arrow" style="font-size: 2rem; cursor: pointer;">⟵</button>
+
+     <!-- Text Block -->
+<div class="timeline-text" style="max-width: 350px; text-align: center; margin: 0 auto;">
+  <h2 id="event-date" class="animated-hero-text" data-prev="" data-text="">1200 BC</h2>
+
+  <!-- Centered Image -->
+  <img id="event-img" src="https://via.placeholder.com/150" alt="Event Image"
+       style="display: block; margin: 0.5rem auto; width: 150px; height: 100px; object-fit: cover; border-radius: 8px; box-shadow: 0 0 8px rgba(0,0,0,0.2);" />
+
+  <p id="event-desc" class="timeline-desc">Ancient civilization begins developing written language.</p>
+</div>
+
+
+      <!-- Right Arrow -->
+      <button id="next-btn" class="timeline-arrow" style="font-size: 2rem; cursor: pointer;">⟶</button>
+
+    </div>
+  </div>
+</section>
+
 
 	<footer class="fade-in">
 	&copy; 2025 ChapterX Book Club — All rights reserved.
@@ -1533,7 +1693,117 @@ document.addEventListener("DOMContentLoaded", () => {
 
   window.changePage = changePage;
 });
+
 </script>
+
+<script>
+   // Store original positions of dots on the bigger arc
+  const originalPositions = [
+    { cx: 70, cy: 300 },
+    { cx: 130, cy: 240 },
+    { cx: 210, cy: 180 },
+    { cx: 300, cy: 150 },
+    { cx: 390, cy: 180 },
+    { cx: 470, cy: 240 },
+    { cx: 530, cy: 300 }
+  ];
+
+  // Center position where active dot moves to (bottom center)
+  const centerPos = { cx: 300, cy: 300 };
+
+  // Add images for each event
+  const events = [
+    {
+      date: "Aug. 27, 2025",
+      desc: "Noa gets the idea to start a book club"
+    },
+    {
+      date: "Sept. 09, 2025",
+      desc: "The First Serious discussion about the book club through Messenger is created",
+    },
+	   {
+      date: "Sept. 10, 2025",
+      desc: "The Council first meets via video chat to discuss the book club",
+    },
+    {
+      date: "Sept. 12, 2025",
+      desc: "Our first webapge, the Backyardigans, is completed",
+      img: "https://github.com/bandofbookworms/bandofbookworms.github.io/blob/main/backyardigan.PNG?raw=true"
+    },
+   
+    {
+      date: "Sept. 19, 2025",
+      desc: "Isaac decides to create this webpage, as he thinks the old one is too undesigned"
+    },
+    {
+      date: "Oct. 02, 2025",
+      desc: "Our first meet happens, via online",
+      img: "https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?auto=format&fit=crop&w=150&q=80"
+    },
+   
+  ];
+
+  let currentIndex = 0;
+
+  function updateDotsActive(index) {
+    document.querySelectorAll('.event-dot').forEach((dot, i) => {
+      if (i === index) {
+        dot.classList.add('active');
+        dot.setAttribute('cx', centerPos.cx);
+        dot.setAttribute('cy', centerPos.cy);
+        dot.setAttribute('r', 10);
+      } else {
+        dot.classList.remove('active');
+        dot.setAttribute('cx', originalPositions[i].cx);
+        dot.setAttribute('cy', originalPositions[i].cy);
+        dot.setAttribute('r', 6);
+      }
+    });
+  }
+
+  function updateEvent(index) {
+    const dateElem = document.getElementById("event-date");
+    const descElem = document.getElementById("event-desc");
+    const imgElem = document.getElementById("event-img");
+
+    // Update text content
+    dateElem.textContent = events[index].date;
+    descElem.textContent = events[index].desc;
+    imgElem.src = events[index].img;
+
+    // Update dots
+    updateDotsActive(index);
+
+    currentIndex = index;
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    // Dot clicks
+    document.querySelectorAll(".event-dot").forEach(dot => {
+      dot.addEventListener("click", () => {
+        const idx = parseInt(dot.getAttribute("data-index"));
+        updateEvent(idx);
+      });
+    });
+
+    // Arrow clicks
+    document.getElementById("prev-btn").addEventListener("click", () => {
+      const newIndex = (currentIndex - 1 + events.length) % events.length;
+      updateEvent(newIndex);
+    });
+
+    document.getElementById("next-btn").addEventListener("click", () => {
+      const newIndex = (currentIndex + 1) % events.length;
+      updateEvent(newIndex);
+    });
+
+    updateEvent(currentIndex);
+  });
+</script>
+
+
+
+
 
 
 </body>
