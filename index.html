@@ -3,7 +3,7 @@
   <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>The Band of Bookworms</title>
+  <title>Reader Society</title>
   <style>
   /* Reset & basics */
   *, *::before, *::after {
@@ -259,7 +259,7 @@
 .hero-content {
   position: relative;
   z-index: 2;
-  max-width: 600px;
+  max-width: 100vw;
   color: #eee;
 }
 
@@ -328,7 +328,7 @@
 
   /* Sections below hero */
   section {
-  max-width: 1500px;
+  max-width: 100vw;
   margin: 4rem auto;
   padding: 0 1.5rem;
   }
@@ -353,6 +353,7 @@
   gap: 2rem;
   padding: 2rem 5vw;
   position: relative;
+  width:100vw;
   }
 
   .card-left,
@@ -389,15 +390,13 @@
   display: none;
   }
   }
-
-
-
-
+/* EVENTS HOMEPAGE */
   .events-list {
   display: flex;
   gap: 1.5rem;
   flex-wrap: wrap;
   margin-top: 2rem;
+  padding:10px;
   }
   .event-card {
   background: #222;
@@ -449,7 +448,7 @@
   .stats-wrapper {
   position: relative;
   z-index: 5;
-  max-width: 1000px;
+  max-width: 100vw;
   margin: -80px auto 4rem;
   display: flex;
   justify-content: center;
@@ -527,7 +526,7 @@
   justify-content: center;
   flex-wrap: wrap;
   margin: 3rem auto;
-  max-width: 1000px;
+  max-width: 100vw;
   padding: 0 1rem;
   }
 
@@ -538,7 +537,6 @@
   box-shadow: 0 0 15px rgba(110, 193, 228, 0.5);
   padding: 1.5rem 1.25rem 2rem;
   flex: 1 1 300px;
-  max-width: 900px;
   color: #eee;
   text-align: center;
   position: relative;
@@ -733,6 +731,7 @@
   
   /* Join section layout */
   #join-section .join-container {
+	width:95vw;
     display: flex;
     gap: 2rem;
     align-items: center;
@@ -882,6 +881,10 @@
     z-index: 0;
   }
 
+  section {
+	width:100vw;	  
+  }
+
 .animated-hero-text {
   display: inline-block;
   position: relative;
@@ -944,131 +947,12 @@
     }
   }
 
-
-	.arc-timeline {
-	  max-width: 600px;
-	  margin: 6rem auto 4rem;
-	  text-align: center;
-	  position: relative;
-	}
-	
-	.timeline-arc {
-	  width: 100%;
-	  height: 250px;
-	  margin-bottom: 2rem;
-	}
-	
-	/* Arrows */
-	.timeline-arrow {
-	  background-color: #6EC1E4;
-	  color: #121212;
-	  border: none;
-	  font-size: 2rem;
-	  padding: 0.5rem 1rem;
-	  border-radius: 50%;
-	  cursor: pointer;
-	  transition: background 0.3s ease, transform 0.3s ease;
-	  box-shadow: 0 4px 10px rgba(110,193,228,0.3);
-	}
-	
-	.timeline-arrow:hover {
-	  background-color: #4AA8CD;
-	  transform: scale(1.1);
-	}
-	
-	.timeline-arrow:active {
-	  transform: scale(0.95);
-	}
-	
-.event-dot {
-    fill: #6EC1E4;
-    transition: cx 0.5s ease, cy 0.5s ease, r 0.5s ease, filter 0.5s ease;
-    cursor: pointer;
-  }
-
-  .event-dot.active {
-    fill: #FFAA00;
-    r: 10;
-    filter: drop-shadow(0 0 8px #FFAA00);
-    animation: shinePulse 2s infinite;
-  }
-
-  @keyframes shinePulse {
-    0%, 100% {
-      filter: drop-shadow(0 0 8px #FFAA00);
-    }
-    50% {
-      filter: drop-shadow(0 0 14px #FFAA00);
-    }
-  }
-	/* Paragraph animation */
-	.timeline-desc {
-	  opacity: 0;
-	  animation: fadeInText 0.6s ease forwards;
-	}
-	
-	@keyframes fadeInText {
-	  from {
-	    opacity: 0;
-	    transform: translateY(12px);
-	  }
-	  to {
-	    opacity: 1;
-	    transform: translateY(0);
-	  }
-	}
-
-
-	
-	.event-display h3 {
-	  font-size: 2rem;
-	  color: #6EC1E4;
-	  margin: 0.5rem 0;
-	  font-weight: 700;
-	}
-	
-	.event-display p {
-	  font-size: 1.1rem;
-	  color: #ccc;
-	  max-width: 500px;
-	  margin: 0 auto;
-	  line-height: 1.6;
-	}
-	
-	.gear-nav {
-	  display: flex;
-	  justify-content: center;
-	  gap: 1.5rem;
-	  margin-top: 1.5rem;
-	}
-	
-	.gear-button {
-	  background: #6EC1E4;
-	  border: none;
-	  color: #121212;
-	  padding: 0.75rem 1.2rem;
-	  font-size: 1.2rem;
-	  border-radius: 50%;
-	  cursor: pointer;
-	  transition: all 0.3s ease;
-	  box-shadow: 0 4px 12px rgba(110, 193, 228, 0.25);
-	}
-	
-	.gear-button:hover {
-	  background-color: #4AA8CD;
-	  transform: rotate(15deg);
-	  box-shadow: 0 6px 16px rgba(110, 193, 228, 0.4);
-	}
-	
-		
-	
-
 </style>
 </head>
 <body>
 <nav>
   <div class="logo">
-    <img src="https://github.com/bandofbookworms/bandofbookworms.github.io/blob/main/band-of-bookworms-high-resolution-logo-transparent.png?raw=true" alt="Band of Bookworms Logo">
+    <img src="https://github.com/bandofbookworms/bandofbookworms.github.io/blob/main/band-of-bookworms-high-resolution-logo-transparent.png?raw=true" alt="Reader Society Logo">
   </div>
 
   <div class="nav-links">
@@ -1124,7 +1008,7 @@ Now playing: ...
   </video>
   <div class="hero-video-overlay"></div>
   <div class="hero-content">
-   <h1>Welcome to the <span class="animated-hero-text" data-text="Band of Bookworms">Band of Bookworms</span></h1>
+   <h1>Welcome to the <span class="animated-hero-text" data-text="Reader Society">Reader Society</span></h1>
 
     <p>Where we enter into the world's first portals - books</p>
     <a href="#section-below" class="btn">Learn More</a>
@@ -1136,15 +1020,15 @@ Now playing: ...
 
 <section class="stats-wrapper fade-in" aria-label="ChapterX Stats">
 <div class="stat-card">
-<div class="stat-number" data-target="10">0</div>
+<div class="stat-number" data-target="8">0</div>
 <div class="stat-label">Active Members</div>
 </div>
 <div class="stat-card">
-<div class="stat-number" data-target="15">0</div>
-<div class="stat-label">Books Discussed</div>
+<div class="stat-number" data-target="5">0</div>
+<div class="stat-label">Books Read</div>
 </div>
 <div class="stat-card">
-<div class="stat-number" data-target="3">0</div>
+<div class="stat-number" data-target="2">0</div>
 <div class="stat-label">Months Strong</div>
 </div>
 <div class="stat-card">
@@ -1152,15 +1036,11 @@ Now playing: ...
 <div class="stat-label">Monthly Meetups</div>
 </div>
 </section>
-
-
-
+	
 <section id="about" tabindex="0">
-
-
 <section class="grid-section">
 <div class="card-left">
-<h2 class="fade-in">About Band of Bookworms</h2>
+<h2 class="fade-in">About Reader Society</h2>
 <p class="fade-in">We are a humble band of homeschoolers who simply love to read. Brought together by a shared curiosity and a love for stories, we meet regularly to connect, chat, and journey through books that spark imagination and thoughtful conversation.</p>
 <p class="fade-in">Sometimes we explore timeless classics like <em>Pride and Prejudice</em>, and other times we dive into modern reads like <em>Brave</em> or <em>Land of Stories</em>.</p>
 <button class="button fade-in" onclick="javascript:changePage(2)">Check out Our Story</button>
@@ -1170,14 +1050,14 @@ Now playing: ...
 
 <div class="card-right fade-in">
 <h2 class="fade-in">Our Mission</h2>
-<p class="fade-in">We, the people of Band of Bookworms, declare our mission is to aim re-ignite a lifelong passion for reading by creating a welcoming and inspiring community for book lobing homeschoolers. We believe in the power of stories to open new worlds, foster curiosity, and spark meaningful conversations, all while having fun and making lifelong bonds. </p>
+<p class="fade-in">We, the people of Reader Society, declare our mission is to aim re-ignite a lifelong passion for reading by creating a welcoming and inspiring community for book lobing homeschoolers. We believe in the power of stories to open new worlds, foster curiosity, and spark meaningful conversations, all while having fun and making lifelong bonds. </p>
 
 </div>
 </section>
+</section>
 
 
-
-<section id="events" class="fade-in" tabindex="0">
+<!-----<section id="events" class="fade-in" tabindex="0">----->
 <h2 >Upcoming Events</h2>
 <div class="events-list">
 <article class="event-card" tabindex="0">
@@ -1190,7 +1070,7 @@ Now playing: ...
 </article>
 <article class="event-card" tabindex="0">
 <h3>See More!</h3>
-<p>Check out our <a href="javascript:changePage(5)">Events Archive<a> in which everything from Day 1 to Day 9273 is archived and stored. So go ahead, don’t be shy — give it a click and see what’s coming up next. I'll bet you'll have a grand time seeing your past self. (and maybe be a little cringe LOL).</p>
+<p>Check out our <a href="javascript:changePage(5)">Events Archive</a> in which everything from Day 1 to Day 9273 is archived and stored. So go ahead, don’t be shy — give it a click and see what’s coming up next. I'll bet you'll have a grand time seeing your past self. (and maybe be a little cringe LOL).</p>
 </article>
 </div>
 </section>
@@ -1238,7 +1118,7 @@ An old ape, Shift, and a donkey, Puzzle, create a false Aslan by using a lion sk
   <div class="join-container">
     <!-- Left: Join content -->
     <div class="join-content">
-      <h2 class="fade-in">The People of Band of Bookworms</h2>
+      <h2 class="fade-in">The People of the Reader Society</h2>
       <p class="fade-in">
         These are our members that make this club possible. Here you will find basic member information (things like birthdays etc), their biographies, a picture or two, contact information and more! Just click the button below.
       </p>
@@ -1291,7 +1171,7 @@ An old ape, Shift, and a donkey, Puzzle, create a false Aslan by using a lion sk
     <div class="join-content">
       <h2 class="fade-in">Oh yes, we have badges</h2>
       <p class="fade-in">
-       What is a club without badges? Whether it’s your first book completed, your 10th group discussion, or leading a themed month, each badge celebrates your journey with the Band of Bookworms. Earn them, display them proudly on your profile and keep on reading!
+       What is a club without badges? Whether it’s your first book completed, your 10th group discussion, or leading a themed month, each badge celebrates your journey with the Reader Society. Earn them, display them proudly on your profile and keep on reading!
       </p>
       <button class="button fade-in" onClick="javascript:changePage(7);">See All Our Badges</button>
     </div>
@@ -1302,8 +1182,8 @@ An old ape, Shift, and a donkey, Puzzle, create a false Aslan by using a lion sk
 	<footer class="fade-in">
 	&copy; 2025 ChapterX Book Club — All rights reserved.
 	</footer>
-
 </div>
+
 
 <div class="page">
 	<section class="hero-slideshow">
@@ -1317,53 +1197,13 @@ An old ape, Shift, and a donkey, Puzzle, create a false Aslan by using a lion sk
     <p>Where you can find our story, leadership structure, timeline and more</p>
   </div>
 </section>
-<!---TIMELINE --->
-	
-<section id="timeline" style="margin-top: 6rem;">
-  <div class="timeline-container" style="text-align: center; position: relative;">
 
-    <!-- Timeline Arc with Dots -->
-    <svg viewBox="0 0 600 350" width="100%" height="350" style="max-width: 700px; margin: 0 auto;">
-      <!-- Bigger arc -->
-      <path d="M 70 300 A 250 250 0 0 1 530 300" fill="none" stroke="#6EC1E4" stroke-width="3" />
-
-      <!-- Timeline Dots -->
-      <circle class="event-dot active" data-index="0" cx="70" cy="300" r="6" />
-      <circle class="event-dot" data-index="1" cx="130" cy="240" r="6" />
-      <circle class="event-dot" data-index="2" cx="210" cy="180" r="6" />
-      <circle class="event-dot" data-index="3" cx="300" cy="150" r="6" />
-      <circle class="event-dot" data-index="4" cx="390" cy="180" r="6" />
-      <circle class="event-dot" data-index="5" cx="470" cy="240" r="6" />
-    </svg>
-
-    <!-- Text & Controls -->
-    <div class="timeline-info" style="display: flex; align-items: center; justify-content: center; gap: 1.5rem; margin-top: 2rem; flex-wrap: wrap;">
-
-      <!-- Left Arrow -->
-      <button id="prev-btn" class="timeline-arrow" style="font-size: 2rem; cursor: pointer;">⟵</button>
-
-     <!-- Text Block -->
-<div class="timeline-text" style="max-width: 350px; text-align: center; margin: 0 auto;">
-  <h2 id="event-date" class="animated-hero-text" data-prev="" data-text="">1200 BC</h2>
-
-  <!-- Centered Image -->
-  <img id="event-img" src="https://via.placeholder.com/150" alt="Event Image"
-       style="display: block; margin: 0.5rem auto; width: 150px; height: 100px; object-fit: cover; border-radius: 8px; box-shadow: 0 0 8px rgba(0,0,0,0.2);" />
-
-  <p id="event-desc" class="timeline-desc">Ancient civilization begins developing written language.</p>
-</div>
-
-
-      <!-- Right Arrow -->
-      <button id="next-btn" class="timeline-arrow" style="font-size: 2rem; cursor: pointer;">⟶</button>
-
-    </div>
   </div>
-</section>
+
 
 
 	<footer class="fade-in">
-	&copy; 2025 ChapterX Book Club — All rights reserved.
+	&copy; 2025 Reader Society Book Club — All rights reserved.
 	</footer>
 
 </div>
@@ -1695,116 +1535,5 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 </script>
-
-<script>
-   // Store original positions of dots on the bigger arc
-  const originalPositions = [
-    { cx: 70, cy: 300 },
-    { cx: 130, cy: 240 },
-    { cx: 210, cy: 180 },
-    { cx: 300, cy: 150 },
-    { cx: 390, cy: 180 },
-    { cx: 470, cy: 240 },
-    { cx: 530, cy: 300 }
-  ];
-
-  // Center position where active dot moves to (bottom center)
-  const centerPos = { cx: 300, cy: 300 };
-
-  // Add images for each event
-  const events = [
-    {
-      date: "Aug. 27, 2025",
-      desc: "Noa gets the idea to start a book club"
-    },
-    {
-      date: "Sept. 09, 2025",
-      desc: "The First Serious discussion about the book club through Messenger is created",
-    },
-	   {
-      date: "Sept. 10, 2025",
-      desc: "The Council first meets via video chat to discuss the book club",
-    },
-    {
-      date: "Sept. 12, 2025",
-      desc: "Our first webapge, the Backyardigans, is completed",
-      img: "https://github.com/bandofbookworms/bandofbookworms.github.io/blob/main/backyardigan.PNG?raw=true"
-    },
-   
-    {
-      date: "Sept. 19, 2025",
-      desc: "Isaac decides to create this webpage, as he thinks the old one is too undesigned"
-    },
-    {
-      date: "Oct. 02, 2025",
-      desc: "Our first meet happens, via online",
-      img: "https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?auto=format&fit=crop&w=150&q=80"
-    },
-   
-  ];
-
-  let currentIndex = 0;
-
-  function updateDotsActive(index) {
-    document.querySelectorAll('.event-dot').forEach((dot, i) => {
-      if (i === index) {
-        dot.classList.add('active');
-        dot.setAttribute('cx', centerPos.cx);
-        dot.setAttribute('cy', centerPos.cy);
-        dot.setAttribute('r', 10);
-      } else {
-        dot.classList.remove('active');
-        dot.setAttribute('cx', originalPositions[i].cx);
-        dot.setAttribute('cy', originalPositions[i].cy);
-        dot.setAttribute('r', 6);
-      }
-    });
-  }
-
-  function updateEvent(index) {
-    const dateElem = document.getElementById("event-date");
-    const descElem = document.getElementById("event-desc");
-    const imgElem = document.getElementById("event-img");
-
-    // Update text content
-    dateElem.textContent = events[index].date;
-    descElem.textContent = events[index].desc;
-    imgElem.src = events[index].img;
-
-    // Update dots
-    updateDotsActive(index);
-
-    currentIndex = index;
-  }
-
-  document.addEventListener("DOMContentLoaded", () => {
-    // Dot clicks
-    document.querySelectorAll(".event-dot").forEach(dot => {
-      dot.addEventListener("click", () => {
-        const idx = parseInt(dot.getAttribute("data-index"));
-        updateEvent(idx);
-      });
-    });
-
-    // Arrow clicks
-    document.getElementById("prev-btn").addEventListener("click", () => {
-      const newIndex = (currentIndex - 1 + events.length) % events.length;
-      updateEvent(newIndex);
-    });
-
-    document.getElementById("next-btn").addEventListener("click", () => {
-      const newIndex = (currentIndex + 1) % events.length;
-      updateEvent(newIndex);
-    });
-
-    updateEvent(currentIndex);
-  });
-</script>
-
-
-
-
-
-
 </body>
 </html>
