@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Books Archive — Reader Society</title>
+  <meta name="description" content="Explore the BlueNight Book Club library — discover top-rated books, curated lists, and community recommendations." />
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Navbar -->
+  <header>
+    <div class="nav-inner">
+      <div class="brand">
+        <div class="logo"></div>
+        <h1>BlueNight Book Club</h1>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="books.html" class="active">Books</a></li>
+          <li><a href="events.html">Events</a></li>
+          <li><a href="members.html">Members</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero" style="min-height:50vh;">
+      <video autoplay muted loop playsinline src="assets/books-bg.mp4"></video>
+      <div class="overlay"></div>
+      <div class="hero-content">
+        <h2>Our Curated Library</h2>
+        <p>Browse hundreds of titles loved by our members — from timeless classics to modern masterpieces.</p>
+      </div>
+    </section>
+
+    <!-- Filters -->
+    <section id="filters">
+      <h2>Explore by Genre</h2>
+      <p>Filter through our digital shelves and find your next great read.</p>
+      <div style="text-align:center; margin:20px 0;">
+        <button class="filter-btn active" data-genre="all">All</button>
+        <button class="filter-btn" data-genre="fantasy">Fantasy</button>
+        <button class="filter-btn" data-genre="sci-fi">Sci-Fi</button>
+        <button class="filter-btn" data-genre="romance">Romance</button>
+        <button class="filter-btn" data-genre="nonfiction">Non-Fiction</button>
+      </div>
+    </section>
+
+    <!-- Book Grid -->
+    <section id="book-archive">
+      <div class="featured" id="bookGrid">
+        <div class="book-card" data-genre="fantasy" data-title="The Azure Throne" data-author="L. D. Vance" data-rating="4.7" data-desc="A royal fantasy saga of betrayal and redemption set in a world of stormlit kingdoms." data-reviews="“Absolutely stunning worldbuilding.” — Mira S. | “Loved the depth of characters.” — Alex T.">
+          <img src="https://placehold.co/300x400/1e293b/fff?text=The+Azure+Throne" alt="Fantasy Book">
+          <h4>The Azure Throne</h4>
+          <p>By L. D. Vance</p>
+        </div>
+        <div class="book-card" data-genre="sci-fi" data-title="Orbital Dreams" data-author="N. K. Patel" data-rating="4.5" data-desc="A gripping science fiction journey about astronauts who awaken to a reality more surreal than their dreams." data-reviews="“Felt like Interstellar meets Blade Runner.” — Sam Y. | “An emotional cosmic adventure.” — Theo L.">
+          <img src="https://placehold.co/300x400/1e3a8a/fff?text=Orbital+Dreams" alt="Sci-Fi Book">
+          <h4>Orbital Dreams</h4>
+          <p>By N. K. Patel</p>
+        </div>
+        <div class="book-card" data-genre="romance" data-title="Midnight Letters" data-author="Amelia Rose" data-rating="4.8" data-desc="Two strangers fall in love through letters exchanged under the moonlight in 19th century Paris." data-reviews="“So beautifully written I cried.” — Eliza M. | “Best romance I’ve read in years.” — Jamie F.">
+          <img src="https://placehold.co/300x400/172554/fff?text=Midnight+Letters" alt="Romance Book">
+          <h4>Midnight Letters</h4>
+          <p>By Amelia Rose</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>© 2025 BlueNight Book Club · All Rights Reserved</footer>
+  </main>
+
+  <!-- Modal -->
+  <div id="bookModal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn">&times;</span>
+      <h3 id="modalTitle"></h3>
+      <p id="modalAuthor"></p>
+      <div id="modalRating" class="rating"></div>
+      <p id="modalDesc"></p>
+      <div class="reviews">
+        <h4>Member Reviews</h4>
+        <p id="modalReviews"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- JS -->
+  <script>
+    // Scroll animations
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+    document.querySelectorAll('section').forEach(sec => observer.observe(sec));
+
+    // Filter
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const books = document.querySelectorAll('.book-card');
+
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const genre = btn.dataset.genre;
+        books.forEach(book => {
+          book.style.display = genre === 'all' || book.dataset.genre === genre ? 'block' : 'none';
+        });
+      });
+    });
+
+    // Modal Logic
+    const modal = document.getElementById('bookModal');
+    const closeBtn = document.querySelector('.close-btn');
+    const titleEl = document.getElementById('modalTitle');
+    const authorEl = document.getElementById('modalAuthor');
+    const ratingEl = document.getElementById('modalRating');
+    const descEl = document.getElementById('modalDesc');
+    const reviewsEl = document.getElementById('modalReviews');
+
+    books.forEach(book => {
+      book.addEventListener('click', () => {
+        titleEl.textContent = book.dataset.title;
+        authorEl.textContent = 'by ' + book.dataset.author;
+        descEl.textContent = book.dataset.desc;
+        reviewsEl.textContent = book.dataset.reviews;
+
+        // Stars
+        const rating = parseFloat(book.dataset.rating);
+        const stars = '★'.repeat(Math.floor(rating)) + '☆'.repeat(5 - Math.floor(rating));
+        ratingEl.textContent = `${stars} (${rating})`;
+
+        modal.classList.add('show');
+      });
+    });  closeBtn.addEventListener('click', () => modal.classList.remove('show'));
+    modal.addEventListener('click', e => {
+      if (e.target === modal) modal.classList.remove('show');
+    });
+  </script>
+
+  <style>
+    /* Modal Styling */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(10, 20, 40, 0.85);
+      backdrop-filter: blur(8px);
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.3s ease;
+    }
+
+    .modal.show {
+      display: flex;
+      animation: fadeIn 0.3s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .modal-content {
+      background: var(--surface);
+      color: #fff;
+      padding: 30px;
+      border-radius: 16px;
+      max-width: 600px;
+      width: 90%;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+      position: relative;
+      animation: slideUp 0.4s ease;
+    }
+
+    @keyframes slideUp {
+      from { transform: translateY(20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 16px;
+      right: 20px;
+      font-size: 24px;
+      cursor: pointer;
+      color: #ccc;
+      transition: color 0.3s;
+    }
+
+    .close-btn:hover {
+      color: #fff;
+    }
+
+    .rating {
+      font-size: 18px;
+      color: gold;
+      margin-bottom: 10px;
+    }
+
+    .reviews {
+      margin-top: 20px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 10px;
+    }
+  </style>
+</body>
+</html>
