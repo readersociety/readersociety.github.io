@@ -2,8 +2,9 @@
    Global Variables
 -------------------- */
 :root {
-  --bg-900: #0b1220;
-  --bg-800: #0f1724;
+  --bg-1: #0b1220;
+  --bg-2: #0f1724;
+  --bg-3: #13213a;
   --accent-500: #3b82f6;
   --accent-600: #2563eb;
   --accent-400: #60a5fa;
@@ -15,19 +16,30 @@
    Base Styles
 -------------------- */
 * { box-sizing: border-box; margin: 0; padding: 0; }
+
 body {
   font-family: var(--font-primary);
-  background: linear-gradient(180deg, var(--bg-900), var(--bg-800));
+  background: linear-gradient(120deg, var(--bg-1), var(--bg-2), var(--bg-3));
+  background-size: 400% 400%;
+  animation: moveGradient 20s ease infinite;
   color: #e6eef8;
   overflow-x: hidden;
   scroll-behavior: smooth;
   line-height: 1.7;
+  min-height: 100vh;
+}
+
+/* Animated gradient for body background */
+@keyframes moveGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 main {
   max-width: 1200px;
   margin: auto;
-  padding: 120px 40px 60px; /* Added more side padding */
+  padding: 120px 60px 80px; /* wider padding to prevent sticking */
 }
 
 section {
@@ -50,7 +62,7 @@ header {
   width: 100%;
   z-index: 100;
   background: rgba(11, 18, 32, 0.85);
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   transition: background 0.4s ease;
 }
@@ -60,7 +72,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 16px 40px; /* Added padding */
+  padding: 16px 60px;
 }
 .brand {
   display: flex;
@@ -118,6 +130,7 @@ nav a.active, nav a:hover {
   text-align: center;
   border-radius: 16px;
   overflow: hidden;
+  margin: 0 40px; /* adds spacing so video edges don't touch sides */
 }
 .hero video {
   position: absolute;
@@ -167,33 +180,54 @@ nav a.active, nav a:hover {
 }
 
 /* --------------------
-   Improved Club Stats
+   Aurora Animated Stats
 -------------------- */
 .stats {
+  position: relative;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 40px;
   margin-top: 60px;
-  padding: 0 20px;
+  padding: 0 40px;
 }
+.stats::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at 20% 20%, rgba(59,130,246,0.1), transparent 40%),
+              radial-gradient(circle at 80% 80%, rgba(37,99,235,0.15), transparent 40%);
+  animation: auroraMove 10s infinite linear alternate;
+  z-index: 0;
+  filter: blur(80px);
+}
+@keyframes auroraMove {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  100% { transform: translate(-10%, -10%) rotate(5deg); }
+}
+
 .stat {
   position: relative;
-  background: radial-gradient(circle at 30% 30%, rgba(59,130,246,0.2), rgba(17,24,39,0.9));
+  background: rgba(17, 24, 39, 0.9);
   border: 1px solid rgba(59,130,246,0.3);
-  padding: 32px 20px;
+  padding: 40px 24px;
   border-radius: 14px;
   text-align: center;
   overflow: hidden;
   box-shadow: 0 4px 25px rgba(59,130,246,0.15);
   transition: transform 0.4s ease, box-shadow 0.4s ease;
+  z-index: 1;
 }
 .stat::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(59,130,246,0.15), transparent);
+  background: linear-gradient(135deg, rgba(59,130,246,0.25), transparent);
   opacity: 0;
   transition: opacity 0.4s ease;
+  z-index: -1;
 }
 .stat:hover::before { opacity: 1; }
 .stat:hover {
@@ -201,11 +235,11 @@ nav a.active, nav a:hover {
   box-shadow: 0 8px 35px rgba(59,130,246,0.3);
 }
 .stat h3 {
-  font-size: 42px;
+  font-size: 44px;
   color: var(--accent-400);
   margin-bottom: 4px;
   font-weight: 700;
-  text-shadow: 0 0 8px rgba(59,130,246,0.4);
+  text-shadow: 0 0 10px rgba(59,130,246,0.6);
 }
 .stat p {
   color: var(--muted);
@@ -220,9 +254,9 @@ nav a.active, nav a:hover {
 .featured {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 24px;
+  gap: 30px;
   margin-top: 40px;
-  padding: 0 10px;
+  padding: 0 40px;
 }
 .book-card {
   background: rgba(255, 255, 255, 0.05);
@@ -259,7 +293,8 @@ footer {
   text-align: center;
   color: var(--muted);
   border-top: 1px solid rgba(255,255,255,0.05);
-  padding: 40px 20px;
-  margin-top: 80px;
+  padding: 60px 40px;
+  margin-top: 100px;
   font-size: 14px;
 }
+
