@@ -3,17 +3,17 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>BlueNight Book Club — Explore, Read & Connect</title>
-  <meta name="description" content="A professional dark-mode book club website featuring rich animations, smooth scrolling, and engaging content for passionate readers worldwide." />
+  <title>BlueNight Book Club — Home</title>
+  <meta name="description" content="Welcome to BlueNight Book Club — connect with readers, explore stories, and share your literary passion." />
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <!-- CSS -->
-  <link rel="stylesheet" href="readersociety.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- Navbar -->
+  <!-- Header -->
   <header>
     <div class="nav-inner">
       <div class="brand">
@@ -32,76 +32,147 @@
     </div>
   </header>
 
-  <main>
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-      <video autoplay muted loop playsinline src="assets/hero.mp4"></video>
-      <div class="overlay"></div>
-      <div class="hero-content">
-        <h2>Where Every Page Opens a New World</h2>
-        <p>Welcome to <strong>BlueNight Book Club</strong> — a vibrant space for readers to explore new genres, share insights, and grow together. Dive into our book circles, curated collections, and live author sessions.</p>
-        <a href="books.html" class="cta-btn">Browse Library</a>
+  <!-- Hero -->
+  <section class="hero">
+    <video autoplay muted loop playsinline src="assets/hero.mp4"></video>
+    <div class="overlay"></div>
+    <div class="hero-content">
+      <h2>Discover Stories That Move You</h2>
+      <p>Join BlueNight Book Club — where imagination meets community.</p>
+      <a href="books.html" class="btn-primary">Explore Our Library</a>
+    </div>
+  </section>
 
-        <div class="stats">
-          <div class="stat"><h3>30+</h3><p>Book Circles</p></div>
-          <div class="stat"><h3>10k+</h3><p>Readers Connected</p></div>
-          <div class="stat"><h3>500+</h3><p>Books Discussed</p></div>
-          <div class="stat"><h3>100+</h3><p>Live Events</p></div>
-        </div>
+  <!-- Club Stats -->
+  <section id="stats">
+    <h2>Our Community in Numbers</h2>
+    <div class="stats-grid">
+      <div class="stat">
+        <span class="stat-number" data-target="1250">0</span>
+        <p>Active Members</p>
       </div>
-    </section>
-
-    <!-- Featured Clubs -->
-    <section id="clubs">
-      <h2>Explore Our Reading Clubs</h2>
-      <p>Whether you love fantasy, nonfiction, or romance — there's a club waiting for you. Each circle hosts weekly discussions and live meetups.</p>
-      <div class="featured">
-        <div class="book-card">
-          <img src="https://placehold.co/300x400/1e293b/fff?text=Fantasy+Circle" alt="Fantasy Club">
-          <h4>Fantasy Realms</h4>
-          <p>Step into other worlds with timeless fantasy adventures.</p>
-        </div>
-        <div class="book-card">
-          <img src="https://placehold.co/300x400/1e40af/fff?text=History+Circle" alt="History Club">
-          <h4>Historians United</h4>
-          <p>Explore stories of the past that shaped our future.</p>
-        </div>
-        <div class="book-card">
-          <img src="https://placehold.co/300x400/172554/fff?text=Tech+Reads" alt="Tech Club">
-          <h4>Tech Thinkers</h4>
-          <p>Discuss the evolution of technology and future innovations.</p>
-        </div>
+      <div class="stat">
+        <span class="stat-number" data-target="860">0</span>
+        <p>Books Shared</p>
       </div>
-    </section>
-
-    <!-- Testimonials -->
-    <section id="reviews" class="testimonials">
-      <h2>What Our Members Say</h2>
-      <p>Thousands of readers share their experiences every month. Here's what they think of BlueNight.</p>
-      <div class="testimonial-grid">
-        <div class="testimonial">“I’ve rediscovered my love for reading thanks to BlueNight. The community is warm, insightful, and fun!”<strong>— Sarah K.</strong></div>
-        <div class="testimonial">“The weekly sci-fi debates are my favorite! It’s incredible how much I’ve learned.”<strong>— Daniel R.</strong></div>
-        <div class="testimonial">“I joined for the books, stayed for the people. Every session feels like family.”<strong>— Priya L.</strong></div>
+      <div class="stat">
+        <span class="stat-number" data-target="75">0</span>
+        <p>Monthly Events</p>
       </div>
-    </section>
+      <div class="stat">
+        <span class="stat-number" data-target="4.8">0</span>
+        <p>Average Rating</p>
+      </div>
+    </div>
+  </section>
 
-    <!-- Newsletter -->
-    <section id="newsletter" class="newsletter">
-      <h3>Join Our Newsletter</h3>
-      <p>Stay updated on upcoming reads, giveaways, and events!</p>
-      <input type="email" placeholder="Enter your email" />
-      <button id="subscribeBtn">Subscribe</button>
-    </section>
+  <!-- Featured Books -->
+  <section id="featured-books">
+    <h2>Featured Reads</h2>
+    <div class="featured">
+      <div class="book-card in-view">
+        <img src="https://placehold.co/300x400/1e293b/fff?text=The+Azure+Throne" alt="Book">
+        <h4>The Azure Throne</h4>
+        <p>By L. D. Vance</p>
+      </div>
+      <div class="book-card in-view">
+        <img src="https://placehold.co/300x400/1e3a8a/fff?text=Orbital+Dreams" alt="Book">
+        <h4>Orbital Dreams</h4>
+        <p>By N. K. Patel</p>
+      </div>
+      <div class="book-card in-view">
+        <img src="https://placehold.co/300x400/172554/fff?text=Midnight+Letters" alt="Book">
+        <h4>Midnight Letters</h4>
+        <p>By Amelia Rose</p>
+      </div>
+    </div>
+  </section>
 
-    <!-- Footer -->
-    <footer>© 2025 BlueNight Book Club · All Rights Reserved</footer>
-  </main>
+  <!-- Upcoming Events -->
+  <section id="events">
+    <h2>Upcoming Events</h2>
+    <div class="events-grid">
+      <div class="event-card">
+        <h4>Author Talk: L. D. Vance</h4>
+        <p><strong>Date:</strong> Nov 15, 2025</p>
+        <p>Join us for a live Q&A with the author of <em>The Azure Throne</em>.</p>
+      </div>
+      <div class="event-card">
+        <h4>Book Swap Night</h4>
+        <p><strong>Date:</strong> Dec 3, 2025</p>
+        <p>Bring a favorite book and exchange it with fellow members.</p>
+      </div>
+      <div class="event-card">
+        <h4>Reading Circle: Sci-Fi Month</h4>
+        <p><strong>Date:</strong> Dec 18, 2025</p>
+        <p>Discuss your favorite science fiction novels over coffee.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter -->
+  <section id="newsletter">
+    <h2>Stay Connected</h2>
+    <p>Subscribe to our newsletter for new reads, club updates, and more.</p>
+    <form id="newsletter-form">
+      <input type="email" id="email" placeholder="Your email address" required>
+      <button type="submit">Subscribe</button>
+    </form>
+    <p id="successMsg" class="hidden">Thanks for subscribing! 🎉</p>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    © 2025 BlueNight Book Club · All Rights Reserved
+  </footer>
 
   <!-- JavaScript -->
   <script>
-    // Intersection Observer for animations
+    // Reveal sections on scroll
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('in-view');
-          observer.unobserve(entr
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+    document.querySelectorAll('section').forEach(sec => observer.observe(sec));
+
+    // Stat counters
+    const counters = document.querySelectorAll('.stat-number');
+    const speed = 100;
+    const counterObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          counters.forEach(counter => {
+            const animate = () => {
+              const target = +counter.getAttribute('data-target');
+              const count = +counter.innerText;
+              const increment = target / speed;
+              if (count < target) {
+                counter.innerText = Math.ceil(count + increment);
+                setTimeout(animate, 20);
+              } else {
+                counter.innerText = target;
+              }
+            };
+            animate();
+          });
+          counterObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.3 });
+    counterObserver.observe(document.querySelector('#stats'));
+
+    // Newsletter mock submission
+    const form = document.getElementById('newsletter-form');
+    const successMsg = document.getElementById('successMsg');
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      successMsg.classList.remove('hidden');
+      form.reset();
+    });
+  </script>
+</body>
+</html>
