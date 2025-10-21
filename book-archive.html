@@ -152,6 +152,13 @@
       if (e.target === modal) modal.classList.remove('show');
     });
   </script>
+  <script>
+  const header = document.querySelector('header');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 50);
+  });
+</script>
+
 
   <style>
     /* Modal Styling */
