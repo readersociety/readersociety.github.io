@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Members — BlueNight Book Club</title>
+  <meta name="description" content="Meet the passionate readers who make up the BlueNight Book Club community.">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="readersociety.css">
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="nav-inner">
+      <div class="brand">
+        <div class="logo"></div>
+        <h1>BlueNight Book Club</h1>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="books.html">Books</a></li>
+          <li><a href="events.html">Events</a></li>
+          <li><a href="members.html" class="active">Members</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero" style="min-height:60vh;">
+      <video autoplay muted loop playsinline src="assets/members-bg.mp4"></video>
+      <div class="overlay"></div>
+      <div class="hero-content">
+        <h2>Our Readers, Our Family</h2>
+        <p>Meet the book lovers who bring BlueNight to life. Each member has a story worth sharing.</p>
+      </div>
+    </section>
+
+    <!-- Members Section -->
+    <section id="members" class="in-view">
+      <h2>Featured Members</h2>
+      <p>Every reader adds a unique voice to our collective story. Here are some of our most active members.</p>
+
+      <div class="members-grid">
+        <!-- Member Card -->
+        <div class="member-card">
+          <div class="portrait">
+            <img src="https://placehold.co/300x400/0f172a/fff?text=Sarah+K." alt="Sarah K Portrait">
+            <div class="portrait-overlay"></div>
+          </div>
+          <div class="member-info">
+            <h4>Sarah Kim</h4>
+            <p class="bio">A fantasy enthusiast who believes every great story starts with a spark of curiosity.</p>
+            <p><strong>Birthday:</strong> May 14, 1992</p>
+            <blockquote>"Books are the portals to infinite worlds."</blockquote>
+          </div>
+          <div class="messenger-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+              <path fill="#0078FF" d="M24 4C12.95 4 4 12.49 4 23.11c0 5.99 2.75 11.39 7.17 15.01v6.88l6.54-3.63c1.99.55 4.09.85 6.29.85 11.05 0 20-8.49 20-19.11S35.05 4 24 4z"/>
+              <path fill="#fff" d="M36 17.9l-8.3 8.8-5.1-5.5-8.5 9.5 10.5-11 5.1 5.5 6.3-7.3z"/>
+            </svg>
+          </div>
+        </div>
+
+        <div class="member-card">
+          <div class="portrait">
+            <img src="https://placehold.co/300x400/1e293b/fff?text=Daniel+R." alt="Daniel R Portrait">
+            <div class="portrait-overlay"></div>
+          </div>
+          <div class="member-info">
+            <h4>Daniel Roberts</h4>
+            <p class="bio">Science fiction is his home galaxy. Daniel moderates our monthly “Future Reads” circle.</p>
+            <p><strong>Birthday:</strong> October 4, 1988</p>
+            <blockquote>"Reality is just the draft of imagination."</blockquote>
+          </div>
+          <div class="messenger-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+              <path fill="#0078FF" d="M24 4C12.95 4 4 12.49 4 23.11c0 5.99 2.75 11.39 7.17 15.01v6.88l6.54-3.63c1.99.55 4.09.85 6.29.85 11.05 0 20-8.49 20-19.11S35.05 4 24 4z"/>
+              <path fill="#fff" d="M36 17.9l-8.3 8.8-5.1-5.5-8.5 9.5 10.5-11 5.1 5.5 6.3-7.3z"/>
+            </svg>
+          </div>
+        </div>
+
+        <div class="member-card">
+          <div class="portrait">
+            <img src="https://placehold.co/300x400/172554/fff?text=Priya+L." alt="Priya L Portrait">
+            <div class="portrait-overlay"></div>
+          </div>
+          <div class="member-info">
+            <h4>Priya Lakhani</h4>
+            <p class="bio">Romantic at heart and poet by soul. She leads the “Whispers & Words” discussion club.</p>
+            <p><strong>Birthday:</strong> February 22, 1995</p>
+            <blockquote>"The right book finds you when you need it most."</blockquote>
+          </div>
+          <div class="messenger-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+              <path fill="#0078FF" d="M24 4C12.95 4 4 12.49 4 23.11c0 5.99 2.75 11.39 7.17 15.01v6.88l6.54-3.63c1.99.55 4.09.85 6.29.85 11.05 0 20-8.49 20-19.11S35.05 4 24 4z"/>
+              <path fill="#fff" d="M36 17.9l-8.3 8.8-5.1-5.5-8.5 9.5 10.5-11 5.1 5.5 6.3-7.3z"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>© 2025 BlueNight Book Club · All Rights Reserved</footer>
+  </main>
+
+  <script>
+    // Reveal animation
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+    document.querySelectorAll('section').forEach(sec => observer.observe(sec));
+  </script>
+
+  <style>
+    /* --- Members Page --- */
+    #members {
+      text-align: center;
+      margin-top: 80px;
+    }
+
+    .members-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 40px;
+      margin-top: 40px;
+      padding: 0 40px;
+    }
+
+    .member-card {
+      background: linear-gradient(145deg, rgba(15,23,42,0.8), rgba(17,24,39,0.9));
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.5);
+      transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+      position: relative;
+      border: 1px solid rgba(59,130,246,0.2);
+      backdrop-filter: blur(6px);
+    }
+
+    .member-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 12px 50px rgba(59,130,246,0.3);
+      border-color: rgba(59,130,246,0.5);
+    }
+
+    .portrait {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .portrait img {
+      width: 100%;
+      display: block;
+      filter: grayscale(100%) brightness(0.6);
+      transition: all 0.6s ease;
+    }
+
+    .portrait-overlay {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at center, rgba(59,130,246,0.1) 0%, rgba(0,0,0,0.8) 100%);
+      transition: opacity 0.6s ease;
+    }
+
+    .member-card:hover .portrait img {
+      filter: grayscale(0%) brightness(0.9);
+      transform: scale(1.1);
+    }
+
+    .member-card:hover .portrait-overlay {
+      opacity: 0.2;
+    }
+
+    .member-info {
+      padding: 20px;
+      text-align: left;
+    }
+
+    .member-info h4 {
+      color: var(--accent-400);
+      font-size: 20px;
+      margin-bottom: 8px;
+    }
+
+    .member-info .bio {
+      font-size: 15px;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    .member-info blockquote {
+      margin-top: 10px;
+      font-style: italic;
+      color: #cbd5e1;
+      border-left: 3px solid var(--accent-500);
+      padding-left: 10px;
+    }
+
+    .messenger-icon {
+      position: absolute;
+      bottom: 12px;
+      right: 14px;
+      width: 36px;
+      height: 36px;
+      cursor: pointer;
+      transition: transform 0.3s ease, filter 0.3s ease;
+    }
+
+    .messenger-icon svg {
+      width: 100%;
+      height: 100%;
+      filter: drop-shadow(0 0 6px rgba(59,130,246,0.5));
+    }
+
+    .messenger-icon:hover {
+      transform: scale(1.1) rotate(5deg);
+      filter: brightness(1.2);
+    }
+  </style>
+</body>
+</html>
