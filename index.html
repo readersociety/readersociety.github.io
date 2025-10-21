@@ -13,6 +13,16 @@
   <link rel="stylesheet" href="readersociety.css">
 </head>
 <body>
+  <div class="particles">
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+</div>
+
   <!-- Header -->
   <header>
     <div class="nav-inner">
@@ -180,6 +190,27 @@
     header.classList.toggle('scrolled', window.scrollY > 50);
   });
 </script>
+  <script>
+  // Navbar + body scroll effects
+  const header = document.querySelector("header");
+  const body = document.body;
+  window.addEventListener("scroll", () => {
+    header.classList.toggle("scrolled", window.scrollY > 50);
+    body.classList.toggle("scrolled", window.scrollY > 100);
+  });
+
+  // Reveal sections on scroll
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add("in-view");
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.2 });
+  document.querySelectorAll("section").forEach(sec => observer.observe(sec));
+</script>
+
 
 </body>
 </html>
