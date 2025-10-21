@@ -1,10 +1,15 @@
+/* ==========================================================
+   BlueNight Book Club — Full Professional CSS
+   Dark blue gradient theme with animation, polish, and magic ✨
+========================================================== */
+
 /* --------------------
    Global Variables
 -------------------- */
 :root {
-  --bg-1: #0b1220;
-  --bg-2: #0f1724;
-  --bg-3: #13213a;
+  --bg-900: #0b1220;
+  --bg-800: #0f1724;
+  --bg-700: #112240;
   --accent-500: #3b82f6;
   --accent-600: #2563eb;
   --accent-400: #60a5fa;
@@ -15,22 +20,24 @@
 /* --------------------
    Base Styles
 -------------------- */
-* { box-sizing: border-box; margin: 0; padding: 0; }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
 body {
   font-family: var(--font-primary);
-  background: linear-gradient(120deg, var(--bg-1), var(--bg-2), var(--bg-3));
-  background-size: 400% 400%;
-  animation: moveGradient 20s ease infinite;
   color: #e6eef8;
+  background: linear-gradient(120deg, #0b1220, #0f1724, #112240, #1e3a8a);
+  background-size: 400% 400%;
+  animation: gradientShift 20s ease infinite;
   overflow-x: hidden;
   scroll-behavior: smooth;
   line-height: 1.7;
-  min-height: 100vh;
 }
 
-/* Animated gradient for body background */
-@keyframes moveGradient {
+@keyframes gradientShift {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
@@ -38,8 +45,14 @@ body {
 
 main {
   max-width: 1200px;
-  margin: auto;
-  padding: 120px 60px 80px; /* wider padding to prevent sticking */
+  margin: 0 auto;
+  padding: 120px 60px 80px;
+}
+
+@media (max-width: 768px) {
+  main {
+    padding: 100px 25px 60px;
+  }
 }
 
 section {
@@ -62,23 +75,37 @@ header {
   width: 100%;
   z-index: 100;
   background: rgba(11, 18, 32, 0.85);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(8px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  transition: background 0.4s ease;
+  transition: all 0.4s ease;
 }
+
+header.scrolled {
+  background: rgba(11, 18, 32, 0.95);
+  box-shadow: 0 4px 25px rgba(59, 130, 246, 0.25);
+  transform: scale(1.01);
+}
+
 .nav-inner {
   max-width: 1200px;
   margin: auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 16px 60px;
+  padding: 16px 40px;
+  transition: padding 0.3s ease;
 }
+
+header.scrolled .nav-inner {
+  padding: 12px 40px;
+}
+
 .brand {
   display: flex;
   align-items: center;
   gap: 12px;
 }
+
 .brand .logo {
   width: 40px;
   height: 40px;
@@ -89,12 +116,14 @@ header {
   justify-content: center;
   animation: pulse 3s infinite;
 }
+
 .brand h1 {
   font-size: 18px;
   font-weight: 600;
   color: #fff;
   letter-spacing: 0.5px;
 }
+
 @keyframes pulse {
   0%,100% { transform: scale(1); }
   50% { transform: scale(1.08); }
@@ -105,6 +134,7 @@ nav ul {
   display: flex;
   gap: 16px;
 }
+
 nav a {
   color: var(--muted);
   font-weight: 500;
@@ -113,7 +143,9 @@ nav a {
   border-radius: 8px;
   transition: all 0.3s ease;
 }
-nav a.active, nav a:hover {
+
+nav a.active,
+nav a:hover {
   background: rgba(59, 130, 246, 0.15);
   color: var(--accent-400);
 }
@@ -130,8 +162,8 @@ nav a.active, nav a:hover {
   text-align: center;
   border-radius: 16px;
   overflow: hidden;
-  margin: 0 40px; /* adds spacing so video edges don't touch sides */
 }
+
 .hero video {
   position: absolute;
   inset: 0;
@@ -140,30 +172,35 @@ nav a.active, nav a:hover {
   object-fit: cover;
   filter: brightness(0.55);
 }
+
 .hero .overlay {
   position: absolute;
   inset: 0;
   background: linear-gradient(180deg, rgba(11, 18, 32, 0.3), rgba(11, 18, 32, 0.9));
 }
+
 .hero-content {
   position: relative;
   z-index: 10;
   padding: 40px;
   animation: fadeInUp 1.2s ease both;
 }
+
 .hero h2 {
   font-size: clamp(36px, 5vw, 60px);
   font-weight: 700;
   margin-bottom: 20px;
   color: #fff;
 }
+
 .hero p {
   max-width: 700px;
   margin: auto;
   color: var(--muted);
   font-size: 18px;
 }
-.cta-btn {
+
+.btn-primary {
   display: inline-block;
   margin-top: 32px;
   padding: 14px 30px;
@@ -174,72 +211,59 @@ nav a.active, nav a:hover {
   text-decoration: none;
   transition: background 0.3s, transform 0.3s;
 }
-.cta-btn:hover {
+.btn-primary:hover {
   background: var(--accent-500);
   transform: translateY(-3px);
 }
 
 /* --------------------
-   Aurora Animated Stats
+   Club Stats
 -------------------- */
-.stats {
-  position: relative;
+#stats {
+  text-align: center;
+}
+#stats h2 {
+  font-size: 28px;
+  margin-bottom: 40px;
+  color: var(--accent-400);
+}
+.stats-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 40px;
-  margin-top: 60px;
-  padding: 0 40px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 30px;
+  justify-items: center;
 }
-.stats::before {
-  content: "";
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle at 20% 20%, rgba(59,130,246,0.1), transparent 40%),
-              radial-gradient(circle at 80% 80%, rgba(37,99,235,0.15), transparent 40%);
-  animation: auroraMove 10s infinite linear alternate;
-  z-index: 0;
-  filter: blur(80px);
-}
-@keyframes auroraMove {
-  0% { transform: translate(0, 0) rotate(0deg); }
-  100% { transform: translate(-10%, -10%) rotate(5deg); }
-}
-
 .stat {
   position: relative;
-  background: rgba(17, 24, 39, 0.9);
+  background: radial-gradient(circle at 30% 30%, rgba(59,130,246,0.25), rgba(17,24,39,0.95));
   border: 1px solid rgba(59,130,246,0.3);
-  padding: 40px 24px;
+  padding: 32px 20px;
   border-radius: 14px;
   text-align: center;
   overflow: hidden;
   box-shadow: 0 4px 25px rgba(59,130,246,0.15);
   transition: transform 0.4s ease, box-shadow 0.4s ease;
-  z-index: 1;
 }
 .stat::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(59,130,246,0.25), transparent);
+  background: linear-gradient(135deg, rgba(59,130,246,0.15), transparent);
   opacity: 0;
   transition: opacity 0.4s ease;
-  z-index: -1;
 }
 .stat:hover::before { opacity: 1; }
 .stat:hover {
   transform: translateY(-8px) scale(1.03);
   box-shadow: 0 8px 35px rgba(59,130,246,0.3);
 }
-.stat h3 {
-  font-size: 44px;
+.stat-number {
+  display: block;
+  font-size: 42px;
   color: var(--accent-400);
-  margin-bottom: 4px;
+  margin-bottom: 6px;
   font-weight: 700;
-  text-shadow: 0 0 10px rgba(59,130,246,0.6);
+  text-shadow: 0 0 8px rgba(59,130,246,0.4);
 }
 .stat p {
   color: var(--muted);
@@ -249,14 +273,13 @@ nav a.active, nav a:hover {
 }
 
 /* --------------------
-   Featured Books / Clubs
+   Featured Books
 -------------------- */
 .featured {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 30px;
+  gap: 24px;
   margin-top: 40px;
-  padding: 0 40px;
 }
 .book-card {
   background: rgba(255, 255, 255, 0.05);
@@ -264,6 +287,7 @@ nav a.active, nav a:hover {
   border-radius: 12px;
   transition: transform 0.3s, box-shadow 0.3s;
   overflow: hidden;
+  position: relative;
 }
 .book-card:hover {
   transform: translateY(-6px);
@@ -275,7 +299,9 @@ nav a.active, nav a:hover {
   margin-bottom: 12px;
   transition: transform 0.6s ease;
 }
-.book-card:hover img { transform: scale(1.08); }
+.book-card:hover img {
+  transform: scale(1.08);
+}
 .book-card h4 {
   color: var(--accent-400);
   margin: 8px 0;
@@ -287,14 +313,104 @@ nav a.active, nav a:hover {
 }
 
 /* --------------------
+   Events
+-------------------- */
+.events-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  margin-top: 30px;
+}
+.event-card {
+  background: rgba(255, 255, 255, 0.05);
+  border-left: 4px solid var(--accent-500);
+  padding: 24px;
+  border-radius: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.event-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(59,130,246,0.25);
+}
+.event-card h4 {
+  color: var(--accent-400);
+  margin-bottom: 8px;
+  font-size: 20px;
+}
+.event-card p {
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* --------------------
+   Newsletter
+-------------------- */
+#newsletter {
+  text-align: center;
+}
+#newsletter h2 {
+  font-size: 28px;
+  color: var(--accent-400);
+  margin-bottom: 16px;
+}
+#newsletter p {
+  color: var(--muted);
+  margin-bottom: 24px;
+}
+#newsletter-form {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+#newsletter-form input {
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+  width: 250px;
+  outline: none;
+}
+#newsletter-form button {
+  padding: 12px 24px;
+  background: var(--accent-600);
+  border: none;
+  color: #fff;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+#newsletter-form button:hover {
+  background: var(--accent-500);
+  transform: translateY(-2px);
+}
+.hidden { display: none; }
+#successMsg {
+  margin-top: 12px;
+  color: var(--accent-400);
+}
+
+/* --------------------
    Footer
 -------------------- */
 footer {
   text-align: center;
   color: var(--muted);
   border-top: 1px solid rgba(255,255,255,0.05);
-  padding: 60px 40px;
-  margin-top: 100px;
+  padding: 40px 20px;
+  margin-top: 80px;
   font-size: 14px;
 }
+
+/* --------------------
+   Animations
+-------------------- */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 
