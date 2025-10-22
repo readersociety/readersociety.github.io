@@ -11,6 +11,102 @@
 
   <!-- CSS -->
   <link rel="stylesheet" href="readersociety.css">
+  <style>
+    /* Who We Are Section */
+#about-club {
+  padding: 6rem 10%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 3rem;
+}
+.slideshow-container, .archive-slideshow {
+  position: relative;
+  width: 100%;
+  height: 360px;
+  overflow: hidden;
+  border-radius: 20px;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.6);
+}
+.slide, .event-slide {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  opacity: 0;
+  transition: opacity 2s ease-in-out;
+}
+.slide img, .event-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(80%);
+  transform: scale(1.1);
+  animation: zoomIn 10s ease-in-out infinite;
+  border-radius: 20px;
+}
+@keyframes zoomIn {
+  0% { transform: scale(1.1); }
+  50% { transform: scale(1.15); }
+  100% { transform: scale(1.1); }
+}
+.about-text p {
+  color: #ccc;
+  line-height: 1.7;
+  margin-bottom: 1.2rem;
+}
+.about-text .btn-primary {
+  margin-top: 1rem;
+}
+
+/* Events Archive Section */
+#events-archive {
+  padding: 6rem 10%;
+}
+.events-archive-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 3rem;
+}
+.archive-text p {
+  color: #ccc;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+.archive-text .btn-primary {
+  display: inline-block;
+}
+
+/* Fade and Animation Enhancements */
+.fade-in {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.fade-in.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .about-grid, .events-archive-grid {
+    grid-template-columns: 1fr;
+  }
+  .slideshow-container, .archive-slideshow {
+    height: 280px;
+  }
+  #about-club, #events-archive {
+    padding: 4rem 5%;
+  }
+}
+
+  </style>
 </head>
 <body>
   <div class="particles">
@@ -98,38 +194,63 @@
     </div>
   </section>
 
-  <!-- Brief explanation of the club -->
-  <section id="events">
-    <h2>Who are We?</h2>
-    <div class="events-grid">
-      <div class="event-card">
-        <h4>Author Talk: L. D. Vance</h4>
-        <p><strong>Date:</strong> Nov 15, 2025</p>
-        <p>Join us for a live Q&A with the author of <em>The Azure Throne</em>.</p>
+<!-- Who We Are Section with Crossfade Slideshow -->
+<section id="about-club" class="fade-in">
+  <h2>Who We Are</h2>
+  <div class="about-grid">
+    <!-- Auto Crossfade Slideshow -->
+    <div class="slideshow-container">
+      <div class="slide fade">
+        <img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=1000&q=80" alt="Reading Together">
       </div>
-      <div class="event-card">
-        <h4>Book Swap Night</h4>
-        <p><strong>Date:</strong> Dec 3, 2025</p>
-        <p>Bring a favorite book and exchange it with fellow members.</p>
+      <div class="slide fade">
+        <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1000&q=80" alt="Books and Coffee">
       </div>
-      <div class="event-card">
-        <h4>Reading Circle: Sci-Fi Month</h4>
-        <p><strong>Date:</strong> Dec 18, 2025</p>
-        <p>Discuss your favorite science fiction novels over coffee.</p>
+      <div class="slide fade">
+        <img src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=1000&q=80" alt="Book Club Discussion">
       </div>
     </div>
-  </section>
 
-  <!-- Events Archive into -->
-  <section id="newsletter">
-    <h2>Events Archive</h2>
-    <p>Subscribe to our newsletter for new reads, club updates, and more.</p>
-    <form id="newsletter-form">
-      <input type="email" id="email" placeholder="Your email address" required>
-      <button type="submit">Subscribe</button>
-    </form>
-    <p id="successMsg" class="hidden">Thanks for subscribing! 🎉</p>
-  </section>
+    <div class="about-text">
+      <p>
+        <strong>Reader Society</strong> isn’t just a book club — it’s a vibrant community where stories spark friendships.
+        We believe in reading as a shared adventure, one that brings imagination and connection to life.
+      </p>
+      <p>
+        From fantasy deep-dives to poetry nights, our events blend storytelling with experience. Come find your next
+        favorite book — and the people who’ll love it with you.
+      </p>
+      <a href="about.html" class="btn-primary">Learn More</a>
+    </div>
+  </div>
+</section>
+
+<!-- Events Archive Section with Crossfade Slideshow -->
+<section id="events-archive" class="fade-in">
+  <h2>Events Archive</h2>
+  <div class="events-archive-grid">
+    <div class="archive-text">
+      <p>
+        Our book club events are where the pages come to life — from meetups and story swaps to interactive games
+        and author spotlights. Explore our archive to relive the moments that made us laugh, think, and grow.
+      </p>
+      <a href="events.html" class="btn-primary">Explore Events</a>
+    </div>
+
+    <div class="archive-slideshow">
+      <div class="event-slide fade">
+        <img src="https://images.unsplash.com/photo-1532012197267-da84d127e765?auto=format&fit=crop&w=900&q=80" alt="Book Swap">
+      </div>
+      <div class="event-slide fade">
+        <img src="https://images.unsplash.com/photo-1553729784-e91953dec042?auto=format&fit=crop&w=900&q=80" alt="Author Talk">
+      </div>
+      <div class="event-slide fade">
+        <img src="https://images.unsplash.com/photo-1522205408450-add114ad53fe?auto=format&fit=crop&w=900&q=80" alt="Reading Circle">
+      </div>
+    </div>
+  </div>
+</section>
+
 
   <!-- Footer -->
   <footer>
@@ -137,6 +258,31 @@
   </footer>
 
   <!-- JavaScript -->
+  <!-- Auto Crossfade + Ken Burns Animation Script -->
+<script>
+  let slideIndex = 0;
+  const showSlides = () => {
+    const slides = document.querySelectorAll(".slide");
+    slides.forEach(slide => slide.style.opacity = "0");
+    slideIndex++;
+    if (slideIndex > slides.length) { slideIndex = 1 }
+    slides[slideIndex - 1].style.opacity = "1";
+    setTimeout(showSlides, 5000);
+  };
+  showSlides();
+
+  let eventIndex = 0;
+  const showEventSlides = () => {
+    const slides = document.querySelectorAll(".event-slide");
+    slides.forEach(slide => slide.style.opacity = "0");
+    eventIndex++;
+    if (eventIndex > slides.length) { eventIndex = 1 }
+    slides[eventIndex - 1].style.opacity = "1";
+    setTimeout(showEventSlides, 6000);
+  };
+  showEventSlides();
+</script>
+
   <script>
     // Reveal sections on scroll
     const observer = new IntersectionObserver(entries => {
