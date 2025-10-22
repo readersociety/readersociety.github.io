@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>BlueNight Book Club — Home</title>
-  <meta name="description" content="Welcome to BlueNight Book Club — connect with readers, explore stories, and share your literary passion." />
+  <title>Reader Society - Home</title>
+  <meta name="description" content="Welcome to Reader Society — connect with readers, explore stories, and share your literary passion." />
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -210,7 +210,47 @@
   }, { threshold: 0.2 });
   document.querySelectorAll("section").forEach(sec => observer.observe(sec));
 </script>
+ <!-- Lenis Smooth Scroll-->
+        <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+        <script type>
+            // Initialize Lenis smooth scroll
+            document.addEventListener('DOMContentLoaded', () => {
+              const lenis = new Lenis({
+                lerp: 0.05,
+                wheelMultiplier: 0.8,
+                duration: 1.5,
+                easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+              });
 
+              function raf(time) {
+                lenis.raf(time);
+                requestAnimationFrame(raf);
+              }
+              requestAnimationFrame(raf);
+
+
+              // Intersection Observer for fade-in effects on scroll
+              const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.2 // Trigger when 20% of the item is visible
+              };
+
+              const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                  if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                    observer.unobserve(entry.target); // Stop observing once it's shown
+                  }
+                });
+              }, observerOptions);
+
+              // Apply the observer to all elements with the 'fade-in' class
+              document.querySelectorAll('.fade-in').forEach(el => {
+                observer.observe(el);
+              });
+            });
+        </script>
 
 </body>
 </html>
