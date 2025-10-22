@@ -26,7 +26,6 @@
 }
 html, body {
   height: 100%;
-  scroll-behavior: smooth;
 }
 body {
   font-family: var(--font-primary);
@@ -38,6 +37,20 @@ body {
   background-size: 400% 400%;
   animation: gradientShift 25s ease infinite;
 }
+
+/* Lenis Scroll Styling */
+        html.lenis {
+            height: auto;
+        }
+        .lenis.lenis-smooth {
+             scroll-behavior: auto;
+        }
+        .lenis.lenis-smooth [data-lenis-prevent] {
+             overscroll-behavior: contain;
+        }
+        .lenis.lenis-stopped {
+             overflow: hidden;
+        }
 
 /* Background gradient motion */
 @keyframes gradientShift {
