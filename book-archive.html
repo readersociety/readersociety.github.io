@@ -18,12 +18,12 @@
     <div class="nav-inner">
       <div class="brand">
         <div class="logo"></div>
-        <h1>BlueNight Book Club</h1>
+        <h1>Reader Society</h1>
       </div>
       <nav>
         <ul>
           <li><a href="index.html">Home</a></li>
-          <li><a href="books.html" class="active">Books</a></li>
+          <li><a href="book-archive.html" class="active">Books</a></li>
           <li><a href="events.html">Events</a></li>
           <li><a href="members.html">Members</a></li>
           <li><a href="about.html">About</a></li>
@@ -158,6 +158,66 @@
     header.classList.toggle('scrolled', window.scrollY > 50);
   });
 </script>
+ <script>
+  // Navbar + body scroll effects
+  const header = document.querySelector("header");
+  const body = document.body;
+  window.addEventListener("scroll", () => {
+    header.classList.toggle("scrolled", window.scrollY > 50);
+    body.classList.toggle("scrolled", window.scrollY > 100);
+  });
+
+  // Reveal sections on scroll
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add("in-view");
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.2 });
+  document.querySelectorAll("section").forEach(sec => observer.observe(sec));
+</script>
+    <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+        <script type>
+            // Initialize Lenis smooth scroll
+            document.addEventListener('DOMContentLoaded', () => {
+              const lenis = new Lenis({
+                lerp: 0.05,
+                wheelMultiplier: 0.8,
+                duration: 1.5,
+                easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+              });
+
+              function raf(time) {
+                lenis.raf(time);
+                requestAnimationFrame(raf);
+              }
+              requestAnimationFrame(raf);
+
+
+              // Intersection Observer for fade-in effects on scroll
+              const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.2 // Trigger when 20% of the item is visible
+              };
+
+              const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                  if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                    observer.unobserve(entry.target); // Stop observing once it's shown
+                  }
+                });
+              }, observerOptions);
+
+              // Apply the observer to all elements with the 'fade-in' class
+              document.querySelectorAll('.fade-in').forEach(el => {
+                observer.observe(el);
+              });
+            });
+        </script>
 
 
   <style>
