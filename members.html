@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Members — BlueNight Book Club</title>
+  <title>Members — Reader Society</title>
   <meta name="description" content="Meet the passionate readers who make up the BlueNight Book Club community.">
 
   <!-- Google Fonts -->
@@ -18,12 +18,12 @@
     <div class="nav-inner">
       <div class="brand">
         <div class="logo"></div>
-        <h1>BlueNight Book Club</h1>
+        <h1>Reader Society</h1>
       </div>
       <nav>
         <ul>
           <li><a href="index.html">Home</a></li>
-          <li><a href="books.html">Books</a></li>
+          <li><a href="book-archive.html">Books</a></li>
           <li><a href="events.html">Events</a></li>
           <li><a href="members.html" class="active">Members</a></li>
           <li><a href="about.html">About</a></li>
@@ -45,7 +45,7 @@
 
     <!-- Members Section -->
     <section id="members" class="in-view">
-      <h2>Featured Members</h2>
+      <h2>Members</h2>
       <p>Every reader adds a unique voice to our collective story. Here are some of our most active members.</p>
 
       <div class="members-grid">
@@ -109,7 +109,7 @@
       </div>
     </section>
 
-    <footer>© 2025 BlueNight Book Club · All Rights Reserved</footer>
+    <footer>© 2025 Reader Society Book Club · All Rights Reserved</footer>
   </main>
 
   <script>
@@ -124,6 +124,48 @@
     }, { threshold: 0.2 });
     document.querySelectorAll('section').forEach(sec => observer.observe(sec));
   </script>
+
+   <!-- Lenis Smooth Scroll-->
+        <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+        <script type>
+            // Initialize Lenis smooth scroll
+            document.addEventListener('DOMContentLoaded', () => {
+              const lenis = new Lenis({
+                lerp: 0.05,
+                wheelMultiplier: 0.8,
+                duration: 1.5,
+                easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+              });
+
+              function raf(time) {
+                lenis.raf(time);
+                requestAnimationFrame(raf);
+              }
+              requestAnimationFrame(raf);
+
+
+              // Intersection Observer for fade-in effects on scroll
+              const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.2 // Trigger when 20% of the item is visible
+              };
+
+              const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                  if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                    observer.unobserve(entry.target); // Stop observing once it's shown
+                  }
+                });
+              }, observerOptions);
+
+              // Apply the observer to all elements with the 'fade-in' class
+              document.querySelectorAll('.fade-in').forEach(el => {
+                observer.observe(el);
+              });
+            });
+        </script>
 
   <style>
     /* --- Members Page --- */
