@@ -381,6 +381,13 @@ body::after {
 .particle:nth-child(5) { top: 80%; left: 50%; animation-delay: 16s; }
 .particle:nth-child(6) { top: 35%; left: 15%; animation-delay: 6s; }
 .particle:nth-child(7) { top: 65%; left: 85%; animation-delay: 10s; }
+.particle:nth-child(8) { top: 13%; left: 19%; animation-delay: 0s; }
+.particle:nth-child(9) { top: 77%; left: 66%; animation-delay: 4s; }
+.particle:nth-child(10) { top: 33%; left: 45%; animation-delay: 8s; }
+.particle:nth-child(11) { top: 23%; left: 39%; animation-delay: 12s; }
+.particle:nth-child(12) { top: 8%; left: 11%; animation-delay: 16s; }
+.particle:nth-child(13) { top: 56%; left: 99%; animation-delay: 6s; }
+.particle:nth-child(14) { top: 97%; left: 55%; animation-delay: 10s; }
 
 /* Keyframes */
 @keyframes morphAurora {
@@ -449,7 +456,7 @@ body::after {
   border-radius: 16px;
   padding: 1.5rem;
   width: 100%;
-  max-width: 260px;
+  max-width: 460px;
   text-align: center;
   box-shadow: 0 0 15px rgba(58, 125, 255, 0.15);
   transition: transform 0.4s ease, box-shadow 0.4s ease;
