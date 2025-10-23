@@ -155,7 +155,7 @@
     <div class="hero-content">
       <h2>Discover Stories That Move You</h2>
       <p>We are Reader Society — where we re-discover the world's first portals, books.</p>
-      <a href="books-archive.html" class="btn-primary">Explore Our Library</a>
+      <a href="book-archive.html" class="btn-primary">Explore Our Library</a>
     </div>
   </section>
 
@@ -223,11 +223,10 @@
 
     <div class="about-text">
       <p>
-        <strong>Reader Society</strong> isn’t just a book club — it’s a vibrant community where stories spark friendships.
-        We believe in reading as a shared adventure, one that brings imagination and connection to life.
+        <strong>Reader Society</strong> is a group of homeschoolers who share the same passion in reading books. We believe in reading as a shared adventure, one that brings imagination and connection to our inner child.
       </p>
       <p>
-        From fantasy deep-dives to poetry nights, our events blend storytelling with experience. Come find your next
+        From fantasy sags to amazing graphic novels, our events blend storytelling with experience. Come find your next
         favorite book — and the people who’ll love it with you.
       </p>
       <a href="about.html" class="btn-primary">Learn More</a>
@@ -237,14 +236,13 @@
 
 <!-- Events Archive Section with Crossfade Slideshow -->
 <section id="events-archive" class="fade-in">
-  <h2>Events Archive</h2>
+  <h2>Check out our Blog!</h2>
   <div class="events-archive-grid">
     <div class="archive-text">
       <p>
-        Our book club events are where the pages come to life — from meetups and story swaps to interactive games
-        and author spotlights. Explore our archive to relive the moments that made us laugh, think, and grow.
+        In <strong>Reader Society</strong>, we believe that reading books does not have to be boring! As proof, we have a <em>blog</em> containing all the fun things we do per month! We do all sorts of games, crafts and other undescribable crazy acts that we haven't though of yet. Feel free to explore.
       </p>
-      <a href="events.html" class="btn-primary">Explore Events</a>
+      <a href="blog.html" class="btn-primary">Go to our Blog!</a>
     </div>
 
     <div class="archive-slideshow">
@@ -264,7 +262,7 @@
 
   <!-- Footer -->
   <footer>
-    © 2025 BlueNight Book Club · All Rights Reserved
+    © 2025 Reader Society · All Rights Reserved
   </footer>
 
   <!-- JavaScript -->
@@ -329,23 +327,16 @@
         }
       });
     }, { threshold: 0.3 });
-    counterObserver.observe(document.querySelector('#stats'));
-
-    // Newsletter mock submission
-    const form = document.getElementById('newsletter-form');
-    const successMsg = document.getElementById('successMsg');
-    form.addEventListener('submit', e => {
-      e.preventDefault();
-      successMsg.classList.remove('hidden');
-      form.reset();
-    });
+    counterObserver.observe(document.querySelector('.stats-number'));
   </script>
+  
   <script>
   const header = document.querySelector('header');
   window.addEventListener('scroll', () => {
     header.classList.toggle('scrolled', window.scrollY > 50);
   });
 </script>
+  
   <script>
   // Navbar + body scroll effects
   const header = document.querySelector("header");
