@@ -107,7 +107,7 @@ header.scrolled {
   align-items: center;
   gap: 12px;
 }
-.brand .logo {
+.brand, .logo, .logo img {
   width: 40px;
   height: 40px;
   border-radius: 50%;
