@@ -145,23 +145,29 @@
 
 
   <!-- Header -->
-  <header>
-    <div class="nav-inner">
-      <div class="brand">
-        <div class="logo"><img src="https://github.com/readersociety/readersociety.github.io/blob/main/SmallSquareLogoJpg.jpg?raw=true" alt="Our Logo!"></div>
-        <h1>Reader Society</h1>
-      </div>
-      <nav>
-        <ul>
-          <li><a href="index.html" class="active">Home</a></li>
-          <li><a href="book-archive.html">Books</a></li>
-          <li><a href="events.html">Events</a></li>
-          <li><a href="members.html">Members</a></li>
-          <li><a href="about.html">About</a></li>
-        </ul>
-      </nav>
+ <header>
+  <div class="nav-inner">
+    <div class="brand">
+      <div class="logo"></div>
+      <h1>Reader Society</h1>
     </div>
-  </header>
+
+    <div class="menu-toggle" id="menu-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <nav>
+      <ul id="nav-links">
+        <li><a href="home.html" class="active">Home</a></li>
+        <li><a href="book-archive.html">Books</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
 
   <!-- Hero -->
   <section class="hero">
@@ -413,6 +419,14 @@
               });
             });
         </script>
+  <script>
+const toggle = document.getElementById('menu-toggle');
+const navLinks = document.getElementById('nav-links');
+toggle.addEventListener('click', () => {
+  toggle.classList.toggle('active');
+  navLinks.classList.toggle('active');
+});
+</script>
 
 </body>
 </html>
