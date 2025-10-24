@@ -76,13 +76,13 @@ p {
   margin-bottom: 1rem;
   line-height: 1.75;
 }
-
 /* --------------------
    Header / Navbar
 -------------------- */
 header {
   position: fixed;
   top: 0;
+  left: 0;
   width: 100%;
   z-index: 100;
   background: rgba(11, 18, 32, 0.75);
@@ -90,57 +90,138 @@ header {
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   transition: background 0.4s ease, box-shadow 0.4s ease;
 }
+
 header.scrolled {
   background: rgba(11, 18, 32, 0.95);
   box-shadow: 0 4px 25px rgba(59,130,246,0.2);
 }
+
+/* Navbar Inner Container */
 .nav-inner {
-  max-width: 1200px;
-  margin: auto;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 16px 40px;
+  padding: 16px 32px;
+  box-sizing: border-box;
 }
+
+/* Brand / Logo */
 .brand {
   display: flex;
   align-items: center;
   gap: 12px;
 }
-.brand, .logo, .logo img {
-  width: 40px;
-  height: 40px;
+
+.logo {
+  width: 42px;
+  height: 42px;
   border-radius: 50%;
   background: linear-gradient(135deg, var(--accent-500), var(--accent-600));
   box-shadow: 0 0 20px rgba(59,130,246,0.4);
   animation: pulse 3s infinite;
 }
+
 .brand h1 {
-  font-size: 18px;
+  font-family: "Yusei Magic", sans-serif;
+  font-size: 1.4rem;
   font-weight: 600;
   color: #fff;
+  letter-spacing: 1px;
 }
+
 @keyframes pulse {
   0%, 100% { transform: scale(1); }
   50% { transform: scale(1.08); }
 }
+
+/* Navigation Links */
 nav ul {
   display: flex;
-  gap: 16px;
+  align-items: center;
+  gap: 20px;
   list-style: none;
+  margin: 0;
+  padding: 0;
 }
+
 nav a {
   color: var(--muted);
+  font-family: "Work Sans", sans-serif;
   font-weight: 500;
   text-decoration: none;
   padding: 8px 14px;
   border-radius: 8px;
   transition: all 0.3s ease;
 }
+
 nav a.active, nav a:hover {
   background: rgba(59, 130, 246, 0.15);
   color: var(--accent-400);
 }
+
+/* Hamburger Menu */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 5px;
+}
+
+.menu-toggle span {
+  width: 25px;
+  height: 3px;
+  background: #fff;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* Mobile Styles */
+@media (max-width: 850px) {
+  .nav-inner {
+    padding: 14px 20px;
+  }
+
+  nav ul {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    flex-direction: column;
+    background: rgba(10, 15, 25, 0.98);
+    backdrop-filter: blur(12px);
+    padding: 20px 0;
+    gap: 10px;
+    transform: translateY(-120%);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.4s ease;
+  }
+
+  nav ul.active {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .menu-toggle {
+    display: flex;
+  }
+}
+
+/* Smooth animation for hamburger */
+.menu-toggle.active span:nth-child(1) {
+  transform: rotate(45deg) translateY(8px);
+}
+.menu-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+.menu-toggle.active span:nth-child(3) {
+  transform: rotate(-45deg) translateY(-8px);
+}
+
 
 /* --------------------
    Hero Section
