@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reader Society — Opening</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Yusei+Magic&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* === Base Setup === */
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+      background: radial-gradient(circle at center, #04091f, #010313 80%);
+      font-family: "Yusei Magic", sans-serif;
+      color: #ffffff;
+    }
+
+    .preloader {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      background: radial-gradient(circle at 50% 50%, #03081a 0%, #000 90%);
+    }
+
+    /* === Stars === */
+    .star {
+      position: absolute;
+      background: white;
+      border-radius: 50%;
+      opacity: 0;
+      animation: twinkle 4s infinite ease-in-out;
+    }
+
+    @keyframes twinkle {
+      0%, 100% { opacity: 0; transform: scale(0.8); }
+      50% { opacity: 1; transform: scale(1.2); }
+    }
+
+    /* === Reader Society Text === */
+    .title {
+      position: relative;
+      font-size: clamp(2rem, 6vw, 4rem);
+      letter-spacing: 6px;
+      text-transform: uppercase;
+      color: #dce6ff;
+      text-shadow: 0 0 15px rgba(120, 160, 255, 0.6);
+      opacity: 0;
+      animation: fadeInText 2s ease forwards 3.2s;
+      z-index: 5;
+    }
+
+    @keyframes fadeInText {
+      from { opacity: 0; transform: translateY(20px) scale(0.95); filter: blur(10px); }
+      to { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+    }
+
+    /* === Light Beams === */
+    .beam {
+      position: absolute;
+      width: 2px;
+      height: 200vh;
+      background: linear-gradient(to top, transparent, rgba(120,160,255,0.7), transparent);
+      top: 50%;
+      left: 50%;
+      opacity: 0;
+      transform: translate(-50%, -50%) rotate(var(--angle));
+      animation: beamPulse 4s ease-in-out infinite alternate;
+    }
+
+    @keyframes beamPulse {
+      0%, 100% { opacity: 0.2; transform: translate(-50%, -50%) scaleY(1) rotate(var(--angle)); }
+      50% { opacity: 0.8; transform: translate(-50%, -50%) scaleY(1.2) rotate(var(--angle)); }
+    }
+
+    /* === Fade to Website === */
+    .fade-overlay {
+      position: fixed;
+      inset: 0;
+      background: #000;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 2s ease-in-out;
+      z-index: 20;
+    }
+
+    .fade-overlay.active {
+      opacity: 1;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="preloader" id="preloader">
+    <div class="title">Reader Society</div>
+    <div class="fade-overlay" id="fade"></div>
+  </div>
+
+  <script>
+    /* === Generate Stars === */
+    const preloader = document.getElementById("preloader");
+    for (let i = 0; i < 70; i++) {
+      const star = document.createElement("div");
+      star.classList.add("star");
+      const size = Math.random() * 3 + 1;
+      star.style.width = `${size}px`;
+      star.style.height = `${size}px`;
+      star.style.top = `${Math.random() * 100}%`;
+      star.style.left = `${Math.random() * 100}%`;
+      star.style.animationDelay = `${Math.random() * 5}s`;
+      preloader.appendChild(star);
+    }
+
+    /* === Create Beams of Light === */
+    const beamAngles = [0, 20, 45, 70, 110, 135, 160];
+    beamAngles.forEach(angle => {
+      const beam = document.createElement("div");
+      beam.classList.add("beam");
+      beam.style.setProperty("--angle", `${angle}deg`);
+      beam.style.animationDelay = `${Math.random() * 3}s`;
+      preloader.appendChild(beam);
+    });
+
+    /* === Fade transition into website === */
+    const fade = document.getElementById("fade");
+    setTimeout(() => {
+      fade.classList.add("active");
+      setTimeout(() => {
+        window.location.href = "home.html";
+      }, 2200);
+    }, 6000);
+  </script>
+</body>
+</html>
