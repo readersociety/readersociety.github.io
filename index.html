@@ -99,29 +99,30 @@
     }
 
     /* === Motto Typewriting Effect === */
-    .motto {
-      font-family: "Work Sans", sans-serif;
-      font-size: clamp(0.7rem, 2vw, 1rem);
-      font-weight: 400;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: #aeb9d4;
-      text-shadow: 0 0 8px rgba(120, 160, 255, 0.3);
-      margin-top: 10px;
-      white-space: nowrap;
-      overflow: hidden;
-      width: 0;
-      opacity: 0;
-      /* Removes the blinking cursor */
-      border-right: none;
-      /* Slowed down typing effect */
-      animation: typing 6s steps(30, end) forwards;
-    }
-    
-    @keyframes typing {
-      from { width: 0 }
-      to { width: 100% }
-    }
+    /* === Motto Fade-In Effect === */
+.motto {
+  font-family: "Work Sans", sans-serif;
+  font-size: clamp(0.7rem, 2vw, 1rem);
+  font-weight: 400;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #aeb9d4;
+  text-shadow: 0 0 8px rgba(120, 160, 255, 0.3);
+  margin-top: 10px;
+  opacity: 0; /* Starts hidden */
+}
+
+.motto.fade-in {
+  /* Using keyframes to handle the fade-in animation */
+  animation: fadeInMotto 3s ease-in forwards;
+  animation-delay: 5.2s; /* Starts after the main title finishes fading in */
+}
+
+@keyframes fadeInMotto {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
   </style>
 </head>
 
@@ -133,46 +134,48 @@
   </div>
 
   <script>
-    /* === Generate Stars === */
-    const preloader = document.getElementById("preloader");
-    for (let i = 0; i < 70; i++) {
-      const star = document.createElement("div");
-      star.classList.add("star");
-      const size = Math.random() * 3 + 1;
-      star.style.width = `${size}px`;
-      star.style.height = `${size}px`;
-      star.style.top = `${Math.random() * 100}%`;
-      star.style.left = `${Math.random() * 100}%`;
-      star.style.animationDelay = `${Math.random() * 5}s`;
-      preloader.appendChild(star);
-    }
+   /* === Generate Stars === */
+const preloader = document.getElementById("preloader");
+for (let i = 0; i < 70; i++) {
+  const star = document.createElement("div");
+  star.classList.add("star");
+  const size = Math.random() * 3 + 1;
+  star.style.width = `${size}px`;
+  star.style.height = `${size}px`;
+  star.style.top = `${Math.random() * 100}%`;
+  star.style.left = `${Math.random() * 100}%`;
+  star.style.animationDelay = `${Math.random() * 5}s`;
+  preloader.appendChild(star);
+}
 
-    /* === Create Beams of Light === */
-    const beamAngles = [0, 20, 45, 70, 110, 135, 160];
-    beamAngles.forEach(angle => {
-      const beam = document.createElement("div");
-      beam.classList.add("beam");
-      beam.style.setProperty("--angle", `${angle}deg`);
-      beam.style.animationDelay = `${Math.random() * 3}s`;
-      preloader.appendChild(beam);
-    });
+/* === Create Beams of Light === */
+const beamAngles = [0, 20, 45, 70, 110, 135, 160];
+beamAngles.forEach(angle => {
+  const beam = document.createElement("div");
+  beam.classList.add("beam");
+  beam.style.setProperty("--angle", `${angle}deg`);
+  beam.style.animationDelay = `${Math.random() * 3}s`;
+  preloader.appendChild(beam);
+});
 
-    /* === Handle Animations and Fade transition === */
-    const fade = document.getElementById("fade");
-    const motto = document.getElementById("motto");
+/* === Handle Animations and Fade transition === */
+const fade = document.getElementById("fade");
+const motto = document.getElementById("motto");
 
-    // Add typing effect to motto after the title has faded in
-    setTimeout(() => {
-      motto.style.opacity = 1;
-    }, 5200); // 3.2s for title fadeIn + 2s for title fadeIn duration
+// Trigger the fade-in animation for the motto
+// This is handled by a CSS animation-delay now, so a separate JS timeout isn't strictly necessary for the animation itself, but we can keep the logic here for clarity if needed.
+setTimeout(() => {
+  motto.classList.add("fade-in");
+}, 5200); // Trigger motto fade-in after the title animation finishes (3.2s + 2s)
 
-    // Start the page transition after all animations are complete
-    setTimeout(() => {
-      fade.classList.add("active");
-      setTimeout(() => {
-        window.location.href = "home.html";
-      }, 2200);
-    }, 11200); // 5.2s for title + 6s for motto typing
+// Start the page transition after all animations are complete
+setTimeout(() => {
+  fade.classList.add("active");
+  setTimeout(() => {
+    window.location.href = "home.html";
+  }, 2200);
+}, 8200); // 5.2s for title + 3s for motto fade-in
+
   </script>
 </body>
 </html>
