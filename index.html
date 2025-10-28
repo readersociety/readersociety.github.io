@@ -141,31 +141,31 @@
     <div class="motto" id="motto">Lighting our world - through books</div>
     <div class="fade-overlay" id="fade"></div>
   </div>
+<script>
+ /* === Generate Stars === */
+const preloader = document.getElementById("preloader");
+for (let i = 0; i < 70; i++) {
+  const star = document.createElement("div");
+  star.classList.add("star");
+  const size = Math.random() * 3 + 1;
+  star.style.width = `${size}px`;
+  star.style.height = `${size}px`;
+  star.style.top = `${Math.random() * 100}%`;
+  star.style.left = `${Math.random() * 100}%`;
+  star.style.animationDelay = `${Math.random() * 5}s`;
+  preloader.appendChild(star);
+}
 
-  <script>
-    /* === Generate Stars === */
-    const preloader = document.getElementById("preloader");
-    for (let i = 0; i < 70; i++) {
-      const star = document.createElement("div");
-      star.classList.add("star");
-      const size = Math.random() * 3 + 1;
-      star.style.width = `${size}px`;
-      star.style.height = `${size}px`;
-      star.style.top = `${Math.random() * 100}%`;
-      star.style.left = `${Math.random() * 100}%`;
-      star.style.animationDelay = `${Math.random() * 5}s`;
-      preloader.appendChild(star);
-    }
+/* === Create Beams of Light === */
+const beamAngles = [0, 20, 45, 70, 110, 135, 160];
+beamAngles.forEach(angle => {
+  const beam = document.createElement("div");
+  beam.classList.add("beam");
+  beam.style.setProperty("--angle", `${angle}deg`);
+  beam.style.animationDelay = `${Math.random() * 3}s`;
+  preloader.appendChild(beam);
+});
 
-    /* === Create Beams of Light === */
-    const beamAngles = [0, 20, 45, 70, 110, 135, 160];
-    beamAngles.forEach(angle => {
-      const beam = document.createElement("div");
-      beam.classList.add("beam");
-      beam.style.setProperty("--angle", `${angle}deg`);
-      beam.style.animationDelay = `${Math.random() * 3}s`;
-      preloader.appendChild(beam);
-    });
 /* === Handle Animations and Fade transition === */
 const fade = document.getElementById("fade");
 const motto = document.getElementById("motto");
@@ -175,14 +175,14 @@ setTimeout(() => {
   motto.style.opacity = 1;
   motto.classList.add("typing");
 }, 3000); // This delay is coordinated with the CSS animation-delay
-    /* === Fade transition into website === */
-    const fade = document.getElementById("fade");
-    setTimeout(() => {
-      fade.classList.add("active");
-      setTimeout(() => {
-        window.location.href = "home.html";
-      }, 2200);
-    }, 8000);
-  </script>
+
+// Start the page transition after all animations are complete
+setTimeout(() => {
+  fade.classList.add("active");
+  setTimeout(() => {
+    window.location.href = "home.html";
+  }, 2200);
+}, 8000); // This should follow the previous timeout
+</script>
 </body>
 </html>
