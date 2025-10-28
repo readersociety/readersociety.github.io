@@ -96,12 +96,49 @@
     .fade-overlay.active {
       opacity: 1;
     }
+
+  
+.motto {
+  position: relative;
+  font-family: "Work Sans", sans-serif;
+  font-size: clamp(0.7rem, 2vw, 1rem);
+  font-weight: 400;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #aeb9d4;
+  text-shadow: 0 0 8px rgba(120, 160, 255, 0.3);
+  margin-top: 10px;
+  white-space: nowrap; /* Keep text on a single line */
+  overflow: hidden; /* Hide text as it's being "typed" */
+  width: 0; /* Starts with zero width */
+  opacity: 0;
+  border-right: 0.15em solid #aeb9d4; /* The "blinking cursor" */
+}
+
+/* Add the CSS animations */
+.motto.typing {
+  animation: typing 3s steps(30, end) forwards,
+             blink-caret 0.75s step-end infinite;
+  animation-delay: 3s; /* Delay the animation to start after the main title */
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: #aeb9d4; }
+}
+
   </style>
 </head>
 
 <body>
   <div class="preloader" id="preloader">
     <div class="title">Reader Society</div>
+    <div class="title">Lighting our world - through books</div>
     <div class="fade-overlay" id="fade"></div>
   </div>
 
@@ -129,7 +166,15 @@
       beam.style.animationDelay = `${Math.random() * 3}s`;
       preloader.appendChild(beam);
     });
+/* === Handle Animations and Fade transition === */
+const fade = document.getElementById("fade");
+const motto = document.getElementById("motto");
 
+// Add typing effect to motto after 3 seconds
+setTimeout(() => {
+  motto.style.opacity = 1;
+  motto.classList.add("typing");
+}, 3000); // This delay is coordinated with the CSS animation-delay
     /* === Fade transition into website === */
     const fade = document.getElementById("fade");
     setTimeout(() => {
@@ -137,7 +182,7 @@
       setTimeout(() => {
         window.location.href = "home.html";
       }, 2200);
-    }, 6000);
+    }, 8000);
   </script>
 </body>
 </html>
