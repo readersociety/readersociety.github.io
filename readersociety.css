@@ -236,7 +236,7 @@ nav a.active, nav a:hover {
   border-radius: 16px;
   overflow: hidden;
 }
-.hero video {
+.hero video, .hero img {
   position: absolute;
   inset: 0;
   width: 100%;
