@@ -161,19 +161,20 @@ beamAngles.forEach(angle => {
 const fade = document.getElementById("fade");
 const motto = document.getElementById("motto");
 
-// Trigger the fade-in animation for the motto
-// This is handled by a CSS animation-delay now, so a separate JS timeout isn't strictly necessary for the animation itself, but we can keep the logic here for clarity if needed.
-setTimeout(() => {
-  motto.classList.add("fade-in");
-}, 5200); // Trigger motto fade-in after the title animation finishes (3.2s + 2s)
+// Set the motto animation to trigger via CSS after the title finishes
+motto.classList.add("fade-in");
 
-// Start the page transition after all animations are complete
-setTimeout(() => {
+// Listen for the animation to end on the motto
+motto.addEventListener("animationend", () => {
+  // Start the page transition after the motto finishes fading in
   fade.classList.add("active");
-  setTimeout(() => {
+
+  // Listen for the 'transitionend' on the fade-overlay to redirect
+  fade.addEventListener("transitionend", () => {
     window.location.href = "home.html";
-  }, 2200);
-}, 8200); // 5.2s for title + 3s for motto fade-in
+  });
+});
+
 
   </script>
 </body>
