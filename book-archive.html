@@ -224,6 +224,14 @@
   }, { threshold: 0.2 });
   document.querySelectorAll("section").forEach(sec => observer.observe(sec));
 </script>
+ <script>
+    const toggle = document.getElementById('menu-toggle');
+    const navLinks = document.getElementById('nav-links');
+    toggle.addEventListener('click', () => {
+      toggle.classList.toggle('active');
+      navLinks.classList.toggle('active');
+    });
+</script>
     <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
         <script type>
             // Initialize Lenis smooth scroll
