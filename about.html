@@ -9,7 +9,167 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Yusei+Magic&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="readersociety.css">
-<style></style>
+<style>
+ /* --- New Color Scheme Variables --- */
+:root {
+    --bg-dark: #060b18;
+    --bg-darker: #040812;
+    --accent: #3a7dff; /* Your main glow/line color */
+    --accent-light: #66a3ff;
+    --text-light: #e0e8ff;
+    --text-muted: #9db4d9;
+    --card-bg: rgba(20, 25, 45, 0.85); /* Semi-transparent for modern effect */
+    --border-glow: rgba(58, 125, 255, 0.4);
+    --gradient: linear-gradient(135deg, #0c1733, #1b2b52, #0e162f);
+
+    /* Map previous generic names to new scheme for consistency */
+    --glow-color: var(--accent);
+    --line-color: var(--card-bg); /* Use a darker background for the static line */
+    --dot-color: var(--accent-light);
+    --bg-color: var(--bg-dark);
+    --content-bg: var(--card-bg);
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-light);
+    font-family: "Work-Sans", sans-serif;
+    overflow-x: hidden;
+    background: var(--gradient); /* Use the defined gradient for the body background */
+}
+
+/* --- Timeline Structure and Layout --- */
+.timeline-container {
+    position: relative;
+    width: 100%;
+    overflow-x: auto;
+    padding-top: 50px;
+    padding-bottom: 50px;
+
+}
+
+.timeline-line {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background-color: var(--line-color);
+    transform: translateY(-50%);
+}
+
+.timeline-inner-line {
+    display: block;
+    height: 100%;
+    width: 0;
+    background-color: var(--glow-color);
+    /* Updated glow effect for new blue accent color */
+    box-shadow: 0 0 10px var(--glow-color), 0 0 20px rgba(58, 125, 255, 0.5); 
+    transition: width 1s ease-out;
+}
+
+.timeline-events {
+    display: flex;
+    justify-content: flex-start; /* Aligns items from the start for scrolling */
+    align-items: flex-start;
+    position: relative;
+    padding-top: 50px; 
+    padding-bottom: 50px; 
+}
+
+.timeline-item {
+    flex: 0 0 auto; /* Ensures all 7 cards show up and allows scrolling */
+    min-width: 250px;
+    position: relative;
+    text-align: center;
+    padding: 20px 10px;
+    opacity: 0; /* Initial state for animation */
+    transform: translateY(20px);
+    /* Transition includes delay for staggered effect */
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out, transition-delay 0.5s ease-out; 
+}
+
+/* Position items dynamically (simple alternating) */
+.timeline-item:nth-child(even) {
+    margin-top: 150px; /* Position below the line */
+}
+
+.timeline-item:nth-child(odd) {
+    margin-bottom: 150px; /* Position above the line */
+}
+
+/* --- Content Styling --- */
+.timeline-content {
+    background-color: var(--content-bg);
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--border-glow); /* Subtle glow border */
+    backdrop-filter: blur(5px); /* Adds a modern frosted glass look to cards */
+}
+
+.timeline-content img {
+    max-width: 100%;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.timeline-item h3 {
+  font-family: "Yusei Magic", "Work-Sans", sans-serif;
+    margin-top: 0;
+    color: var(--accent-light); /* Use accent light for titles */
+}
+
+.timeline-item p {
+    color: var(--text-muted);
+}
+
+/* --- Dynamic Animations --- */
+.timeline-item.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- Custom Scrollbar Styling (Webkit Browsers) --- */
+::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+    background-color: var(--bg-darker);
+}
+
+::-webkit-scrollbar-track {
+    background: var(--card-bg);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--accent); 
+    border-radius: 10px;
+    box-shadow: 0 0 5px var(--accent), 0 0 10px var(--accent);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-light);
+    box-shadow: 0 0 10px var(--accent-light), 0 0 20px var(--accent-light);
+}
+
+/* --- Firefox Specific Styling --- */
+.timeline-container {
+    scrollbar-width: thin; 
+    scrollbar-color: var(--accent) var(--card-bg); 
+}
+
+/* --- Responsiveness for small screens --- */
+@media (max-width: 768px) {
+    .timeline-item {
+        min-width: 200px;
+        margin-top: 0 !important;
+        margin-bottom: 0 !important;
+        padding-top: 40px; 
+    }
+}
+
+</style>
 </head>
 <body>
   <!--==== Star Background ===-->
@@ -80,6 +240,67 @@
   </section>
   <p>Lorem lorem ispum dolor sinametLorem lorem ispum dolor sinametLorem lorem ispum dolor sinametLorem lorem ispum dolor sinametLorem lorem ispum dolor sinamet Lorem lorem ispum dolor sinamet Lorem lorem ispum dolor sinamet</p>
 </body>
+
+  <!---TIMELINE -->
+  <div class="timeline-container">
+<div class="fade-overlay left"></div> <!-- Add this -->
+    <div class="fade-overlay right"></div> <!-- Add this -->
+
+    <div class="timeline-line">
+
+        <span class="timeline-inner-line" id="animated-line"></span>
+    </div>
+    <div class="timeline-events">
+        <!-- Timeline Item 1: With Image -->
+        <div class="timeline-item" data-date="2019">
+           
+            <div class="timeline-content">
+                <img src="https://via.placeholder.com/150" alt="Event 1">
+                <h3>Event Title 1</h3>
+                <p>asaddddddddddddd on warshsad saljdasjld asjdhjsd sahdsajdhs jasd </p>
+
+            </div>
+        </div>
+        
+        <!-- Timeline Item 2: Without Image -->
+        <div class="timeline-item" data-date="2020">
+            
+            <div class="timeline-content">
+                <h3>Event Title 2</h3>
+                <p>Details about the second event, no image.</p>
+            </div>
+        </div>
+<!-- Timeline Item 2: Without Image -->
+        <div class="timeline-item" data-date="2021">
+           
+            <div class="timeline-content">
+                <h3>Event Title 2</h3>
+                <p>Details about the second event, no image.</p>
+            </div>
+        </div>
+ <!-- Timeline Item 3: With Image -->
+        <div class="timeline-item" data-date="2022">
+           
+            <div class="timeline-content">
+                <img src="https://via.placeholder.com/150" alt="Event 3">
+                <h3>Event Title 3</h3>
+                <p>Details about the third event.</p>
+            </div>
+        </div>
+  <!-- Timeline Item 3: With Image -->
+        <div class="timeline-item" data-date="2013">
+           
+            <div class="timeline-content">
+                <img src="https://via.placeholder.com/150" alt="Event 3">
+                <h3>Event Title 3</h3>
+                <p>Details about the third event.</p>
+            </div>
+        </div>
+  
+
+        
+    </div>
+</div>
    <script>
   // Navbar + body scroll effects
   const header = document.querySelector("header");
@@ -155,4 +376,58 @@
       navLinks.classList.toggle('active');
     });
 </script>
+  <!---TIMELINE SCRIPT --->
+   <script>
+        document.addEventListener('DOMContentLoaded', () => {
+    const timelineItems = document.querySelectorAll('.timeline-item');
+    const animatedLine = document.getElementById('animated-line');
+    const timelineEvents = document.querySelector('.timeline-events');
+
+    // Function to check if an element is close enough to the viewport (e.g., 80% visible area)
+    function isElementNearViewport(el) {
+        const rect = el.getBoundingClientRect();
+        // Check if the element's center is within 80% of the viewport height
+        return rect.top <= (window.innerHeight * 0.8);
+    }
+
+    // Function to handle animations on scroll
+    function handleScrollAnimations() {
+        let maxRight = 0;
+        let delay = 0;
+        const delayIncrement = 200; // 200ms delay between items
+
+        timelineItems.forEach(item => {
+            // Only process items that haven't been made visible yet
+            if (!item.classList.contains('visible')) {
+                if (isElementNearViewport(item)) {
+                    // Apply a staggered delay using a CSS custom property
+                    item.style.transitionDelay = `${delay}ms`;
+                    item.classList.add('visible');
+                    delay += delayIncrement;
+                }
+            }
+
+            // Calculate how far the line should extend for ALREADY visible items
+            if (item.classList.contains('visible')) {
+                const itemRight = item.getBoundingClientRect().right - timelineEvents.getBoundingClientRect().left;
+                if (itemRight > maxRight) {
+                    maxRight = itemRight;
+                }
+            }
+        });
+        
+        // Update the animated line width dynamically based on the furthest visible item
+        if (maxRight > 0) {
+           // We add some buffer for a smoother line growth
+           animatedLine.style.width = `${maxRight + 50}px`; 
+        }
+    }
+
+    // Event listeners for scroll and initial load
+    window.addEventListener('scroll', handleScrollAnimations);
+    window.addEventListener('resize', handleScrollAnimations);
+    handleScrollAnimations(); // Initial check on load
+});
+
+    </script>
 </html>
