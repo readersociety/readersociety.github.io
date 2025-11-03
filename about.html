@@ -130,33 +130,53 @@ body {
     transform: translateY(0);
 }
 
-/* --- Custom Scrollbar Styling (Webkit Browsers) --- */
-::-webkit-scrollbar {
-    width: 12px;
-    height: 12px;
-    background-color: var(--bg-darker);
+/* Hide the default scrollbar in the container */
+.timeline-container::-webkit-scrollbar {
+    display: none; /* Hide scrollbar for Chrome, Safari, Opera */
 }
 
-::-webkit-scrollbar-track {
-    background: var(--card-bg);
-    border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb {
-    background: var(--accent); 
-    border-radius: 10px;
-    box-shadow: 0 0 5px var(--accent), 0 0 10px var(--accent);
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: var(--accent-light);
-    box-shadow: 0 0 10px var(--accent-light), 0 0 20px var(--accent-light);
-}
-
-/* --- Firefox Specific Styling --- */
 .timeline-container {
-    scrollbar-width: thin; 
-    scrollbar-color: var(--accent) var(--card-bg); 
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+    /* Keep existing overflow-x: auto; */
+    overflow-x: auto; 
+}
+
+/* New CSS for navigation buttons */
+.scroll-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 20; /* Ensure buttons are above everything else */
+    background-color: rgba(58, 125, 255, 0.2); /* Semi-transparent accent */
+    border: 1px solid var(--accent);
+    color: var(--text-light);
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    /* Glowing effect for buttons */
+    box-shadow: 0 0 5px var(--accent), 0 0 15px rgba(58, 125, 255, 0.5);
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.scroll-btn:hover {
+    background-color: var(--accent);
+    box-shadow: 0 0 10px var(--accent), 0 0 25px var(--accent);
+}
+
+.scroll-btn.left-btn {
+    left: 10px;
+}
+
+.scroll-btn.right-btn {
+    right: 10px;
+}
+
+/* Ensure the wrapper positions the buttons correctly */
+.timeline-wrapper {
+    position: relative;
+    padding: 0 60px; /* Add padding to wrapper so buttons don't overlap container content */
 }
 
 /* --- Responsiveness for small screens --- */
@@ -242,6 +262,8 @@ body {
 </body>
 
   <!---TIMELINE -->
+  <div class="timeline-wrapper"> <!-- New wrapper div -->
+    <button id="scroll-left-btn" class="scroll-btn left-btn">← Prev</button>
   <div class="timeline-container">
 <div class="fade-overlay left"></div> <!-- Add this -->
     <div class="fade-overlay right"></div> <!-- Add this -->
@@ -300,6 +322,9 @@ body {
 
         
     </div>
+    
+</div>
+    <button id="scroll-right-btn" class="scroll-btn right-btn">Next →</button>
 </div>
    <script>
   // Navbar + body scroll effects
@@ -378,55 +403,58 @@ body {
 </script>
   <!---TIMELINE SCRIPT --->
    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-    const timelineItems = document.querySelectorAll('.timeline-item');
+document.addEventListener('DOMContentLoaded', () => {
+    const timelineContainer = document.querySelector('.timeline-container');
     const animatedLine = document.getElementById('animated-line');
+    const scrollLeftBtn = document.getElementById('scroll-left-btn');
+    const scrollRightBtn = document.getElementById('scroll-right-btn');
     const timelineEvents = document.querySelector('.timeline-events');
+    const timelineItems = document.querySelectorAll('.timeline-item');
+    
+    // Ensure all items are visible for horizontal navigation control
+    timelineItems.forEach(item => {
+        item.classList.add('visible');
+    });
 
-    // Function to check if an element is close enough to the viewport (e.g., 80% visible area)
-    function isElementNearViewport(el) {
-        const rect = el.getBoundingClientRect();
-        // Check if the element's center is within 80% of the viewport height
-        return rect.top <= (window.innerHeight * 0.8);
-    }
+    const scrollAmount = 300; // Amount to scroll per click (adjust as needed)
 
-    // Function to handle animations on scroll
-    function handleScrollAnimations() {
-        let maxRight = 0;
-        let delay = 0;
-        const delayIncrement = 200; // 200ms delay between items
-
-        timelineItems.forEach(item => {
-            // Only process items that haven't been made visible yet
-            if (!item.classList.contains('visible')) {
-                if (isElementNearViewport(item)) {
-                    // Apply a staggered delay using a CSS custom property
-                    item.style.transitionDelay = `${delay}ms`;
-                    item.classList.add('visible');
-                    delay += delayIncrement;
-                }
-            }
-
-            // Calculate how far the line should extend for ALREADY visible items
-            if (item.classList.contains('visible')) {
-                const itemRight = item.getBoundingClientRect().right - timelineEvents.getBoundingClientRect().left;
-                if (itemRight > maxRight) {
-                    maxRight = itemRight;
-                }
-            }
-        });
-        
-        // Update the animated line width dynamically based on the furthest visible item
-        if (maxRight > 0) {
-           // We add some buffer for a smoother line growth
-           animatedLine.style.width = `${maxRight + 50}px`; 
+    // Function to handle left/right button clicks
+    function scrollHorizontally(direction) {
+        if (direction === 'left') {
+            // Scroll left smoothly
+            timelineContainer.scrollBy({
+                left: -scrollAmount,
+                behavior: 'smooth'
+            });
+        } else {
+            // Scroll right smoothly
+            timelineContainer.scrollBy({
+                left: scrollAmount,
+                behavior: 'smooth'
+            });
         }
     }
 
-    // Event listeners for scroll and initial load
-    window.addEventListener('scroll', handleScrollAnimations);
-    window.addEventListener('resize', handleScrollAnimations);
-    handleScrollAnimations(); // Initial check on load
+    // Add click event listeners to buttons
+    scrollLeftBtn.addEventListener('click', () => scrollHorizontally('left'));
+    scrollRightBtn.addEventListener('click', () => scrollHorizontally('right'));
+
+    // Keep the line growth logic from the previous step
+    function updateLineGrowth() {
+        const scrollWidth = timelineEvents.offsetWidth - timelineContainer.clientWidth;
+        const scrollPosition = timelineContainer.scrollLeft;
+        const scrollPercentage = (scrollPosition / scrollWidth) * 100;
+        
+        // Ensure line never exceeds 100% + some initial buffer
+        animatedLine.style.width = `calc(${Math.min(100, Math.max(0, scrollPercentage))}%)`; 
+    }
+
+    // Event listener for horizontal scroll within the container
+    timelineContainer.addEventListener('scroll', updateLineGrowth);
+    window.addEventListener('resize', updateLineGrowth);
+    
+    // Initial call
+    updateLineGrowth();
 });
 
     </script>
