@@ -47,6 +47,7 @@
   <div class="particle"></div>
 </div>
   <!-- Header -->
+  <main>
  <header>
   <div class="nav-inner">
     <div class="brand">
@@ -158,163 +159,173 @@
   <!-- Navigation buttons -->
   <button id="prevBtn" class="nav-btn nav-left">&#10094;</button>
   <button id="nextBtn" class="nav-btn nav-right">&#10095;</button>
- 
- <!-- Move all these scripts into one block at the end of the <body> -->
+  <footer>© 2025 Reader Society Book Club · All Rights Reserved</footer>
+</main>
+<!-- Place this one script block at the very bottom of your <body> -->
+<!-- First, load the external Lenis library -->
 <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
 
 <script>
-// --- GLOBAL VARS (Declared once) ---
-const header = document.querySelector("header");
-const body = document.body;
+    // --- Global Variables (Declared once) ---
+    const header = document.querySelector("header");
+    const body = document.body;
+    const toggle = document.getElementById('menu-toggle');
+    const navLinks = document.getElementById('nav-links');
 
-// --- Navbar + body scroll effects ---
-window.addEventListener("scroll", () => {
-    header.classList.toggle("scrolled", window.scrollY > 50);
-    body.classList.toggle("scrolled", window.scrollY > 100);
-});
-
-// --- Menu Toggle ---
-const toggle = document.getElementById('menu-toggle');
-const navLinks = document.getElementById('nav-links');
-if (toggle) {
-    toggle.addEventListener('click', () => {
-        toggle.classList.toggle('active');
-        navLinks.classList.toggle('active');
-    });
-}
-
-// --- Lenis Smooth Scroll & Fade-In Observer (Initialized on DOM Load) ---
-document.addEventListener('DOMContentLoaded', () => {
-    const lenis = new Lenis({
-        lerp: 0.05,
-        wheelMultiplier: 0.8,
-        duration: 1.5,
-        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    // --- Navbar Scroll Effect ---
+    window.addEventListener("scroll", () => {
+        header.classList.toggle("scrolled", window.scrollY > 50);
+        body.classList.toggle("scrolled", window.scrollY > 100);
     });
 
-    function raf(time) {
-        lenis.raf(time);
-        requestAnimationFrame(raf);
+    // --- Mobile Menu Toggle ---
+    if (toggle) {
+        toggle.addEventListener('click', () => {
+            toggle.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
     }
-    requestAnimationFrame(raf);
 
-    // Fade-in effect observer (using a locally scoped 'observer' variable here)
-    const observerOptions = { root: null, rootMargin: '0px', threshold: 0.2 };
-    const fadeInObserver = new IntersectionObserver((entries, observer) => { // Renamed to fadeInObserver
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('show');
-                observer.unobserve(entry.target);
+    // --- Section Reveal Animation (Your first observer script) ---
+    const sectionObserver = new IntersectionObserver(entries => { // Renamed to sectionObserver
+        entries.forEach(e => {
+            if (e.isIntersecting) {
+                e.target.classList.add("in-view");
+                sectionObserver.unobserve(e.target); // Use the renamed observer here
             }
         });
-    }, observerOptions);
-    document.querySelectorAll('.fade-in').forEach(el => {
-        fadeInObserver.observe(el);
+    }, { threshold: 0.2 });
+    document.querySelectorAll("section").forEach(sec => sectionObserver.observe(sec));
+
+
+    // --- Lenis Smooth Scroll & Fade-In Observer (Initialized on DOM Load) ---
+    document.addEventListener('DOMContentLoaded', () => {
+        const lenis = new Lenis({
+            lerp: 0.05,
+            wheelMultiplier: 0.8,
+            duration: 1.5,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        });
+
+        function raf(time) {
+            lenis.raf(time);
+            requestAnimationFrame(raf);
+        }
+        requestAnimationFrame(raf);
+
+        // Intersection Observer for fade-in effects on scroll (using 'show' class)
+        const observerOptions = { root: null, rootMargin: '0px', threshold: 0.2 };
+        const fadeInObserver = new IntersectionObserver((entries, observer) => { // Renamed to fadeInObserver
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+        document.querySelectorAll('.fade-in').forEach(el => {
+            fadeInObserver.observe(el);
+        });
     });
-});
 
 
-// --- Timeline Script (The one you asked about) ---
+    // --- TIMELINE SCRIPT (The main logic) ---
 
-// ===== Timeline Core Vars =====
-const timeline = document.getElementById("timeline");
-const events = document.querySelectorAll(".timeline-event");
-const timelineLine = document.getElementById("timelineLine");
+    // ===== Timeline Core Vars =====
+    const timeline = document.getElementById("timeline");
+    const events = document.querySelectorAll(".timeline-event");
+    const timelineLine = document.getElementById("timelineLine");
 
-let index = 0;
-let autoScrollInterval = null;
-let isVisible = false;
+    let index = 0;
+    let autoScrollInterval = null;
+    let isVisible = false;
 
-// Update active event and scroll
-function updateActive() {
-  events.forEach((event, i) => {
-    event.classList.toggle("active", i === index);
-  });
-  if (timelineLine) {
-    timelineLine.classList.add("active");
-    setTimeout(() => timelineLine.classList.remove("active"), 2000);
-  }
-  if (timeline && events[index]) {
-    timeline.scrollTo({
-      left: events[index].offsetLeft,
-      behavior: "smooth"
+    // Update active event and scroll
+    function updateActive() {
+        events.forEach((event, i) => {
+            event.classList.toggle("active", i === index);
+        });
+        if (timelineLine) {
+            timelineLine.classList.add("active");
+            setTimeout(() => timelineLine.classList.remove("active"), 2000);
+        }
+        if (timeline && events[index]) {
+            timeline.scrollTo({
+                left: events[index].offsetLeft,
+                behavior: "smooth"
+            });
+        }
+    }
+
+    // Navigation controls
+    function nextEvent() {
+        index = (index + 1) % events.length;
+        updateActive();
+    }
+    function prevEvent() {
+        index = (index - 1 + events.length) % events.length;
+        updateActive();
+    }
+
+    // Navigation button listeners
+    const nextBtn = document.getElementById("nextBtn");
+    const prevBtn = document.getElementById("prevBtn");
+    if (nextBtn) nextBtn.addEventListener("click", () => {
+        nextEvent();
+        resetAutoScroll();
     });
-  }
-}
+    if (prevBtn) prevBtn.addEventListener("click", () => {
+        prevEvent();
+        resetAutoScroll();
+    });
 
-// Navigation controls
-function nextEvent() {
-  index = (index + 1) % events.length;
-  updateActive();
-}
-function prevEvent() {
-  index = (index - 1 + events.length) % events.length;
-  updateActive();
-}
-
-// Navigation button listeners
-const nextBtn = document.getElementById("nextBtn");
-const prevBtn = document.getElementById("prevBtn");
-if (nextBtn) nextBtn.addEventListener("click", () => {
-  nextEvent();
-  resetAutoScroll();
-});
-if (prevBtn) prevBtn.addEventListener("click", () => {
-  prevEvent();
-  resetAutoScroll();
-});
-
-// Auto-scroll System
-function startAutoScroll() {
-  if (!autoScrollInterval) {
-    autoScrollInterval = setInterval(nextEvent, 4000);
-  }
-}
-function stopAutoScroll() {
-  clearInterval(autoScrollInterval);
-  autoScrollInterval = null;
-}
-function resetAutoScroll() {
-  stopAutoScroll();
-  if (isVisible) startAutoScroll();
-}
-
-// Viewport Detection (using a different observer variable name)
-const timelineObserver = new IntersectionObserver(entries => { // Renamed to timelineObserver
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      isVisible = true;
-      startAutoScroll();
-    } else {
-      isVisible = false;
-      stopAutoScroll();
+    // Auto-scroll System
+    function startAutoScroll() {
+        if (!autoScrollInterval) {
+            autoScrollInterval = setInterval(nextEvent, 4000);
+        }
     }
-  });
-}, { threshold: 0.5 });
-if (timeline) timelineObserver.observe(timeline);
-
-
-// Touch Swipe Navigation
-let startX = 0, endX = 0;
-if (timeline) {
-  timeline.addEventListener("touchstart", e => { startX = e.touches[0].clientX; });
-  timeline.addEventListener("touchmove", e => { endX = e.touches[0].clientX; });
-  timeline.addEventListener("touchend", () => {
-    const diffX = startX - endX;
-    if (Math.abs(diffX) > 50) {
-      if (diffX > 0) nextEvent();
-      else prevEvent();
-      resetAutoScroll();
+    function stopAutoScroll() {
+        clearInterval(autoScrollInterval);
+        autoScrollInterval = null;
     }
-  });
-}
-window.addEventListener("resize", updateActive);
+    function resetAutoScroll() {
+        stopAutoScroll();
+        if (isVisible) startAutoScroll();
+    }
+
+    // Viewport Detection (starts auto-scroll when visible)
+    const timelineObserver = new IntersectionObserver(entries => { // Renamed to timelineObserver
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                isVisible = true;
+                startAutoScroll();
+            } else {
+                isVisible = false;
+                stopAutoScroll();
+            }
+        });
+    }, { threshold: 0.5 });
+    if (timeline) timelineObserver.observe(timeline);
+
+
+    // Touch Swipe Navigation
+    let startX = 0, endX = 0;
+    if (timeline) {
+        timeline.addEventListener("touchstart", e => { startX = e.touches[0].clientX; });
+        timeline.addEventListener("touchmove", e => { endX = e.touches[0].clientX; });
+        timeline.addEventListener("touchend", () => {
+            const diffX = startX - endX;
+            if (Math.abs(diffX) > 50) {
+                if (diffX > 0) nextEvent();
+                else prevEvent();
+                resetAutoScroll();
+            }
+        });
+    }
+    window.addEventListener("resize", updateActive);
+
 </script>
- <script>
-  const header = document.querySelector('header');
-  window.addEventListener('scroll', () => {
-    header.classList.toggle('scrolled', window.scrollY > 50);
-  });
-</script>
-  </body>
+<!-- Make sure your </body> and </html> tags are below this script -->
+</body>
 </html>
