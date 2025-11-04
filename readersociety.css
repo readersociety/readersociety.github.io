@@ -23,14 +23,28 @@
 }
 
 body {
-  background: var(--gradient);
-  color: var(--text-light);
-  font-family: "Work Sans", sans-serif;
-  scroll-behavior: smooth;
-  line-height: 1.7;
-  font-size: 1rem;
-  padding-inline: clamp(1rem, 4vw, 5rem);
+    /* Use the nice aurora background from Style 2/your newer CSS */
+    background: radial-gradient(circle at 50% 50%, #060b23, #020414 90%); 
+
+    /* Bring back the core resets and overflow from Style 3 */
+    margin: 0;
+    padding: 0; /* Removing padding here might fix timeline issues, or adjust timeline-wrapper width */
+    overflow-x: hidden; /* CRUCIAL for preventing main page horizontal scroll */
+    
+    /* Use the typography/layout styles from Style 1/2 */
+    color: var(--text-light);
+    font-family: "Work Sans", sans-serif;
+    scroll-behavior: smooth;
+    line-height: 1.7;
+    font-size: 1rem;
+    
+    /* Re-add the padding-inline if you need it for the overall page content */
+    padding-inline: clamp(1rem, 4vw, 5rem);
+    
+    /* The relative position needed for your aurora animations */
+    position: relative; 
 }
+
 
 /* ===== Typography ===== */
 h1, h2, h3, h4, h5 {
@@ -375,16 +389,7 @@ footer {
 
 /* ANimted stuff */
 /* ===== Deep Aurora Morphing Background ===== */
-body {
-  position: relative;
-  background: radial-gradient(circle at 50% 50%, #060b23, #020414 90%);
-  color: var(--text-light);
-  font-family: "Work Sans", sans-serif;
-  scroll-behavior: smooth;
-  line-height: 1.7;
-  font-size: 1rem;
-  padding-inline: clamp(1rem, 4vw, 5rem);
-}
+
 
 /* Aurora layers using blurred pseudo elements */
 body::before,
@@ -616,14 +621,7 @@ body::after {
 
 /* TIMELINE */
 
-body {
-    margin: 0;
-    padding: 0;
-    font-family: "Work Sans", "Poppins", sans-serif;
-    background: radial-gradient(circle at top, var(--bg-darker), var(--bg-dark));
-    color: var(--text-light);
-    overflow-x: hidden;
-  }
+
 
   h2 {
     font-family: "Yusei Magic", "Work Sans", "Poppins", sans-serif;
