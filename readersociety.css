@@ -755,9 +755,18 @@ body::after {
     to { text-shadow: 0 0 25px var(--accent), 0 0 40px var(--accent-light); }
   }
 
-  .event-text p {
+    .event-text p {
     color: var(--text-muted);
-    line-height: 1.6em;
+    line-height: 1.7em; /* Slightly increased line height */
+    font-size: 1.05rem; /* Slightly bigger font size */
+    
+    /* Added for readability */
+    background-color: rgba(6, 11, 24, 0.6); /* A dark background with 60% opacity */
+    padding: 1rem; /* Adds space between text and background edge */
+    border-radius: 8px; /* Softens the corners of the background */
+    
+    /* Ensures smooth transitions if the parent event animates */
+    transition: background-color 0.8s ease; 
   }
 
   .event-img {
@@ -823,3 +832,53 @@ body::after {
 
   .nav-left { left: 1rem; }
   .nav-right { right: 1rem; }
+
+/* --- Constitution Styling --- */
+
+/* Ensure the section uses your existing animation */
+#mission-vision {
+  /* This relies on your existing 'section.in-view' JS animation */
+  padding-bottom: 4rem; 
+}
+
+/* Specific styling for the document container */
+.constitution-section {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  background: var(--card-bg); /* Use your existing semi-transparent dark card background */
+  border: 1px solid var(--border-glow); /* Use your existing glowing border color */
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(58, 125, 255, 0.1);
+  backdrop-filter: blur(5px);
+  transition: box-shadow 0.3s ease;
+}
+
+.constitution-section:hover {
+    box-shadow: 0 0 25px rgba(58, 125, 255, 0.3);
+}
+
+/* Style for the Section headings (e.g., Section 1.01: Our Mission) */
+.constitution-section h3 {
+  font-family: "Yusei Magic", sans-serif;
+  color: var(--accent-light);
+  font-size: 1.3rem;
+  margin-bottom: 0.8rem;
+  /* Adds a slight glow to keep within theme */
+  text-shadow: 0 0 5px rgba(58, 125, 255, 0.5); 
+}
+
+/* Style for the paragraph text */
+.constitution-section p {
+  color: var(--text-muted);
+  line-height: 1.8;
+  margin-bottom: 0; /* Remove default paragraph margin */
+  font-size: 0.95rem;
+}
+
+/* Style for bold text within the paragraphs */
+.constitution-section p strong {
+    color: var(--accent);
+    font-weight: 600;
+}
+
