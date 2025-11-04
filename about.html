@@ -10,186 +10,226 @@
   <link href="https://fonts.googleapis.com/css2?family=Yusei+Magic&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="readersociety.css">
 <style>
- /* --- New Color Scheme Variables --- */
+ /* ===== Variables ===== */
 :root {
-    --bg-dark: #060b18;
-    --bg-darker: #040812;
-    --accent: #3a7dff; /* Your main glow/line color */
-    --accent-light: #66a3ff;
-    --text-light: #e0e8ff;
-    --text-muted: #9db4d9;
-    --card-bg: rgba(20, 25, 45, 0.85); /* Semi-transparent for modern effect */
-    --border-glow: rgba(58, 125, 255, 0.4);
-    --gradient: linear-gradient(135deg, #0c1733, #1b2b52, #0e162f);
-
-    /* Map previous generic names to new scheme for consistency */
-    --glow-color: var(--accent);
-    --line-color: var(--card-bg); /* Use a darker background for the static line */
-    --dot-color: var(--accent-light);
-    --bg-color: var(--bg-dark);
-    --content-bg: var(--card-bg);
+  --bg-dark: #060b18;
+  --bg-darker: #040812;
+  --accent: #3a7dff;
+  --accent-light: #66a3ff;
+  --text-light: #e0e8ff;
+  --text-muted: #9db4d9;
+  --card-bg: rgba(20, 25, 45, 0.85);
+  --border-glow: rgba(58, 125, 255, 0.4);
+  --gradient: linear-gradient(135deg, #0c1733, #1b2b52, #0e162f);
 }
 
-body {
-    background-color: var(--bg-color);
+
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: "Work Sans", "Poppins", sans-serif;
+    background: radial-gradient(circle at top, var(--bg-darker), var(--bg-dark));
     color: var(--text-light);
-    font-family: "Work-Sans", sans-serif;
     overflow-x: hidden;
-    background: var(--gradient); /* Use the defined gradient for the body background */
-}
+  }
 
-/* --- Timeline Structure and Layout --- */
-.timeline-container {
+  h2 {
+    font-family: "Yusei Magic", "Work Sans", "Poppins", sans-serif;
+    text-align: center;
+    margin: 1.5em 0;
+    font-weight: 600;
+    color: var(--accent-light);
+    text-shadow: 0 0 10px var(--accent);
+    animation: glowPulse 3s infinite alternate;
+  }
+
+  @keyframes glowPulse {
+    from { text-shadow: 0 0 10px var(--accent); }
+    to { text-shadow: 0 0 25px var(--accent), 0 0 40px var(--accent-light); }
+  }
+
+  /* Timeline wrapper */
+  .timeline-wrapper {
     position: relative;
     width: 100%;
-    overflow-x: auto;
-    padding-top: 50px;
-    padding-bottom: 50px;
+    overflow: hidden;
+  }
 
-}
-
-.timeline-line {
+  /* Glowing line behind events */
+  .timeline-line {
     position: absolute;
     top: 50%;
     left: 0;
-    right: 0;
-    height: 4px;
-    background-color: var(--line-color);
+    width: 200%;
+    height: 5px;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      var(--accent) 40%,
+      var(--accent-light) 50%,
+      var(--accent) 60%,
+      transparent 100%
+    );
+    transform: translateY(-50%);
+    filter: blur(4px);
+    animation: lineFlow 6s linear infinite;
+    z-index: 0;
+    opacity: 0.5;
+  }
 
-}
+  @keyframes lineFlow {
+    from { transform: translateX(0) translateY(-50%); }
+    to { transform: translateX(-50%) translateY(-50%); }
+  }
 
-.timeline-inner-line {
-    display: block;
-    height: 100%;
-    width: 0; /* Starts at 0, then JS sets it to 100%+ */
-    background-color: var(--glow-color);
-    box-shadow: 0 0 10px var(--glow-color), 0 0 20px rgba(58, 125, 255, 0.5); 
-    
-    /* Ensure a smooth animation when the full width is set on load */
-    transition: width 1s ease-out; 
-}
-
-
-.timeline-events {
-    display: flex;
-    justify-content: flex-start; /* Aligns items from the start for scrolling */
-    align-items: flex-start;
-    position: relative;
-    padding-top: 50px; 
-    padding-bottom: 50px; 
-}
-
-.timeline-item {
-    flex: 0 0 auto; /* Ensures all 7 cards show up and allows scrolling */
-    min-width: 250px;
-    position: relative;
-    text-align: center;
-    padding: 20px 10px;
-    opacity: 0; /* Initial state for animation */
-    transform: translateY(20px);
-    /* Transition includes delay for staggered effect */
-    transition: opacity 0.5s ease-out, transform 0.5s ease-out, transition-delay 0.5s ease-out; 
-}
-
-/* Position items dynamically (simple alternating) */
-.timeline-item:nth-child(even) {
-    margin-top: 150px; /* Position below the line */
-}
-
-.timeline-item:nth-child(odd) {
-    margin-bottom: 150px; /* Position above the line */
-}
-
-/* --- Content Styling --- */
-.timeline-content {
-    background-color: var(--content-bg);
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-    border: 1px solid var(--border-glow); /* Subtle glow border */
-    backdrop-filter: blur(5px); /* Adds a modern frosted glass look to cards */
-}
-
-.timeline-content img {
-    max-width: 100%;
-    border-radius: 5px;
-    margin-bottom: 10px;
-}
-
-.timeline-item h3 {
-  font-family: "Yusei Magic", "Work-Sans", sans-serif;
-    margin-top: 0;
-    color: var(--accent-light); /* Use accent light for titles */
-}
-
-.timeline-item p {
-    color: var(--text-muted);
-}
-
-/* --- Dynamic Animations --- */
-.timeline-item.visible {
+  .timeline-line.active {
     opacity: 1;
-    transform: translateY(0);
-}
+    filter: blur(6px) brightness(1.6);
+    animation: pulseLine 2s ease-in-out infinite alternate;
+  }
 
-/* Hide the default scrollbar in the container */
-.timeline-container::-webkit-scrollbar {
-    display: none; /* Hide scrollbar for Chrome, Safari, Opera */
-}
+  @keyframes pulseLine {
+    0% {
+      filter: blur(6px) brightness(1.2);
+    }
+    100% {
+      filter: blur(10px) brightness(2);
+    }
+  }
 
-.timeline-container {
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
-    /* Keep existing overflow-x: auto; */
-    overflow-x: auto; 
-}
+  .timeline-container {
+    position: relative;
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    z-index: 1;
+  }
+  .timeline-container::-webkit-scrollbar { display: none; }
 
-/* New CSS for navigation buttons */
-.scroll-btn {
-    position: absolute;
+  /* Events */
+  .timeline-event {
+    flex: 0 0 100%;
+    scroll-snap-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 90vh;
+    box-sizing: border-box;
+    padding: 2rem;
+    transition: transform 0.8s ease, opacity 0.8s ease, box-shadow 0.8s ease;
+    opacity: 0.3;
+    transform: scale(0.9);
+    border-radius: 16px;
+  }
+
+  .timeline-event.active {
+    opacity: 1;
+    transform: scale(1);
+    box-shadow: 0 0 25px var(--border-glow), 0 0 50px rgba(58, 125, 255, 0.2);
+    animation: activeGlow 4s ease-in-out infinite alternate;
+  }
+
+  @keyframes activeGlow {
+    from {
+      box-shadow: 0 0 25px var(--border-glow), 0 0 50px rgba(58, 125, 255, 0.2);
+    }
+    to {
+      box-shadow: 0 0 40px rgba(58, 125, 255, 0.6), 0 0 80px rgba(58, 125, 255, 0.4);
+    }
+  }
+
+  .event-text {
+    font-family: "Work Sans", "Poppins", sans-serif;
+    flex: 1;
+    padding: 2rem;
+    max-width: 600px;
+    text-align: center;
+  }
+
+  .event-text h3 {
+    font-family: "Yusei Magic", "Work Sans", "Poppins", sans-serif;
+    color: var(--accent-light);
+    margin-bottom: 0.5em;
+    font-size: 1.8rem;
+    text-shadow: 0 0 10px var(--accent);
+    animation: glowText 3s ease-in-out infinite alternate;
+  }
+
+  @keyframes glowText {
+    from { text-shadow: 0 0 10px var(--accent); }
+    to { text-shadow: 0 0 25px var(--accent), 0 0 40px var(--accent-light); }
+  }
+
+  .event-text p {
+    color: var(--text-muted);
+    line-height: 1.6em;
+  }
+
+  .event-img {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .event-img img {
+    width: 80%;
+    max-width: 400px;
+    border-radius: 16px;
+    box-shadow: 0 0 30px var(--border-glow);
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+  }
+
+  .timeline-event.active img {
+    transform: scale(1.05);
+    box-shadow: 0 0 50px rgba(58, 125, 255, 0.8), 0 0 90px rgba(58, 125, 255, 0.5);
+  }
+
+  .timeline-event:nth-child(even) {
+    flex-direction: row-reverse;
+  }
+
+  @media (max-width: 900px) {
+    .timeline-event {
+      flex-direction: column;
+      height: auto;
+      min-height: 100vh;
+    }
+    .timeline-event:nth-child(even) {
+      flex-direction: column;
+    }
+    .event-img img {
+      width: 90%;
+      max-width: 300px;
+      margin-top: 1rem;
+    }
+  }
+
+  .nav-btn {
+    position: fixed;
     top: 50%;
     transform: translateY(-50%);
-    z-index: 20; /* Ensure buttons are above everything else */
-    background-color: rgba(58, 125, 255, 0.2); /* Semi-transparent accent */
-    border: 1px solid var(--accent);
+    background: var(--card-bg);
+    border: 2px solid var(--border-glow);
     color: var(--text-light);
-    padding: 10px 15px;
+    font-size: 2rem;
+    padding: 0.5rem 1rem;
     cursor: pointer;
-    border-radius: 5px;
-    font-size: 16px;
-    /* Glowing effect for buttons */
-    box-shadow: 0 0 5px var(--accent), 0 0 15px rgba(58, 125, 255, 0.5);
-    transition: background-color 0.3s, box-shadow 0.3s;
-}
+    z-index: 100;
+    backdrop-filter: blur(10px);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+  }
 
-.scroll-btn:hover {
-    background-color: var(--accent);
-    box-shadow: 0 0 10px var(--accent), 0 0 25px var(--accent);
-}
+  .nav-btn:hover {
+    background: rgba(58, 125, 255, 0.3);
+    box-shadow: 0 0 20px rgba(58, 125, 255, 0.6);
+  }
 
-.scroll-btn.left-btn {
-    left: 10px;
-}
-
-.scroll-btn.right-btn {
-    right: 10px;
-}
-
-/* Ensure the wrapper positions the buttons correctly */
-.timeline-wrapper {
-    position: relative;
-    padding: 0 60px; /* Add padding to wrapper so buttons don't overlap container content */
-}
-
-/* --- Responsiveness for small screens --- */
-@media (max-width: 768px) {
-    .timeline-item {
-        min-width: 200px;
-        margin-top: 0 !important;
-        margin-bottom: 0 !important;
-        padding-top: 40px; 
-    }
-}
+  .nav-left { left: 1rem; }
+  .nav-right { right: 1rem; }
 
 </style>
 </head>
@@ -203,14 +243,14 @@ body {
   <div class="particle"></div>
   <div class="particle"></div>
   <div class="particle"></div>
-    <div class="particle"></div>
   <div class="particle"></div>
   <div class="particle"></div>
   <div class="particle"></div>
   <div class="particle"></div>
   <div class="particle"></div>
   <div class="particle"></div>
-  <div class="particles"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
   <div class="particle"></div>
   <div class="particle"></div>
   <div class="particle"></div>
@@ -262,72 +302,83 @@ body {
   </section>
   <p>Lorem lorem ispum dolor sinametLorem lorem ispum dolor sinametLorem lorem ispum dolor sinametLorem lorem ispum dolor sinametLorem lorem ispum dolor sinamet Lorem lorem ispum dolor sinamet Lorem lorem ispum dolor sinamet</p>
 </body>
+<h2>Our Story - In a Timeline</h2>
 
-  <!---TIMELINE -->
-  <div class="timeline-wrapper"> <!-- New wrapper div -->
-    <button id="scroll-left-btn" class="scroll-btn left-btn">← Prev</button>
-  <div class="timeline-container">
-<div class="fade-overlay left"></div> <!-- Add this -->
-    <div class="fade-overlay right"></div> <!-- Add this -->
+  <div class="timeline-wrapper">
+    <!-- Glowing line placeholder -->
+    <div id="timelineLine" class="timeline-line"></div>
 
-    <div class="timeline-line">
+    <div id="timeline" class="timeline-container">
+      
+      <div class="timeline-event active">
+        <div class="event-text">
+          <h3>Sept. 08, 2025 – Our Genesis</h3>
+          <p>It all started with an idea in Noa's head during Fairview Homeschooler's <em>Panlarong Pinoy</em> event at Britanny Square. She approched Yumi, Isaac and Qorein with the idea and they all wanted to join.</p>
+        </div>
+        <div class="event-img">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOrXxctY3A5UN_pQKV_KPLcRGhM9XnMYVRLA&s" alt="Britanny Square">
+        </div>
+      </div>
 
-        <span class="timeline-inner-line" id="animated-line"></span>
-    </div>
-    <div class="timeline-events">
-        <!-- Timeline Item 1: With Image -->
-        <div class="timeline-item" data-date="2019">
-           
-            <div class="timeline-content">
-                <img src="https://via.placeholder.com/150" alt="Event 1">
-                <h3>Event Title 1</h3>
-                <p>asaddddddddddddd on warshsad saljdasjld asjdhjsd sahdsajdhs jasd </p>
+      <div class="timeline-event">
+        <div class="event-text">
+          <h3>Sept. 09, 2025 – Blooming</h3>
+          <p>The first serious discussion about the book club was held via a chaotic Messenger call among Noa, Yumi, Isaac, and Iris. During the animated discussion of logistics and structure, a solemn, yet playful decision was made: Noa was unanimously bestowed the title of "CEO of the Book Club," officially establishing the group's leadership and process.</p>
+        </div>
+      </div>
 
-            </div>
+      <div class="timeline-event">
+        <div class="event-text">
+           <div class="event-img">
+          <img src="https://github.com/readersociety/readersociety.github.io/blob/main/backyardigan.PNG?raw=true" alt="Webpage Number 1">
+        </div>
+          <h3>Sept. 17, 2025 – Innovation</h3>
+          <p>The prototype of our first webpage, the <a href="fairviewbookclub.github.io">Fairview Homeschoolers Book Club</a>, has made its debut. Be warned, though: the site's design is an assault on the senses, a triumph of terrible design so visually jarring that it's a genuine miracle if you're not temporarily blind after browsing through it. Proceed at your own risk!!</p>
         </div>
         
-        <!-- Timeline Item 2: Without Image -->
-        <div class="timeline-item" data-date="2020">
-            
-            <div class="timeline-content">
-                <h3>Event Title 2</h3>
-                <p>Details about the second event, no image.</p>
-            </div>
-        </div>
-<!-- Timeline Item 2: Without Image -->
-        <div class="timeline-item" data-date="2021">
-           
-            <div class="timeline-content">
-                <h3>Event Title 2</h3>
-                <p>Details about the second event, no image.</p>
-            </div>
-        </div>
- <!-- Timeline Item 3: With Image -->
-        <div class="timeline-item" data-date="2022">
-           
-            <div class="timeline-content">
-                <img src="https://via.placeholder.com/150" alt="Event 3">
-                <h3>Event Title 3</h3>
-                <p>Details about the third event.</p>
-            </div>
-        </div>
-  <!-- Timeline Item 3: With Image -->
-        <div class="timeline-item" data-date="2013">
-           
-            <div class="timeline-content">
-                <img src="https://via.placeholder.com/150" alt="Event 3">
-                <h3>Event Title 3</h3>
-                <p>Details about the third event.</p>
-            </div>
-        </div>
-  
+      </div>
 
+       <div class="timeline-event">
+        <div class="event-text">
+          
+          <h3>Sept. 25, 2025 – Innovation</h3>
+          <p>Isaac creates the Band of Bookworms website -  AKA version 2 of the book club webpage. It had a clean, modern design but was plagued with invisible errors that only a coder can see.</p>
+        </div>
         
+      </div>
+
+      <div class="timeline-event">
+        <div class="event-text">
+          <h3>Oct. 02, 2025 – Expansion</h3>
+          <p>That day marked a defining moment for our group as we hosted our very first official "meet" online using Google Meet. Our initial shyness evaporated (mostly), giving way to lively discussions where we learned a surprising amount about each other—primarily our favorite books.</p>
+        </div>
+      </div>
+
+      <div class="timeline-event">
+        <div class="event-text">
+          <h3>Oct. 09, 2025 – First FTF Meet!</h3>
+          <p>Our first in-person meeting was a memorable event held at Noa's house, a day that truly defined our dynamic. We had an absolute blast playing all sorts of games, so much so that out of a five-hour gathering, we spent literally only five minutes actually discussing book club matters! Isaac proved to be a great host for our game of Mafia, and amidst the laughter and fun, we solidified our identity and officially named ourselves the "Reader Society."</p>
+        </div>
+       
+      </div>
+
+      <div class="timeline-event">
+        <div class="event-text">
+          <h3>Oct. 21, 2025 – New website, (yet again)</h3>
+          <p>Isaac decides to make a new website to replace Version 2 of the book club website, yet again lol. Unfortunately you can't visit it, as it was deleted.</p>
+        </div>
+        <div class="event-img">
+          <img src="https://github.com/readersociety/readersociety.github.io/blob/main/band-of-bookworms-high-resolution-logo-transparent.png?raw=true" alt="Version 2">
+        </div>
+      </div>
+
     </div>
-    
-</div>
-    <button id="scroll-right-btn" class="scroll-btn right-btn">Next →</button>
-</div>
+  </div>
+
+  <!-- Navigation buttons -->
+  <button id="prevBtn" class="nav-btn nav-left">&#10094;</button>
+  <button id="nextBtn" class="nav-btn nav-right">&#10095;</button>
+ 
    <script>
   // Navbar + body scroll effects
   const header = document.querySelector("header");
@@ -405,57 +456,117 @@ body {
 </script>
   <!---TIMELINE SCRIPT --->
    <script>
-document.addEventListener('DOMContentLoaded', () => {
-    const timelineContainer = document.querySelector('.timeline-container');
-    const animatedLine = document.getElementById('animated-line');
-    const scrollLeftBtn = document.getElementById('scroll-left-btn');
-    const scrollRightBtn = document.getElementById('scroll-right-btn');
-    const timelineEvents = document.querySelector('.timeline-events');
-    const timelineItems = document.querySelectorAll('.timeline-item');
+// ===== Timeline Core =====
+const timeline = document.getElementById("timeline");
+const events = document.querySelectorAll(".timeline-event");
+const timelineLine = document.getElementById("timelineLine");
 
-    // Make all items visible immediately as they are all loaded
-    timelineItems.forEach(item => {
-        item.classList.add('visible');
-        item.style.transitionDelay = '0ms'; 
+let index = 0;
+let autoScrollInterval = null;
+let isVisible = false;
+
+// Update active event and scroll
+function updateActive() {
+  events.forEach((event, i) => {
+    event.classList.toggle("active", i === index);
+  });
+
+  // Reactivate glowing line pulse when event changes
+  if (timelineLine) {
+    timelineLine.classList.add("active");
+    setTimeout(() => timelineLine.classList.remove("active"), 2000);
+  }
+
+  // Scroll smoothly to current event
+  if (timeline && events[index]) {
+    timeline.scrollTo({
+      left: events[index].offsetLeft,
+      behavior: "smooth"
     });
+  }
+}
 
-    const scrollAmount = 300; // Amount to scroll per click
+// Navigation controls
+function nextEvent() {
+  index = (index + 1) % events.length;
+  updateActive();
+}
 
-    // Function to handle left/right button clicks
-    function scrollHorizontally(direction) {
-        if (direction === 'left') {
-            timelineContainer.scrollBy({
-                left: -scrollAmount,
-                behavior: 'smooth'
-            });
-        } else {
-            timelineContainer.scrollBy({
-                left: scrollAmount,
-                behavior: 'smooth'
-            });
-        }
-    }
+function prevEvent() {
+  index = (index - 1 + events.length) % events.length;
+  updateActive();
+}
 
-    // Add click event listeners to buttons
-    scrollLeftBtn.addEventListener('click', () => scrollHorizontally('left'));
-    scrollRightBtn.addEventListener('click', () => scrollHorizontally('right'));
+// Navigation button listeners
+const nextBtn = document.getElementById("nextBtn");
+const prevBtn = document.getElementById("prevBtn");
 
-    // --- NEW LOGIC: Extend line fully once everything is loaded/rendered ---
-    function setFullLineWidth() {
-        // Calculate the total width of all events combined (offsetWidth accounts for margins/padding)
-        const fullWidth = timelineEvents.offsetWidth;
-        
-        // Set the animated line width to cover the entire length.
-        // We use a slight adjustment to ensure it covers the last item's center.
-        animatedLine.style.width = `${fullWidth + 50}px`; 
-    }
-
-    // Run this function initially and on window resize
-    setFullLineWidth();
-    window.addEventListener('resize', setFullLineWidth);
-    
-    // Note: The scroll event listener for line growth is now removed.
+if (nextBtn) nextBtn.addEventListener("click", () => {
+  nextEvent();
+  resetAutoScroll();
 });
+
+if (prevBtn) prevBtn.addEventListener("click", () => {
+  prevEvent();
+  resetAutoScroll();
+});
+
+// ===== Auto-scroll System =====
+function startAutoScroll() {
+  if (!autoScrollInterval) {
+    autoScrollInterval = setInterval(nextEvent, 4000);
+  }
+}
+
+function stopAutoScroll() {
+  clearInterval(autoScrollInterval);
+  autoScrollInterval = null;
+}
+
+function resetAutoScroll() {
+  stopAutoScroll();
+  if (isVisible) startAutoScroll();
+}
+
+// ===== Viewport Detection (starts auto-scroll when visible) =====
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      isVisible = true;
+      startAutoScroll();
+    } else {
+      isVisible = false;
+      stopAutoScroll();
+    }
+  });
+}, { threshold: 0.5 });
+
+if (timeline) observer.observe(timeline);
+
+// ===== Touch Swipe Navigation (for mobile) =====
+let startX = 0, endX = 0;
+
+if (timeline) {
+  timeline.addEventListener("touchstart", e => {
+    startX = e.touches[0].clientX;
+  });
+
+  timeline.addEventListener("touchmove", e => {
+    endX = e.touches[0].clientX;
+  });
+
+  timeline.addEventListener("touchend", () => {
+    const diffX = startX - endX;
+    if (Math.abs(diffX) > 50) { // swipe threshold
+      if (diffX > 0) nextEvent();
+      else prevEvent();
+      resetAutoScroll();
+    }
+  });
+}
+
+// ===== Resize Fix =====
+window.addEventListener("resize", updateActive);
 
     </script>
 </html>
