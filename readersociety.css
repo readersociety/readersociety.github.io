@@ -255,7 +255,7 @@ nav a.active, nav a:hover {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: brightness(0.55);
+  filter: brightness(0.75);
 }
 
 .hero img{
@@ -264,7 +264,7 @@ nav a.active, nav a:hover {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: brightness(0.55);
+  filter: brightness(0.75);
 }
 .hero .overlay {
   position: absolute;
