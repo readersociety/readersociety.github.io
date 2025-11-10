@@ -7,13 +7,74 @@
 	<link rel="stylesheet" href="readersociety.css" />
 </head>
 <body>
-	<header class="site-header">
-		<div class="container brand">
-			<div class="logo-dot"></div>
-			<h1>Events & Stories</h1>
-		</div>
-	</header>
 
+ <div class="particles">
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+    <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particles"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+    <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+</div>
+ <!-- Header -->
+ <header>
+  <div class="nav-inner">
+    <div class="brand">
+      <div class="logo"><img src="https://github.com/readersociety/readersociety.github.io/blob/main/SmallSquareLogoJpg.jpg?raw=true" alt="Reader Society Logo"></div>
+      <h1>Reader Society</h1>
+    </div>
+
+    <div class="menu-toggle" id="menu-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <nav>
+      <ul id="nav-links">
+        <li><a href="home.html" class="active">Home</a></li>
+        <li><a href="book-archive.html">Books</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="members.html" >Members</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <video autoplay muted loop playsinline src="https://github.com/readersociety/readersociety.github.io/raw/refs/heads/main/Narnia.mp4"></video>
+    <div class="overlay"></div>
+    <div class="hero-content">
+      <h2>Discover Stories That Move You</h2>
+      <p>We are Reader Society — where we re-discover the world's first portals, books.</p>
+      <a href="book-archive.html" class="btn-primary">Explore Our Library</a>
+    </div>
+  </section>
 	<main class="container">
 		<section class="hero-strip">
 			<h2>Latest Highlights</h2>
@@ -171,5 +232,32 @@
 
 	applyFilters();
 	</script>
+	  <script>
+  const header = document.querySelector('header');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 50);
+  });
+</script>
+  
+  <script>
+  // Navbar + body scroll effects
+  const header = document.querySelector("header");
+  const body = document.body;
+  window.addEventListener("scroll", () => {
+    header.classList.toggle("scrolled", window.scrollY > 50);
+    body.classList.toggle("scrolled", window.scrollY > 100);
+  });
+
+  // Reveal sections on scroll
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add("in-view");
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.2 });
+  document.querySelectorAll("section").forEach(sec => observer.observe(sec));
+</script>
 </body>
 </html>
