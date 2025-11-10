@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title><!-- Article Title -->November 06, 2025 • Events & Stories</title>
+
+	<!-- Social preview (optional, use absolute URLs for images) -->
+	<meta property="og:type" content="article" />
+	<meta property="og:title" content="<!-- Article Title -->" />
+	<meta property="og:description" content="<!-- One-line summary -->" />
+	<meta property="og:image" content="<!-- https://...hero.jpg -->" />
+	<meta name="twitter:card" content="summary_large_image" />
+
+	<link rel="stylesheet" href="../styles.css" />
+</head>
+<body>
+	<header class="site-header">
+		<div class="container brand">
+			<div class="logo-dot"></div>
+			<h1><a href="../index.html" style="text-decoration:none;color:inherit;">Events & Stories</a></h1>
+		</div>
+	</header>
+
+	<main class="container post-main">
+		<article>
+			<header class="post-hero">
+				<div class="post-hero-bg" style="background-image:
+					linear-gradient(180deg, rgba(6,11,24,.2), rgba(6,11,24,.85)),
+					url('<!-- hero image URL -->')"></div>
+				<div class="post-hero-content">
+					<h2><!-- Article Title --></h2>
+					<p class="muted"><!-- Month DD, YYYY --> ·
+						<span class="tag"><!-- tag1 --></span>
+						<span class="tag"><!-- tag2 --></span>
+					</p>
+				</div>
+			</header>
+
+			<section class="post-body">
+				<section class="highlight-paragraph">
+					<div class="highlight left">
+						<img src="<!-- left image URL -->" alt="" />
+					</div>
+					<div class="text">
+						<p><!-- Paragraph text --></p>
+					</div>
+					<div class="highlight right">
+						<img src="<!-- right image URL -->" alt="" />
+					</div>
+				</section>
+
+				<!-- Duplicate highlight-paragraph blocks for more paragraphs -->
+			</section>
+
+			<nav class="post-nav">
+				<a class="ghost" href="../index.html">← Back to all events</a>
+			</nav>
+		</article>
+	</main>
+
+	<footer class="container" style="text-align:center;margin:40px 0 60px;color:var(--muted);">
+		© <span id="year"></span> Reader Society
+	</footer>
+
+	<script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>
