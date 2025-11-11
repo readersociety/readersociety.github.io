@@ -1067,10 +1067,10 @@ BLOG CSS
 }
 
 /* Sections and cards */
-.sections { margin-top: 24px; }
+.sections {display: grid; margin-top: 24px; }
 .event-section { margin: 28px 0 36px; }
 .section-header {
-	display: flex;
+	display: grid;
 	align-items: baseline;
 	justify-content: space-between;
 	margin-bottom: 12px;
