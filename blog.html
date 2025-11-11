@@ -164,12 +164,14 @@
 			posts.sort((a, b) => b.date.localeCompare(a.date));
 			const secEl = document.createElement("section");
 			secEl.className = "event-section";
+			/**
 			secEl.innerHTML = `
+			
 				<div class="section-header">
-					<div class="section-count">${posts.length} entr${posts.length === 1 ? "y" : "ies"}</div>
+					
 				</div>
 				<div class="card-grid"></div>
-			`;
+			`;**/
 			const grid = secEl.querySelector(".card-grid");
 
 			posts.forEach(p => {
