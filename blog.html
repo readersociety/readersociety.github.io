@@ -127,24 +127,6 @@
 			summary: "We got to know each other more in this meet thanks to the discussion questions. This time, we spent almost all out time chatting and playing games - especially  Mafia.",
 			cover: "https://github.com/readersociety/readersociety.github.io/blob/main/Nov6_Books.JPG?raw=true",
 			section: "2025-11"
-		},
-				{
-			id: "hackathon-48",
-			title: "Second Meet - Claudia's Pick",
-			date: "2025-11-06",
-			tags: ["Land of stories", "Mafia", "New Member", "Deep Revelations"],
-			summary: "We got to know each other more in this meet thanks to the discussion questions. This time, we spent almost all out time chatting and playing games - especially  Mafia.",
-			cover: "https://github.com/readersociety/readersociety.github.io/blob/main/Nov6_Books.JPG?raw=true",
-			section: "2025-11"
-		},
-				{
-			id: "hackathon-48",
-			title: "Second Meet - Claudia's Pick",
-			date: "2025-11-06",
-			tags: ["Land of stories", "Mafia", "New Member", "Deep Revelations"],
-			summary: "We got to know each other more in this meet thanks to the discussion questions. This time, we spent almost all out time chatting and playing games - especially  Mafia.",
-			cover: "https://github.com/readersociety/readersociety.github.io/blob/main/Nov6_Books.JPG?raw=true",
-			section: "2025-11"
 		}
 	];
 
@@ -164,58 +146,73 @@
 		opt.value = t; opt.textContent = t; tagSelect.appendChild(opt);
 	});
 
-	function groupBySection(items) {
-		const map = new Map();
-		items.forEach(p => {
-			if (!map.has(p.section)) map.set(p.section, []);
-			map.get(p.section).push(p);
-		});
-		return Array.from(map.entries()).sort((a, b) => b[0].localeCompare(a[0]));
-	}
+	// ... (your existing code above this line remains unchanged)
 
-	const sectionsEl = document.getElementById("sections");
+function groupBySection(items) {
+    const map = new Map();
+    items.forEach(p => {
+        if (!map.has(p.section)) map.set(p.section, []);
+        map.get(p.section).push(p);
+    });
+    return Array.from(map.entries()).sort((a, b) => b[0].localeCompare(a[0]));
+}
 
-	function renderSections(items) {
-		sectionsEl.innerHTML = "";
-		const groups = groupBySection(items);
-		groups.forEach(([sec, posts]) => {
-			posts.sort((a, b) => b.date.localeCompare(a.date));
-			const secEl = document.createElement("section");
-			secEl.className = "event-section";
-		
-			secEl.innerHTML = `
-			
-				<div class="section-header">
-					
-				</div>
-				<div class="card-grid"></div>
-			`;
-			const grid = secEl.querySelector(".card-grid");
+const sectionsEl = document.getElementById("sections");
 
-			posts.forEach(p => {
-				const card = document.createElement("a");
-				card.className = "card";
-				card.href = "blog/" + encodeURIComponent(p.id) + ".html"; // Option A direct file
-				card.innerHTML = `
-					<div class="card-cover" style="background-image:url('${p.cover}')"></div>
-					<div class="card-body">
-						<h4>${p.title}</h4>
-						<p class="muted">${new Date(p.date).toLocaleDateString()}</p>
-						<p>${p.summary}</p>
-						<div class="tags">
-							${p.tags.map(t => `<span class="tag">${t}</span>`).join("")}
-						</div>
-					</div>
-				`;
-				grid.appendChild(card);
-			});
+function renderSections(items) {
+    sectionsEl.innerHTML = "";
+    const groups = groupBySection(items);
 
-			sectionsEl.appendChild(secEl);
-		});
-		if (!groups.length) {
-			sectionsEl.innerHTML = `<div class="constitution-section" style="text-align:center;">No results. Try different dates or tags.</div>`;
-		}
-	}
+    // --- SOLUTION START ---
+
+    // 1. Create a single, main container for all cards
+    const mainCardGrid = document.createElement("div");
+    mainCardGrid.className = "card-grid"; // Your CSS class for the grid layout
+
+    groups.forEach(([sec, posts]) => {
+        posts.sort((a, b) => b.date.localeCompare(a.date));
+
+        // Create and append the month/section header
+        const headerEl = document.createElement("div");
+        headerEl.className = "section-header";
+        // Assuming you want the header text to show the month name and count
+        headerEl.innerHTML = `
+            <h3>${monthLabel(sec)}</h3>
+            <span class="section-count">${posts.length} posts</span>
+        `;
+        sectionsEl.appendChild(headerEl);
+
+        // Loop through posts and append them to the *single* mainCardGrid
+        posts.forEach(p => {
+            const card = document.createElement("a");
+            card.className = "card";
+            card.href = "blog/" + encodeURIComponent(p.id) + ".html"; // Option A direct file
+            card.innerHTML = `
+                <div class="card-cover" style="background-image:url('${p.cover}')"></div>
+                <div class="card-body">
+                    <h4>${p.title}</h4>
+                    <p class="muted">${new Date(p.date).toLocaleDateString()}</p>
+                    <p>${p.summary}</p>
+                    <div class="tags">
+                        ${p.tags.map(t => `<span class="tag">${t}</span>`).join("")}
+                    </div>
+                </div>
+            `;
+            // Append the card to the main grid wrapper
+            mainCardGrid.appendChild(card);
+        });
+    });
+
+    // 2. Append the single main grid container (with all the cards inside it) to the page
+    sectionsEl.appendChild(mainCardGrid);
+
+    // --- SOLUTION END ---
+
+    if (!groups.length) {
+        sectionsEl.innerHTML = `<div class="constitution-section" style="text-align:center;">No results. Try different dates or tags.</div>`;
+    }
+}
+
 
 	function applyFilters() {
 		const q = document.getElementById("q").value.trim().toLowerCase();
