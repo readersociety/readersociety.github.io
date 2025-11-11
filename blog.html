@@ -166,7 +166,6 @@
 			secEl.className = "event-section";
 			secEl.innerHTML = `
 				<div class="section-header">
-					<h3>${monthLabel(sec)}</h3>
 					<div class="section-count">${posts.length} entr${posts.length === 1 ? "y" : "ies"}</div>
 				</div>
 				<div class="card-grid"></div>
@@ -176,7 +175,7 @@
 			posts.forEach(p => {
 				const card = document.createElement("a");
 				card.className = "card";
-				card.href = "posts/" + encodeURIComponent(p.id) + ".html"; // Option A direct file
+				card.href = "blog/" + encodeURIComponent(p.id) + ".html"; // Option A direct file
 				card.innerHTML = `
 					<div class="card-cover" style="background-image:url('${p.cover}')"></div>
 					<div class="card-body">
