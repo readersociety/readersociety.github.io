@@ -1034,11 +1034,16 @@ BLOG CSS
 .search {
 	margin-top: 18px;
 }
+
 .search-row {
 	display: grid;
-	grid-template-columns: 1fr 160px 160px 160px auto auto;
+	/* Use flexible units. Dates and selects still have content-based widths, but can shrink. */
+	/* Example: A more flexible layout might be 1fr 1fr 1fr auto auto */
+	/* The original layout is kept but adapted for flexibility: */
+	grid-template-columns: 1fr repeat(3, minmax(100px, 160px)) auto auto; 
 	gap: 10px;
 }
+
 .search input[type="search"],
 .search input[type="date"],
 .search select {
@@ -1048,10 +1053,14 @@ BLOG CSS
 	padding: 10px 12px;
 	border-radius: 10px;
 	outline: none;
+	width: 100%; /* Ensure inputs take the full width of their grid cell */
+	box-sizing: border-box; /* Include padding and border in the element's total width */
 }
+
 .search input[type="search"]:focus {
 	box-shadow: 0 0 0 3px var(--border-glow);
 }
+
 .search button {
 	background: var(--accent-600);
 	border: 1px solid var(--accent-600);
@@ -1059,12 +1068,48 @@ BLOG CSS
 	padding: 10px 14px;
 	border-radius: 10px;
 	cursor: pointer;
+	width: 100%; /* Ensure buttons take the full width of their grid cell */
+	box-sizing: border-box;
 }
+
 .search .ghost {
 	background: transparent;
 	border: 1px solid rgba(58,125,255,0.35);
 	color: var(--accent-light);
 }
+
+/* --- Media Queries for Responsiveness --- */
+
+/* For screens smaller than 768px (tablets and mobile) */
+@media (max-width: 768px) {
+	.search-row {
+		/* Change the grid layout to stack items vertically or onto fewer columns */
+		/* Example: Stack all inputs and buttons into a single column for mobile */
+		grid-template-columns: 1fr; 
+		gap: 10px; /* Adjust gap for stacking */
+	}
+
+	.search input,
+	.search select,
+	.search button {
+		/* Ensure inputs and buttons span the full width of the mobile screen */
+		width: 100%; 
+	}
+}
+
+/* If you prefer a two-column layout for small tablets */
+@media (min-width: 481px) and (max-width: 768px) {
+	.search-row {
+		/* Put the main search field on one row, and dates/buttons on a second row */
+		/* The main search field spans all columns: */
+		grid-template-columns: 1fr 1fr; /* Two columns for dates/buttons */
+	}
+
+	.search input[type="search"] {
+		grid-column: 1 / -1; /* Spans from the first to the last column line */
+	}
+}
+
 
 /* Sections and cards */
 .sections {display: grid; margin-top: 24px; }
