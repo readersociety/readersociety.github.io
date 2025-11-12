@@ -1140,72 +1140,111 @@ BLOG CSS
   position: relative;
   padding: 54px 24px 28px;
   background: linear-gradient(180deg, rgba(6, 11, 24, 0.1) 0%, rgba(6, 11, 24, 0.8) 65%, rgba(6, 11, 24, 1) 100%);
+  /* Ensure a minimum height for the content area on desktop */
+  min-height: 300px; 
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end; /* Aligns content to the bottom */
 }
 
 .post-hero-content h2 {
   margin: 0 0 6px;
+  /* Use responsive font units for the main heading */
+  font-size: clamp(1.8rem, 4vw, 2.5rem); 
 }
 
 .post-body {
-  display: flex; /* Changed from grid to allow floating elements to interact with text flow */
+  display: flex;
   flex-direction: column;
   gap: 26px;
 }
 
 /* Updated styles for highlights and text wrapping */
 .highlight-paragraph {
-  /* Removed grid layout as we are now using floats */
   display: block;
+  /* Use clearfix to ensure containers wrap around floats within them */
+  overflow: auto; 
 }
 
 .highlight {
-  /* Common styles for highlight containers */
-  margin-bottom: 15px; /* Spacing between image/caption and text */
+  margin-bottom: 15px; 
 }
 
 .highlight.left {
-  float: left; /* Text wraps on the right */
-  margin-right: 25px; /* Space between image and text */
-  max-width: 300px; /* Example size for the image container */
+  float: left;
+  margin-right: 25px; 
+  /* Use a relative max-width for better scaling */
+  max-width: 300px; 
+  width: 40%; /* Image will take up 40% of the paragraph width on desktop */
 }
 
 .highlight.right {
-  float: right; /* Text wraps on the left */
-  margin-left: 25px; /* Space between image and text */
-  max-width: 300px; /* Example size for the image container */
+  float: right;
+  margin-left: 25px; 
+  max-width: 300px;
+  width: 40%; 
 }
 
 .highlight img {
   width: 100%;
-  height: auto; /* Changed from 100vh/object-fit to auto for responsive width-based sizing */
+  height: auto; 
   border-radius: 12px;
   border: 1px solid rgba(58, 125, 255, 0.18);
   box-shadow: 0 4px 18px rgba(0, 0, 0, 0.25);
 }
 
-/* Styles for the new caption */
 .highlight-caption {
   font-size: 0.8rem;
-  color: #aaa; /* Adjust color as needed */
+  color: #aaa;
   text-align: center;
   padding-top: 8px;
 }
 
 .highlight-paragraph .text {
-  /* The text content that will wrap around the image */
   background: linear-gradient(180deg, rgba(20, 25, 45, 0.65), rgba(20, 25, 45, 0.35));
   border: 1px solid rgba(58, 125, 255, 0.18);
   border-radius: 12px;
   padding: 16px 18px;
-  /* Use overflow: auto; or a clearfix method if wrapping stops prematurely */
-  overflow: auto; 
+  overflow: auto; /* Helps contain wrapping text */
 }
 
 .post-nav {
   margin-top: 28px;
-  /* Add clear: both; to stop this element from wrapping around previous floats */
-  clear: both; 
+  clear: both; /* Prevents this element from wrapping around previous floats */
 }
+
+/* --- Media Queries for Responsiveness --- */
+
+/* Adjust layout for screens smaller than 768px (tablets and mobile) */
+@media (max-width: 768px) {
+  .post-main {
+    margin-top: 60px; /* Less space on mobile */
+  }
+
+  .post-hero-content {
+    /* Ensure text is always visible and readable */
+    padding: 30px 15px 20px;
+    min-height: 200px; 
+  }
+
+  .post-hero-content h2 {
+    font-size: 1.5rem; /* Slightly smaller font on mobile */
+  }
+
+  /* Disable floats on smaller screens to stack image and text vertically */
+  .highlight.left,
+  .highlight.right {
+    float: none; /* Remove floating behavior */
+    margin: 0 0 15px 0; /* Adjust margins to stack vertically */
+    max-width: 100%; /* Image takes full width */
+    width: 100%;
+  }
+
+  .highlight img {
+    border-radius: 8px;
+  }
+}
+
 
 /* ... (Rest of your existing CSS for ghost links and media queries) ... */
 
