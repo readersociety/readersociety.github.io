@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>October 12, 2025 • Events & Stories</title>
+
+	<!-- Social preview (optional, use absolute URLs for images) -->
+	<meta property="og:type" content="article" />
+	<meta property="og:title" content="October, Meet" />
+	<meta property="og:description" content="<!-- One-line summary -->" />
+	<meta property="og:image" content="https://github.com/readersociety/readersociety.github.io/blob/main/blog/Messenger_creation_9D7CE827-A393-41F3-8C83-AB27776430F9.jpeg?raw=true" />
+	<meta name="twitter:card" content="summary_large_image" />
+
+	<link rel="stylesheet" href="blog.css" />
+	 <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Yusei+Magic&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+	<header class="site-header">
+		<div class="container brand">
+			<div class="logo-dot"></div>
+			<h1><a href="../index.html" style="text-decoration:none;color:inherit;">Events & Stories</a></h1>
+		</div>
+	</header>
+
+	<main class="container post-main">
+		<article>
+			<header class="post-hero">
+				<div class="post-hero-bg" style="background-image:
+					linear-gradient(180deg, rgba(6,11,24,.2), rgba(6,11,24,.85)),
+					url('https://github.com/readersociety/readersociety.github.io/blob/main/blog/Messenger_creation_9D7CE827-A393-41F3-8C83-AB27776430F9.jpeg?raw=true')"></div>
+				<div class="post-hero-content">
+					<h2>First Meet at Noa's House!</h2>
+					<p class="muted">October 09, 2025
+						<span class="tag">Svetlana Chmakova</span>
+						<span class="tag">Noa's House</span>
+						<span class="tag">First Meet</span>
+            <span class="tag">Howl's Moving Castle</span>
+					</p>
+				</div>
+			</header>
+
+			<section class="post-body">
+				    <!-- Example of a LEFT-aligned highlight -->
+    <div class="highlight-paragraph">
+        <div class="highlight left">
+            <img src="https://github.com/readersociety/readersociety.github.io/blob/main/Noa%20_Yumi.JPG?raw=true" alt="Description of image">
+            <div class="highlight-caption">A Picture of Two cousins - they look a bit like twins right?</div>
+        </div>
+        
+        <div class="text">
+            <p>WHO WANTS TO BE THE BLOG WRITER I NEED ONE RIGHT NOW! I AM PLAGUED BY WRITER'S BLOCK HELP YOUR OLD MAN NOW! </p>
+            
+        </div>
+    </div>
+
+    <!-- Example of a RIGHT-aligned highlight 
+    <div class="highlight-paragraph">
+         <div class="highlight right">
+            <img src="https://github.com/readersociety/readersociety.github.io/blob/main/Nov6_The_Kidnapping.JPG?raw=true" alt="Another image">
+            <div class="highlight-caption">Is voluntary kidnapping legal? There isn't any police around right?</div>
+        </div>
+
+        <div class="text">
+            <p>LOREM LOREM. HELP I HAVE WRITER's BLOCK! WHo wants to be the blog writer?</p>
+        </div>
+    </div>-->
+			</section>
+
+			<nav class="post-nav">
+				<a class="ghost" href="../blog.html">← Back to all events</a>
+			</nav>
+		</article>
+	</main>
+
+	<footer class="container" style="text-align:center;margin:40px 0 60px;color:var(--muted);">
+		© <span id="year">2025</span> Reader Society
+	</footer>
+
+	<script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+	<script>
+    // --- Global Variables (Declared once) ---
+    const header = document.querySelector("header");
+    const body = document.body;
+    const toggle = document.getElementById('menu-toggle');
+    const navLinks = document.getElementById('nav-links');
+
+    // --- Navbar Scroll Effect ---
+    window.addEventListener("scroll", () => {
+        header.classList.toggle("scrolled", window.scrollY > 50);
+        body.classList.toggle("scrolled", window.scrollY > 100);
+    });
+
+    // --- Mobile Menu Toggle ---
+    if (toggle) {
+        toggle.addEventListener('click', () => {
+            toggle.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+    }
+
+    // --- Section Reveal Animation (Your first observer script) ---
+    const sectionObserver = new IntersectionObserver(entries => { // Renamed to sectionObserver
+        entries.forEach(e => {
+            if (e.isIntersecting) {
+                e.target.classList.add("in-view");
+                sectionObserver.unobserve(e.target); // Use the renamed observer here
+            }
+        });
+    }, { threshold: 0.2 });
+    document.querySelectorAll("section").forEach(sec => sectionObserver.observe(sec));
+
+
+    // --- Lenis Smooth Scroll & Fade-In Observer (Initialized on DOM Load) ---
+    document.addEventListener('DOMContentLoaded', () => {
+        const lenis = new Lenis({
+            lerp: 0.05,
+            wheelMultiplier: 0.8,
+            duration: 1.5,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        });
+
+        function raf(time) {
+            lenis.raf(time);
+            requestAnimationFrame(raf);
+        }
+        requestAnimationFrame(raf);
+
+        // Intersection Observer for fade-in effects on scroll (using 'show' class)
+        const observerOptions = { root: null, rootMargin: '0px', threshold: 0.2 };
+        const fadeInObserver = new IntersectionObserver((entries, observer) => { // Renamed to fadeInObserver
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+        document.querySelectorAll('.fade-in').forEach(el => {
+            fadeInObserver.observe(el);
+        });
+    });
+
+</script>
+</body>
+</html>
