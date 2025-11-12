@@ -276,73 +276,89 @@
 
   <style>
     /* Modal Styling */
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 999;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(10, 20, 40, 0.85);
-      backdrop-filter: blur(8px);
-      align-items: center;
-      justify-content: center;
-      transition: opacity 0.3s ease;
-    }
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(10, 20, 40, 0.85);
+  backdrop-filter: blur(8px);
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.3s ease;
+}
 
-    .modal.show {
-      display: flex;
-      animation: fadeIn 0.3s ease forwards;
-    }
+.modal.show {
+  display: flex;
+  animation: fadeIn 0.3s ease forwards;
+}
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: scale(0.95); }
-      to { opacity: 1; transform: scale(1); }
-    }
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
 
-    .modal-content {
-      background: var(--surface);
-      color: #fff;
-      padding: 30px;
-      border-radius: 16px;
-      max-width: 600px;
-      width: 90%;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-      position: relative;
-      animation: slideUp 0.4s ease;
-    }
+.modal-content {
+  background: var(--surface);
+  color: #fff;
+  padding: 30px;
+  border-radius: 16px;
+  max-width: 600px;
+  width: 90%;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+  position: relative;
+  animation: slideUp 0.4s ease;
 
-    @keyframes slideUp {
-      from { transform: translateY(20px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
-    }
+  /* --- ADDED FOR SCROLLABILITY --- */
+  max-height: 90vh; /* Limits the modal height to 90% of the screen height */
+  overflow-y: auto; /* Adds vertical scrolling if content exceeds the max-height */
+  /* ------------------------------- */
+}
 
-    .close-btn {
-      position: absolute;
-      top: 16px;
-      right: 20px;
-      font-size: 24px;
-      cursor: pointer;
-      color: #ccc;
-      transition: color 0.3s;
-    }
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
 
-    .close-btn:hover {
-      color: #fff;
-    }
+.close-btn {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  font-size: 24px;
+  cursor: pointer;
+  color: #ccc;
+  transition: color 0.3s;
+}
 
-    .rating {
-      font-size: 18px;
-      color: gold;
-      margin-bottom: 10px;
-    }
+.close-btn:hover {
+  color: #fff;
+}
 
-    .reviews {
-      margin-top: 20px;
-      border-top: 1px solid rgba(255,255,255,0.1);
-      padding-top: 10px;
-    }
+.rating {
+  font-size: 18px;
+  color: gold;
+  margin-bottom: 10px;
+}
+
+.reviews {
+  margin-top: 20px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: 10px;
+}
+
+/* Optional: Improve scrollbar appearance in modern browsers */
+.modal-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+}
+
   </style>
 </body>
 </html>
