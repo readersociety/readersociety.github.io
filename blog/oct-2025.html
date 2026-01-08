@@ -18,67 +18,79 @@
   <link href="https://fonts.googleapis.com/css2?family=Yusei+Magic&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
-	<header class="site-header">
-		<div class="container brand">
-			<div class="logo-dot"></div>
-			<h1><a href="../index.html" style="text-decoration:none;color:inherit;">Events & Stories</a></h1>
-		</div>
-	</header>
+	<body class="bg-darker">
 
-	<main class="container post-main">
-		<article>
-			<header class="post-hero">
-				<div class="post-hero-bg" style="background-image:
-					linear-gradient(180deg, rgba(6,11,24,.2), rgba(6,11,24,.85)),
-					url('https://github.com/readersociety/readersociety.github.io/blob/main/blog/Messenger_creation_9D7CE827-A393-41F3-8C83-AB27776430F9.jpeg?raw=true')"></div>
-				<div class="post-hero-content">
-					<h2>First Meet at Noa's House!</h2>
-					<p class="muted">October 09, 2025
-						<span class="tag">Svetlana Chmakova</span>
-						<span class="tag">Noa's House</span>
-						<span class="tag">First Meet</span>
-            <span class="tag">Howl's Moving Castle</span>
-					</p>
-				</div>
-			</header>
-
-			<section class="post-body">
-				    <!-- Example of a LEFT-aligned highlight -->
-    <div class="highlight-paragraph">
-        <div class="highlight left">
-            <img src="https://github.com/readersociety/readersociety.github.io/blob/main/Noa%20_Yumi.JPG?raw=true" alt="Description of image">
-            <div class="highlight-caption">A Picture of Two cousins - they look a bit like twins right?</div>
-        </div>
+    <main class="post-main">
         
-        <div class="text">
-            <p>WHO WANTS TO BE THE BLOG WRITER I NEED ONE RIGHT NOW! I AM PLAGUED BY WRITER'S BLOCK HELP YOUR OLD MAN NOW! </p>
+        <!-- HEADER SECTION -->
+        <header class="post-hero">
+            <!-- Hero background image -->
+            <div class="post-hero-bg" style="background-image: url('assets/hero-bg.jpg');"></div>
             
-        </div>
-    </div>
+            <div class="post-hero-content">
+                <!-- Blog Tags -->
+                <div class="tag-list">
+                    <span class="tag">Adventure</span>
+                    <span class="tag">Photography</span>
+                </div>
 
-    <!-- Example of a RIGHT-aligned highlight 
-    <div class="highlight-paragraph">
-         <div class="highlight right">
-            <img src="https://github.com/readersociety/readersociety.github.io/blob/main/Nov6_The_Kidnapping.JPG?raw=true" alt="Another image">
-            <div class="highlight-caption">Is voluntary kidnapping legal? There isn't any police around right?</div>
-        </div>
+                <h2>Exploring the Hidden Trails</h2>
 
-        <div class="text">
-            <p>LOREM LOREM. HELP I HAVE WRITER's BLOCK! WHo wants to be the blog writer?</p>
-        </div>
-    </div>-->
-			</section>
+                <!-- Author & Meta Info -->
+                <div class="post-hero-meta">
+                    <div class="author-info">
+                        <img src="assets/author-avatar.jpg" alt="Author Name" class="author-avatar">
+                        <span>By <strong>John Doe</strong></span>
+                    </div>
+                    <span class="post-date">Jan 8, 2026</span>
+                </div>
+            </div>
+        </header>
 
-			<nav class="post-nav">
-				<a class="ghost" href="../blog.html">← Back to all events</a>
-			</nav>
-		</article>
-	</main>
+        <!-- MAIN LOG CONTENT (CSS Grid Container) -->
+        <section class="post-body">
+            
+            <!-- Log Entry 1 -->
+            <article class="log-entry">
+                <div class="log-image-wrapper">
+                    <!-- loading="lazy" is vital for mobile data performance in 2026 -->
+                    <img src="assets/photo-1.jpg" alt="Description of first log photo" loading="lazy">
+                </div>
+                <div class="log-text-content">
+                    <p>The morning light was perfect as we started the climb. The trail was steeper than expected, but the air was fresh.</p>
+                </div>
+            </article>
 
-	<footer class="container" style="text-align:center;margin:40px 0 60px;color:var(--muted);">
-		© <span id="year">2025</span> Reader Society
-	</footer>
+            <!-- Log Entry 2 -->
+            <article class="log-entry">
+                <div class="log-image-wrapper">
+                    <img src="assets/photo-2.jpg" alt="Description of second log photo" loading="lazy">
+                </div>
+                <div class="log-text-content">
+                    <p>Found a small stream halfway up. Perfect spot for a quick rest and some macro photography.</p>
+                </div>
+            </article>
 
+            <!-- Log Entry 3 -->
+            <article class="log-entry">
+                <div class="log-image-wrapper">
+                    <img src="assets/photo-3.jpg" alt="Description of third log photo" loading="lazy">
+                </div>
+                <div class="log-text-content">
+                    <p>The summit view. Worth every step!</p>
+                </div>
+            </article>
+
+            <!-- NAVIGATION SECTION -->
+            <!-- Spans full width of the grid using grid-column: 1 / -1 -->
+            <nav class="post-nav">
+                <a href="#" class="btn-prev">Previous Post</a>
+                <a href="#" class="btn-next">Next Post</a>
+            </nav>
+
+        </section>
+    </main>
+		
 	<script>document.getElementById("year").textContent = new Date().getFullYear();</script>
 	<script>
     // --- Global Variables (Declared once) ---
