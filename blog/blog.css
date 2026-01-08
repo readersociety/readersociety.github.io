@@ -1254,8 +1254,10 @@ body {
 }
 
 .log-image-wrapper {
+  position:relative;
   width: 100%;
   aspect-ratio: 16 / 10; /* Modern CSS aspect-ratio */
+  overflow:hidden;
 }
 
 .log-image-wrapper img {
@@ -1312,6 +1314,35 @@ body {
   }
 }
 
+/* Style the overlay caption */
+.photo-overlay-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 10px 15px;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.7)); /* Subtle fade */
+  color: white;
+  font-size: 0.8rem;
+  opacity: 0; /* Hidden by default */
+  transform: translateY(100%); /* Start off-screen */
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Show the caption on hover (Desktop) */
+.log-entry:hover .photo-overlay-caption {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Ensure caption is always visible on touch devices (Mobile-First approach) */
+@media (max-width: 768px) {
+  .photo-overlay-caption {
+    opacity: 1;
+    transform: translateY(0);
+    background: rgba(0, 0, 0, 0.8);
+  }
+}
 
 
 /* ... (Rest of your existing CSS for ghost links and media queries) ... */
