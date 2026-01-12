@@ -18,6 +18,50 @@
   <link href="https://fonts.googleapis.com/css2?family=Yusei+Magic&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 	<style>
 		/* --- ANIMATED OVERLAY CAPTION --- */
+/* --- AUTHOR AVATAR STYLING --- */
+
+.author-info {
+  display: flex;
+  align-items: center;
+  gap: 12px; /* Space between image and name */
+}
+
+.author-avatar {
+  width: 42px;         /* Specific size for 2026 UI */
+  height: 42px;
+  border-radius: 50%;  /* Makes it a perfect circle */
+  object-fit: cover;   /* Prevents the face from stretching */
+  
+  /* 2026 Glow Effect */
+  border: 2px solid var(--accent);
+  box-shadow: 0 0 10px var(--border-glow);
+  
+  /* Smooth transition if you decide to add hover later */
+  transition: transform 0.3s ease;
+}
+
+.author-info span {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--text-light);
+}
+
+.post-hero-meta {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Mobile Tweak */
+@media (max-width: 650px) {
+  .author-avatar {
+    width: 35px;
+    height: 35px;
+  }
+}
 
 .log-image-wrapper {
   position: relative;
@@ -133,7 +177,7 @@
     
     <!-- This is the animated part -->
     <figcaption class="photo-overlay-caption">
-      <span class="caption-tag">Editorial</span>
+      
       <h3>The Host and the Photographer</h3>
       <p>Hey, they look a lot like twins, no?</p>
     </figcaption>
@@ -152,11 +196,11 @@ As we sat around the table, the room was quiet except for the sound of Laufey pl
     <!-- Tall: 1x2 Portrait Card -->
     <article class="log-entry tall">
       <div class="log-image-wrapper">
-        <img src="magazine-2.jpg" alt="Tall portrait photography" loading="lazy">
+        <img src="https://github.com/readersociety/readersociety.github.io/blob/main/Boss.jpg?raw=true" alt="Tall portrait photography" loading="lazy">
         
 		  <!-- This is the animated part -->
     <figcaption class="photo-overlay-caption">
-      <span class="caption-tag">Editorial</span>
+      
       <h3><em>MRRRP! Mrrrppp.</em></h3>
       <p><strong>Translation:</strong> Ahem, I beg to differ on the "CEO" part. Boss Bazz certainly has a nice ring to it.</p>
     </figcaption>
@@ -172,12 +216,12 @@ Once the air was light and comfortable, we went to discuss names for our book cl
     <!-- Standard: 1x1 Square Card -->
     <article class="log-entry">
       <div class="log-image-wrapper">
-        <img src="magazine-3.jpg" alt="Standard blog entry image" loading="lazy">
+        <img src="https://github.com/readersociety/readersociety.github.io/blob/main/Tiny.jpg?raw=true" alt="Standard blog entry image" loading="lazy">
 		  <!-- This is the animated part -->
     <figcaption class="photo-overlay-caption">
-      <span class="caption-tag">Editorial</span>
-      <h3><em>MRRRP! Mrrrppp.</em></h3>
-      <p><strong>Translation:</strong> Ahem, I beg to differ on the "CEO" part. Boss Bazz certainly has a nice ring to it.</p>
+     
+      <h3><em>Reality Check</em></h3>
+      <p>I'm actually tall in real life. Wait, who pictured this?!?</p>
     </figcaption>
       </div>
       <div class="log-text-content">
@@ -194,7 +238,7 @@ Once the air was light and comfortable, we went to discuss names for our book cl
         <img src="https://github.com/readersociety/readersociety.github.io/blob/main/White_.jpg?raw=true" alt="Cinematic landscape shot" loading="lazy">
 		   <!-- This is the animated part -->
     <figcaption class="photo-overlay-caption">
-      <span class="caption-tag">Editorial</span>
+      
       <h3><em>"Crowded" Monitor</em></h3>
       <p>Ok, almost all of us were out of frame, so to anyone reading this and not included in the photo, DON'T BLAME ME, blame the guy who took the picture (jk)</p>
     </figcaption>
@@ -210,7 +254,7 @@ Once the air was light and comfortable, we went to discuss names for our book cl
         <img src="https://github.com/readersociety/readersociety.github.io/blob/main/Picw.jpg?raw=true" alt="Secondary detail shot" loading="lazy">
 		   <!-- This is the animated part -->
     <figcaption class="photo-overlay-caption">
-      <span class="caption-tag">Editorial</span>
+      
       <h3><em>Thanks, Yumi</em></h3>
       <p>Shoutout to our photographer Yumi, who gave us these awesome keepsakes. (I lost mine sawry :( )</p>
     </figcaption>
@@ -223,6 +267,43 @@ The meeting came to an end, goodbyes were said, and everyone looked forward to t
     </article>
   </section>
 
+	<section class="slideshow-section">
+  <h3>More Editors' Picks</h3>
+  <div class="slideshow-container">
+    <!-- Slideshow items repeat standard entry structure but align horizontally -->
+    <article class="log-entry">
+      <div class="log-image-wrapper">
+        <img src="https://github.com/readersociety/readersociety.github.io/blob/main/Star-spangled%20hands.jpg?raw=true" alt="Slide item 1" loading="lazy">
+		  <figcaption class="photo-overlay-caption">
+      
+      <h3><em>Oh, Say Can You See?</em></h3>
+      <p>The Star Spangled Pictured feature hands of the girls</p>
+    </figcaption>
+      </div>
+    </article>
+    <article class="log-entry">
+      <div class="log-image-wrapper">
+        <img src="https://github.com/readersociety/readersociety.github.io/blob/main/Two.jpg?raw=true" alt="Slide item 2" loading="lazy">
+		   <figcaption class="photo-overlay-caption">
+      
+      <h3><em>Glasses Duo</em></h3>
+      <p>Note: they aren't the only one in the group with glasses, ok?</p>
+    </figcaption>
+      </div>
+    </article>
+    <article class="log-entry">
+      <div class="log-image-wrapper">
+        <img src="https://github.com/readersociety/readersociety.github.io/blob/main/blog/Messenger_creation_9D7CE827-A393-41F3-8C83-AB27776430F9.jpeg?raw=true" alt="Slide item 3" loading="lazy">
+		  <figcaption class="photo-overlay-caption">
+      
+      <h3><em>Our Book For the Month!</em></h3>
+      <p>These amazing comics are all written by Svetlana Chmakova!</p>
+    </figcaption>
+      </div>
+    </article>
+  </div>
+</section>
+
   <!-- 4. NAVIGATION: Full-width spanning inside grid -->
   <nav class="post-nav">
     <a href="https://readersociety.github.io/blog.html">&larr; Back to Home</a>
@@ -232,27 +313,6 @@ The meeting came to an end, goodbyes were said, and everyone looked forward to t
 </main>
 
 <!-- 5. SLIDESHOW SECTION: Outside main to handle full-screen scroll -->
-<section class="slideshow-section">
-  <h3>More Editors' Picks</h3>
-  <div class="slideshow-container">
-    <!-- Slideshow items repeat standard entry structure but align horizontally -->
-    <article class="log-entry">
-      <div class="log-image-wrapper">
-        <img src="https://github.com/readersociety/readersociety.github.io/blob/main/Picw.jpg?raw=true" alt="Slide item 1" loading="lazy">
-      </div>
-    </article>
-    <article class="log-entry">
-      <div class="log-image-wrapper">
-        <img src="https://github.com/readersociety/readersociety.github.io/blob/main/Picw.jpg?raw=trueg" alt="Slide item 2" loading="lazy">
-      </div>
-    </article>
-    <article class="log-entry">
-      <div class="log-image-wrapper">
-        <img src="https://github.com/readersociety/readersociety.github.io/blob/main/Picw.jpg?raw=true" alt="Slide item 3" loading="lazy">
-      </div>
-    </article>
-  </div>
-</section>
 
 		
 	<script>document.getElementById("year").textContent = new Date().getFullYear();</script>
