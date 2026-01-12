@@ -16,7 +16,86 @@
 	 <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Yusei+Magic&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-	
+	<style>
+		/* --- ANIMATED OVERLAY CAPTION --- */
+
+.log-image-wrapper {
+  position: relative;
+  overflow: hidden; /* Clips the caption as it slides up */
+}
+
+.photo-overlay-caption {
+  position: absolute;
+  inset: 0; /* Covers the whole image area */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end; /* Pushes text to the bottom */
+  padding: 30px;
+  
+  /* 2026 Glassmorphism Look */
+  background: linear-gradient(to top, rgba(4, 8, 18, 0.9) 0%, transparent 100%);
+  backdrop-filter: blur(0px); /* Starts clear */
+  
+  /* Initial State: Hidden and shifted down */
+  opacity: 0;
+  transform: translateY(20px);
+  transition: 
+    opacity 0.4s ease, 
+    transform 0.5s cubic-bezier(0.2, 1, 0.3, 1),
+    backdrop-filter 0.4s ease;
+}
+
+/* Hover Reveal */
+.log-entry:hover .photo-overlay-caption {
+  opacity: 1;
+  transform: translateY(0);
+  backdrop-filter: blur(8px); /* Frosted glass effect on hover */
+}
+
+/* Typography inside the animated caption */
+.caption-tag {
+  color: var(--accent-light);
+  font-size: 0.7rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+}
+
+.photo-overlay-caption h3 {
+  font-size: 1.5rem;
+  color: white;
+  line-height: 1.2;
+  margin-bottom: 10px;
+}
+
+.photo-overlay-caption p {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+@media (max-width: 650px) {
+  .photo-overlay-caption {
+     opacity: 0.8; 
+    transform: translateY(80%); /* Only the top 'tag' peeks out */
+    background: linear-gradient(to top, rgba(4, 8, 18, 0.95) 50%, transparent 100%);
+  }
+
+  .photo-overlay-caption h3 {
+    font-size: 1.2rem; /* Scaled down headline */
+  }
+
+  .photo-overlay-caption p {
+    font-size: 0.85rem;
+    display: -webkit-box; /* Limit to 2 lines on mobile to prevent overflow */
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+	</style>
 </head>
 <body>
 	<!-- 1. MAIN CONTENT WRAPPER -->
@@ -25,20 +104,21 @@
   <!-- 2. HERO SECTION: Strategic visual hierarchy for 2026 -->
   <section class="post-hero">
     <!-- Inline style for dynamic background images -->
-    <div class="post-hero-bg" style="background-image: url('hero-landscape.jpg');"></div>
+    <div class="post-hero-bg" style="background-image: url('https://github.com/readersociety/readersociety.github.io/blob/main/blog/Messenger_creation_9D7CE827-A393-41F3-8C83-AB27776430F9.jpeg?raw=true');"></div>
     
     <div class="post-hero-content">
       <div class="tag-list">
-        <span class="tag">Editorial</span>
-        <span class="tag">Featured</span>
+        <span class="tag">Noa's House</span>
+        <span class="tag">First Meet</span>
+		  <span class="tag">Svetlana Chmakova</span>
       </div>
-      <h2>The Future of Modern Web Layouts in 2026</h2>
+      <h2>Reader Society: Origins</h2>
       <div class="post-hero-meta">
         <div class="author-info">
-          <img src="author-avatar.jpg" alt="Author Alex Rivera" class="author-avatar">
-          <span>By Alex Rivera</span>
+          <img src="https://github.com/readersociety/readersociety.github.io/blob/main/Claudia.jpeg?raw=true" alt="Author Claudia" class="author-avatar">
+          <span>By Claudia</span>
         </div>
-        <span class="post-date">Jan 12, 2026</span>
+        <span class="post-date">Jan 09, 2026</span>
       </div>
     </div>
   </section>
@@ -47,24 +127,45 @@
   <section class="post-body">
     
     <!-- Feature: 2x2 Spanning Card -->
-    <article class="log-entry feature">
-      <div class="log-image-wrapper">
-        <img src="magazine-1.jpg" alt="Description of primary featured content" loading="lazy">
-        <div class="photo-overlay-caption">Main Story Insight</div>
-      </div>
-      <div class="log-text-content">
-        <p>The core featured story taking primary visual real estate.</p>
-      </div>
-    </article>
+   <article class="log-entry feature">
+  <div class="log-image-wrapper">
+    <img src="https://github.com/readersociety/readersociety.github.io/blob/main/Noa%20_Yumi.JPG?raw=true" alt="Description of primary featured content" loading="lazy">
+    
+    <!-- This is the animated part -->
+    <figcaption class="photo-overlay-caption">
+      <span class="caption-tag">Editorial</span>
+      <h3>The Host and the Photographer</h3>
+      <p>Hey, they look a lot like twins, no?</p>
+    </figcaption>
+  </div>
+
+  <!-- This remains as the static footer text -->
+  <div class="log-text-content">
+    <p>On a rainy Thursday afternoon, the book club had decided to meet up and have delightful conversations about a variety of topics while playing games.
+​
+As we sat around the table, the room was quiet except for the sound of Laufey playing softly in the background. There was a sense of awkwardness in the air, mingling with the aroma of brownies being baked. There was a slight feeling of shyness amongst us. The younger kids, however, did not feel any sense of embarrassment and were causing a ruckus in the living room.
+</p>
+  </div>
+</article>
+
 
     <!-- Tall: 1x2 Portrait Card -->
     <article class="log-entry tall">
       <div class="log-image-wrapper">
         <img src="magazine-2.jpg" alt="Tall portrait photography" loading="lazy">
-        <div class="photo-overlay-caption">Vertical Perspective</div>
+        
+		  <!-- This is the animated part -->
+    <figcaption class="photo-overlay-caption">
+      <span class="caption-tag">Editorial</span>
+      <h3><em>MRRRP! Mrrrppp.</em></h3>
+      <p><strong>Translation:</strong> Ahem, I beg to differ on the "CEO" part. Boss Bazz certainly has a nice ring to it.</p>
+    </figcaption>
       </div>
       <div class="log-text-content">
-        <p>An editorial portrait piece for added depth.</p>
+        <p>The tense and awkward mood was then replaced with the sounds of laughter and enjoyment as we played some games, and the mood shifted into something light and fun. We played Taboo at first, a game of wittiness and good vocabulary. Then we played Mafia, a thrilling, exciting game where we try to guess who the “killer” is. (With vivid, bloody descriptions by me.)
+​
+Once the air was light and comfortable, we went to discuss names for our book club. After multiple suggestions and debate, the club’s official name was officially called “Reader Society.”
+</p>
       </div>
     </article>
 
@@ -72,37 +173,60 @@
     <article class="log-entry">
       <div class="log-image-wrapper">
         <img src="magazine-3.jpg" alt="Standard blog entry image" loading="lazy">
+		  <!-- This is the animated part -->
+    <figcaption class="photo-overlay-caption">
+      <span class="caption-tag">Editorial</span>
+      <h3><em>MRRRP! Mrrrppp.</em></h3>
+      <p><strong>Translation:</strong> Ahem, I beg to differ on the "CEO" part. Boss Bazz certainly has a nice ring to it.</p>
+    </figcaption>
       </div>
       <div class="log-text-content">
-        <p>Daily log entry or quick update.</p>
+        <p>While having simple conversations amongst each other, Noa, our club leader, came into the room with a stack of books, which were going to be what we’re going to read for the month. The choice was a series of graphic novels known as “The Berrybrook Series” and a popular classic among Studio Ghibli fans, “Howl's Moving Castle.”
+​
+
+</p>
       </div>
     </article>
 
     <!-- Wide: 2x1 Landscape Card -->
     <article class="log-entry wide">
       <div class="log-image-wrapper">
-        <img src="magazine-4.jpg" alt="Cinematic landscape shot" loading="lazy">
+        <img src="https://github.com/readersociety/readersociety.github.io/blob/main/White_.jpg?raw=true" alt="Cinematic landscape shot" loading="lazy">
+		   <!-- This is the animated part -->
+    <figcaption class="photo-overlay-caption">
+      <span class="caption-tag">Editorial</span>
+      <h3><em>"Crowded" Monitor</em></h3>
+      <p>Ok, almost all of us were out of frame, so to anyone reading this and not included in the photo, DON'T BLAME ME, blame the guy who took the picture (jk)</p>
+    </figcaption>
       </div>
       <div class="log-text-content">
-        <p>A cinematic wide shot to break up the vertical flow.</p>
+        <p>After a while a bombshell was dropped: the book club actually had a website! Immediately, all of us crowded around the monitor were Isaac showed his created Reader Society website - sadly he said it wasn't finished and was in its prototype stage. He did, however, state that it was almost ready for launching and would be released soon. </p>
       </div>
     </article>
 
     <!-- Standard: 1x1 Square Card -->
     <article class="log-entry">
       <div class="log-image-wrapper">
-        <img src="magazine-5.jpg" alt="Secondary detail shot" loading="lazy">
+        <img src="https://github.com/readersociety/readersociety.github.io/blob/main/Picw.jpg?raw=true" alt="Secondary detail shot" loading="lazy">
+		   <!-- This is the animated part -->
+    <figcaption class="photo-overlay-caption">
+      <span class="caption-tag">Editorial</span>
+      <h3><em>Thanks, Yumi</em></h3>
+      <p>Shoutout to our photographer Yumi, who gave us these awesome keepsakes. (I lost mine sawry :( )</p>
+    </figcaption>
       </div>
       <div class="log-text-content">
-        <p>Closing thoughts on the grid layout.</p>
+        <p>As the meeting slowly approached an end, the day and moment were captured in a Polaroid picture- A token of memory to remember the first meeting of the Reader Society.
+​
+The meeting came to an end, goodbyes were said, and everyone looked forward to the next meeting.</p>
       </div>
     </article>
   </section>
 
   <!-- 4. NAVIGATION: Full-width spanning inside grid -->
   <nav class="post-nav">
-    <a href="#">&larr; Previous Post</a>
-    <a href="#">Next Post &rarr;</a>
+    <a href="https://readersociety.github.io/blog.html">&larr; Back to Home</a>
+    <a href="https://readersociety.github.io/blog/nov-2025.html">Next Post &rarr;</a>
   </nav>
 
 </main>
@@ -114,17 +238,17 @@
     <!-- Slideshow items repeat standard entry structure but align horizontally -->
     <article class="log-entry">
       <div class="log-image-wrapper">
-        <img src="slide-1.jpg" alt="Slide item 1" loading="lazy">
+        <img src="https://github.com/readersociety/readersociety.github.io/blob/main/Picw.jpg?raw=true" alt="Slide item 1" loading="lazy">
       </div>
     </article>
     <article class="log-entry">
       <div class="log-image-wrapper">
-        <img src="slide-2.jpg" alt="Slide item 2" loading="lazy">
+        <img src="https://github.com/readersociety/readersociety.github.io/blob/main/Picw.jpg?raw=trueg" alt="Slide item 2" loading="lazy">
       </div>
     </article>
     <article class="log-entry">
       <div class="log-image-wrapper">
-        <img src="slide-3.jpg" alt="Slide item 3" loading="lazy">
+        <img src="https://github.com/readersociety/readersociety.github.io/blob/main/Picw.jpg?raw=true" alt="Slide item 3" loading="lazy">
       </div>
     </article>
   </div>
