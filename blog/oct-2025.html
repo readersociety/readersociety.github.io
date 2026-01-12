@@ -16,182 +16,120 @@
 	 <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Yusei+Magic&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-	<style>
-		/* Container for the whole gallery section */
-.log-gallery {
-  grid-column: 1 / -1;
-  margin-top: 50px;
-  padding: 20px 0;
-}
-
-/* The scrollable track */
-.gallery-scroll-container {
-  display: flex;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory; /* Snaps images into place */
-  gap: 20px;
-  padding: 20px;
-  scrollbar-width: none; /* Hides scrollbar on modern browsers */
-}
-
-/* Individual gallery item */
-.gallery-item {
-  flex: 0 0 280px; /* Width of each gallery card */
-  scroll-snap-align: center; /* Snaps to the center of the screen */
-  border-radius: 16px;
-  overflow: hidden;
-  border: 1px solid var(--border-glow);
-  background: var(--card-bg);
-  transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-}
-
-.gallery-item img {
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  object-fit: cover;
-}
-
-/* THE "MIX" EFFECT: Dim others when one is hovered (Desktop Only) */
-@media (hover: hover) {
-  .gallery-scroll-container:has(.gallery-item:hover) .gallery-item:not(:hover) {
-    opacity: 0.4;
-    filter: grayscale(1) blur(2px);
-    transform: scale(0.95);
-  }
-}
-
-/* Highlighting the active item */
-.gallery-item:hover {
-  transform: scale(1.05);
-  border-color: var(--accent-light);
-  box-shadow: 0 10px 30px rgba(58, 125, 255, 0.3);
-}
-
-	</style>
+	
 </head>
 <body>
-	<body class="bg-darker">
-
-    <main class="post-main">
-        
-        <!-- HEADER SECTION -->
-        <header class="post-hero">
-            <!-- Hero background image -->
-            <div class="post-hero-bg" style="background-image: url('https://github.com/readersociety/readersociety.github.io/blob/main/blog/Messenger_creation_9D7CE827-A393-41F3-8C83-AB27776430F9.jpeg?raw=true');"></div>
-            
-            <div class="post-hero-content">
-                <!-- Blog Tags -->
-                <div class="tag-list">
-                    <span class="tag">Noa's House</span>
-                    <span class="tag">First Meet</span>
-					<span class="tag">Svetlana Chamkova</span>
-                </div>
-
-                <h2>Reader Society's First Meet!</h2>
-
-                <!-- Author & Meta Info -->
-                <div class="post-hero-meta">
-                    <div class="author-info">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6OroLQFJbg4w5UqSSDnoq_24agt1RaAndPg&s" alt="Author Name" class="author-avatar">
-                        <span>By <strong>Claudia</strong></span>
-                    </div>
-                    <span class="post-date">Jan 8, 2026</span>
-                </div>
-            </div>
-        </header>
-
-        <!-- MAIN LOG CONTENT (CSS Grid Container) -->
-        <section class="post-body">
-            
-            <!-- Log Entry 1 -->
-            <article class="log-entry">
-                <div class="log-image-wrapper">
-                    <!-- loading="lazy" is vital for mobile data performance in 2026 -->
-                    <img src="https://github.com/readersociety/readersociety.github.io/blob/main/Noa%20_Yumi.JPG?raw=true" alt="Description of first log photo" loading="lazy">
-					 <figcaption class="photo-overlay-caption">A picture of our host and photographer! They look a lot like cousins don't you think?</figcaption>
-                </div>
-                <div class="log-text-content">
-                    <p>On a rainy Thursday afternoon, the book club had decided to meet up and have delightful conversations about a variety of topics while playing games. As we sat around the table, the room was quiet except for the sound of Laufey playing softly in the background. There was a sense of awkwardness in the air, mingling with the aroma of brownies being baked. There was a slight feeling of shyness amongst us. The younger kids, however, did not feel any sense of embarrassment and were causing a ruckus in the living room.
-</p>
-                </div>
-            </article>
-
-            <!-- Log Entry 2 -->
-            <article class="log-entry">
-                <div class="log-image-wrapper">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjt-ewgNomB7qqJH9Hn5VxQsnOgH_rRb2u9Q&s" alt="Description of second log photo" loading="lazy">
-					 <figcaption class="photo-overlay-caption">The morning light was perfect!</figcaption>
-                </div>
-                <div class="log-text-content">
-                    <p>The tense and awkward mood was then replaced with the sounds of laughter and enjoyment as we played some games, and the mood shifted into something light and fun. We played Taboo at first, a game of wittiness and good vocabulary. Then we played Mafia, a thrilling, exciting game where we try to guess who the “killer” is. (With vivid, bloody descriptions by me.) Once the air was light and comfortable, we went to discuss names for our book club. After multiple suggestions and debate, the club’s official name was officially called “Reader Society.</p>
-                </div>
-            </article>
-
-            <!-- Log Entry 3 -->
-            <article class="log-entry">
-                <div class="log-image-wrapper">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjt-ewgNomB7qqJH9Hn5VxQsnOgH_rRb2u9Q&s" alt="Description of third log photo" loading="lazy">
-					<figcaption class="photo-overlay-caption">The morning light was perfect!</figcaption>
-                </div>
-                <div class="log-text-content">
-                    <p>While having simple conversations amongst each other, Noa, our club leader, came into the room with a stack of books, which were going to be what we’re going to read for the month. The choice was a series of graphic novels known as “The Berrybrook Series” and a popular classic among Studio Ghibli fans, “Howl's Moving Castle.”
-​
-As the meeting slowly approached an end, the day and moment were captured in a Polaroid picture- A token of memory to remember the first meeting of the Reader Society.
-​
-The meeting came to an end, goodbyes were said, and everyone looked forward to the next meeting.
-</p>
-                </div>
-            </article>
-
-			<!-- INTERACTIVE HYBRID GALLERY SECTION 
-<section class="log-gallery">
-    <h3>More from this trip</h3>
-   
-    <div class="gallery-scroll-container">
-     
-        <figure class="gallery-item">
-            <div class="gallery-image-wrapper">
-                <img src="https://i0.wp.com/systass.org/wp-content/uploads/2023/11/placeholder-2-1.png?ssl=1" alt="Description of photo" loading="lazy">
- 
-                <figcaption class="photo-overlay-caption">The morning glow</figcaption>
-            </div>
-        </figure>
-
-
-        <figure class="gallery-item">
-            <div class="gallery-image-wrapper">
-                <img src="https://i0.wp.com/systass.org/wp-content/uploads/2023/11/placeholder-2-1.png?ssl=1" alt="Description of photo" loading="lazy">
-                <figcaption class="photo-overlay-caption">Steep climb</figcaption>
-            </div>
-        </figure>
-
-
-        <figure class="gallery-item">
-            <div class="gallery-image-wrapper">
-                <img src="https://i0.wp.com/systass.org/wp-content/uploads/2023/11/placeholder-2-1.png?ssl=1" alt="Description of photo" loading="lazy">
-                <figcaption class="photo-overlay-caption">Hidden waterfall</figcaption>
-            </div>
-        </figure>
-
-
-        <figure class="gallery-item">
-            <div class="gallery-image-wrapper">
-                <img src="https://i0.wp.com/systass.org/wp-content/uploads/2023/11/placeholder-2-1.png?ssl=1" alt="Description of photo" loading="lazy">
-                <figcaption class="photo-overlay-caption">Final summit</figcaption>
-            </div>
-        </figure>
-
+	<!-- 1. MAIN CONTENT WRAPPER -->
+<main class="post-main">
+  
+  <!-- 2. HERO SECTION: Strategic visual hierarchy for 2026 -->
+  <section class="post-hero">
+    <!-- Inline style for dynamic background images -->
+    <div class="post-hero-bg" style="background-image: url('hero-landscape.jpg');"></div>
+    
+    <div class="post-hero-content">
+      <div class="tag-list">
+        <span class="tag">Editorial</span>
+        <span class="tag">Featured</span>
+      </div>
+      <h2>The Future of Modern Web Layouts in 2026</h2>
+      <div class="post-hero-meta">
+        <div class="author-info">
+          <img src="author-avatar.jpg" alt="Author Alex Rivera" class="author-avatar">
+          <span>By Alex Rivera</span>
+        </div>
+        <span class="post-date">Jan 12, 2026</span>
+      </div>
     </div>
-</section> ---->
-            <!-- NAVIGATION SECTION -->
-            <!-- Spans full width of the grid using grid-column: 1 / -1 -->
-            <nav class="post-nav">
-                <a href="http://readersociety.github.io/blog.html" class="btn-prev">Back to Blog</a>
-                <a href="https://readersociety.github.io/blog/nov-2025.html" class="btn-next">Read Next post</a>
-            </nav>
+  </section>
 
-        </section>
-    </main>
+  <!-- 3. BENTO MAGAZINE GRID: Use 2D article classes for spanning -->
+  <section class="post-body">
+    
+    <!-- Feature: 2x2 Spanning Card -->
+    <article class="log-entry feature">
+      <div class="log-image-wrapper">
+        <img src="magazine-1.jpg" alt="Description of primary featured content" loading="lazy">
+        <div class="photo-overlay-caption">Main Story Insight</div>
+      </div>
+      <div class="log-text-content">
+        <p>The core featured story taking primary visual real estate.</p>
+      </div>
+    </article>
+
+    <!-- Tall: 1x2 Portrait Card -->
+    <article class="log-entry tall">
+      <div class="log-image-wrapper">
+        <img src="magazine-2.jpg" alt="Tall portrait photography" loading="lazy">
+        <div class="photo-overlay-caption">Vertical Perspective</div>
+      </div>
+      <div class="log-text-content">
+        <p>An editorial portrait piece for added depth.</p>
+      </div>
+    </article>
+
+    <!-- Standard: 1x1 Square Card -->
+    <article class="log-entry">
+      <div class="log-image-wrapper">
+        <img src="magazine-3.jpg" alt="Standard blog entry image" loading="lazy">
+      </div>
+      <div class="log-text-content">
+        <p>Daily log entry or quick update.</p>
+      </div>
+    </article>
+
+    <!-- Wide: 2x1 Landscape Card -->
+    <article class="log-entry wide">
+      <div class="log-image-wrapper">
+        <img src="magazine-4.jpg" alt="Cinematic landscape shot" loading="lazy">
+      </div>
+      <div class="log-text-content">
+        <p>A cinematic wide shot to break up the vertical flow.</p>
+      </div>
+    </article>
+
+    <!-- Standard: 1x1 Square Card -->
+    <article class="log-entry">
+      <div class="log-image-wrapper">
+        <img src="magazine-5.jpg" alt="Secondary detail shot" loading="lazy">
+      </div>
+      <div class="log-text-content">
+        <p>Closing thoughts on the grid layout.</p>
+      </div>
+    </article>
+  </section>
+
+  <!-- 4. NAVIGATION: Full-width spanning inside grid -->
+  <nav class="post-nav">
+    <a href="#">&larr; Previous Post</a>
+    <a href="#">Next Post &rarr;</a>
+  </nav>
+
+</main>
+
+<!-- 5. SLIDESHOW SECTION: Outside main to handle full-screen scroll -->
+<section class="slideshow-section">
+  <h3>More Editors' Picks</h3>
+  <div class="slideshow-container">
+    <!-- Slideshow items repeat standard entry structure but align horizontally -->
+    <article class="log-entry">
+      <div class="log-image-wrapper">
+        <img src="slide-1.jpg" alt="Slide item 1" loading="lazy">
+      </div>
+    </article>
+    <article class="log-entry">
+      <div class="log-image-wrapper">
+        <img src="slide-2.jpg" alt="Slide item 2" loading="lazy">
+      </div>
+    </article>
+    <article class="log-entry">
+      <div class="log-image-wrapper">
+        <img src="slide-3.jpg" alt="Slide item 3" loading="lazy">
+      </div>
+    </article>
+  </div>
+</section>
+
 		
 	<script>document.getElementById("year").textContent = new Date().getFullYear();</script>
 	<script>
