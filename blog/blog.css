@@ -1296,25 +1296,32 @@ body {
 
 /* OVERLAY CAPTION */
 .photo-overlay-caption {
-  position: absolute;
-  inset: 0;
-  padding: 20px;
-  background: linear-gradient(to top, rgba(4, 8, 18, 0.9) 0%, transparent 100%);
-  backdrop-filter: blur(0px);
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: all 0.5s cubic-bezier(0.2, 1, 0.3, 1);
-  z-index: 2;
+    position: absolute;
+    inset: 0;
+    padding: 20px;
+    background: linear-gradient(to top, rgba(4, 8, 18, 0.9) 0%, transparent 100%);
+    backdrop-filter: blur(0px);
+    display: flex;
+    flex-direction: column;
+    /* Updated: Centers the content vertically */
+    justify-content: center;
+    /* Added: Centers the content horizontally */
+    align-items: center;
+    /* Added: Ensures text alignment is centered within the flex item */
+    text-align: center;
+    opacity: 0;
+    /* Optional: You can change or remove the initial transform to better suit a center reveal */
+    transform: none;
+    transition: all 0.5s cubic-bezier(0.2, 1, 0.3, 1);
+    z-index: 2;
 }
 
 .log-entry:hover .photo-overlay-caption {
-  opacity: 1;
-  transform: translateY(0);
-  backdrop-filter: blur(8px);
+    opacity: 1;
+    transform: translateY(0);
+    backdrop-filter: blur(8px);
 }
+
 
 /* 4. SLIDESHOW */
 .slideshow-section {
