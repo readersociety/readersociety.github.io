@@ -64,79 +64,102 @@
 
 .log-image-wrapper {
   position: relative;
-  overflow: hidden; /* Clips the caption as it slides up */
+  overflow: hidden; 
 }
 
 .photo-overlay-caption {
   position: absolute;
-  inset: 0; /* Covers the whole image area */
+  inset: 0;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end; /* Pushes text to the bottom */
-  padding: 30px;
   
-  /* 2026 Glassmorphism Look */
-  background: linear-gradient(to top, rgba(4, 8, 18, 0.9) 0%, transparent 100%);
-  backdrop-filter: blur(0px); /* Starts clear */
+  /* Updated: Perfect Center Alignment */
+  justify-content: center; 
+  align-items: center;
+  text-align: center;
+  padding: 40px; /* Increased padding for better center breathing room */
   
-  /* Initial State: Hidden and shifted down */
+  /* Updated: Radial gradient for centered focus */
+  background: radial-gradient(circle, rgba(4, 8, 18, 0.8) 0%, rgba(4, 8, 18, 0.95) 100%);
+  backdrop-filter: blur(0px);
+  
+  /* Initial State */
   opacity: 0;
-  transform: translateY(20px);
+  transform: scale(0.95); /* Subtle scale-in effect instead of slide-up */
   transition: 
     opacity 0.4s ease, 
     transform 0.5s cubic-bezier(0.2, 1, 0.3, 1),
     backdrop-filter 0.4s ease;
+  z-index: 2;
+
+  /* Enable Scrolling for long text */
+  overflow-y: auto;
+  scrollbar-width: thin; /* Firefox */
+  scrollbar-color: rgba(255, 255, 255, 0.2) transparent; /* Firefox */
+}
+
+/* SLEEK SCROLLBAR (Chrome, Safari, Edge) */
+.photo-overlay-caption::-webkit-scrollbar {
+  width: 4px; /* Very thin and modern */
+}
+
+.photo-overlay-caption::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.photo-overlay-caption::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+}
+
+.photo-overlay-caption::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-light, #fff); /* Glows on hover */
 }
 
 /* Hover Reveal */
 .log-entry:hover .photo-overlay-caption {
   opacity: 1;
-  transform: translateY(0);
-  backdrop-filter: blur(8px); /* Frosted glass effect on hover */
+  transform: scale(1);
+  backdrop-filter: blur(8px);
 }
 
-/* Typography inside the animated caption */
+/* Typography Adjustments for Center Layout */
 .caption-tag {
   color: var(--accent-light);
   font-size: 0.7rem;
   font-weight: bold;
   text-transform: uppercase;
   letter-spacing: 2px;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
 }
 
 .photo-overlay-caption h3 {
   font-size: 1.5rem;
   color: white;
   line-height: 1.2;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
+  max-width: 90%; /* Prevents text from hitting the edges */
 }
 
 .photo-overlay-caption p {
   font-size: 0.9rem;
-  color: var(--text-muted);
+  color: rgba(255, 255, 255, 0.7); /* Slightly brighter for readability */
   margin: 0;
+  max-width: 90%;
 }
 
 @media (max-width: 650px) {
   .photo-overlay-caption {
-     opacity: 0.8; 
-    transform: translateY(80%); /* Only the top 'tag' peeks out */
-    background: linear-gradient(to top, rgba(4, 8, 18, 0.95) 50%, transparent 100%);
+    padding: 20px;
+    /* On mobile, usually better to keep opacity high if text is centered */
+    transform: scale(1); 
   }
-
+  
   .photo-overlay-caption h3 {
-    font-size: 1.2rem; /* Scaled down headline */
-  }
-
-  .photo-overlay-caption p {
-    font-size: 0.85rem;
-    display: -webkit-box; /* Limit to 2 lines on mobile to prevent overflow */
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
+    font-size: 1.2rem;
   }
 }
+
 
 	</style>
 </head>
