@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DJ — Isaac</title>
+
+  <link rel="stylesheet" href="acct.css" />
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <header class="topbar">
+    <h2>Isaac</h2>
+    <a href="../index.html" class="back">← DJ Home</a>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main class="content">
+
+    <!-- FEATURED -->
+    <section class="featured">
+      <h1>Isaac’s Library</h1>
+      <p>Blue × Red · Dark Energy</p>
+    </section>
+
+    <!-- LIKED SONGS -->
+    <section class="liked-section">
+      <div class="liked-header">
+        <h3>❤️ Liked Songs</h3>
+        <button id="playLiked">▶ Play</button>
+      </div>
+
+      <div class="liked-songs" id="likedSongsList">
+        <p class="empty">No liked songs yet</p>
+      </div>
+    </section>
+
+    <!-- ALL SONGS -->
+    <section class="songs">
+
+      <div class="song"
+           data-src="../assets/audio/song1.mp3"
+           data-lyrics="These are the lyrics for Red Pulse
+Second line
+Third line">
+        <img src="../assets/images/cover1.jpg" alt="cover">
+        <div class="song-info">
+          <span class="title">Red Pulse</span>
+          <span class="artist">Isaac</span>
+        </div>
+        <button class="play">▶</button>
+      </div>
+
+      <div class="song"
+           data-src="../assets/audio/song2.mp3"
+           data-lyrics="Blue Depths lyrics go here
+Feel the calm
+Feel the wave">
+        <img src="../assets/images/cover2.jpg" alt="cover">
+        <div class="song-info">
+          <span class="title">Blue Depths</span>
+          <span class="artist">Isaac</span>
+        </div>
+        <button class="play">▶</button>
+      </div>
+
+      <div class="song"
+           data-src="../assets/audio/song3.mp3"
+           data-lyrics="Night Voltage lyrics
+Electric night
+Never sleep">
+        <img src="../assets/images/cover3.jpg" alt="cover">
+        <div class="song-info">
+          <span class="title">Night Voltage</span>
+          <span class="artist">Isaac</span>
+        </div>
+        <button class="play">▶</button>
+      </div>
+
+    </section>
+  </main>
+
+  <!-- AUDIO ELEMENT -->
+  <audio id="audio"></audio>
+
+  <!-- OVERLAY PLAYER -->
+  <div class="overlay hidden" id="overlay">
+    <div class="overlay-content">
+
+      <img id="overlayCover" />
+
+      <h2 id="overlayTitle"></h2>
+      <p id="overlayArtist"></p>
+
+      <!-- PROGRESS -->
+      <div class="progress-container">
+        <div class="progress" id="progress"></div>
+      </div>
+
+      <span class="time">
+        <span id="currentTime">0:00</span>
+        <span id="duration">0:00</span>
+      </span>
+
+      <!-- CONTROLS -->
+      <div class="controls">
+        <button id="prev">⏮</button>
+        <button id="back10">⏪ 10</button>
+        <button id="playPause">⏸</button>
+        <button id="forward10">10 ⏩</button>
+        <button id="next">⏭</button>
+      </div>
+
+      <!-- OPTIONS -->
+      <div class="options">
+        <button id="like">♡</button>
+        <button id="repeat">🔁</button>
+      </div>
+
+      <!-- LYRICS -->
+      <div class="lyrics">
+        <h4>Lyrics</h4>
+        <p id="lyricsText">Loading lyrics...</p>
+      </div>
+
+      <!-- CLOSE -->
+      <button id="closeOverlay">✕</button>
+
+    </div>
+  </div>
+
+  <!-- JS -->
+  <script src="acct.js"></script>
+</body>
+</html>
