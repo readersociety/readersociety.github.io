@@ -228,11 +228,117 @@ if ("serviceWorker" in navigator) {
   navigator.serviceWorker.register("./service-worker.js");
 }
 
-/* =========================
+/* ======================
+   SONG DATA
+====================== */
+
+const songs = JSON.parse(localStorage.getItem("djSongs")) || [
+  {
+    id: "1",
+    title: "Midnight Drive",
+    artist: "Isaac",
+    url: "https://github.com/readersociety/readersociety.github.io/raw/refs/heads/main/bard/Delusional_John-Howell.weba",
+    cover: "covers/midnight.jpg",
+    lyrics: "Driving through the city lights...",
+    liked: false,
+    playCount: 0
+  }
+];
+
+localStorage.setItem("djSongs", JSON.stringify(songs));
+
+/* ======================
+   GLOBAL STATE
+====================== */
+
+const state = {
+  currentSong: null,
+  queue: [],
+  playlists: JSON.parse(localStorage.getItem("djPlaylists")) || {}
+};
+
+/* ======================
+   AUDIO
+====================== */
+
+const audio = new Audio();
+
+/* ======================
+   PLAYER
+====================== */
+
+function playSong(song) {
+  state.currentSong = song;
+  song.playCount++;
+
+  audio.src = song.url;
+  audio.play();
+
+  document.getElementById("miniPlayer").classList.add("visible");
+  showOverlay(song);
+
+  localStorage.setItem("djSongs", JSON.stringify(songs));
+}
+
+/* ======================
+   UI
+====================== */
+
+function showOverlay(song) {
+  const o = document.getElementById("overlay");
+  o.classList.add("open");
+
+  o.querySelector(".title").textContent = song.title;
+  o.querySelector(".artist").textContent = song.artist;
+  o.querySelector(".cover-large").src = song.cover;
+}
+
+function closeOverlay() {
+  document.getElementById("overlay").classList.remove("open");
+}
+
+/* ======================
+   CONTROLS
+====================== */
+
+function togglePlay() {
+  audio.paused ? audio.play() : audio.pause();
+}
+
+function skip(sec) {
+  audio.currentTime += sec;
+}
+
+/* ======================
+   RENDER
+====================== */
+
+function renderSongs(list, id) {
+  const el = document.getElementById(id);
+  el.innerHTML = "";
+  list.forEach(song => {
+    const row = document.createElement("div");
+    row.className = "song-row";
+    row.innerHTML = `
+      <img src="${song.cover}">
+      <div class="song-info">
+        <div class="song-title">${song.title}</div>
+        <div class="song-artist">${song.artist}</div>
+      </div>
+      <button>▶</button>
+    `;
+    row.querySelector("button").onclick = () => playSong(song);
+    el.appendChild(row);
+  });
+}
+
+/* ======================
    INIT
-========================= */
+====================== */
 
 document.addEventListener("DOMContentLoaded", () => {
-  initWaveform();
+  renderSongs(songs, "homeSongs");
+  renderSongs(songs.filter(s => s.liked), "likedSongs");
 });
+
 
