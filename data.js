@@ -25,10 +25,12 @@ export const songs = [
   }
 ];
 
-export let playlists = [
-  {
-    id: "p1",
-    name: "My Playlist",
-    songIds: ["s1"]
-  }
-];
+//***export let playlists = [
+  //{
+    //id: "p1",
+    //name: "My Playlist",
+   // songIds: ["s1"]
+ // }
+//];
+
+export let playlists = [];
