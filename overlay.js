@@ -1,6 +1,8 @@
 import { toggleLike } from "./likes.js";
 import { state } from "./state.js";
 import { songs } from "./data.js";
+import { initWaveform } from "./waveform.js";
+
 import { getAudio, togglePlay, nextSong, prevSong } from "./player.js";
 
 const overlay = document.getElementById("overlay");
@@ -41,6 +43,8 @@ export function syncOverlay() {
 }
 
 export function initOverlay() {
+  import { initWaveform } from "./waveform.js";
+
   document.getElementById("likeBtn").onclick = () => {
   toggleLike(song.id);
 };
