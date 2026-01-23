@@ -1,0 +1,10 @@
+// js/search.js
+
+export function searchSongs(songs, query) {
+  const q = query.toLowerCase();
+
+  return songs.filter(song =>
+    song.title.toLowerCase().includes(q) ||
+    song.artist.toLowerCase().includes(q)
+  );
+}
