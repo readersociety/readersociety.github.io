@@ -73,3 +73,5 @@ export function initOverlay() {
     }
   });
 }
+import { playlists } from "./data.js";
+import { toggleSongInPlaylist } from "./playlists.js";
