@@ -5,13 +5,21 @@ import { getAudio, togglePlay, nextSong, prevSong } from "./player.js";
 const overlay = document.getElementById("overlay");
 const audio = getAudio();
 
+import { hideMiniPlayer } from "./miniplayer.js";
+
 export function openOverlay() {
   overlay.classList.remove("hidden");
+  hideMiniPlayer();
 }
+
+
+import { showMiniPlayer } from "./miniplayer.js";
 
 export function closeOverlay() {
   overlay.classList.add("hidden");
+  if (state.isPlaying) showMiniPlayer();
 }
+
 
 export function syncOverlay() {
   const song = songs[state.currentSongIndex];
