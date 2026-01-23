@@ -14,3 +14,17 @@ document.addEventListener("DOMContentLoaded", () => {
   initNavigation();
   initSidebarToggle();
 });
+import { initOverlay, openOverlay, syncOverlay } from "./overlay.js";
+import { playSongById } from "./player.js";
+
+document.addEventListener("DOMContentLoaded", () => {
+  initOverlay();
+
+  // Open overlay automatically on play
+  const originalPlay = playSongById;
+  window.playSongById = id => {
+    originalPlay(id);
+    syncOverlay();
+    openOverlay();
+  };
+});
