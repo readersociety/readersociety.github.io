@@ -13,3 +13,17 @@ export function toggleLike(songId) {
   syncOverlay();
   syncMiniPlayer();
 }
+import { songs } from "./data.js";
+import { playSongById } from "./player.js";
+import { syncOverlay, openOverlay } from "./overlay.js";
+import { syncMiniPlayer } from "./miniplayer.js";
+
+export function playAllLiked() {
+  const liked = songs.filter(song => song.liked);
+  if (!liked.length) return;
+
+  playSongById(liked[0].id);
+  syncOverlay();
+  syncMiniPlayer();
+  openOverlay();
+}
