@@ -1,3 +1,4 @@
+import { toggleLike } from "./likes.js";
 import { state } from "./state.js";
 import { songs } from "./data.js";
 import { getAudio, togglePlay, nextSong, prevSong } from "./player.js";
@@ -22,6 +23,10 @@ export function closeOverlay() {
 
 
 export function syncOverlay() {
+  document
+  .getElementById("likeBtn")
+  .classList.toggle("active", song.liked);
+
   const song = songs[state.currentSongIndex];
   if (!song) return;
 
@@ -36,6 +41,10 @@ export function syncOverlay() {
 }
 
 export function initOverlay() {
+  document.getElementById("likeBtn").onclick = () => {
+  toggleLike(song.id);
+};
+
   document.getElementById("closeOverlay").onclick = closeOverlay;
   document.getElementById("playPause").onclick = togglePlay;
   document.getElementById("next").onclick = nextSong;
