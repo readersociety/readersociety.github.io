@@ -94,5 +94,31 @@ function setGradient(section) {
   document.documentElement.style.setProperty("--g3", colors[2]);
 }
 setGradient("liked");
+const messages = {
+  home: "Welcome back 🎧",
+  liked: "Your favorite vibes ❤️",
+  playlists: "Your sound, your way 🎶",
+  search: "Find your next obsession 🔍"
+};
+
+export function updateWelcome(section) {
+  const el = document.querySelector(
+    `.welcome[data-section="${section}"]`
+  );
+  if (!el) return;
+
+  el.textContent = messages[section] || "Welcome 👋";
+
+  el.style.animation = "none";
+  el.offsetHeight;
+  el.style.animation = "";
+}
+audio.addEventListener("play", () => {
+  document.getElementById("gradient-bg").style.animationDuration = "12s";
+});
+
+audio.addEventListener("pause", () => {
+  document.getElementById("gradient-bg").style.animationDuration = "22s";
+});
 
 
