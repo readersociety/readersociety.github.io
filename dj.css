@@ -1,3 +1,108 @@
+:root {
+  --ease: cubic-bezier(.22,1,.36,1);
+  --fast: 150ms;
+  --medium: 300ms;
+  --slow: 600ms;
+
+  --blue: #3b82f6;
+  --green: #22c55e;
+  --red: #ef4444;
+
+    --g1: #0f172a;
+  --g2: #1e3a8a;
+  --g3: #022c22;
+}
+
+
+:root {
+  --icon-default: #9ca3af;
+  --icon-active: #3b82f6; /* blue */
+  --icon-active-alt: #ef4444; /* red */
+}
+
+/* Base icon */
+.icon {
+  width: 22px;
+  height: 22px;
+  stroke: var(--icon-default);
+  fill: none;
+  stroke-width: 2;
+  transition: 
+    stroke 0.2s ease,
+    fill 0.2s ease,
+    transform 0.15s ease;
+}
+
+/* Filled icons (like heart) */
+.icon.fill {
+  fill: var(--icon-default);
+  stroke: none;
+}
+
+/* Active state */
+.icon.active {
+  stroke: var(--icon-active);
+  fill: var(--icon-active);
+  transform: scale(1.1);
+}
+
+/* Press feedback */
+.icon-btn:active .icon {
+  transform: scale(0.9);
+}
+
+.icon.active {
+  animation: pulse 0.25s ease;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1.1); }
+}
+
+.search-bar {
+  padding: 10px;
+}
+
+.search-bar input {
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: none;
+  background: #111827;
+  color: white;
+  font-size: 14px;
+}
+
+.search-bar input::placeholder {
+  color: #6b7280;
+}
+
+.waveform {
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  width: 100%;
+  height: 60px;
+  margin: 16px 0;
+  cursor: pointer;
+}
+
+.wave-bar {
+  flex: 1;
+  background: #374151;
+  border-radius: 6px;
+  transition: 
+    height 0.25s ease,
+    background 0.2s ease;
+}
+
+.wave-bar.played {
+  background: linear-gradient(180deg, #3b82f6, #ef4444);
+}
+
+
 .section {
   display: none;
 }
@@ -118,6 +223,177 @@
 
 .lyrics.hidden {
   display: none;
+}
+
+/* MINI PLAYER */
+.mini-player {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 64px;
+  background: linear-gradient(90deg, #0b1220, #120b1f);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  z-index: 900;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+.mini-player.hidden {
+  display: none;
+}
+
+.mini-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  overflow: hidden;
+}
+
+.mini-left img {
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.mini-info {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.mini-info span {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#miniTitle {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+#miniArtist {
+  font-size: 12px;
+  opacity: 0.7;
+}
+
+.section {
+  opacity: 0;
+  transform: translateY(8px);
+  pointer-events: none;
+  transition:
+    opacity var(--medium) var(--ease),
+    transform var(--medium) var(--ease);
+}
+
+.section.active {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.song-row {
+  transition:
+    background var(--fast),
+    transform var(--fast);
+}
+
+.song-row:active {
+  transform: scale(.98);
+}
+
+.song-row:hover {
+  background: rgba(255,255,255,.04);
+}
+
+.play-btn svg {
+  transition:
+    transform var(--fast),
+    fill var(--fast);
+}
+
+.playing .play-btn svg {
+  transform: scale(1.1);
+  fill: var(--green);
+}
+
+.player-overlay {
+  transform: translateY(100%);
+  transition: transform var(--slow) var(--ease);
+}
+
+.player-overlay.open {
+  transform: translateY(0);
+}
+
+.mini-player {
+  transform: translateY(100%);
+  transition: transform var(--medium) var(--ease);
+}
+
+.mini-player.visible {
+  transform: translateY(0);
+}
+
+.like-btn.active {
+  animation: pop .3s var(--ease);
+  fill: var(--red);
+}
+
+@keyframes pop {
+  0% { transform: scale(.8) }
+  60% { transform: scale(1.2) }
+  100% { transform: scale(1) }
+}
+
+.control-btn.active {
+  color: var(--blue);
+  filter: drop-shadow(0 0 6px rgba(59,130,246,.6));
+}
+
+.song-row {
+  animation: fadeUp var(--medium) var(--ease);
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+#gradient-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(
+    120deg,
+    var(--g1),
+    var(--g2),
+    var(--g3)
+  );
+  background-size: 400% 400%;
+  animation: gradientFlow 18s ease infinite;
+  transition: background 1s ease;
+}
+
+@keyframes gradientFlow {
+  0% { background-position: 0% 50% }
+  50% { background-position: 100% 50% }
+  100% { background-position: 0% 50% }
 }
 
 
