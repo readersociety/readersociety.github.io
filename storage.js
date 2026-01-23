@@ -36,3 +36,14 @@ export function loadLikes(songs) {
     song.liked = likedIds.includes(song.id);
   });
 }
+
+const PLAYLIST_KEY = "dj_playlists";
+
+export function savePlaylists(playlists) {
+  localStorage.setItem(PLAYLIST_KEY, JSON.stringify(playlists));
+}
+
+export function loadPlaylists() {
+  return JSON.parse(localStorage.getItem(PLAYLIST_KEY)) || [];
+}
+
