@@ -60,3 +60,17 @@ export function prevSong() {
 export function getAudio() {
   return audio;
 }
+
+export function cacheSong(url) {
+  caches.open("dj-audio").then(cache => {
+    cache.add(url);
+  });
+}
+
+audio.src = song.url;
+cacheSong(song.url);
+audio.play();
+
+export function isOffline() {
+  return !navigator.onLine;
+}
