@@ -28,3 +28,71 @@ document.addEventListener("DOMContentLoaded", () => {
     openOverlay();
   };
 });
+
+import { initMiniPlayer, syncMiniPlayer } from "./miniplayer.js";
+import { initOverlay, openOverlay, syncOverlay } from "./overlay.js";
+import { playSongById } from "./player.js";
+
+document.addEventListener("DOMContentLoaded", () => {
+  initOverlay();
+  initMiniPlayer();
+
+  const originalPlay = playSongById;
+
+  window.playSongById = id => {
+    originalPlay(id);
+    syncOverlay();
+    syncMiniPlayer();
+    openOverlay();
+  };
+});
+import { loadLikes } from "./storage.js";
+import { renderLikedSongs } from "./library.js";
+import { playAllLiked } from "./liked.js";
+
+document.addEventListener("DOMContentLoaded", () => {
+  loadLikes(songs);
+
+  const likedContainer = document.querySelector("#liked .song-list");
+  if (likedContainer) {
+    renderLikedSongs(likedContainer, songs);
+  }
+
+  document.getElementById("playLiked")?.addEventListener("click", playAllLiked);
+});
+// Playlist UI
+import { initPlaylists, createPlaylist } from "./playlists.js";
+import { renderPlaylists } from "./playlistUI.js";
+
+document.addEventListener("DOMContentLoaded", () => {
+  initPlaylists();
+
+  const list = document.getElementById("playlistList");
+  if (list) renderPlaylists(list);
+
+  document.getElementById("createPlaylist").onclick = () => {
+    const input = document.getElementById("playlistName");
+    createPlaylist(input.value);
+    input.value = "";
+    renderPlaylists(list);
+  };
+});
+
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("./service-worker.js");
+}
+export function animate(el, className, duration = 300) {
+  el.classList.add(className);
+  setTimeout(() => el.classList.remove(className), duration);
+}
+function setGradient(section) {
+  const colors = gradients[section];
+  if (!colors) return;
+
+  document.documentElement.style.setProperty("--g1", colors[0]);
+  document.documentElement.style.setProperty("--g2", colors[1]);
+  document.documentElement.style.setProperty("--g3", colors[2]);
+}
+setGradient("liked");
+
+
