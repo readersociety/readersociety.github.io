@@ -18,3 +18,21 @@ export function loadPlayStats(songs) {
     }
   });
 }
+
+const LIKE_KEY = "dj_liked_songs";
+
+export function saveLikes(songs) {
+  const likedIds = songs
+    .filter(song => song.liked)
+    .map(song => song.id);
+
+  localStorage.setItem(LIKE_KEY, JSON.stringify(likedIds));
+}
+
+export function loadLikes(songs) {
+  const likedIds = JSON.parse(localStorage.getItem(LIKE_KEY)) || [];
+
+  songs.forEach(song => {
+    song.liked = likedIds.includes(song.id);
+  });
+}
