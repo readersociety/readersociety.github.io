@@ -1,0 +1,1343 @@
+<!DOCTYPE html>
+<!-------
+					WELCOME TO CAMP HALF-BLOOD!
+
+
+
+
+
+------>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Percy Jackson "Who Your Divne Parent Might Be!" Test</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caesar+Dressing&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <style>
+/* Lenis Scroll Styling */
+        html.lenis {
+          height: auto;
+        }
+        .lenis.lenis-smooth {
+          scroll-behavior: auto;
+        }
+        .lenis.lenis-smooth [data-lenis-prevent] {
+          overscroll-behavior: contain;
+        }
+        .lenis.lenis-stopped {
+          overflow: hidden;
+        }
+		
+		/* Fade-in animation for scroll */
+        .fade-in {
+          opacity: 0;
+          transform: translateY(10px);
+          transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        
+        .fade-in.show {
+          opacity: 1;
+          transform: translateY(0);
+        }
+        
+        .fade-in-right {
+            opacity: 0;
+            transform: translateX(70px);
+            transition: 2s;
+        }
+            
+        .fade-in-left {
+            opacity: 0;
+            transform: translateX(-70px);
+            transition: 1s;
+        }
+            
+        .fade-in-right.show {
+            opacity: 1;
+            transform: translateX(0);
+        }
+            
+        .fade-in-left.show {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    /* Variables */
+    :root {
+      --orange-main: #ff8c1a;
+      --orange-soft: #ffb347;
+      --orange-dark: #cc5c00;
+--accent-gold: #ffb347;
+--sedai-blue: #5dade2;
+
+      --bg-dark: #0f0f0f;
+      --bg-card: #1a1a1a;
+      --text-main: #ffffff;
+      --text-muted: #cfcfcf;
+    }
+
+      .page {
+        width: 100%;
+        max-width: 650px;
+        padding: 2rem;
+        background: linear-gradient(180deg, #1e1e1e, var(--bg-card));
+        border-radius: 16px;
+        box-shadow: 0 0 40px rgba(255, 140, 26, 0.15);
+        text-align: center;
+      }
+
+    
+    h1 {
+      font-family: "Caesar Dressing", "Raleway", serif;
+      font-size: 2.5rem;
+      margin-bottom: 0;
+      text-shadow: 0 0 15px rgba(255, 140, 26, 0.5);
+    }
+    
+    .subtitle {
+      font-family:"Raleway", sans-serif
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      font-size: 0.8rem;
+      color: var(--orange-soft) !important;
+      margin-top: 5px;
+    }
+    
+    /* That dashed border */
+    .greek-border {
+      height: 4px;
+      width: 100%;
+      background-image: linear-gradient(90deg, var(--orange-main) 50%, transparent 50%), linear-gradient(90deg, var(--orange-main) 50%, transparent 50%);
+      background-size: 20px 2px;
+      background-repeat: repeat-x;
+      margin: 1rem 0;
+      opacity: 0.6;
+    }
+    
+    .mrD {
+      max-width: 520px;
+      margin: 1.5rem auto 2rem;
+      line-height: 1.7;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+
+    .welcome-text p {
+      margin-bottom: 1rem;
+    }
+
+    .mr-d-signoff {
+      font-style: italic;
+      color: var(--orange-soft);
+    }
+
+    
+    /* Pulse Effect for the Start Button */
+    .main-btn {
+      padding: 1.2rem 2.5rem !important;
+      font-weight: bold;
+      letter-spacing: 2px;
+      background: var(--orange-main);
+      color: #000;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 0 0 20px rgba(255, 140, 26, 0.3);
+      transition: all 0.3s ease;
+      animation: btn 2s infinite;
+    }
+    
+    @keyframes btn {
+      0% { box-shadow: 0 0 40px rgba(255, 140, 26, 0.4); }
+      50% { box-shadow: 0 0 55px rgba(255, 140, 26, 0.7); }
+      100% { box-shadow: 0 0 40px rgba(255, 140, 26, 0.4); }
+    }
+    
+    .main-btn:hover {
+      transform: scale(1.05);
+      background: #fff;
+      color: var(--orange-dark);
+    }
+    
+    /* The question mark goes round and round */
+    .mystery-icon svg {
+      color: var(--orange-main);
+      opacity: 0.7;
+      animation: wheels-on-the-bus-goes-round-and-round 5s infinite ease-in-out;
+    }
+    
+    @keyframes wheels-on-the-bus-goes-round-and-round {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+	  overflow-x:hidden;
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Raleway", sans-serif;
+      background: radial-gradient(
+        circle at top,
+        #1f1205,
+        var(--bg-dark)
+      );
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Camp Half nlood theme */
+    ::-webkit-scrollbar {
+      width: 10px;
+      background-color: var(--bg-dark);
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #1a1a1a;
+      border-left: 1px solid #333;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(180deg, var(--orange-dark), var(--orange-main));
+      border-radius: 10px;
+      border: 2px solid #1a1a1a;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--orange-soft);
+      box-shadow: 0 0 10px var(--orange-main);
+    }
+
+    #quiz-container {
+      width: 100%;
+      max-width: 650px;
+      padding: 2rem;
+      background: linear-gradient(
+        180deg,
+        #1e1e1e,
+        var(--bg-card)
+      );
+      border-radius: 16px;
+      box-shadow: 0 0 40px rgba(255, 140, 26, 0.15);
+      text-align: center;
+    }
+
+    
+    h1 {
+      margin-top: 0;
+      color: var(--orange-main);
+      letter-spacing: 1px;
+    }
+
+    h2 {
+      color: var(--orange-soft);
+    }
+
+    .quiz-header {
+
+        margin-bottom: 2rem;
+        text-align: left;
+    }
+
+    #progress-text {
+        font-family:"Raleway", sans-serif;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        color: var(--orange-soft);
+        font-weight: bold;
+    }
+
+    .progress-bar-bg {
+        width: 100%;
+        height: 6px;
+        background: #333;
+        border-radius: 10px;
+        margin-top: 8px;
+        overflow: hidden;
+    }
+
+    #progress-fill {
+        width: 20%; /* Will be updated via JS */
+        height: 100%;
+        background: linear-gradient(90deg, var(--orange-dark), var(--orange-main));
+        box-shadow: 0 0 10px var(--orange-main);
+        transition: width 0.4s ease;
+    }
+
+    /* Question Styling */
+    #question-text {
+        font-family:"Caesar Dressing", "Raleway", serif;
+        font-size: 1.4rem;
+        letter-spacing:3px;
+        line-height: 1.4;
+        margin-bottom: 2rem;
+        color: #fff;
+    }
+
+
+    #answers-container button {
+        font-family:"Raleway", sans-serif;
+        display: flex;
+        align-items: center;
+        width: 100%;
+        margin: 0.8rem 0;
+        padding: 1.1rem 1.5rem;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 140, 26, 0.3);
+        color: var(--text-muted);
+        border-radius: 12px;
+        text-align: left;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: all 0.2s ease-in-out;
+    }
+
+    #answers-container button:hover {
+        background: rgba(255, 140, 26, 0.1);
+        border-color: var(--orange-main);
+        color: #fff;
+        transform: translateX(5px); /* Subtle slide effect */
+    }
+
+    /* Active/Selected State (Optional JS addition) */
+    #answers-container button.selected {
+        background: var(--orange-main);
+        color: #000;
+        font-weight: bold;
+        border-color: #fff;
+    }
+
+
+    /* -------------------------
+       NEXT / RESTART BUTTONS
+    ------------------------- */
+    #next-button,
+    #results-container button {
+      margin-top: 1.5rem;
+      padding: 0.8rem 1.8rem;
+      background: var(--orange-main);
+      color: #000;
+      border: none;
+      border-radius: 999px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+
+    #next-button:hover,
+    #results-container button:hover {
+      background: var(--orange-soft);
+      box-shadow: 0 0 20px rgba(255, 179, 71, 0.6);
+    }
+
+
+    .claiming-card {
+        padding: 2rem;
+        background: rgba(255, 255, 255, 0.03);
+        border-radius: 20px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        margin: 2rem 0;
+        position: relative;
+        overflow: hidden;
+    }
+
+    #god-name {
+        font-family:"Caesar Dressing", "Raleway", serif;
+        font-size: 3rem;
+        margin: 1rem 0;
+        text-transform: uppercase;
+        letter-spacing: 5px;
+        
+    }
+
+    #god-description {
+        font-family:"Raleway", sans-serif;
+        font-size: 1.1rem;
+        line-height: 1.8;
+        color: var(--text-muted);
+        max-width: 500px;
+        margin: 0 auto;
+    }
+
+    .divider {
+        width: 50px;
+        height: 3px;
+        background: var(--orange-main);
+        margin: 1.5rem auto;
+        border-radius: 2px;
+    }
+
+
+    #god-icon, #god-name, #god-description, .divider {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+
+    .reveal-active #god-icon {
+        animation: divinePop 1s cubic-bezier(0.17, 0.89, 0.32, 1.49) forwards;
+    }
+
+    .reveal-active #god-name {
+        animation: fadeInSlide 0.8s ease forwards 0.5s; /* 0.5s delay */
+    }
+
+    .reveal-active .divider {
+        animation: fadeInSlide 0.8s ease forwards 0.7s; /* 0.7s delay */
+    }
+
+    .reveal-active #god-description {
+        animation: fadeInSlide 0.8s ease forwards 0.9s; /* 0.9s delay */
+    }
+
+    @keyframes divinePop {
+        0% { opacity: 0; transform: translateY(50px) scale(0.5); filter: brightness(5); }
+        70% { opacity: 1; transform: translateY(-10px) scale(1.1); filter: brightness(2); }
+        100% { opacity: 1; transform: translateY(0) scale(1); filter: brightness(1); }
+    }
+
+    @keyframes fadeInSlide {
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+
+    .claiming-card.flash {
+        animation: flashEffect 0.6s ease-out;
+    }
+
+    @keyframes flashEffect {
+        0% { background: rgba(255, 255, 255, 0); }
+        50% { background: rgba(255, 255, 255, 0.3); }
+        100% { background: rgba(255, 255, 255, 0.03); }
+    }
+
+
+    .results-actions {
+        margin-top: 2.5rem;
+    }
+    /* Svg styles */
+    .god-svg {
+      width: 180px;
+      height: 180px;
+      margin: 1.2rem auto;
+      display: block;
+      color: inherit;
+        filter: drop-shadow(0 0 4px currentColor);
+      transition: filter 0.3s ease;
+    }
+
+    .zeus svg, .svg-zeus {
+      color: #FF9F1C; 
+      animation: juice 2s infinite;
+      transform-origin: center;
+      transform-box: fill-box;
+    }
+    /* Zeus sounds like Juice ok? */
+     @keyframes juice {
+      0%, 10%, 80%, 100% { 
+        filter: drop-shadow(0 0 5px #FF9F1C); 
+        opacity: 1; 
+      }
+      
+      5%, 85% { 
+        filter: drop-shadow(0 0 25px #FFFFFF); 
+        opacity: 0.7;
+        transform: scale(1.05) translateX(1px);
+      }
+    }
+
+
+    
+
+    .poseidon svg, .svg-poseidon {
+      color: #2980B9; 
+      animation: pose 4s ease-in-out infinite;
+      transform-origin: center;
+      transform-box: fill-box;
+    }
+    
+    @keyframes pose {
+      0%, 100% { 
+        transform: translateY(0) scale(1);
+        filter: drop-shadow(0 0 8px #2980B9);
+        opacity: 0.8;
+      }
+      50% { 
+        
+        transform: translateY(-8px) scale(1.05); 
+        filter: drop-shadow(0 0 20px #3498DB);
+        opacity: 1;
+      }
+    }
+
+    .ares svg, .svg-ares {
+      color: #E74C3C; 
+      animation: rahhhhh 2s infinite cubic-bezier(0.4, 0, 0.2, 1);
+      transform-origin: center;
+      transform-box: fill-box;
+    }
+    
+     @keyframes rahhhhh {
+      0% { 
+        transform: scale(1);
+        filter: drop-shadow(0 0 5px #880808);
+        opacity: 0.8;
+      }
+      15% { 
+        
+        transform: scale(1.15); 
+        filter: drop-shadow(0 0 20px #E74C3C);
+        opacity: 1;
+      }
+      30% { 
+        
+        transform: scale(1.05);
+      }
+      45% { 
+        transform: scale(1.2);
+        filter: drop-shadow(0 0 25px #FF0000);
+      }
+      100% { 
+        transform: scale(1);
+        filter: drop-shadow(0 0 5px #880808);
+        opacity: 0.8;
+      }
+    }
+
+    .aphrodite svg, .svg-aphrodite {
+      color: #FF69B4; 
+      animation: aph 4s ease-in-out infinite;
+      transform-origin: center;
+      transform-box: fill-box;
+    }
+    
+    @keyframes aph {
+      0%, 100% { 
+        filter: drop-shadow(0 0 5px #FF69B4);
+        opacity: 0.8;
+        transform: scale(1) rotate(0deg);
+      }
+      50% { 
+        /* The "Alluring" expansion */
+        filter: drop-shadow(0 0 20px #FFB6C1) brightness(1.1);
+        opacity: 1;
+        transform: scale(1.05) rotate(2deg); 
+      }
+    }
+
+
+   
+
+    .dionysus svg, .svg-dionysus {
+      color: #8E44AD; /* Amethyst Purple */
+      /*Mr D. Get it? */
+      animation: mrd 5s ease-in-out infinite;
+      transform-origin: center;
+      transform-box: fill-box;
+    }
+    
+     @keyframes mrd {
+      0%, 100% { 
+        filter: drop-shadow(0 0 5px #8E44AD);
+        opacity: 0.8;
+        transform: scale(1) rotate(0deg);
+      }
+      33% {
+        transform: scale(1.05) rotate(5deg);
+        filter: drop-shadow(0 0 15px #9B59B6);
+      }
+      66% {
+        transform: scale(1.05) rotate(-5deg);
+        filter: drop-shadow(0 0 20px #8E44AD);
+      }
+    }
+
+    .demeter svg, .svg-demeter {
+      color: #4CAF50; 
+      animation: dem 5s ease-in-out infinite;
+      transform-origin: center;
+      transform-box: fill-box;
+    }
+    
+    @keyframes dem {
+      0%, 100% { 
+        filter: drop-shadow(0 0 5px #4CAF50);
+        opacity: 0.8;
+        transform: scale(1) translateY(0);
+      }
+      50% { 
+        /* The "Growth" phase */
+        filter: drop-shadow(0 0 18px #81C784);
+        opacity: 1;
+        transform: scale(1.05) translateY(-3px); 
+      }
+    }
+
+
+    .hermes svg, .svg-hermes {
+      color: #1ABC9C;
+      animation: i-found-herrr 3s ease-in-out infinite;
+      transform-origin: center;
+      transform-box: fill-box;
+    }
+    
+    @keyframes i-found-herrr {
+      0% { 
+        transform: translateX(0) scale(1);
+        filter: drop-shadow(0 0 5px #1ABC9C);
+        opacity: 1;
+      }
+      25% { 
+
+        transform: translateX(10px) scale(1.05) rotate(5deg); 
+        filter: drop-shadow(0 0 15px #1ABC9C) brightness(1.2);
+      }
+      50% { 
+
+        transform: translateX(-10px) scale(1.05) rotate(-5deg); 
+        filter: drop-shadow(0 0 15px #1ABC9C);
+      }
+      75% {
+
+        transform: translateX(0) scale(1);
+      }
+      100% {
+        transform: translateX(0) scale(1);
+        filter: drop-shadow(0 0 5px #1ABC9C);
+      }
+    }
+
+
+    .hades svg, .svg-hades {
+      color: #CBC3E3; /* Shadow Purple */
+      animation: had 5s ease-in-out infinite;
+      transform-origin: center;
+
+    }
+    
+    @keyframes had {
+      0%, 100% { 
+        filter: drop-shadow(0 0 5px #4A235A);
+        opacity: 0.7;
+        transform: scale(1);
+      }
+      50% { 
+        /* The "Void" Expansion */
+        filter: drop-shadow(0 0 25px #000000) drop-shadow(0 0 10px #9B59B6);
+        opacity: 1;
+        transform: scale(1.08) rotate(-2deg); 
+      }
+    }
+
+
+
+    @keyframes athens {
+      0%, 100% { 
+        filter: drop-shadow(0 0 5px #D4AF37);
+        opacity: 0.8;
+        transform: scale(1);
+      }
+      50% { 
+        /* The "Moment of Insight" */
+        filter: drop-shadow(0 0 15px #F1C40F) brightness(1.2);
+        opacity: 1;
+        transform: scale(1.03); 
+      }
+    }
+
+    .athena svg, .svg-athena {
+      color: #D4AF37; /* Wisdom Gold */
+      animation: athens 4s ease-in-out infinite;
+      transform-origin: center;
+      transform-box: fill-box;
+    }
+
+    
+
+    .apollo svg, .svg-apollo {
+      color: #FFD700; /* Sun Gold */
+      animation: app 4s ease-in-out infinite;
+      transform-origin: center;
+      transform-box: fill-box;
+    }
+    
+    @keyframes app {
+      0%, 100% {
+        filter: drop-shadow(0 0 8px #FFD700);
+        opacity: 0.9;
+        transform: scale(1);
+      }
+      50% {
+        /* The "Corona" expansion */
+        filter: drop-shadow(0 0 25px #F39C12) brightness(1.3);
+        opacity: 1;
+        transform: scale(1.1);
+      }
+    }
+
+
+
+/* Random stuff i need */
+  .hidden {
+    display: none;
+  }
+  
+  .magic-link {
+      color: var(--accent-gold);
+      position: relative;
+      font-weight: 600;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    
+    /* The Magic Spark Particles */
+    .magic-link::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 10px;
+      height: 10px;
+      background: transparent;
+      border-radius: 50%;
+      pointer-events: none;
+      
+      box-shadow: 
+        0 0 0 transparent, 
+        0 0 0 transparent, 
+        0 0 0 transparent,
+        0 0 0 transparent,
+        0 0 0 transparent,
+        0 0 0 transparent;
+      transition: all 1s ease-in-out;
+    }
+    
+    
+    .magic-link:hover {
+      color: #fff;
+      text-shadow: 0 0 10px var(--accent-gold);
+    }
+    
+    .magic-link:hover::after {
+      /* Particles fly out to random coordinates */
+      box-shadow: 
+        -25px -15px 0 1px var(--accent-gold), 
+        25px -18px 0 1.5px var(--sedai-blue), 
+        -15px 20px 0 1px white, 
+        20px 15px 0 1.2px var(--accent-gold),
+        -20px 15px 0 1.2px var(--accent-gold),
+        10px 15px 0 1.2px var(--accent-gold);
+      opacity: 0; /* They fade out as they travel HAHA */
+      transform: scale(1.5);
+    }
+    
+    
+    .magic-link::before {
+      content: "";
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+      transform: scaleX(0);
+      transition: transform 0.5s ease;
+    }
+    
+    .magic-link:hover::before {
+      transform: scaleX(1);
+    }
+
+
+
+    </style>
+</head>
+
+<body>
+    <!-- WELCOME page -->
+   <div id="welcome-page" class="page">
+  <div class="welcome-header">
+    <div class="greek-border fade-in"></div>
+    <h1 class="fade-in">CAMP HALF-BLOOD</h1>
+    <p class="subtitle fade-in">Official Demigod Placement Test</p>
+    <div class="greek-border fade-in"></div>
+  </div>
+  
+  <div class="mystery-icon fade-in">
+     <svg viewBox="0 0 24 24" fill="none" class="god-svg" xmlns="http://www.w3.org/2000/svg"><g  stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M16.07 4.92998C15.2658 4.12416 14.2405 3.57519 13.124 3.35264C12.0076 3.13009 10.8501 3.24397 9.79845 3.67986C8.74676 4.11574 7.84812 4.85401 7.21641 5.80112C6.58471 6.74823 6.24837 7.86154 6.25001 8.99998C6.25001 9.1989 6.32902 9.38966 6.46968 9.53031C6.61033 9.67097 6.80109 9.74998 7.00001 9.74998C7.19892 9.74998 7.38968 9.67097 7.53034 9.53031C7.67099 9.38966 7.75001 9.1989 7.75001 8.99998C7.74803 8.15659 7.99644 7.33158 8.46378 6.6295C8.93111 5.92742 9.59633 5.37985 10.3752 5.05618C11.154 4.73251 12.0113 4.64731 12.8386 4.81136C13.6659 4.97542 14.4259 5.38135 15.0223 5.97772C15.6186 6.57409 16.0246 7.33407 16.1886 8.16136C16.3527 8.98865 16.2675 9.84602 15.9438 10.6248C15.6201 11.4037 15.0726 12.0689 14.3705 12.5362C13.6684 13.0035 12.8434 13.252 12 13.25C11.8019 13.2526 11.6126 13.3324 11.4725 13.4725C11.3324 13.6126 11.2526 13.8019 11.25 14V16C11.25 16.1989 11.329 16.3897 11.4697 16.5303C11.6103 16.671 11.8011 16.75 12 16.75C12.1989 16.75 12.3897 16.671 12.5303 16.5303C12.671 16.3897 12.75 16.1989 12.75 16V14.7C13.813 14.5576 14.8152 14.1212 15.6436 13.44C16.472 12.7587 17.0938 11.8598 17.4389 10.8442C17.784 9.82874 17.8387 8.73706 17.5968 7.69214C17.355 6.64723 16.8262 5.6906 16.07 4.92998Z" fill="#ffb347"></path> <path d="M12 20.75C12.6904 20.75 13.25 20.1904 13.25 19.5C13.25 18.8096 12.6904 18.25 12 18.25C11.3096 18.25 10.75 18.8096 10.75 19.5C10.75 20.1904 11.3096 20.75 12 20.75Z" fill="#ffb347"></path> </g></svg>
+  </div>
+
+  <div class="welcome-text">
+  <p class="fade-in-left">
+    Look, I'm only here because another “Special Child” wants a paternity test.
+    Apparently the Hermes cabin is bursting at the seams, mostly kids whose parents didn't bother to RSVP them to the "I'm A God" party.
+  </p>
+
+  <p class="fade-in-left">
+    Chiron has been bothering me because he thinks “testing” you lot will solve it.
+  </p>
+
+  <p class="fade-in-left">
+    I’d rather be playing pinochle or drinking a vintage 1959 Bordeaux
+    (if my father wasn’t a killjoy),
+    but instead I’m stuck with you.
+  </p>
+
+  <p class="mr-d-signoff fade-in-right">
+    Now take the test. Be quick about it. My Coke is getting warm. Oh, and <a class="magic-link" href="https://www.khanacademy.org/computer-programming/subpage-version-3/6245375547457536">sub</a> to me - least you can do by wasting 3 minutes of my immortal life<br>
+    — Mr. D, Camp Director
+  </p>
+</div>
+
+  
+  <button id="start-btn" class="main-btn magic-link fade-in">START</button>
+</div>
+
+
+    
+    <!-- QUIZ page -->
+<div id="quiz-container" class="page hidden">
+    <!-- Progress Header -->
+    <div class="quiz-header">
+        <span id="progress-text">Quiz Progress: 1/11</span>
+        <div class="progress-bar-bg">
+            <div id="progress-fill"></div>
+        </div>
+    </div>
+
+    <div id="question-container">
+        <h3 id="question-text" class="fade-in-right"></h3>
+        <div id="answers-container" class="fade-in-left magic-link"></div>
+    </div>
+
+    <button id="next-button" class="magic-link hidden">Next</button>
+</div>
+
+
+    
+    <!-- RESULTS page -->
+<div id="results-container" class="page hidden">
+    <div class="claiming-header">
+        <div class="greek-border fade-in"></div>
+        <h2 class="fade-in">You Have Been Claimed by...</h2>
+        <div class="greek-border fade-in"></div>
+    </div>
+
+    <div id="result" class="claiming-card">
+        
+        <div id="god-icon" class="god-reveal-animation"></div>
+        
+        <h1 id="god-name"></h1>
+        <div class="divider fade-in-left"></div>
+        <p id="god-description" class="fade-in"></p>
+    </div>
+
+    <div class="results-actions">
+        <button id="restart-btn" class="main-btn">Try Again</button>
+    </div>
+</div>
+
+<!-- SVG DEFINITIONS -->
+<div id="svg-defs" class="hidden">
+
+ <svg id="svg-zeus" class="god-svg" stroke="currentColor" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" fill="#FF9F1C" stroke="#FF9F1C"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path fill="#FF9F1C" d="M292.53 20.5l19 40.594L66.314 28.75 362.03 158.125l-18.967-40.594 149.218 15.282L292.53 20.5zm-252 23.375L318.314 413.97 312.906 348l184.97 146.5L294 186.656l5.406 65.97L40.53 43.875zM20.907 76.22l36.5 316.405L83.03 351.75l68.095 139.344-9.594-241.125-25.624 40.843-95-214.594z"></path></g></svg>
+  
+ <svg id="svg-poseidon" class="god-svg" stroke="currentColor" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"  aria-hidden="true" role="img" class="iconify iconify--emojione" preserveAspectRatio="xMidYMid meet" fill="#2980B9"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M57 24.6C54 17.4 44.8 8.7 44.8 8.7s3 7.4.8 17.3l3.5-3s3.3 1.4 3.7 5c.5 4.4-2 10.6-2 10.6s-5.5-1.7-13.9-1.6l-3-19.6l7.2 4.7L32 2l-9 19.9l7.2-4.7l-3 19.6c-8.4-.1-13.9 1.6-13.9 1.6s-2.5-6.2-2-10.6c.4-3.5 3.7-5 3.7-5l3.5 3c-2.2-9.8.8-17.3.8-17.3S10 17.4 7 24.6C3.9 32 2 40.8 2 40.8l6.4 5.9s5.6-1.7 10-2c4.1-.3 8.9-.4 8.9-.4l-.6 8.7l5.3 9l5.3-9l-.6-8.7s4.8.1 8.9.4c4.3.3 10 2 10 2l6.4-5.9s-1.9-8.8-5-16.2" fill="#2980B9"></path></g></svg>
+ 
+<svg  id="svg-hades" class="god-svg" stroke="currentColor" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" fill="#4A235A"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path fill="#4A235A" d="M294.516 25.71C180.128 26.863-4.977 170.06 93.084 346.96l37.771-37.77 3.333-3.333C83.773 134.282 237.561 38.977 324.773 29.287c-8.483-2.313-17.749-3.481-27.568-3.576a136.22 136.22 0 0 0-2.69 0zm9.365 68.081c-26.796-.226-53.08 9.468-72.885 29.273-22.421 22.478-24.678 64.162-4.935 83.905l-69.098 49.357 98.71 98.711 49.358-69.098c19.743 19.743 61.425 17.532 83.905-4.935C429.823 240.116 427.614 171.614 384 128c-22.488-22.488-51.594-33.969-80.12-34.209zm-42.744 39.766c12.123.02 26.301 10.85 31.554 21.59 7.372 15.071 3.104 38.718-9.87 49.355-10.18 8.344-30.862 9.943-39.485 0-15.244-17.577-10.738-58.3 9.871-69.098 2.444-1.28 5.132-1.852 7.93-1.847zm221.576 53.67c-9.69 87.21-104.995 241-276.57 190.585l-41.104 41.104c193.631 107.335 346.882-124.591 317.674-231.69zm-143.565 28.486c6.331-.098 12.525 1.062 17.706 3.596 13.218 6.465 26.571 26.45 19.742 39.484-10.798 20.61-51.521 25.115-69.098 9.871-9.943-8.623-8.344-29.306 0-39.484 6.98-8.515 19.564-13.28 31.65-13.467zm-43.988 1.127l-19.744 39.486-19.742-19.742zm-85.334 13.379l12.727 12.728-3.506 3.506 16.885 16.887 3.507-3.508 12.729 12.729-3.508 3.507 16.887 16.885 3.506-3.506 12.728 12.727-29.613 29.613-12.729-12.726 13.38-13.38-16.887-16.886-13.38 13.379-12.726-12.727 13.38-13.379-16.888-16.886-13.379 13.379-12.726-12.729zm-42.994 68.449l-16.885 16.885 46.5 46.5 16.885-16.887zm-29.611 29.613L18 447.502v33.771l136.105-136.105zm29.611 29.614L30.727 494H64.5l119.219-119.219z"></path></g></svg>
+
+<svg id="svg-ares" class="god-svg" stroke="currentColor" fill="#980002" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 369.542 369.542" xml:space="preserve"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <g> <path d="M234.304,123.936c2.294-0.215,4.179-1.855,4.729-4.081c0.546-2.227-0.384-4.551-2.326-5.793 c-0.691-0.446-14.803-9.415-31.712-12.564l6.373-9.265c0.756-1.087,1.013-2.373,0.862-3.63c0.01-0.144,0.083-0.279,0.083-0.423 c0-1.79-0.935-3.301-2.283-4.281l-5.749-9.561l8.583-1.281l9.188,8.774c1.008,0.984,2.351,1.488,3.7,1.488 c0.042,0,0.078,0,0.115,0c2.966,0,5.375-2.407,5.375-5.375c0-0.661-0.119-1.297-0.34-1.883l-3.191-20.133 c-0.289-1.785-1.444-3.303-3.083-4.05c-1.631-0.751-3.548-0.617-5.064,0.333l-2.536,1.58l-10.588-6.612 c-0.855-0.535-1.842-0.815-2.852-0.815h-13.435V10.75h1.344c2.974,0,5.373-2.407,5.373-5.375c0-2.966-2.398-5.375-5.373-5.375 h-14.11c-2.966,0-5.375,2.409-5.375,5.375c0,2.968,2.41,5.375,5.375,5.375h2.016v35.613h-13.438c-1.01,0-1.995,0.286-2.848,0.815 l-10.59,6.612L150,52.21c-1.528-0.95-3.431-1.079-5.076-0.333c-1.639,0.747-2.801,2.27-3.079,4.05l-3.36,21.165 c-0.362,2.287,0.774,4.538,2.811,5.602c2.037,1.07,4.541,0.721,6.208-0.874l9.186-8.775l8.581,1.281l-7.274,12.079 c-1.086,1.806-1.015,4.079,0.179,5.816l6.361,9.266c-16.91,3.149-31.021,12.116-31.714,12.562 c-1.929,1.24-2.858,3.569-2.317,5.795c0.543,2.232,2.436,3.867,4.722,4.082l28.128,2.654l-2.968,6.595 c-0.171,0.378-0.294,0.785-0.375,1.194c-12.15,63.439,18.184,224.008,19.485,230.811c0.493,2.531,2.698,4.362,5.278,4.362 c2.581,0,4.801-1.831,5.279-4.362c1.291-6.808,31.632-167.377,19.485-230.811c-0.09-0.415-0.205-0.812-0.378-1.194l-2.767-6.126 c0.53-0.136,1.008-0.339,1.46-0.619L234.304,123.936z M178.607,72.977c0.134-0.236,0.226-0.495,0.333-0.748h11.627 c0.108,0.253,0.186,0.512,0.339,0.748l5.916,9.827h-24.108L178.607,72.977z M158.825,62.509l8.657-5.407h34.548l8.651,5.407 l-7.013,1.045c-0.981-1.231-2.431-2.076-4.147-2.076h-28.218c-1.78,0-3.281,0.923-4.257,2.257L158.825,62.509z M155.546,115.057 c5.622-2.001,12.116-3.646,18.635-3.867c1.963-0.077,3.733-1.205,4.615-2.956c0.881-1.748,0.74-3.846-0.368-5.468l-6.331-9.218 h25.302l-6.333,9.218c-1.113,1.617-1.247,3.714-0.36,5.468c0.876,1.75,2.651,2.885,4.609,2.956 c6.487,0.226,12.987,1.871,18.604,3.872l-15.991,1.509H171.57L155.546,115.057z"></path> </g> </g> </g></svg>
+       
+<svg id="svg-athena" class="god-svg" stroke="currentColor" fill="#D4AF37" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>round-shield</title> <path d="M16.013 1.032c-8.265 0.002-14.963 6.703-14.961 14.968 0 0.002 0 0.005 0 0.007 0.002 8.265 6.703 14.963 14.968 14.961s14.963-6.703 14.961-14.968c0-0.002 0-0.005 0-0.007-0.002-8.265-6.703-14.963-14.968-14.961zM15.394 2.153l0.696-0.402 0.696 0.402v0.804l-0.696 0.402-0.696-0.402v-0.804zM3.567 8.829l0.696-0.402 0.696 0.402v0.804l-0.696 0.402-0.696-0.402v-0.804zM4.987 23.208l-0.696 0.402-0.696-0.402v-0.804l0.696-0.402 0.696 0.402v0.804zM16.686 29.857l-0.696 0.402-0.696-0.402v-0.804l0.696-0.402 0.696 0.402v0.804zM16.019 27.974c-6.612 0.001-11.973-5.358-11.974-11.97 0-0.001 0-0.003 0-0.004-0.001-6.612 5.358-11.973 11.97-11.974s11.973 5.358 11.974 11.97c0 0.001 0 0.003 0 0.004 0.001 6.612-5.358 11.973-11.97 11.974zM28.385 23.153l-0.696 0.402-0.696-0.402v-0.804l0.696-0.402 0.696 0.402v0.804zM28.412 9.633l-0.696 0.402-0.696-0.402v-0.804l0.696-0.402 0.696 0.402v0.804zM21.796 7.32c-1.438-0.96-3.129-1.572-4.951-1.715v20.791c1.822-0.143 3.513-0.755 4.951-1.715v-17.361zM10.381 24.776c1.48 0.953 3.217 1.541 5.084 1.638v-20.828c-1.867 0.097-3.604 0.686-5.084 1.638v17.551zM9.001 8.285c-2.096 1.908-3.412 4.658-3.412 7.716 0 0.001 0 0.003 0 0.004 0.001 3.056 1.316 5.805 3.412 7.712v-15.432zM23.175 8.419v15.163c2.012-1.901 3.268-4.595 3.267-7.581 0-0.001 0-0.003 0-0.004-0.001-2.985-1.256-5.677-3.267-7.578z"></path> </g></svg>
+
+<svg id="svg-aphrodite" class="god-svg" stroke="currentColor" height="200px" width="200px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 511.982 511.982" xml:space="preserve" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <path style="fill:#FFD8EB;" d="M28.202,108.105c78.263,32.624,51.061,91.418,51.061,91.418 C13.249,204.712,28.202,108.105,28.202,108.105z"></path> <path style="fill:#FFD8EB;" d="M138.745,135.682c18.593,96.09-55.295,107.481-55.295,107.481 C36.31,182.993,138.745,135.682,138.745,135.682z"></path> <path style="fill:#FFD8EB;" d="M0,227.79c95.388-7.859,98.605,65.17,98.605,65.17C35.108,332.396,0,227.79,0,227.79z"></path> <path style="fill:#FFD8EB;" d="M136.995,234.21c63.357,80.044,0.406,126.059,0.406,126.059 C64.856,327.192,136.995,234.21,136.995,234.21z"></path> <path style="fill:#FFD8EB;" d="M21.999,340.848c109.402-42.029,138.276,42.732,138.276,42.732 C99.199,451.751,21.999,340.848,21.999,340.848z"></path> <path style="fill:#FFD8EB;" d="M176.525,316.521c90.872,46.249,52.92,114.277,52.92,114.277 C149.807,431.016,176.525,316.521,176.525,316.521z"></path> </g> <path style="fill:#FFCAE4;" d="M353.487,474.266c-0.578,0-1.172-0.047-1.781-0.142c-120.917-20.296-204.961-68.138-249.788-142.183 c-14.327-23.687-24.53-50.03-30.296-78.31c-4.594-22.515-6.406-46.311-5.391-70.701c1.734-41.499,11.016-70.294,11.406-71.498 c1.828-5.609,7.859-8.656,13.453-6.828c5.593,1.828,8.655,7.844,6.827,13.437l0,0c-0.094,0.281-8.874,27.749-10.405,66.529 c-1.375,35.358,3.188,87.747,32.765,136.511c41.498,68.388,120.559,112.809,234.96,131.995c5.813,0.984,9.734,6.484,8.767,12.281 C363.128,470.579,358.613,474.266,353.487,474.266z"></path> <g> <path style="fill:#FFEAF3;" d="M428.548,243.163c12.187-15.562,14.374-30.25,10.921-43.483 c58.232-1.75,44.327-91.575,44.327-91.575c-47.67,19.858-56.217,49.451-55.607,69.544c-19.609-25.656-54.936-41.967-54.936-41.967 C354.659,231.773,428.548,243.163,428.548,243.163z"></path> <path style="fill:#FFEAF3;" d="M413.392,292.96c10.076,6.265,19.437,8.891,28.046,8.891c45.701,0,70.544-74.061,70.544-74.061 c-4.859-0.407-9.5-0.594-13.905-0.594C416.283,227.195,413.392,292.96,413.392,292.96z"></path> <path style="fill:#FFEAF3;" d="M402.611,334.208c18.374-40.733-27.608-99.997-27.608-99.997 c-51.843,65.499-19.108,108.215-5.5,121.574c-13.016,13.797-17.78,27.796-17.78,27.796c14.358,16.016,29.607,22.156,44.545,22.156 c48.576,0,93.747-64.889,93.747-64.889c-21.75-8.343-40.312-11.688-56.092-11.688C421.955,329.161,411.564,331.083,402.611,334.208 z"></path> <path style="fill:#FFEAF3;" d="M279.771,430.799c79.544-6.75,42.843-118.715,42.843-118.715 C235.929,366.206,279.771,430.799,279.771,430.799z"></path> </g> <path style="fill:#FFD8EB;" d="M158.51,474.266c-5.109,0-9.64-3.688-10.515-8.906c-0.969-5.797,2.953-11.297,8.766-12.281 c114.511-19.218,193.618-63.686,235.069-132.183c29.64-48.968,34.093-101.56,32.625-137.074 c-1.61-38.593-10.281-65.498-10.375-65.764c-1.828-5.594,1.234-11.625,6.827-13.453c5.594-1.828,11.625,1.219,13.452,6.828 c0.391,1.204,9.672,29.999,11.406,71.498c1.016,24.39-0.797,48.186-5.39,70.701c-5.767,28.279-15.969,54.639-30.296,78.31 c-44.825,74.045-128.87,121.887-249.788,142.183C159.681,474.22,159.088,474.266,158.51,474.266z"></path> <path style="fill:#FFEAF3;" d="M426.845,122.402c34.765-52.592-52.592-84.685-52.592-84.685 C365.331,117.95,426.845,122.402,426.845,122.402z"></path> <path style="fill:#FFD8EB;" d="M137.745,37.718c8.922,80.232-52.592,84.685-52.592,84.685 C50.388,69.81,137.745,37.718,137.745,37.718z"></path> </g></svg>
+
+<svg id="svg-hephaestus" class="god-svg" stroke="currentColor" fill="#D35400" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>hammer</title> <path d="M28.394 7.296l-4.254-0.64 1.241-1.64-5.146-3.928-1.308 1.728c-2.13-1.258-4.321-1.802-5.939-1.636l0 0.001c-0.231 0.022-0.45 0.078-0.656 0.129-0.646 0.162-1.148 0.459-1.465 0.877l5.412 4.129-1.207 1.595 1.017 0.776c-5.472 6.732-11.742 12.501-15.269 20.272l3.1 2.346c6.645-5.773 10.208-12.942 15.337-20.201l0.962 0.734 1.241-1.64 1.773 3.919 2.659 2.011c3.267-1.373 4.722-3.803 5.163-6.824l-2.659-2.012z"></path> </g></svg>
+
+<svg id="svg-apollo" class="god-svg" stroke="currentColor" height="200px" width="200px" version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" xml:space="preserve" fill="#F1C40F"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <style type="text/css"> .st0{fill:#F1C40F;} </style> <g> <path class="st0" d="M255.996,127.577c-70.925,0-128.42,57.495-128.42,128.42c0,70.933,57.496,128.428,128.42,128.428 s128.428-57.495,128.428-128.428C384.424,185.072,326.921,127.577,255.996,127.577z"></path> <path class="st0" d="M512,255.996c-78.109-49.042-98.052-93.51-75.065-180.932c-87.414,22.995-131.89,3.036-180.939-75.057 c-49.042,78.093-93.51,98.052-180.932,75.057C98.06,162.487,78.109,206.954,0,255.996c78.109,49.049,98.06,93.525,75.065,180.939 c87.422-22.987,131.89-3.036,180.932,75.057c49.049-78.093,93.525-98.044,180.939-75.057 C413.948,349.522,433.891,305.046,512,255.996z M255.996,423.766c-92.666,0-167.762-75.112-167.762-167.77 c0-92.65,75.096-167.762,167.762-167.762c92.65,0,167.769,75.112,167.769,167.762C423.766,348.654,348.646,423.766,255.996,423.766 z"></path> </g> </g></svg>
+
+  <svg id="svg-hermes" class="god-svg" stroke="currentColor" version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 512 512" xml:space="preserve" fill="#FFEB3B"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <style type="text/css"> .st0{fill:#FFEB3B;} </style> <g> <path class="st0" d="M506.69,215.791c-5.341-8.558-16.639-11.175-25.22-5.818l21.919-13.745 c8.582-5.364,11.182-16.662,5.826-25.236c-5.35-8.589-16.648-11.19-25.236-5.834l-144.496,90.276 c-38.65,24.142-50.409,75.038-26.274,113.672c24.142,38.634,75.037,50.402,113.687,26.267 c30.446-19.032,44.115-54.666,36.757-87.836l32.94-20.58c8.588-5.356,11.19-16.654,5.818-25.244 c-5.342-8.558-16.647-11.182-25.228-5.818l23.696-14.854C509.446,235.686,512.063,224.396,506.69,215.791z M400.792,349.927 c-14.415,9.005-33.4,4.61-42.405-9.804c-8.997-14.408-4.618-33.402,9.804-42.406c14.423-9.005,33.386-4.618,42.406,9.797 C419.602,321.929,415.23,340.915,400.792,349.927z"></path> <rect x="156.601" y="37.41" class="st0" width="261" height="80.971"></rect> <path class="st0" d="M291.076,382.929c-31.724-50.772-16.216-117.898,34.571-149.628l91.954-57.444V137.96h-261v91.823 c0,6.187-3.09,11.967-8.235,15.4L41.182,316.634C15.454,333.781,0,362.665,0,393.58v44.022c0,20.426,16.562,36.988,36.991,36.988 h306.626c30.314,0,56.336-18.248,67.764-44.345c-9.128,2.463-18.563,3.771-28.114,3.771 C345.518,434.015,311.055,414.914,291.076,382.929z"></path> </g> </g></svg>
+  
+<svg id="svg-demeter" class="god-svg" stroke="currentColor" fill="#4CAF50" height="200px" width="200px" version="1.1" id="Layer_1"  viewBox="0 0 511.999 511.999" xml:space="preserve"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <g> <path d="M122.939,213.042l-34.642,9.844c2.17,4.624,4.438,9.203,6.789,13.74c6.971-0.46,14.011,0.233,20.823,2.119 c2.644-6.568,6.38-12.592,10.99-17.858C125.55,218.285,124.224,215.672,122.939,213.042z"></path> </g> </g> <g> <g> <path d="M169.6,286.762l-32.385,16.004c1.001,1.323,2.007,2.643,3.02,3.956c8.311-2.01,16.997-2.309,25.511-0.815 c1.595-5.425,3.912-10.575,6.857-15.325C171.598,289.313,170.594,288.041,169.6,286.762z"></path> </g> </g> <g> <g> <path d="M240.22,263.947l-2.816-4.535l-37.169,23.081c-11.798,7.327-19.876,19.405-22.161,33.14l-1.328,7.985L169,321.269 c-13.324-4.041-27.731-2.155-39.53,5.171l-37.169,23.081l2.816,4.535c6.837,11.009,17.599,18.761,30.303,21.827 c12.715,3.068,25.731,1.024,36.648-5.756l62.873-39.045C247.612,317.004,254.465,286.886,240.22,263.947z"></path> </g> </g> <g> <g> <path d="M194.08,204.16l-2.356-4.768l-39.224,19.383c-12.451,6.152-21.657,17.395-25.259,30.844l-2.095,7.819l-7.483-3.086 c-12.869-5.309-27.394-4.824-39.844,1.328l-39.225,19.384l2.356,4.768c5.742,11.621,15.707,20.378,28.058,24.661 c12.364,4.286,25.516,3.511,37.036-2.181l66.351-32.789c11.52-5.694,20.125-15.67,24.229-28.094 C200.726,229.015,199.822,215.781,194.08,204.16z"></path> </g> </g> <g> <g> <path d="M97.304,95.184c-5.555-19.55-17.9-36.478-34.815-47.745l-11.354-7.562L45.453,52.28 c-8.465,18.478-10.062,39.368-4.507,58.917c4.055,14.272,11.723,27.124,22.117,37.399c7.128,0.77,14.119,2.75,20.645,5.92 c3.883-6.128,8.789-11.487,14.45-15.892C101.596,124.42,101.361,109.456,97.304,95.184z"></path> </g> </g> <g> <g> <path d="M166.775,134.991l-1.535-5.403l-41.93,11.915c-13.36,3.796-24.45,13.185-30.428,25.759l-3.476,7.31l-6.8-4.39 c-11.697-7.552-26.067-9.704-39.426-5.909L0,176.541l1.535,5.403c7.242,25.485,35.181,40.819,61.011,33.477l71.191-20.229 c12.356-3.51,22.603-11.737,28.852-23.161C168.833,160.619,170.32,147.464,166.775,134.991z"></path> </g> </g> <g> <g> <path d="M337.683,439.666c-15.902-10.841-34.445-24.234-54.079-39.89c11.544-10.205,23.186-21.073,34.676-32.569l-30.979-19.238 c-10.395,10.141-20.897,19.756-31.302,28.813c-10.405-9.057-20.906-18.672-31.302-28.813l-30.979,19.238 c11.492,11.495,23.132,22.364,34.676,32.569c-19.634,15.656-38.177,29.048-54.079,39.89c-8.109,5.529-10.201,16.583-4.672,24.693 c3.44,5.046,9.02,7.762,14.699,7.762c3.447,0,6.93-1.001,9.994-3.09c18.006-12.276,39.232-27.684,61.664-45.883 c22.431,18.199,43.656,33.606,61.664,45.883c3.064,2.089,6.547,3.09,9.994,3.09c5.678,0,11.259-2.716,14.699-7.762 C347.885,456.25,345.793,445.194,337.683,439.666z"></path> </g> </g> <g> <g> <path d="M342.401,286.76c-0.995,1.281-1.999,2.552-3.004,3.821c2.945,4.752,5.262,9.901,6.857,15.325 c8.514-1.494,17.201-1.195,25.513,0.814c1.013-1.313,2.018-2.632,3.02-3.956L342.401,286.76z"></path> </g> </g> <g> <g> <path d="M389.063,213.042c-1.287,2.63-2.612,5.243-3.963,7.845c4.611,5.266,8.346,11.29,10.99,17.858 c6.812-1.886,13.853-2.579,20.825-2.121c2.352-4.536,4.619-9.116,6.79-13.739L389.063,213.042z"></path> </g> </g> <g> <g> <path d="M382.529,326.441c-11.797-7.327-26.206-9.211-39.53-5.171l-7.747,2.349l-1.328-7.985 c-2.284-13.734-10.361-25.813-22.16-33.14l-37.169-23.082l-2.816,4.535c-14.246,22.939-7.393,53.057,15.278,67.135l62.873,39.045 c10.919,6.781,23.936,8.822,36.647,5.756c12.705-3.065,23.467-10.816,30.303-21.827l2.816-4.535L382.529,326.441z"></path> </g> </g> <g> <g> <path d="M434.178,255.678c-12.45-6.151-26.973-6.637-39.844-1.328l-7.481,3.087l-2.095-7.819 c-3.602-13.449-12.808-24.691-25.259-30.844l-39.224-19.383l-2.356,4.768c-5.742,11.621-6.646,24.855-2.546,37.268 c4.105,12.424,12.709,22.401,24.229,28.094l66.35,32.788c11.52,5.691,24.673,6.466,37.036,2.181 c12.352-4.283,22.316-13.04,28.058-24.661l2.356-4.768L434.178,255.678z"></path> </g> </g> <g> <g> <path d="M466.548,52.281l-5.682-12.403l-11.354,7.562c-16.916,11.265-29.26,28.195-34.815,47.745 c-4.055,14.272-4.292,29.235-0.854,43.441c5.658,4.402,10.564,9.762,14.449,15.89c6.525-3.17,13.516-5.15,20.647-5.92 c10.393-10.274,18.061-23.127,22.116-37.397C476.609,91.649,475.011,70.759,466.548,52.281z"></path> </g> </g> <g> <g> <path d="M468.816,164.271c-13.36-3.795-27.729-1.642-39.424,5.909l-6.8,4.39l-3.476-7.31 c-5.977-12.574-17.068-21.963-30.428-25.759l-41.93-11.915l-1.535,5.403c-3.545,12.472-2.058,25.627,4.186,37.041 c6.249,11.424,16.496,19.649,28.852,23.161l71.192,20.23c25.828,7.337,53.768-7.992,61.011-33.478l1.535-5.403L468.816,164.271z"></path> </g> </g> </g></svg>
+
+  <svg id="svg-dionysus" class="god-svg" stroke="currentColor" height="200px" width="200px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 56 56" xml:space="preserve" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <circle style="fill:#9777A8;" cx="6" cy="49" r="6"></circle> <circle style="fill:#583E68;" cx="10" cy="28" r="6"></circle> <path style="fill:#583E68;" d="M16,41c-2.578,0-4.769,1.628-5.618,3.91C11.383,45.982,12,47.417,12,49 c0,0.736-0.139,1.438-0.382,2.09C12.714,52.262,14.269,53,16,53c3.314,0,6-2.686,6-6S19.314,41,16,41z"></path> <path style="fill:#6F58A8;" d="M10.382,44.91c0.594-1.596,1.853-2.858,3.434-3.481C13.928,40.97,14,40.494,14,40 c0-3.314-2.686-6-6-6s-6,2.686-6,6c0,1.383,0.472,2.653,1.258,3.667C4.081,43.243,5.011,43,6,43c1.93,0,3.643,0.915,4.74,2.331 C10.627,45.186,10.507,45.045,10.382,44.91z"></path> <path style="fill:#6F58A8;" d="M26,38c-2.858,0-5.244,2-5.848,4.675C21.289,43.766,22,45.299,22,47 c0,0.456-0.055,0.898-0.152,1.325C22.926,49.36,24.387,50,26,50c3.314,0,6-2.686,6-6S29.314,38,26,38z"></path> <path style="fill:#9777A8;" d="M23.371,38.628C23.762,37.832,24,36.947,24,36c0-3.314-2.686-6-6-6 c-0.932,0-1.811,0.217-2.597,0.597c-0.59,1.225-1.581,2.216-2.806,2.806c-0.317,0.66-0.518,1.387-0.575,2.155 C13.234,36.655,14,38.236,14,40c0,0.148-0.018,0.291-0.03,0.436c0.281,0.255,0.588,0.48,0.913,0.679C15.246,41.046,15.617,41,16,41 c1.15,0,2.22,0.329,3.133,0.89c0.533-0.102,1.03-0.293,1.503-0.526C21.221,40.174,22.181,39.212,23.371,38.628z"></path> <path style="fill:#583E68;" d="M28,28c-0.774,0-1.506,0.162-2.184,0.429c-0.418,1.701-1.551,3.119-3.074,3.904 c0-0.001-0.001-0.001-0.001-0.001C23.528,33.345,24,34.616,24,36c0,0.734-0.146,1.43-0.393,2.077 c0.098,0.105,0.203,0.202,0.308,0.3C24.565,38.136,25.266,38,26,38c1.583,0,3.018,0.617,4.09,1.618C32.372,38.769,34,36.578,34,34 C34,30.686,31.314,28,28,28z"></path> <path style="fill:#9777A8;" d="M36,34c-0.713,0-1.394,0.13-2.028,0.359c-0.145,2.419-1.708,4.451-3.882,5.26 c-0.013-0.013-0.028-0.023-0.042-0.036C31.244,40.68,32,42.249,32,44c0,0.149-0.012,0.296-0.022,0.443 C33.042,45.407,34.45,46,36,46c3.314,0,6-2.686,6-6S39.314,34,36,34z"></path> <path style="fill:#583E68;" d="M38,24c-0.378,0-0.747,0.039-1.106,0.106c-0.453,2.426-2.362,4.335-4.788,4.788 c-0.041,0.217-0.066,0.439-0.084,0.663C33.234,30.655,34,32.236,34,34c0,0.145-0.023,0.284-0.034,0.427 C33.991,34.397,35.293,34,36,34c1.583,0,3.018,0.617,4.09,1.618C42.372,34.769,44,32.578,44,30C44,26.686,41.314,24,38,24z"></path> <path style="fill:#9777A8;" d="M25,11c-2.462,0-4.575,1.484-5.5,3.605C19.82,15.339,20,16.148,20,17s-0.18,1.661-0.5,2.395 c0.264,0.606,0.635,1.152,1.074,1.634c1.522,0.145,2.874,0.861,3.85,1.928C24.615,22.975,24.804,23,25,23c0-3.314,2.686-6,6-6 C31,13.686,28.314,11,25,11z"></path> <path style="fill:#6F58A8;" d="M14,11c-3.314,0-6,2.686-6,6c0,2.127,1.11,3.991,2.779,5.056c0.891,0.116,1.719,0.426,2.443,0.888 C13.477,22.977,13.736,23,14,23c3.314,0,6-2.686,6-6S17.314,11,14,11z"></path> <path style="fill:#6F58A8;" d="M25.056,23.78c-0.003-0.004-0.005-0.009-0.007-0.013v0C23.982,22.104,22.122,21,20,21 c-0.63,0-1.234,0.105-1.804,0.285c-0.661,0.648-1.471,1.144-2.375,1.432c-0.456,0.446-0.85,0.955-1.147,1.526 C15.502,25.272,16,26.577,16,28c0,0.947-0.229,1.838-0.62,2.635c0.007-0.013,0.016-0.025,0.022-0.038 C16.189,30.217,17.068,30,18,30c1.931,0,3.644,0.916,4.742,2.333C24.675,31.337,26,29.325,26,27c0-0.266-0.024-0.525-0.058-0.781 C25.481,25.496,25.172,24.669,25.056,23.78z"></path> <path style="fill:#6F58A8;" d="M31,17c-3.314,0-6,2.686-6,6c0,2.098,1.079,3.942,2.711,5.015C27.807,28.01,27.902,28,28,28 c1.216,0,2.345,0.364,3.29,0.985C34.468,28.833,37,26.216,37,23C37,19.686,34.314,17,31,17z"></path> <path style="fill:#88C057;" d="M56,26c-6.633,0-12-5.367-12-12C50.633,14,56,19.367,56,26z"></path> <path style="fill:#7A3726;" d="M34,19v-2c7.168,0,13-7.178,13-16h2C49,10.925,42.271,19,34,19z"></path> </g> </g></svg>
+</div>
+
+ <script>
+    
+ document.addEventListener("DOMContentLoaded", () => {
+        // This gets the Elements from the HTML
+	const welcomepage = document.getElementById("welcome-page");
+	const quizpage = document.getElementById("quiz-container");
+	const resultspage = document.getElementById("results-container");
+	const startBtn = document.getElementById("start-btn");
+	const restartBtn = document.getElementById("restart-btn"); 
+
+//**This includes all data when you are "claimed" **//
+	const gods = {
+  zeus: {
+    name: "Zeus",
+    color: "#FF9F1C",
+    class: "zeus",
+    svgId: "svg-zeus",
+    description: "As a child of the King of the Gods, you possess a sense of authority and a born leader. People often look up to you for leadership. You are incredibly powerful, often having control over the sky, wind, and lightning. However, being a 'Big Three' child makes you a Forbidden Child, meaning your life is a constant magnet for dangerous monsters. You are ambitious and brave, but you may also struggle with a stormy temper and a high sense of pride."
+  },
+  poseidon: {
+    name: "Poseidon",
+    color: "#2980B9",
+    class: "poseidon",
+    svgId: "svg-poseidon",
+    description: "As a child of the King of the Sea, you are unpredictable, powerful, and deeply independent. You can control the sea, create earthquakes and talk to sea animals and horses. Like the sea, You are fiercely independent and you don't like to be restrained or told what to do. You have a massive heart and your 'fatal flaw' is likely personal loyalty—you would risk the entire world to save a single friend. While you are generally laid-back and have a great sense of humor, your temper can be as destructive as a hurricane when those you love are threatened - and that happens a lot since you are a Forbidden Child of the ''Big Three'' - you attract monsters as you go."
+  },
+  hades: {
+    name: "Hades",
+    color: "#4A235A",
+    class: "hades",
+    svgId: "svg-hades",
+    
+  description: "As a child of the King of the Underworld, you are powerful, misunderstood, and fiercely independent. You often feel like an outsider among other demigods, but you possess a rare 'Richness' of character and absolute authority over shadows and the dead. Your 'fatal flaw' is likely holding grudges—once someone crosses you, you never forget. Though you may seem cold or unyielding, you are deeply loyal to the few you trust and possess an inner strength that most cannot imagine. As a child of a ''Big Three'' god, you have the power to navigate shadows, control the earth and summon the dead. However this comes with a cost as monsters and other dangers are more likely to  attack you, a Forbidden Child, than any other demigods."
+},
+ ares: {
+    name: "Ares",
+    color: "#980002",
+    class: "ares",
+    svgId: "svg-ares",
+    description: "As a child of the War God, you are a fierce warrior with incredible strength and an unyielding spirit. You don't just face challenges; you run toward them. You generally hate strategizing and have a ''Just Do It'' attitude. While others might call you hot-headed, you value action, bravery, and results above all else. Your 'fatal flaw' is often excessive wrath or impulsivity—you’re more likely to throw a punch than a plan. However, you are a protective and formidable ally who will never back down when your friends are in the line of fire. You have mastery of nearly every weapon you can imagine, and your fighting refelxes are more honed that most demigods. Sometimes, you can even summon the spirits of defeated soldiers!"
+  },
+  athena: {
+    name: "Athena",
+    color: "#D4AF37",
+    class: "athena",
+    svgId: "svg-athena",
+    description: "As a child of the Goddess of War, Wisdom and Craft, you are a master strategist with a brilliant, analytical mind. You believe that knowledge is the ultimate weapon and that every battle is won or lost before it even begins. Like your cousins in the Ares demigods, you are also a formidable fighter, but less impulsive and more cautious. Your 'fatal flaw' is Hubris—deadly pride in your own intelligence. While you can be perfectionistic and overly critical, your discipline and tactical genius make you a natural leader and a formidable opponent who is always ''ten steps ahead'' of everyone else."
+  },
+  aphrodite: {
+    name: "Aphrodite",
+    color: "#D4AF37",
+    class: "aphrodite",
+    svgId: "svg-aphrodite",
+    description: "As a child of the Goddess of Love and Beauty, you possess a power that many underestimate: Charmspeak, the ability to influence hearts and minds. You are confident, socially brilliant, and deeply attuned to the emotions of those around you. Your 'fatal flaw' is often vanity or a tendency to focus on external appearances, but beneath that lies a fierce heart. You know that love is the most powerful motivator in existence, and when you fight for it, you are as dangerous as any warrior. Speaking of warriors, you generally don't fight, but when the Hunters of Artemis are visiting, you DEFINATELY want to fight."
+  },
+  hephaestus: {
+  name: "Hephaestus",
+  color: "#D35400", // Burnt Orange/Iron
+  class: "hephaestus",
+  svgId: "svg-hephaestus",
+  description: "As a child of the God of Forges and Fire, you are a master creator who finds beauty in gears, metal, and complex systems. Sometimes, you can create and control fire. Because of your forgemanship work, you are some of the strongest demigods physically. You are diligent, meticulous, and often feel you understand machines better than people. Your 'fatal flaw' is often a feeling of inferiority or isolation, leading you to hide away in your work. However, you possess incredible resilience and the rare power to build something from nothing, proving that true strength is forged in the heat of the fire."
+    },
+    hermes: {
+  name: "Hermes",
+  color: "#FFEB3B", // Vibrant Yellow/Gold
+  class: "hermes",
+  svgId: "svg-hermes",
+  description: "As a child of the Messenger God, you are clever, fast, and a master of communication. You are highly adaptable and can fit into any social situation, making you the ultimate ''jack of all trades.'' Your 'fatal flaw'' is often an unwillingness to settle down or have a disregard for rules and boundaries. You thrive on adventure and movement, and you possess a fiercely independent, trickster spirit that keeps life exciting for everyone around you."
+},
+
+    dionysus: {
+      name: "Dionysus",
+      color: "#9B59B6", // Amethyst / Grape Purple
+      class: "dionysus",
+      svgId: "svg-dionysus",
+      description: "As a child of the God of Wine and Madness, you are the life of the party—but there is a deep intensity beneath your fun-loving exterior. You possess an innate connection to nature and the wilder parts of the human mind and have the ability to grow plants (especially those related to wine). Because your father rules over madness, his children are often very resilient to mental attacks or illusions. You act like you don't care about your surroundings, but is secretly paying close attention. You probably see your divine parent more often than other demigods (since your father is the camp director and all). Your 'fatal flaw' is often over-indulgence or a tendency to escape reality when things get tough. You are social butterfly and surprisingly perceptive, able to see through illusions and find joy in the most chaotic situations."
+    },
+    apollo: {
+  name: "Apollo",
+  color: "#F1C40F", // Sun Gold
+  class: "apollo",
+  svgId: "svg-apollo",
+  description: "As a child of the God of the Sun, you are a beacon of talent, warmth, and creativity. Archery is your game and you have an intuitive sense of the human body, making you some of the best healers. You are also a music lover and your cabin is often filled with it. Your 'fatal flaw' is often an obsession with your own image or the heavy pressure you place on yourself to be perfect. You have a natural gift for bringing light to dark places, but you must be careful not to let your own ego burn those around you."
+},
+
+demeter: {
+  name: "Demeter",
+  color: "#4CAF50", // Harvest Green
+  class: "demeter",
+  svgId: "svg-demeter",
+  description: "As a child of the Goddess of Agriculture, you have a deep, soulful connection to the earth and all living things, especially naiads and satyrs. You are nurturing, patient, and kind, but like the seasons, you have a fierce side that shouldn't be underestimated. Your 'fatal flaw' is often being too self-sacrificing or passive until pushed too far. While others might see you as just a 'gardener,' you possess the power to control nature itself, proving that life—and those who protect it—can be the strongest force in the world."
+}
+  
+
+
+
+
+
+};
+
+//** All questions **//
+	const questions = [
+    {
+    question: "Capture the Flag as just begun! What do you do?",
+    answers: [
+      { text: "Lead a squad and try to find the opposing team's flag", points: { zeus: 2, poseidon: 2, ares: 1 } },
+      { text: "Stay put, go into an ambush position and defend the flag", points: { apollo: 1, hermes: 1 } },
+      { text: "Prepare to doctor your injured teammates", points: { apollo: 2, demeter:1} },
+      { text: "Create a battle plan or try to attack the flanks", points: { athena: 2 } },
+      { text: "Go with whatever your leader tells you to do", points: { dionysus: 2, hephaestus: 2, demeter:1  } },
+      { text: "Attack center and try to get the flag", points: { ares: 2, hades: 2 } },
+      { text: "You'll only join if the Hunters of Atermis are on the opposite team", points: { aphrodite: 2} },
+      { text: "Follow whatever job you have ... until you decide not to", points: { poseidon: 2, hermes: 1  } },
+      { text: "Try to lure the opposing team to a trap", points: { hermes: 2 } },
+    ]
+  },
+  {
+    question: "A monster attacks Camp Half-Blood. You...",
+    answers: [
+      { text: "Take command immediately", points: { zeus: 2, poseidon: 2, athena: 1 } },
+      { text: "Fall back and organize a strategy", points: { athena: 2, hephaestus: 1 } },
+      { text: "Attack head-on. It's battle time!", points: { ares: 2, hades: 2, poseidon: 1 } },
+      { text: "Run behind the Ares and Athena campers", points: { aphrodite: 2, dionysus: 1, demeter: 2 } },
+      { text: "Ignore them. Let the Border patrol handle it.", points: { dionysus: 2 } },
+      { text: "Try to outsmart it", points: { hermes: 2 } },
+      { text: "Go to the rooftops and snipe them with your bow", points: { apollo: 2 } },
+      { text: "Run to the Forge to get and distribute weapons", points: { hephaestus: 2 } }
+    ]
+  },
+  {
+    question: "It's moments before cabin inspection time. What do you do?",
+    answers: [
+      { text: "Place all those clothes scattered on the floor under the bed and blame each other for stolen things", points: { hermes: 2, ares: 1 } },
+      { text: "Relax; cuz you already cleaned your room", points: { zeus: 1, hades: 1 } },
+      { text: "Focus in every, specific, tiny detail is groomed to perfection. You want to pass.", points: {aphrodite: 2, poseidon: 1   } },
+      { text: "Add floweirng plants to imrpove the look of your cabin", points: { demeter: 2 } },
+      { text: "''I don't need to clean, the cabin was always neat.''", points: { athena: 2} },
+      { text: "Distract or delay the inspectors in order for your cabin mates to gain time", points: { dionysus: 2 } },
+      { text: "Stare at your cabin worriedly, wondering if you should imrpove it", points: { apollo: 2 } },
+      { text: "Build a barrier in the door to gain time", points: { hephaestus: 2 } },
+    ]
+  },
+  {
+  question: "During the chariot race, something explodes. You...",
+  answers: [
+    { text: "Blame the Hephaestus cabin immediately", points: { ares: 1, zeus: 1 } },
+    { text: "Admit it was your experimental rocket boosters", points: { hephaestus: 2 } },
+    { text: "Use the smoke as cover to get ahead", points: { hermes: 2, ares: 2 } },
+    { text: "Yell strategic instructions over the chaos", points: { athena: 2 } },
+    { text: "Panic then laugh because this is exactly how races should go", points: { dionysus: 2 } },
+    { text: "Keep perfect balance despite the madness", points: { poseidon: 2 } },
+    { text: "Somehow turn it into a dramatic, heroic moment", points: { apollo: 2 } },
+    { text: "Quietly endure the chaos and finish anyway", points: { hades: 2 } }
+  ]
+},
+
+  {
+  question: "Mr. D is singing 'My Own Great-great-great-great-great-great Grandpa' (again). Your reaction is...",
+  answers: [
+    { text: "Sing along! Any music is good music.", points: { apollo: 2, dionysus: 2, hermes: 1 } },
+    { text: "Sigh with boredom and wait for it to be over.", points: { hades: 2, ares: 1, athena: 1 } },
+    { text: "Zone out and pretend your listening", points: { athena: 2, apollo: 1 } },
+    { text: "Offer him a snack or a drink to get him to stop.", points: { demeter: 2, aphrodite: 1 } },
+    { text: "Wonder if you can build a device to block out the sound.", points: { hephaestus: 2 } },
+    { text: "Ask him to tell stories about the ''good old days' instead.", points: { zeus: 2, poseidon: 1 } }
+  ]
+},
+
+  {
+    question: "In your free time, we can find you...",
+    answers: [
+      { text: "Perfecting your look for the next party", points: { aphrodite: 2 } },
+      { text: "Enjoying the sounds and smells of the open sea, maybe swimming in it with a friend", points: { poseidon: 2 } },
+      { text: "Watching a horror movie or lying in your bed in total silence", points: { hades: 2 } },
+      { text: "Partying behind Chiron's back, because why not?", points: { dionysus: 2 } },
+      { text: "Tinkering with something awesome in your room", points: { hephaestus: 2 } },
+      { text: "Playing a high-level strategy game, or designing a building", points: { athena: 2 } },
+      { text: "Freestyling with instruments or singing", points: { apollo: 2 } },
+      { text: "Sitting in the highest spot you can find to relax and observe", points: { zeus: 2 } },
+      { text: "Walking around, looking for mischief or something to show off", points: { hermes: 2 } },
+      { text: "Starting an arm-wrestling contest, or nursing a black eye", points: { ares: 2 } },
+      { text: "Talking with Dryads in a field of flowers", points: { demeter: 2 } }
+    ]
+  },
+  {
+  question: "Thalia and Percy are fighting (again), and there's a literal storm brewing over the arena. You...",
+  answers: [
+    { text: "Try to mediate and find a fair solution before someone gets struck by lightning", points: { athena: 2, demeter: 1 } },
+   { 
+  text: "Grab some popcorn and start taking bets on who wins", 
+  points: { dionysus: 2, hermes: 1 } 
+},
+
+    { text: "Watch the Athena kids work it out", points: { hephaestus: 2, hades: 1 } },
+    { text: "Roll your eyes—Big Three kids are so dramatic", points: { aphrodite: 2, ares: 1 } },
+    { text: "Join in! Take a side and join the brawl", points: { ares: 2, zeus: 1, poseidon: 1 } },
+    { text: "Use the distraction to sneak into the woods or the mess hall", points: { hermes: 2 } },
+    { text: "Start humming a calming tune to see if it soothes their tempers", points: { apollo: 2, aphrodite: 1 } }
+  ]
+},
+
+  {
+    question: "In a fight, your first move is to...",
+    answers: [
+      { text: "Strike first, hard and always on the offensive", points: { ares: 2 } },
+      { text: "''Wait, why am I even in a fight?''", points: { aphrodite: 2, demeter: 1 } },
+      { text: "Find the weakness and plan a surgical strike", points: { athena: 2 } },
+      { text: "Outsmart them and use speed to your advantage", points: { hermes: 2, athena: 1 } },
+      { text: "Unleash a brand new, untested weapon", points: { hephaestus: 2 } },
+      { text: "Get out of melee range and use a bow", points: { apollo: 2 } },
+      { text: "Throw old wine bottles and random objects", points: { dionysus: 2, aphrodite: 1 } },
+      { text: "If you must, grow a huge plant to delay your attacker and help you escape", points: { demeter:2} },
+      { text: "Unleash a water wave on your opponent if your near the water", points: { poseidon: 2 } },
+      { text: "Try to intimidate your opponet with raw strength", points: { zeus: 2 } },
+      { text: "Attack, then disengage, manuever then attack again", points: { hades: 1 } },
+    ]
+  },
+  {
+  question: "Tantalus (or Chiron) assigned you to clean the Pegasus stables. You...",
+  answers: [
+    { text: "Actually enjoy talking to the horses and grooming them (except for mucking out)", points: { poseidon: 2, demeter: 2 } },
+    { text: "Invent a mechanical shovel to get it done in half the time", points: { hephaestus: 2 } },
+    { text: "Trick a younger camper into doing it for you", points: { hermes: 2, dionysus: 1 } },
+    { text: "Do it perfectly because you refuse to do a sloppy job", points: { athena: 2, zeus: 1 } },
+    { text: "Complain the entire time but finish it because you have to", points: { ares: 2, hades: 1 } },
+    { text: "Turn it into a competition to see who can finish first", points: { apollo: 2, ares: 1 } }
+  ]
+},
+
+ 
+  {
+    question: "Chiron offers you a magical gift. Which do you choose?",
+    answers: [
+      { text: "Winged shoes to travel anywhere instantly", points: { hermes: 2, zeus: 1 } },
+      { text: "An invisible cap to hide in plain sight", points: { hades: 2, athena: 1 } },
+      { text: "A magical shield that absorbs kinetic energy from any attack", points: { zeus: 2 } },
+      { text: "A flute that can charm anyone who hears it", points: { apollo: 2, dionysus: 2 } },
+      { text: "A belt that holds every tool imaginable", points: { hephaestus: 2 } },
+      { text: "A spear that never misses its target", points: { ares: 2, athena: 2 } },
+      { text: "An enchanted mirror that reveals enemies", points: { aphrodite: 2 } },
+      { text: "An enchanted necklace to breathe underwater", points: { poseidon: 2 } },
+      { text: "A magical trowel to grow anything - even exticnt plants", points: { demeter: 2 } },
+    ]
+  },
+    {
+  question: "On a quest, you’re the one who...",
+  answers: [
+    { text: "Takes charge when things go wrong", points: { zeus: 2, athena: 1 } },
+    { text: "Knows random myths that save the group", points: { athena: 2 } },
+    { text: "Charges the monster to buy time", points: { ares: 2 } },
+    { text: "Finds shortcuts and side paths", points: { hermes: 2 } },
+    { text: "Controls the terrain if near water", points: { poseidon: 2 } },
+    { text: "Handles the emotional drama", points: { aphrodite: 2, demeter: 1 } },
+    { text: "Builds or fixes what breaks mid-quest", points: { hephaestus: 2 } },
+    { text: "Stays calm in the darkest situations", points: { hades: 2 } },
+    { text: "Keeps morale high with jokes or music", points: { apollo: 2, dionysus: 1 } }
+  ]
+},
+
+  
+   {
+    question: "What is your biggest fatal flaw?",
+    answers: [
+      { text: "Hubris (pride); you hate being proven wrong", points: { athena: 2, zeus: 2 } },
+      { text: "Impulsiveness; You act before you think", points: { ares: 2, dionysus: 2 } },
+      { text: "Grudges; You hold onto them for WAY too long", points: { hades: 2, hephaestus: 2 } },
+      { text: "Loyalty; You would do anything for my friends, including sacrificing a quest", points: { poseidon: 2 } },
+      { text: "Distraction; You're lured by anything shiny or new", points: { hermes: 2, apollo: 1 } },
+      { text: "Vanity; You care too much about your image", points: { aphrodite: 2, apollo: 2 } },
+      { text: "Passiveness; You often let others push you around until you can't take it anymore", points: { demeter: 2 } }
+    ]
+  },
+];
+
+let scores = {};
+let currentQuestionIndex = 0;
+
+	function resetQuiz() {
+	  currentQuestionIndex = 0;
+	  scores = {};
+	  for (let key in gods) { scores[key] = 0; }
+	  document.getElementById("progress-fill").style.width = "0%";
+	document.getElementById("progress-text").innerText =
+	  `Quest Progress: 1/${questions.length}`;
+
+	}
+// Starts the quiz by adding the .hidden class on the results and welcome pages
+	function startQuiz() {
+	  resetQuiz();
+	  welcomepage.classList.add("hidden");
+	  resultspage.classList.add("hidden");
+	  quizpage.classList.remove("hidden");
+	  showQuestion();
+	}
+
+	function showQuestion() {
+	  const question = questions[currentQuestionIndex];
+
+	  // I thinks its self explanatory
+	  updateProgressBar();
+
+	  document.getElementById("question-text").innerText = question.question;
+	  const container = document.getElementById("answers-container");
+	  container.innerHTML = "";
+
+	  question.answers.forEach(answer => {
+		const btn = document.createElement("button");
+		btn.innerText = answer.text;
+		btn.className = "answer-btn";
+		btn.onclick = () => {
+		  for (let god in answer.points) {
+			scores[god] += answer.points[god];
+		  }
+
+		  currentQuestionIndex++;
+
+		  if (currentQuestionIndex < questions.length) {
+			showQuestion();
+		  } else {
+			showResults();
+		  }
+		};
+
+		container.appendChild(btn);
+	  });
+	}
+
+	function showResults() {
+	  //  Switch pages by adding .hidden class in quiz and removing it from results
+	  quizpage.classList.add("hidden");
+	  resultspage.classList.remove("hidden");
+	  resultspage.classList.remove("reveal-active");
+	  const resultCard = document.querySelector('.claiming-card');
+	  if(resultCard) resultCard.classList.remove('flash');
+
+	  // Calculate Winner (Chatgpt help on this one)
+	  let max = -1;
+	  let winners = [];
+	  for (let god in scores) {
+		if (scores[god] > max) {
+		  max = scores[god];
+		  winners = [god];
+		} else if (scores[god] === max) {
+		  winners.push(god);
+		}
+	  }
+
+  const priority = ["zeus","poseidon","hades","athena","ares","apollo","hephaestus","hermes","dionysus","aphrodite", "demeter"];
+  winners.sort((a, b) => priority.indexOf(a) - priority.indexOf(b));
+  const result = gods[winners[0]];
+
+  // These get the hidden elements (like the Gods/goddesses svg
+  const icon = document.getElementById("god-icon");
+  const nameEl = document.getElementById("god-name");
+  const descEl = document.getElementById("god-description");
+  
+  // Set Colors & Text
+  nameEl.innerText = result.name;
+  nameEl.style.color = result.color;
+  descEl.innerText = result.description;
+  
+  // Prepare SVG
+  icon.innerHTML = "";
+  const svgTemplate = document.getElementById(result.svgId);
+  const svgClone = svgTemplate.cloneNode(true);
+  svgClone.removeAttribute("id");
+  icon.appendChild(svgClone);
+  icon.className = `god-reveal-animation ${result.class}`;
+  icon.style.color = result.color;
+
+  // Waits for a while, then triggers animation
+  setTimeout(() => {
+    resultspage.classList.add("reveal-active");
+    if(resultCard) resultCard.classList.add('flash');
+    
+    if (window.navigator.vibrate) window.navigator.vibrate(100);
+  }, 500);
+}
+
+
+
+startBtn.addEventListener("click", startQuiz);
+restartBtn.addEventListener("click", startQuiz);
+
+function updateProgressBar() {
+  const progress = (currentQuestionIndex / questions.length) * 100;
+
+  document.getElementById("progress-fill").style.width = `${progress}%`;
+  document.getElementById("progress-text").innerText =
+    `Quest Progress: ${currentQuestionIndex + 1}/${questions.length}`;
+}
+
+
+
+
+});
+    </script>
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+<script type>
+document.addEventListener('DOMContentLoaded', () => {
+  const lenis = new Lenis({
+    lerp: 0.05,
+    wheelMultiplier: 0.8,
+    duration: 1.5,
+    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+  });
+
+  function raf(time) {
+    lenis.raf(time);
+    requestAnimationFrame(raf);
+  }
+
+  requestAnimationFrame(raf);
+
+ 
+});
+
+/** Fade-in-out scroll by Nicolas @nickrg **/
+document.addEventListener("DOMContentLoaded", () => {
+    
+    // I sorted the code a bit into options and a callback function. It's just easier for my bird-brain to understand :)
+
+    // All the elements we want to observe
+    const faders = document.querySelectorAll(".fade-in");
+     const fadersR = document.querySelectorAll(".fade-in-right");
+     const fadersL = document.querySelectorAll(".fade-in-left");
+
+    // How much of the elements should be visible before fading in
+    const appearOptions = {
+        threshold: 0.2,
+        rootMargin: "0px 0px -50px 0px",
+    };
+
+    // Function to call when an element intersects
+    function observerCallback(entries) {
+        entries.forEach((entry) => {
+            // if it's intersecting, show it
+            if (entry.isIntersecting) {
+                entry.target.classList.add("show");
+            }
+            // when it's out of view, remove the class so we can apply it again later when it re-intersects
+            else {
+                entry.target.classList.remove("show");
+            }
+
+        });
+    };
+
+    // Create an observer and add parameters
+    const observer = new IntersectionObserver(observerCallback, appearOptions);
+
+    // Now actually observe each element!
+    faders.forEach((fader) => observer.observe(fader));
+     fadersR.forEach((fader) => observer.observe(fader));
+      // Now actually observe each element!
+    fadersL.forEach((fader) => observer.observe(fader));
+    
+    
+
+
+
+
+});
+
+
+
+</script>
+</body>
+</html>
+
