@@ -6,29 +6,54 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="blogs.css">
   <style>
+    body {
+  background: linear-gradient(to bottom, #fdfaf3, #f7f3ea);
+}
+    body.dark-theme {
+  background: linear-gradient(to bottom, #030712, #0b1220);
+}
 /* ================================
    NEW COLOR SCHEME
 ================================ */
 :root {
   /* BRIGHT AFTERNOON: Golden, Crisp, Airy */
-  --bg: #fdfaf3;           /* Warm sunlight paper */
-  --glass: rgba(255, 255, 255, 0.4);
+  --bg: #fdfaf3;
+  --surface: #ffffff; /* NEW */
+  --glass: rgba(255, 255, 255, 0.65);
   --border: rgba(0, 0, 0, 0.08);
-  --accent: #f59e0b;       /* Golden Hour Orange */
-  --text: #332d21;         /* Deep coffee brown for better readability */
-  --neon: #60a5fa;         /* Sky Blue accents */
+  --accent: #f59e0b;
+  --text: #332d21;
+  --neon: #60a5fa;
   --glass-blur: 10px;
+  
+  --shadow-soft: 0 4px 20px rgba(0,0,0,0.06);
+  --shadow-medium: 0 10px 40px rgba(0,0,0,0.10);
+  --shadow-strong: 0 20px 60px rgba(0,0,0,0.15);
+
+
 }
 
 body.dark-theme {
-  /* MIDNIGHT TWILIGHT: Deep Shadows & Electric Glow */
-  --bg: #030712;           /* Near-black "Obsidian" */
-  --glass: rgba(17, 24, 39, 0.6);
-  --border: rgba(99, 102, 241, 0.3); /* Electric purple borders */
-  --accent: #8b5cf6;       /* Twilight Purple */
-  --text: #e2e8f0;         /* Starlight Silver */
-  --neon: #f472b6;         /* Hot Pink / Nebula glow */
+  --bg: #030712;
+  --surface: #0f172a; /* NEW */
+  --glass: rgba(15, 23, 42, 0.75);
+  --border: rgba(255, 255, 255, 0.08);
+  --accent: #8b5cf6;
+  --text: #e2e8f0;
+  --neon: #f472b6;
   --glass-blur: 16px;
+  
+  --shadow-soft:
+    0 4px 20px rgba(0,0,0,0.5),
+    0 1px 0 rgba(255,255,255,0.04) inset;
+
+  --shadow-medium:
+    0 10px 40px rgba(0,0,0,0.6),
+    0 1px 0 rgba(255,255,255,0.06) inset;
+
+  --shadow-strong:
+    0 20px 60px rgba(0,0,0,0.7),
+    0 1px 0 rgba(255,255,255,0.08) inset;
 }
 
 /* Enhancing the transitions for the atmospheric shift */
@@ -54,22 +79,44 @@ body.dark-theme .hero-glass {
   transition: all 0.3s ease;
 }
 
-.hero-glass {
-  background: rgba(255, 255, 255, 0.1);
-  box-shadow: 0 0 30px var(--neon), 0 0 60px var(--neon);
-}
+.hero-glass {   width: 100%;   padding: 2rem;   border-top: 1px solid var(--border);   background: var(--glass);   box-shadow: var(--shadow-medium); }
 
 .glass {
-  padding: 2rem;
+  background: var(--glass);
+  backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 1.5rem;
   margin-bottom: 2rem;
-  border-radius: 20px;
-  box-shadow: 0 0 15px var(--neon), 0 0 40px var(--neon);
+  box-shadow: var(--shadow-soft);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .glass:hover {
   transform: translateY(-4px);
-  box-shadow: 0 0 40px var(--neon), 0 0 80px var(--neon);
+  box-shadow: 0 0 25px var(--neon);
 }
+
+.surface {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  box-shadow: var(--shadow-medium);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.surface:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-strong);
+}
+
+body.dark-theme .surface {
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+
 
 .hero-bg {
   position: absolute;
@@ -90,24 +137,7 @@ body.dark-theme .hero-glass {
 /* ================================
    ROOT VARIABLES
 ================================ */
-:root {
-  --bg: #0f1115;
-  --glass: rgba(255, 255, 255, 0.07);
-  --border: rgba(255, 255, 255, 0.15);
-  --accent: #9f7aea;
-  --text: #f2f2f2;
-  --neon: #4f94e0;
-}
 
-/* Dark Theme */
-body.dark-theme {
-  --bg: #121212;
-  --glass: rgba(255, 255, 255, 0.08);
-  --border: rgba(255, 255, 255, 0.25);
-  --accent: #1db954;
-  --text: #f1f1f1;
-  --neon: #0ff;
-}
 
 /* ================================
    GLOBAL RESET
@@ -159,23 +189,7 @@ button:hover {
   box-shadow: 0 0 20px var(--neon);
 }
 
-/* ================================
-   GLASS COMPONENT
-================================ */
-.glass {
-  background: var(--glass);
-  backdrop-filter: blur(14px);
-  border: 1px solid var(--border);
-  border-radius: 18px;
-  padding: 1.5rem;
-  margin-bottom: 2rem;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
 
-.glass:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 0 30px var(--neon);
-}
 
 /* ================================
    HERO SECTION
@@ -198,8 +212,8 @@ button:hover {
 }
 
 @keyframes glow {
-  0% { filter: brightness(0.5) contrast(1.1); }
-  100% { filter: brightness(0.7) contrast(1.4); }
+  0% { filter: brightness(0.5); }
+  100% { filter: brightness(0.6); }
 }
 
 .hero-glass {
@@ -352,9 +366,7 @@ section.visible {
   }
 }
 
-.glass:hover {
-  border: 1px solid var(--neon); /* Makes the edge look like it's actually glowing */
-}
+
 </style>
 </head>
 <body>
@@ -391,19 +403,19 @@ section.visible {
   </header>
  <section class="content">
 
-  <div class="text-block glass">
+  <div class="text-block surface">
     <p>
       This month’s book took us deep into suspense and small-town secrets...
       Everyone had strong feelings about the ending.
     </p>
   </div>
 
-  <figure class="image-block glass">
+  <figure class="image-block surface">
     <img src="book.jpg" alt="Book cover">
     <figcaption>The cover that sparked our curiosity.</figcaption>
   </figure>
 
-  <div class="text-block glass">
+  <div class="text-block surface">
     <p>
       During our discussion, we debated whether the protagonist was truly reliable...
     </p>
@@ -411,7 +423,7 @@ section.visible {
 
 </section>
 
-<section class="slideshow glass">
+<section class="slideshow surface">
   <div class="slides">
     <div class="slide active">
       <img src="slide1.jpg">
@@ -429,7 +441,7 @@ section.visible {
   </div>
 </section>
 
-<footer class="footbar glass">
+<footer class="footbar surface">
   <a href="#">← Back Home</a>
   <a href="#">Previous Post</a>
   <a href="#">Next Post →</a>
