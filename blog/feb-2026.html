@@ -288,7 +288,7 @@ body:not(.dark-theme) .tags span:hover {
   align-items:center;
 }
 
-/* Shared Aesthetics (The look) */
+/* 1. SHARED GLASS LOOK */
 .image-block, .slide { 
   background: var(--card-bg); 
   border: 1px solid rgba(255,255,255,0.08); 
@@ -296,123 +296,110 @@ body:not(.dark-theme) .tags span:hover {
   padding: 1.5rem; 
   backdrop-filter: blur(var(--glass-blur)); 
   box-shadow: var(--shadow-soft); 
-  transition: all 0.4s cubic-bezier(0.2, 1, 0.3, 1); 
+  transition: all 0.4s cubic-bezier(0.2, 1, 0.3, 1);
+  box-sizing: border-box;
 }
 
-/* Static Image Blocks (The standard flow) */
-.image-block {
-  margin-bottom: 2.5rem;
-  width: 100%;
-}
-
-/* Slideshow Specific (The Stacked Magic) */
-.slideshow .slide {
-  position: absolute; /* This must ONLY be for slides */
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0;
-  z-index: 1;
-  transform: rotate(var(--stack-deg, 0deg)) scale(0.95);
-}
-
-/* Force Slide Images to fill the card perfectly */
-.slide img {
-  width: 100%;
-  height: calc(100% - 2rem); /* Leaves room for caption */
-  object-fit: cover;
-  border-radius: 12px;
-}
-
-
-
-
+/* Light Theme Overrides */
 body:not(.dark-theme) .image-block,
-body:not(.dark-theme) .slide,
-body:not(.dark-theme) .surface {
+body:not(.dark-theme) .slide {
   background: rgba(255,255,255,0.75);
   border: 1px solid rgba(255,255,255,0.6);
-  box-shadow:
-    0 10px 30px rgba(0, 120, 255, 0.08),
-    0 4px 12px rgba(255, 183, 3, 0.08);
+  box-shadow: 0 10px 30px rgba(0, 120, 255, 0.08), 0 4px 12px rgba(255, 183, 3, 0.08);
 }
 
-figcaption,
-.caption {
+/* 2. STATIC IMAGE BLOCKS (Fixes them disappearing) */
+.image-block {
+  position: relative; /* Changing from absolute to relative */
+  width: 100%;
+  margin-bottom: 2.5rem;
+  display: block;
+}
+.image-block img {
+  width: 100%;
+  border-radius: 12px;
+  display: block;
+}
+
+/* 3. SLIDESHOW CONTAINER */
+.slideshow {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    aspect-ratio: 16 / 9;
+    margin: 2rem auto 5rem auto; /* Extra bottom margin for controls */
+    perspective: 1200px;
+}
+
+/* 4. THE STACKED SLIDES */
+.slideshow .slide {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    z-index: 1;
+    transform: rotate(var(--stack-deg, 0deg)) scale(0.95);
+    display: flex;
+    flex-direction: column;
+}
+
+.slide img {
+    width: 100%;
+    height: 80%; /* Leaves room for caption */
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+/* 5. CAPTION & FIGCAPTION */
+figcaption, .caption {
   margin-top: 1rem;
   font-size: 1rem;
   color: var(--text-muted);
   line-height: 1.5;
 }
 
-/* ================================
-   SLIDESHOW (KEEP FUNCTIONALITY)
-================================ */
-/* Container management */
-.slideshow {
-    position: relative;
-    width: 100%;
-    max-width: 800px; /* Limits size on desktop */
-    aspect-ratio: 16 / 9; /* Maintains shape on all screens */
-    margin: 2rem auto;
-    perspective: 1200px;
-}
-
-/* Force all slides to be the same size and stack */
-.image-block, .slide {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    padding: 10px; /* Space for the "border" of the card */
-    box-sizing: border-box;
-    
-    /* Stacked appearance */
-    opacity: 0;
-    z-index: 1;
-    transform: translate(0, 0) rotate(var(--stack-deg, 0deg)) scale(0.95);
-    transition: all 0.7s cubic-bezier(0.23, 1, 0.32, 1);
-}
-
-/* Image scaling: This prevents stretching */
-.image-block img, .slide img {
-    width: 100%;
-    height: 100%; /* Fill the container */
-    object-fit: cover; /* Crops image to fill without distortion */
-    object-position: center;
-    border-radius: 12px;
-    display: block;
-}
-
-/* Active State */
+/* 6. ACTIVE & FLY-IN ANIMATIONS */
 .slide.active {
-    opacity: 1;
-    z-index: 10;
-    transform: translate(0, 0) rotate(0deg) scale(1);
+    opacity: 1 !important;
+    z-index: 5 !important;
+    transform: translate(0, 0) rotate(0deg) scale(1) !important;
 }
+.from-right { transform: translate(120%, 50px) rotate(360deg); }
+.from-left { transform: translate(-120%, -50px) rotate(-360deg); }
 
-/* Animation Origins */
-.from-right { transform: translate(120%, 50px) rotate(360deg) scale(0.5); opacity: 0; }
-.from-left { transform: translate(-120%, -50px) rotate(-360deg) scale(0.5); opacity: 0; }
-
-/* Mobile Adjustments */
-@media (max-width: 600px) {
-    .slideshow {
-        aspect-ratio: 4 / 5; /* Taller for mobile screens */
-    }
-    .from-right { transform: translate(100%, 20px) rotate(180deg); }
-    .from-left { transform: translate(-100%, -20px) rotate(-180deg); }
+/* 7. CONTROLS (Moved to bottom and brought to front) */
+.controls {
+  position: absolute;
+  bottom: -60px; /* Positions below the stack */
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  z-index: 100; /* Higher than images */
 }
-
 
 .controls button {
+  padding: 10px 20px;
+  border-radius: 10px;
   background: rgba(58,125,255,0.15);
   border: 1px solid var(--border-glow);
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
 }
 
 .controls button:hover {
   background: var(--accent);
+  transform: scale(1.1);
 }
+
+/* 8. MOBILE */
+@media (max-width: 600px) {
+    .slideshow { aspect-ratio: 4 / 5; }
+}
+
 
 /* ================================
    FOOTER NAV
@@ -537,7 +524,7 @@ section.visible {
         <span>Written by Austin</span>
       </div>
 
-      <h1>Reader Society's Third Meet</h1>
+      <h1>Reader Society's Third Meet!</h1>
 
       <div class="author">
         <img src="https://github.com/readersociety/readersociety.github.io/blob/main/Austin_Pfp.jpg?raw=true" alt="Author">
@@ -621,32 +608,32 @@ already flown by without us noticing. I was the one to go home early through an 
   
 <section class="slideshow surface">
   <div class="slides">
-    <div class="slide active">
-      <img style="--stack-deg: -3deg;" src="https://github.com/readersociety/readersociety.github.io/blob/main/blog/The%20Shocked%20Emoji%20and%20the%20Sleepy%20Emoji.JPG?raw=true">
+    <div style="--stack-deg: -3deg;" class="slide active">
+      <img  src="https://github.com/readersociety/readersociety.github.io/blob/main/blog/The%20Shocked%20Emoji%20and%20the%20Sleepy%20Emoji.JPG?raw=true">
       <p class="caption">The perfect shocked emoji and sleepy emoji</p>
     </div>
-    <div class="slide">
-      <img style="--stack-deg: 3deg;" src="https://github.com/readersociety/readersociety.github.io/blob/main/blog/Six%20and%20Seven.JPG?raw=true">
+    <div style="--stack-deg: 3deg;" class="slide">
+      <img  src="https://github.com/readersociety/readersociety.github.io/blob/main/blog/Six%20and%20Seven.JPG?raw=true">
       <p class="caption">Six, Seven 67676767</p>
     </div>
-    <div class="slide">
-      <img style="--stack-deg: -10deg;" src="https://github.com/readersociety/readersociety.github.io/blob/main/blog/cue%20mexican%20music.JPG?raw=true">
+    <div  style="--stack-deg: -10deg;" class="slide">
+      <img src="https://github.com/readersociety/readersociety.github.io/blob/main/blog/cue%20mexican%20music.JPG?raw=true">
       <p class="caption">Cue the romantic, Mexican music ✨🌹</p>
     </div>
-    <div class="slide">
-      <img style="--stack-deg: -9deg;" src="https://github.com/readersociety/readersociety.github.io/blob/main/blog/IMG_3161.JPG?raw=true">
+    <div style="--stack-deg: -9deg;" class="slide">
+      <img  src="https://github.com/readersociety/readersociety.github.io/blob/main/blog/IMG_3161.JPG?raw=true">
       <p class="caption">Of course, this image slideshow isn't complete with our CEO and Photographer, Yumi and Noa!</p>
     </div>
-    <div class="slide">
-      <img style="--stack-deg: 10deg;" src="https://github.com/readersociety/readersociety.github.io/blob/main/blog/IMG_3162.JPG?raw=true">
+    <div style="--stack-deg: 10deg;" class="slide">
+      <img  src="https://github.com/readersociety/readersociety.github.io/blob/main/blog/IMG_3162.JPG?raw=true">
       <p class="caption">Someohow shocked emoji turned to embarassed emoji and sleepy emoji turned happy. Result of food maybe?</p>
     </div>
-    <div class="slide">
-      <img style="--stack-deg: 13deg;" src="https://github.com/readersociety/readersociety.github.io/blob/main/blog/IMG_3164.JPG?raw=true">
+    <div style="--stack-deg: 13deg;" class="slide">
+      <img  src="https://github.com/readersociety/readersociety.github.io/blob/main/blog/IMG_3164.JPG?raw=true">
       <p class="caption">Nice hair, both of you!</p>
     </div>
-     <div class="slide">
-      <img style="--stack-deg: -10deg;" src="https://github.com/readersociety/readersociety.github.io/blob/main/blog/IMG_3165.JPG?raw=true">
+     <div style="--stack-deg: -10deg;" class="slide">
+      <img  src="https://github.com/readersociety/readersociety.github.io/blob/main/blog/IMG_3165.JPG?raw=true">
       <p class="caption">Jamie: "You know, this certain character I liked this much" <br> 
         Claudia: *thinking* the Mayor?? <br> 
         Noa: Hmmm... Interesting</p>
@@ -683,7 +670,7 @@ document.querySelectorAll('section').forEach(section => {
 let slides = document.querySelectorAll('.slide');
 let current = 0;
 
-// Apply initial uneven rotation
+// Apply initial uneven rotation to create the "messy stack"
 function randomizeStack() {
     slides.forEach((s, i) => {
         if (i !== current) {
@@ -694,21 +681,22 @@ function randomizeStack() {
 }
 
 const changeSlide = (nextIndex, direction) => {
-    // 1. Reset current slide to its "stacked" position
+    // 1. Remove classes from the slide that is currently visible
     slides[current].classList.remove('active', 'from-left', 'from-right');
     
-    // 2. Set the new current
+    // 2. Update the index
     current = nextIndex;
     const incomingClass = direction === 'next' ? 'from-right' : 'from-left';
     
-    // 3. Prepare the slide at the start position (spinning in)
+    // 3. Reset the new slide to its starting "spin" position (off-screen)
+    slides[current].classList.remove('active'); // Ensure it's not active yet
     slides[current].classList.add(incomingClass);
     
-    // 4. Trigger the animation
+    // 4. Small delay so the browser "sees" it off-screen, then animate it in
     setTimeout(() => {
-        randomizeStack(); // Re-shuffle other images in stack
+        randomizeStack(); 
         slides[current].classList.add('active');
-    }, 20);
+    }, 50); // Increased slightly for smoother transition trigger
 };
 
 document.getElementById('next').onclick = () => {
@@ -721,9 +709,12 @@ document.getElementById('prev').onclick = () => {
     changeSlide(prev, 'prev');
 };
 
-// Initialize
+// INITIALIZE: Set the stack and show the first slide
 randomizeStack();
-slides[0].classList.add('active');
+if(slides.length > 0) {
+    slides[0].classList.add('active');
+}
+
 
 
 </script>
