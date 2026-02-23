@@ -354,7 +354,7 @@ body:not(.dark-theme) .slide {
 /* 5. CAPTION & FIGCAPTION */
 figcaption, .caption {
   margin-top: 1rem;
-  font-size: 2rem;
+  font-size: 1.2rem;
   color: var(--text-muted);
   line-height: 1.5;
 }
@@ -401,6 +401,27 @@ figcaption, .caption {
 }
 
 
+ .fade-in-right {
+                opacity: 0;
+                transform: translateX(50px);
+                transition: 1s;
+            }
+            
+             .fade-in-left {
+                opacity: 0;
+                transform: translateX(-50px);
+                transition: 1s;
+            }
+            
+            .fade-in-right.show {
+                opacity: 1;
+                transform: translateX(0);
+            }
+            
+            .fade-in-left.show {
+                opacity: 1;
+                transform: translateX(0);
+            }
 /* ================================
    FOOTER NAV
 ================================ */
@@ -514,35 +535,35 @@ section.visible {
   </svg>
 </div>
   <!-- HERO -->
-  <header class="hero">
+  <header class="hero fade-in-left">
     <img src="https://github.com/readersociety/readersociety.github.io/blob/main/blog/IMG_3167.JPG?raw=true" class="hero-bg" alt="Book of Claudia">
 
     <div class="hero-glass">
-      <div class="tags">
+      <div class="tags fade-in-left">
         <span>Noa's House</span>
         <span>Book Club Meet</span>
         <span>Written by Austin</span>
       </div>
 
-      <h1>Reader Society's Third Meet!</h1>
+      <h1 class="fade-in-left">Reader Society's Third Meet!</h1>
 
-      <div class="author">
+      <div class="author fade-in-left">
         <img src="https://github.com/readersociety/readersociety.github.io/blob/main/Austin_Pfp.jpg?raw=true" alt="Author">
         <div>
-          <p class="author-name">Written by Austin (Edited by Isaac)</p>
-          <p class="meta">Jan 21, 2026 · 6 min read</p>
+          <p class="author-name fade-in-right">Written by Austin (Edited by Isaac)</p>
+          <p class="meta fade-in-right">Jan 21, 2026 · 6 min read</p>
         </div>
       </div>
     </div>
   </header>
  <section class="content">
 
-  <div class="text-block surface">
+  <div class="text-block surface fade-in-left">
     <p>
      <strong>"I wasted time, and now doth time waste me."</strong> <em> —William Shakespeare’s Richard II (Act V - Scene 5)</em>
     </p>
   </div>
-     <div class="text-block surface">
+     <div class="text-block surface fade-in-right">
     <p>
     I found that usually when people quote this, it’s about a deep meditation on regret. Yet, as it turns out,
 it can also apply to our book club’s case—specifically, it was going into a third meetup planning a quick
@@ -551,12 +572,12 @@ we hadn’t even begun our discussion yet.
     </p>
   </div>
 
-  <figure class="image-block surface">
+  <figure class="image-block surface fade-in-left">
     <img src="https://github.com/readersociety/readersociety.github.io/blob/main/blog/This%20Book%20Club%20turned%20to%20a%20Writer's%20club.JPG?raw=true" alt="Jamie, Q, and Claudia writing">
     <figcaption>This Book Club became a Writing Club! Don't worry, noe of us minded :D</figcaption>
   </figure>
    
- <div class="text-block surface">
+ <div class="text-block surface fade-in-right">
     <p>
     Starting from the beginning, of course, out of nine members, only two were able to come on time. And it
 was... <em>awkward</em>, to say the least. Awkward as in the very feeling you get in a waiting room when it feels
@@ -566,12 +587,12 @@ were being set on the table, along with the drinks and the board games. Conversa
 followed right after, while the adults talked outside and the kids were playing in the nearby living room.
     </p>
   </div>
-   <figure class="image-block surface">
+   <figure class="image-block surface fade-in-left">
     <img src="https://github.com/readersociety/readersociety.github.io/blob/main/blog/IMG_3160.JPG?raw=true" alt="Book cover">
     <figcaption>Two of our Three known guitarists in out club, Yumi and Iris!</figcaption>
   </figure>
    
-  <div class="text-block surface">
+  <div class="text-block surface fade-in-right">
     <p>
       After the <em>very</em> quick icebreaker, we finally had our discussion about the book assigned by Claudia— The
 <em>City of Ember</em>. We recapped about what happened in the book, then we talked about what we thought
@@ -579,11 +600,11 @@ about it, what rating we gave the overall story, and which characters were our f
 favorite. And for what it’s worth, it was pretty obvious who everyone’s least favorite character was. (Spoiler alert, definately the Mayor uh huh)
     </p>
   </div>
- <figure class="image-block surface">
+ <figure class="image-block surface fade-in-left">
     <img src="https://github.com/readersociety/readersociety.github.io/blob/main/blog/Classic%20Classroom%20discussion%20pic.JPG?raw=true" alt="Book cover">
     <figcaption>This is your typical classroom discussion pic. I know from experience ;) </figcaption>
   </figure>
-   <div class="text-block surface">
+   <div class="text-block surface fade-in-right">
     <p>
       With that out of the way, it was time to announce the book the next host, Yumi, would choose—along
 with the few rules and guidelines that came with it, which were explained by Noa’s mom. Fortunately,
@@ -592,11 +613,11 @@ the next book was finally announced; The first book of the series, <em>Enola Hol
 Marquess</em>, by American author Nancy Springer. The book was chosen party to honor International Women's month, which was next month from the meet. (As soon as this was brought to topic, almost everyone subconciously looked at us, the only two guys)
     </p>
   </div>
-    <figure class="image-block surface">
+    <figure class="image-block surface fade-in-left">
     <img src="https://github.com/readersociety/readersociety.github.io/blob/main/blog/Peace,%20Smiley%20and%20Peace.JPG?raw=true" alt="Book cover">
     <figcaption>One superstar smile flanked with two superstar hand signs, Q, Jamie and Claudia respectively </figcaption>
   </figure>
-  <div class="text-block surface">
+  <div class="text-block surface fade-in-right">
     <p>
      We then wrapped things up with a few games of Mafia, accompanied by toasted siopaos and mac &
 cheese—and some small talk about when our official meeting day would be. By the end, hours had
@@ -606,7 +627,7 @@ already flown by without us noticing. I was the one to go home early through an 
 </section>
 
   
-<section class="slideshow surface">
+<section class="slideshow surface fade-in-left">
   <div class="slides">
     <div style="--stack-deg: -3deg;" class="slide active">
       <img  src="https://github.com/readersociety/readersociety.github.io/blob/main/blog/The%20Shocked%20Emoji%20and%20the%20Sleepy%20Emoji.JPG?raw=true">
@@ -742,6 +763,43 @@ if(slides.length > 0) {
     }
   }
 </script>
+<script type>
+document.addEventListener("DOMContentLoaded", () => {
+    // I sorted the code a bit into options and a callback function. It's just easier for my bird-brain to understand :)
 
+    // All the elements we want to observe
+    const fadersR = document.querySelectorAll(".fade-in-right");
+     const fadersL = document.querySelectorAll(".fade-in-left");
+
+    // How much of the elements should be visible before fading in
+    const appearOptions = {
+        threshold: 0.2,
+        rootMargin: "0px 0px -50px 0px",
+    };
+
+    // Function to call when an element intersects
+    function observerCallback(entries) {
+        entries.forEach((entry) => {
+            // if it's intersecting, show it
+            if (entry.isIntersecting) {
+                entry.target.classList.add("show");
+            }
+            // when it's out of view, remove the class so we can apply it again later when it re-intersects
+            else {
+                entry.target.classList.remove("show");
+            }
+
+        });
+    };
+
+    // Create an observer and add parameters
+    const observer = new IntersectionObserver(observerCallback, appearOptions);
+
+    // Now actually observe each element!
+    fadersR.forEach((fader) => observer.observe(fader));
+      // Now actually observe each element!
+    fadersL.forEach((fader) => observer.observe(fader));
+});
+        </script>
 </body>
 </html>
