@@ -288,6 +288,43 @@ body:not(.dark-theme) .tags span:hover {
   align-items:center;
 }
 
+/* Shared Aesthetics (The look) */
+.image-block, .slide { 
+  background: var(--card-bg); 
+  border: 1px solid rgba(255,255,255,0.08); 
+  border-radius: 20px;
+  padding: 1.5rem; 
+  backdrop-filter: blur(var(--glass-blur)); 
+  box-shadow: var(--shadow-soft); 
+  transition: all 0.4s cubic-bezier(0.2, 1, 0.3, 1); 
+}
+
+/* Static Image Blocks (The standard flow) */
+.image-block {
+  margin-bottom: 2.5rem;
+  width: 100%;
+}
+
+/* Slideshow Specific (The Stacked Magic) */
+.slideshow .slide {
+  position: absolute; /* This must ONLY be for slides */
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  z-index: 1;
+  transform: rotate(var(--stack-deg, 0deg)) scale(0.95);
+}
+
+/* Force Slide Images to fill the card perfectly */
+.slide img {
+  width: 100%;
+  height: calc(100% - 2rem); /* Leaves room for caption */
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+
 
 
 body:not(.dark-theme) .image-block,
@@ -585,31 +622,31 @@ already flown by without us noticing. I was the one to go home early through an 
 <section class="slideshow surface">
   <div class="slides">
     <div class="slide active">
-      <img src="https://github.com/readersociety/readersociety.github.io/blob/main/blog/The%20Shocked%20Emoji%20and%20the%20Sleepy%20Emoji.JPG?raw=true">
+      <img style="--stack-deg: -3deg;" src="https://github.com/readersociety/readersociety.github.io/blob/main/blog/The%20Shocked%20Emoji%20and%20the%20Sleepy%20Emoji.JPG?raw=true">
       <p class="caption">The perfect shocked emoji and sleepy emoji</p>
     </div>
     <div class="slide">
-      <img src="https://github.com/readersociety/readersociety.github.io/blob/main/blog/Six%20and%20Seven.JPG?raw=true">
+      <img style="--stack-deg: 3deg;" src="https://github.com/readersociety/readersociety.github.io/blob/main/blog/Six%20and%20Seven.JPG?raw=true">
       <p class="caption">Six, Seven 67676767</p>
     </div>
     <div class="slide">
-      <img src="https://github.com/readersociety/readersociety.github.io/blob/main/blog/cue%20mexican%20music.JPG?raw=true">
+      <img style="--stack-deg: -10deg;" src="https://github.com/readersociety/readersociety.github.io/blob/main/blog/cue%20mexican%20music.JPG?raw=true">
       <p class="caption">Cue the romantic, Mexican music ✨🌹</p>
     </div>
     <div class="slide">
-      <img src="https://github.com/readersociety/readersociety.github.io/blob/main/blog/IMG_3161.JPG?raw=true">
+      <img style="--stack-deg: -9deg;" src="https://github.com/readersociety/readersociety.github.io/blob/main/blog/IMG_3161.JPG?raw=true">
       <p class="caption">Of course, this image slideshow isn't complete with our CEO and Photographer, Yumi and Noa!</p>
     </div>
     <div class="slide">
-      <img src="https://github.com/readersociety/readersociety.github.io/blob/main/blog/IMG_3162.JPG?raw=true">
+      <img style="--stack-deg: 10deg;" src="https://github.com/readersociety/readersociety.github.io/blob/main/blog/IMG_3162.JPG?raw=true">
       <p class="caption">Someohow shocked emoji turned to embarassed emoji and sleepy emoji turned happy. Result of food maybe?</p>
     </div>
     <div class="slide">
-      <img src="https://github.com/readersociety/readersociety.github.io/blob/main/blog/IMG_3164.JPG?raw=true">
+      <img style="--stack-deg: 13deg;" src="https://github.com/readersociety/readersociety.github.io/blob/main/blog/IMG_3164.JPG?raw=true">
       <p class="caption">Nice hair, both of you!</p>
     </div>
      <div class="slide">
-      <img src="https://github.com/readersociety/readersociety.github.io/blob/main/blog/IMG_3165.JPG?raw=true">
+      <img style="--stack-deg: -10deg;" src="https://github.com/readersociety/readersociety.github.io/blob/main/blog/IMG_3165.JPG?raw=true">
       <p class="caption">Jamie: "You know, this certain character I liked this much" <br> 
         Claudia: *thinking* the Mayor?? <br> 
         Noa: Hmmm... Interesting</p>
@@ -646,24 +683,32 @@ document.querySelectorAll('section').forEach(section => {
 let slides = document.querySelectorAll('.slide');
 let current = 0;
 
-// Add slight random rotation to each slide for the "messy stack" look
-slides.forEach((s, i) => {
-    s.style.setProperty('--stack-deg', (Math.random() * 6 - 3) + 'deg');
-});
+// Apply initial uneven rotation
+function randomizeStack() {
+    slides.forEach((s, i) => {
+        if (i !== current) {
+            const randomDeg = Math.floor(Math.random() * 8 - 4); // -4 to +4 degrees
+            s.style.setProperty('--stack-deg', `${randomDeg}deg`);
+        }
+    });
+}
 
 const changeSlide = (nextIndex, direction) => {
+    // 1. Reset current slide to its "stacked" position
     slides[current].classList.remove('active', 'from-left', 'from-right');
     
+    // 2. Set the new current
     current = nextIndex;
+    const incomingClass = direction === 'next' ? 'from-right' : 'from-left';
     
-    // Add direction class to trigger the fly-in spin
-    const dirClass = direction === 'next' ? 'from-right' : 'from-left';
-    slides[current].classList.add(dirClass);
+    // 3. Prepare the slide at the start position (spinning in)
+    slides[current].classList.add(incomingClass);
     
-    // Small timeout to ensure the browser registers the starting position
+    // 4. Trigger the animation
     setTimeout(() => {
+        randomizeStack(); // Re-shuffle other images in stack
         slides[current].classList.add('active');
-    }, 10);
+    }, 20);
 };
 
 document.getElementById('next').onclick = () => {
@@ -675,6 +720,11 @@ document.getElementById('prev').onclick = () => {
     let prev = (current - 1 + slides.length) % slides.length;
     changeSlide(prev, 'prev');
 };
+
+// Initialize
+randomizeStack();
+slides[0].classList.add('active');
+
 
 </script>
 
