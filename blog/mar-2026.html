@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Reader Society Events & Stories! - February 19, 2026</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="blogs.css">
+  <style>
+ @import url('https://fonts.googleapis.com/css2?family=Heebo&family=ZCool+XiaoWei:wght@400;500&display=swap');
+
+    body.dark-theme {
+  background: linear-gradient(to bottom, #030712, #0b1220);
+}
+
+    body:not(.dark-theme) {
+  animation: skyPulse 12s ease-in-out infinite alternate;
+}
+
+@keyframes skyPulse {
+  0% {
+    background-position: center;
+  }
+  100% {
+    background-position: 10% 5%;
+  }
+}
+/* ================================
+   NEW COLOR SCHEME
+================================ */
+:root {
+  /* Light theme */
+  --bg: #fdfaf3;
+  --surface: #ffffff;
+  --glass: rgba(255,255,255,0.65);
+  --border: rgba(0,0,0,0.08);
+  --accent: #f59e0b;
+  --text: #332d21;
+
+  /* Dark theme */
+  --bg-dark: #060b18;
+  --bg-darker: #040812;
+  --accent-light: #66a3ff;
+  --text-light: #e0e8ff;
+  --text-muted: #9db4d9;
+  --card-bg: rgba(20,25,45,0.85);
+  --border-glow: rgba(58,125,255,0.4);
+
+  --glass-blur: 5px;
+}
+
+/* ================================
+   LIGHT THEME — SKY & SUN
+================================ */
+body:not(.dark-theme) {
+  background:
+    radial-gradient(circle at 85% 15%, rgba(255, 220, 120, 0.6) 0%, rgba(255,220,120,0.2) 25%, transparent 60%),
+    linear-gradient(to bottom, #bfe3ff 0%, #eaf6ff 40%, #f7fbff 100%);
+  color: #1e293b;
+}
+
+/* Light Theme Variables Override */
+body:not(.dark-theme) {
+  --accent: #ffb703;              /* warm sunlight gold */
+  --accent-light: #ffd166;
+  --text-light: #1e293b;
+  --text-muted: #5b6b7c;
+  --card-bg: rgba(255, 255, 255, 0.75);
+  --border-glow: rgba(255, 183, 3, 0.4);
+}
+
+/* ================================
+   BODY (DARK PRIMARY)
+================================ */
+/* ================================
+   BASE BODY (LIGHT DEFAULT)
+================================ */
+body {
+  font-family: 'Heebo', system-ui, -apple-system, sans-serif;
+  line-height: 1.6;
+  transition: background 0.6s ease, color 0.4s ease;
+}
+
+/* LIGHT — SKY */
+body:not(.dark-theme) {
+  background:
+    radial-gradient(circle at 85% 15%, rgba(255, 220, 120, 0.6) 0%, rgba(255,220,120,0.2) 25%, transparent 60%),
+    linear-gradient(to bottom, #bfe3ff 0%, #eaf6ff 40%, #f7fbff 100%);
+  color: #1e293b;
+}
+
+/* DARK */
+body.dark-theme {
+  background: linear-gradient(to bottom, #030712, #0b1220);
+  color: var(--text-light);
+}
+
+/* ================================
+   HEADINGS
+================================ */
+h1, h2, h3 {
+  font-family: "ZCool XiaoWei", "Heebo", sans-serif, serif;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+h1 {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  line-height: 1.05;
+}
+
+h2 {
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+}
+
+/* ================================
+   LINKS & BUTTONS
+================================ */
+a {
+  color: var(--text-light);
+  transition: all 0.3s ease;
+}
+
+a:hover {
+  color: var(--accent-light);
+  text-shadow: 0 0 12px var(--border-glow);
+}
+
+button {
+  background: var(--accent);
+  border: none;
+  padding: 0.7rem 1.2rem;
+  border-radius: 12px;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 25px var(--border-glow);
+}
+
+    body:not(.dark-theme) button {
+  background: linear-gradient(135deg, #ffb703, #ffd166);
+  color: #1e293b;
+  box-shadow: 0 6px 18px rgba(255,183,3,0.3);
+}
+
+body:not(.dark-theme) button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(255,183,3,0.45);
+}
+
+/* ================================
+   HERO SECTION (NO BENTO COPYING)
+================================ */
+.hero {
+  position: relative;
+  height: 90vh;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.55) saturate(110%);
+  transition: transform 8s ease;
+}
+
+
+
+    .hero-bg {
+  filter: brightness(0.65) saturate(110%);
+}
+
+body:not(.dark-theme) .hero-bg {
+  filter: brightness(0.9) saturate(105%);
+}
+
+.hero-bg {
+  z-index: 0;
+}
+
+.hero-glass {
+  padding:2%;
+  position: relative;
+  z-index: 1;
+}
+.hero-glass {
+  background: linear-gradient(
+    180deg,
+    transparent 50%,
+    rgba(6, 11, 24, 0.95) 85%
+  );
+}
+
+
+body:not(.dark-theme) .hero-glass {
+  background: linear-gradient(
+    180deg,
+    rgba(255,255,255,0.0) 40%,
+    rgba(255,255,255,0.75) 80%,
+    rgba(255,255,255,0.9) 100%
+  );
+  /*border-top: 1px solid rgba(255,255,255,0.6);*/
+  backdrop-filter: blur(8px);
+}
+
+/* ================================
+   TAGS (UPGRADED FROM STYLE 1)
+================================ */
+.tags {
+  display: flex;
+  gap: 0.6rem;
+  overflow-x: auto;
+  margin-bottom: 1.2rem;
+}
+
+.tags span {
+  background: rgba(58,125,255,0.1);
+  border: 1px solid rgba(58,125,255,0.3);
+  padding: 0.45rem 0.9rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--accent-light);
+  transition: all 0.3s ease;
+}
+
+.tags span:hover {
+  background: var(--accent);
+  color: white;
+  box-shadow: 0 0 15px var(--border-glow);
+}
+
+    body:not(.dark-theme) .tags span {
+  background: rgba(0, 140, 255, 0.1);
+  border: 1px solid rgba(0, 140, 255, 0.25);
+  color: #0077cc;
+}
+
+body:not(.dark-theme) .tags span:hover {
+  background: #ffb703;
+  color: white;
+  box-shadow: 0 0 15px rgba(255, 183, 3, 0.5);
+}
+
+/* ================================
+   AUTHOR
+================================ */
+.author {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  margin-top: 1.5rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+.author img {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--accent);
+  box-shadow: 0 0 12px var(--border-glow);
+}
+
+/* ================================
+   CONTENT CARDS (NO BENTO LOGIC)
+================================ */
+.content {
+  max-width: 1100px;
+  margin: auto;
+  padding: 3rem 1.5rem;
+}
+
+.text-block{
+  max-width: 90vw;
+  padding:5px;
+  justify-content:center;
+  align-items:center;
+}
+
+/* 1. SHARED GLASS LOOK */
+.image-block, .slide { 
+  background: var(--card-bg); 
+  border: 1px solid rgba(255,255,255,0.08); 
+  border-radius: 20px;
+  padding: 1.5rem; 
+  backdrop-filter: blur(var(--glass-blur)); 
+  box-shadow: var(--shadow-soft); 
+  transition: all 0.4s cubic-bezier(0.2, 1, 0.3, 1);
+  box-sizing: border-box;
+}
+
+/* Light Theme Overrides */
+body:not(.dark-theme) .image-block,
+body:not(.dark-theme) .slide {
+  background: rgba(255,255,255,0.75);
+  border: 1px solid rgba(255,255,255,0.6);
+  box-shadow: 0 10px 30px rgba(0, 120, 255, 0.08), 0 4px 12px rgba(255, 183, 3, 0.08);
+}
+
+/* 2. STATIC IMAGE BLOCKS (Fixes them disappearing) */
+.image-block {
+  position: relative; /* Changing from absolute to relative */
+  width: 80%;
+  margin-bottom: 2.5rem;
+  display: block;
+}
+.image-block img {
+  width: 80%;
+  border-radius: 12px;
+  display: block;
+}
+
+/* 3. SLIDESHOW CONTAINER */
+.slideshow {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    aspect-ratio: 16 / 9;
+    margin: 2rem auto 5rem auto; /* Extra bottom margin for controls */
+    perspective: 1200px;
+}
+
+/* 4. THE STACKED SLIDES */
+.slideshow .slide {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    z-index: 1;
+    transform: rotate(var(--stack-deg, 0deg)) scale(0.95);
+    display: flex;
+    flex-direction: column;
+}
+
+.slide img {
+    width: 100%;
+    height: 80%; /* Leaves room for caption */
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+/* 5. CAPTION & FIGCAPTION */
+figcaption, .caption {
+  margin-top: 1rem;
+  font-size: 1.2rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+/* 6. ACTIVE & FLY-IN ANIMATIONS */
+.slide.active {
+    opacity: 1 !important;
+    z-index: 5 !important;
+    transform: translate(0, 0) rotate(0deg) scale(1) !important;
+}
+.from-right { transform: translate(120%, 50px) rotate(360deg); }
+.from-left { transform: translate(-120%, -50px) rotate(-360deg); }
+
+/* 7. CONTROLS (Moved to bottom and brought to front) */
+.controls {
+  position: absolute;
+  bottom: -60px; /* Positions below the stack */
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  z-index: 100; /* Higher than images */
+}
+
+.controls button {
+  padding: 10px 20px;
+  border-radius: 10px;
+  background: rgba(58,125,255,0.15);
+  border: 1px solid var(--border-glow);
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.controls button:hover {
+  background: var(--accent);
+  transform: scale(1.1);
+}
+
+/* 8. MOBILE */
+@media (max-width: 600px) {
+    .slideshow { aspect-ratio: 4 / 5; }
+    .figcaption, caption{font-size: 1rem;}
+  .image-block {
+
+  width: 90%;
+ 
+ 
+}
+.image-block img {
+  width: 90%;
+  border-radius: 15px;
+  
+}
+}
+
+
+ .fade-in-right {
+                opacity: 0;
+                transform: translateX(60px);
+                transition: 1s;
+            }
+            
+             .fade-in-left {
+                opacity: 0;
+                transform: translateX(-60px);
+                transition: 1s;
+            }
+            
+            .fade-in-right.show {
+                opacity: 1;
+                transform: translateX(0);
+            }
+            
+            .fade-in-left.show {
+                opacity: 1;
+                transform: translateX(0);
+            }
+/* ================================
+   FOOTER NAV
+================================ */
+.footbar {
+  max-width: 90vw;
+  margin: 4rem auto;
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+/* ================================
+   THEME TOGGLE
+================================ */
+.theme-toggle {
+  position: fixed;
+  left: 20px;
+  bottom: 20px;
+  background: rgba(20,25,45,0.9);
+  border: 1px solid var(--border-glow);
+  padding: 14px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 999;
+  transition: all 0.3s ease;
+}
+
+.theme-toggle:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 25px var(--border-glow);
+}
+
+.theme-toggle svg {
+  fill: var(--accent-light);
+  transition: transform 0.4s ease;
+}
+
+body.dark-theme .theme-toggle svg {
+  transform: rotate(180deg);
+}
+
+/* ================================
+   SCROLLBAR (DARK POLISH)
+================================ */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--accent);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-light);
+}
+
+    body:not(.dark-theme) ::-webkit-scrollbar-track {
+  background: #eaf6ff;
+}
+
+body:not(.dark-theme) ::-webkit-scrollbar-thumb {
+  background: #ffb703;
+}
+                   
+
+/* ================================
+   SCROLL REVEAL
+================================ */
+section {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ================================
+   RESPONSIVE
+================================ */
+@media (min-width: 768px) {
+  .theme-toggle {
+    left: 40px;
+    bottom: 40px;
+  }
+
+  .hero h1 {
+    font-size: 2.8rem;
+  }
+}
+
+
+</style>
+</head>
+<body>
+
+<article class="post">
+
+
+
+  <div class="theme-toggle" id="themeToggle">
+
+    <svg id="moon-icon" style="display: none;" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+</svg>
+
+    <svg id="sun-icon" style="display: block;" width="24" height="24" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <!-- Sun Rays -->
+  <g stroke="orange" stroke-width="6" stroke-linecap="round">
+    <line x1="50" y1="15" x2="50" y2="5" />
+    <line x1="50" y1="95" x2="50" y2="85" />
+    <line x1="15" y1="50" x2="5" y2="50" />
+    <line x1="95" y1="50" x2="85" y2="50" />
+    <line x1="25" y1="25" x2="18" y2="18" />
+    <line x1="75" y1="75" x2="82" y2="82" />
+    <line x1="25" y1="75" x2="18" y2="82" />
+    <line x1="75" y1="25" x2="82" y2="18" />
+  </g>
+  <!-- Sun Core -->
+  <circle cx="50" cy="50" r="25" fill="yellow" stroke="orange" stroke-width="4" />
+</svg>
+
+</div>
+
+
+  <!-- HERO -->
+  <header class="hero fade-in-left">
+    <img src="https://github.com/readersociety/readersociety.github.io/blob/main/blog/IMG_3167.JPG?raw=true" class="hero-bg" alt="Book of Claudia">
+
+    <div class="hero-glass">
+      <div class="tags fade-in-left">
+        <span>Noa's House</span>
+        <span>Yumi's House</span>
+        <span>Book Club Meet</span>
+        <span>Written by Isaac</span>
+      </div>
+
+      <h1 class="fade-in-left">Reader Society's Fourth Meet!</h1>
+
+      <div class="author fade-in-left">
+        <img src="https://github.com/readersociety/readersociety.github.io/blob/main/My%20picture.jpg?raw=true" alt="Author">
+        <div>
+          <p class="author-name fade-in-right">Written by Isaac</p>
+          <p class="meta fade-in-right">April 02, 2026 · 6 min read</p>
+        </div>
+      </div>
+    </div>
+  </header>
+ <section class="content">
+
+  <div class="text-block surface fade-in-left">
+    <p>
+     Two weeks ago Thursday, our reading group gathered at our friend Noa’s cozy home for a night that was equal parts laughter, games, and pure bookish joy. The fun actually started before we even got there—Noa and her dad generously carpooled me, Iris, and Qorein over, setting the tone for an evening of friendship, chatter, and a little friendly chaos.
+    </p>
+  </div>
+     <div class="text-block surface fade-in-right">
+    <p>
+    However, the ride <em>to</em> the meetup was bittersweet. Enroute we found out that two of our members, Austin and Claudia, won't be able to come. When we arrived gone were the usual silentness of our CEO's home. It was just... more silent. Noa, Q, Yumi, Iris and myself hanged out in Yumi's <em>bahay kubo</em> while we waited for the two other member's, Jamie and Ava.
+    </p>
+  </div>
+
+  <figure class="image-block surface fade-in-left">
+    <img src="https://github.com/readersociety/readersociety.github.io/blob/main/blog/This%20Book%20Club%20turned%20to%20a%20Writer's%20club.JPG?raw=true" alt="Jamie, Q, and Claudia writing">
+    <figcaption>This Book Club became a Writing Club! Don't worry, noe of us minded :D</figcaption>
+  </figure>
+   
+ <div class="text-block surface fade-in-right">
+    <p>
+    The wait was... <em>unique</em> to say the least. Most of it involved eating Yumi's snack stash, and greeting everyone who passed by (even the tricycles!) with, "Austin?", or "Claudia?" or, "Jamie?" or "Ava?" (Eh you get the point.) Needless to say, we were about to finish Yumi's stash when Noa suggested walking around the subdivision while we wait for Jamie and Ava.
+    </p>
+  </div>
+   <figure class="image-block surface fade-in-left">
+    <img src="https://github.com/readersociety/readersociety.github.io/blob/main/blog/IMG_3160.JPG?raw=true" alt="Book cover">
+    <figcaption>Two of our Three known guitarists in out club, Yumi and Iris!</figcaption>
+  </figure>
+   
+  <div class="text-block surface fade-in-right">
+    <p>
+     Wouldn't you know it, as soon as we stepped out of the gate who came by inside a sleek, modern Grab but Ava! So down we went, walking around Teresa Heights. So she joined us in our quest to be hungry (joke). And it worked. And as we went back, who should we see but Jamie! The club is complete.
+    </p>
+  </div>
+ <figure class="image-block surface fade-in-left">
+    <img src="https://github.com/readersociety/readersociety.github.io/blob/main/blog/Classic%20Classroom%20discussion%20pic.JPG?raw=true" alt="Book cover">
+    <figcaption>This is your typical classroom discussion pic. I know from experience ;) </figcaption>
+  </figure>
+   <div class="text-block surface fade-in-right">
+    <p>
+     Moving on to the Merting Proper, Yumi, our host of the month, kicked things off with a <b>scavenger hunt</b> that had everyone running, strategizing, and laughing like kids again. Two teams went head-to-head, racing around the house to solve clever clues, all for the coveted prize: iced coffee (we didn't know it then, but uf we did know the prize we would have fought harder XD). There were moments of triumph, moments of “Wait, where’s the next clue?!” and a lot of hilarious missteps along the way, as well as some <em>Desperate Times Call of Desperate Measures</em> events (I won't elaborate hehe). Just know that I actually saw the ending map, but I ignored it as artwork :cry:
+    </p>
+  </div>
+    <figure class="image-block surface fade-in-left">
+    <img src="https://github.com/readersociety/readersociety.github.io/blob/main/blog/Peace,%20Smiley%20and%20Peace.JPG?raw=true" alt="Book cover">
+    <figcaption>One superstar smile flanked with two superstar hand signs, Q, Jamie and Claudia respectively </figcaption>
+  </figure>
+  <div class="text-block surface fade-in-right">
+    <p>
+    After the hunt, things winded down to discussion of the past months book, which was <em>Enola Holmes</em>. We were given little slips of paper to answer the questions and to share it with the club. Then came the artistic challenge: drawing each other on pieces of paper. Some of us revealed secret talents, while others… well, let’s say “unique” interpretations had everyone in stitches. (I'm <em><b>totally</b></em> not one of those ppl, uh huh...)
+    </p>
+  </div>
+
+   <div class="text-block surface fade-in-right">
+     <p>
+     It was my turn as host, and I chose Brandon Sanderson’s Skyward (Book 1) for our featured book of the month. And of course, no night would be complete without the board games! We wrapped up the evening with Cluedo, where yours truly roughed and fumbled when I was explaining the rules. But we surived and Iris won the game. When the night finally came to an end, Noa and her dad kindly carpooled me, Iris, and Qorein back home accompanied with Jamie, giving us a chance to chat and laugh about the night one last time before saying goodbye. Even though Austin and Claudia couldn’t make it, the night was unforgettable. Between scavenger hunts, iced coffee victories, abstract art, and heated Cluedo showdowns, we left with smiling faces, sore cheeks from laughing, and hearts full of excitement for our next gathering. Nights like these remind us why we love this book club: it’s not just about reading stories—it’s about living them together.
+
+       </p>
+   </div>
+</section>
+
+  
+<section class="slideshow surface fade-in-left">
+  <div class="slides">
+    <div style="--stack-deg: -3deg;" class="slide active">
+      <img  src="https://github.com/readersociety/readersociety.github.io/blob/main/blog/The%20Shocked%20Emoji%20and%20the%20Sleepy%20Emoji.JPG?raw=true">
+      <p class="caption">The perfect shocked emoji and sleepy emoji</p>
+    </div>
+    <div style="--stack-deg: 3deg;" class="slide">
+      <img  src="https://github.com/readersociety/readersociety.github.io/blob/main/blog/Six%20and%20Seven.JPG?raw=true">
+      <p class="caption">Six, Seven 67676767</p>
+    </div>
+    <div  style="--stack-deg: -10deg;" class="slide">
+      <img src="https://github.com/readersociety/readersociety.github.io/blob/main/blog/cue%20mexican%20music.JPG?raw=true">
+      <p class="caption">Cue the romantic, Mexican music ✨🌹</p>
+    </div>
+    <div style="--stack-deg: -9deg;" class="slide">
+      <img  src="https://github.com/readersociety/readersociety.github.io/blob/main/blog/IMG_3161.JPG?raw=true">
+      <p class="caption">Of course, this image slideshow isn't complete with our CEO and Photographer, Yumi and Noa!</p>
+    </div>
+    <div style="--stack-deg: 10deg;" class="slide">
+      <img  src="https://github.com/readersociety/readersociety.github.io/blob/main/blog/IMG_3162.JPG?raw=true">
+      <p class="caption">Someohow shocked emoji turned to embarassed emoji and sleepy emoji turned happy. Result of food maybe?</p>
+    </div>
+    <div style="--stack-deg: 13deg;" class="slide">
+      <img  src="https://github.com/readersociety/readersociety.github.io/blob/main/blog/IMG_3164.JPG?raw=true">
+      <p class="caption">Nice hair, both of you!</p>
+    </div>
+     <div style="--stack-deg: -10deg;" class="slide">
+      <img  src="https://github.com/readersociety/readersociety.github.io/blob/main/blog/IMG_3165.JPG?raw=true">
+      <p class="caption">Jamie: "You know, this certain character I liked this much" <br> 
+        Claudia: *thinking* the Mayor?? <br> 
+        Noa: Hmmm... Interesting</p>
+    </div>
+  </div>
+
+  <div class="controls">
+    <button id="prev">←</button>
+    <button id="next">→</button>
+  </div>
+</section>
+
+<footer class="footbar surface">
+  <a href="#">← Back Home</a>
+  <a href="#">Previous Post</a>
+</footer>
+</article>
+
+<script>
+  document.body.classList.add('dark-theme');
+</script>
+<script>
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+});
+
+document.querySelectorAll('section').forEach(section => {
+  observer.observe(section);
+});
+let slides = document.querySelectorAll('.slide');
+let current = 0;
+
+// Apply initial uneven rotation to create the "messy stack"
+function randomizeStack() {
+    slides.forEach((s, i) => {
+        if (i !== current) {
+            const randomDeg = Math.floor(Math.random() * 8 - 4); // -4 to +4 degrees
+            s.style.setProperty('--stack-deg', `${randomDeg}deg`);
+        }
+    });
+}
+
+const changeSlide = (nextIndex, direction) => {
+    // 1. Remove classes from the slide that is currently visible
+    slides[current].classList.remove('active', 'from-left', 'from-right');
+    
+    // 2. Update the index
+    current = nextIndex;
+    const incomingClass = direction === 'next' ? 'from-right' : 'from-left';
+    
+    // 3. Reset the new slide to its starting "spin" position (off-screen)
+    slides[current].classList.remove('active'); // Ensure it's not active yet
+    slides[current].classList.add(incomingClass);
+    
+    // 4. Small delay so the browser "sees" it off-screen, then animate it in
+    setTimeout(() => {
+        randomizeStack(); 
+        slides[current].classList.add('active');
+    }, 50); // Increased slightly for smoother transition trigger
+};
+
+document.getElementById('next').onclick = () => {
+    let next = (current + 1) % slides.length;
+    changeSlide(next, 'next');
+};
+
+document.getElementById('prev').onclick = () => {
+    let prev = (current - 1 + slides.length) % slides.length;
+    changeSlide(prev, 'prev');
+};
+
+// INITIALIZE: Set the stack and show the first slide
+randomizeStack();
+if(slides.length > 0) {
+    slides[0].classList.add('active');
+}
+
+
+
+</script>
+
+<script>
+  const themeToggle = document.getElementById('themeToggle');
+  const svgPath = document.querySelector('.theme-toggle svg path');
+
+  // Ensure dark is default on load
+  document.body.classList.add('dark-theme');
+  setIcon();
+
+  themeToggle.addEventListener('click', () => {
+    document.body.classList.toggle('dark-theme');
+    setIcon();
+  });
+
+  function setIcon() {
+  const sunIcon = document.getElementById('sun-icon');
+  const moonIcon = document.getElementById('moon-icon');
+  const isDark = document.body.classList.contains('dark-theme');
+
+  sunIcon.style.display = isDark ? 'none' : 'block';
+  moonIcon.style.display = isDark ? 'block' : 'none';
+}
+
+</script>
+<script type>
+document.addEventListener("DOMContentLoaded", () => {
+    // I sorted the code a bit into options and a callback function. It's just easier for my bird-brain to understand :)
+
+    // All the elements we want to observe
+    const fadersR = document.querySelectorAll(".fade-in-right");
+     const fadersL = document.querySelectorAll(".fade-in-left");
+
+    // How much of the elements should be visible before fading in
+    const appearOptions = {
+        threshold: 0.2,
+        rootMargin: "0px 0px -50px 0px",
+    };
+
+    // Function to call when an element intersects
+    function observerCallback(entries) {
+        entries.forEach((entry) => {
+            // if it's intersecting, show it
+            if (entry.isIntersecting) {
+                entry.target.classList.add("show");
+            }
+            // when it's out of view, remove the class so we can apply it again later when it re-intersects
+            else {
+                entry.target.classList.remove("show");
+            }
+
+        });
+    };
+
+    // Create an observer and add parameters
+    const observer = new IntersectionObserver(observerCallback, appearOptions);
+
+    // Now actually observe each element!
+    fadersR.forEach((fader) => observer.observe(fader));
+      // Now actually observe each element!
+    fadersL.forEach((fader) => observer.observe(fader));
+});
+        </script>
+</body>
+</html>
