@@ -12,37 +12,7 @@
 </head>
 <body>
 
- <div class="particles">
-  <div class="particle"></div>
-  <div class="particle"></div>
-  <div class="particle"></div>
-  <div class="particle"></div>
-  <div class="particle"></div>
-  <div class="particle"></div>
-  <div class="particle"></div>
-    <div class="particle"></div>
-  <div class="particle"></div>
-  <div class="particle"></div>
-  <div class="particle"></div>
-  <div class="particle"></div>
-  <div class="particle"></div>
-  <div class="particle"></div>
-  <div class="particles"></div>
-  <div class="particle"></div>
-  <div class="particle"></div>
-  <div class="particle"></div>
-  <div class="particle"></div>
-  <div class="particle"></div>
-  <div class="particle"></div>
-  <div class="particle"></div>
-    <div class="particle"></div>
-  <div class="particle"></div>
-  <div class="particle"></div>
-  <div class="particle"></div>
-  <div class="particle"></div>
-  <div class="particle"></div>
-  <div class="particle"></div>
-</div>
+
  <!-- Header -->
  <header>
   <div class="nav-inner">
@@ -302,35 +272,7 @@ function renderSections(items) {
     document.querySelectorAll("section").forEach(sec => sectionObserver.observe(sec));
 
 
-    // --- Lenis Smooth Scroll & Fade-In Observer (Initialized on DOM Load) ---
-    document.addEventListener('DOMContentLoaded', () => {
-        const lenis = new Lenis({
-            lerp: 0.05,
-            wheelMultiplier: 0.8,
-            duration: 1.5,
-            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-        });
-
-        function raf(time) {
-            lenis.raf(time);
-            requestAnimationFrame(raf);
-        }
-        requestAnimationFrame(raf);
-
-        // Intersection Observer for fade-in effects on scroll (using 'show' class)
-        const observerOptions = { root: null, rootMargin: '0px', threshold: 0.2 };
-        const fadeInObserver = new IntersectionObserver((entries, observer) => { // Renamed to fadeInObserver
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('show');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
-        document.querySelectorAll('.fade-in').forEach(el => {
-            fadeInObserver.observe(el);
-        });
-    });
+   
 
 </script>
 </body>
