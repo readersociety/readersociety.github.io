@@ -1,306 +1,2198 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Books Archive — Reader Society</title>
-  <meta name="description" content="Explore the Reader Society's library — discover top-rated books, curated lists, and community recommendations." />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Google Fonts -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&family=Yusei+Magic&display=swap" rel="stylesheet">
+    <title>Books Archive - Reader Society</title>
 
-  <!-- CSS -->
-  <link rel="stylesheet" href="readersociety.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Jost:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <link rel="stylesheet" href="style.css">
+
+
 </head>
+
 <body>
+<!-- =========================================
+     BOOKS PAGE — HERO
+========================================= -->
 
-   <!-- Header -->
- <header>
-  <div class="nav-inner">
-    <div class="brand">
-      <div class="logo"><img src="https://github.com/readersociety/readersociety.github.io/blob/main/SmallSquareLogoJpg.jpg?raw=true" alt="Reader Society Logo"></div>
-      <h1>Reader Society</h1>
+<section class="books-hero">
+
+    <div class="books-hero-inner">
+
+        <!-- Editorial heading -->
+
+        <div class="books-hero-copy">
+
+            <p class="section-kicker">
+                THE READER SOCIETY ARCHIVE
+            </p>
+
+            <h1>
+                The
+                <em>Books</em>
+            </h1>
+
+            <p class="books-hero-intro">
+                Every story we've opened together —
+                collected, discussed, remembered,
+                and kept on the shelf.
+            </p>
+
+        </div>
+
+
+        <!-- =================================
+             BOOK COLLAGE
+        ================================== -->
+
+        <div class="books-hero-collage">
+
+            <div class="books-hero-book book-one">
+
+                <img
+                    src="YOUR-BOOK-IMAGE-HERE"
+                    alt="Book title"
+                >
+
+                <span>
+                    01
+                </span>
+
+            </div>
+
+
+            <div class="books-hero-book book-two">
+
+                <img
+                    src="YOUR-BOOK-IMAGE-HERE"
+                    alt="Book title"
+                >
+
+                <span>
+                    02
+                </span>
+
+            </div>
+
+
+            <div class="books-hero-book book-three">
+
+                <img
+                    src="YOUR-BOOK-IMAGE-HERE"
+                    alt="Book title"
+                >
+
+                <span>
+                    03
+                </span>
+
+            </div>
+
+
+            <div class="books-hero-note">
+
+                <span>
+                    READER SOCIETY
+                </span>
+
+                <strong>
+                    OUR
+                    SHELF
+                </strong>
+
+                <small>
+                    BOOKS · DISCUSSIONS · STORIES
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <!-- Scroll prompt -->
+
+        <a
+            href="#archive"
+            class="books-hero-scroll"
+        >
+
+            <span>
+                EXPLORE THE ARCHIVE
+            </span>
+
+            <strong>
+                ↓
+            </strong>
+
+        </a>
+
     </div>
 
-    <div class="menu-toggle" id="menu-toggle">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
+</section>
 
-    <nav>
-      <ul id="nav-links">
-        <li><a href="home.html">Home</a></li>
-        <li><a href="book-archive.html" class="active">Books</a></li>
-        <li><a href="blog.html">Blog</a></li>
-        <li><a href="members.html">Members</a></li>
-        <li><a href="about.html">About</a></li>
-      </ul>
-    </nav>
-  </div>
-</header>
+<!-- =========================================
+     BOOKS — ARCHIVE
+========================================= -->
 
-  <main>
-    <!-- Hero -->
-   <section class="hero">
-    <video autoplay muted loop playsinline src="https://github.com/readersociety/readersociety.github.io/raw/refs/heads/main/Harrypotter.mp4"></video>
-    <div class="overlay"></div>
-    <div class="hero-content">
-      <h2>Our Very Own Archive</h2>
-      <p>Where all our past reads a carefully placed and ranked according to our preferences</p>
-    </div>
-  </section>
+<section class="books-archive" id="archive">
 
- 
+    <div class="books-archive-inner">
 
-    <!-- Book Grid -->
-    <section id="book-archive">
-      <div class="featured" id="bookGrid">
-        
-        <div class="book-card" data-genre="middle school" data-title="Akward" data-author="Svetlana Chmakova" data-rating="4.5" data-desc="Awkward by Svetlana Chmakova is a graphic novel about new middle schooler Penelope ''Peppi'' Torres, who on her first day, accidentally trips and embarrasses a shy boy named Jaime. This leads to her joining the art club to fit in, while Jaime joins the rival science club. The story follows Peppi's internal struggle to apologize to Jaime and the escalating feud between the two clubs, which they must eventually work together to resolve.  " data-reviews="“I staright up could not stop (reading)” — Claudia | ''I like how it showed some of the other character's POVs/struggles.'' - Jamie ">
-          <img src="https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1436349151i/23657454.jpg" alt="Fantasy Book">
-          <h4>Awkward</h4>
-          <p>By Svetlana Chmakova</p>
-        </div>
-        
-        <div class="book-card" data-genre="Love" data-title="Crush" data-author="Svetlana Chmakova" data-rating="5.0" data-desc="Crush, by Svetlana Chmakova, is a graphic novel about middle schooler Jorge, who uses his size to protect others, but struggles with his own social life, especially when he develops a crush on a girl named Jazmine. The story explores themes of friendship, dating, and standing up for yourself, as Jorge, his friends Olivia and Garrett, navigate changing dynamics and personal challenges like cyberbullying and learning about consent." data-reviews="*thumbs up* — Isaac">
-          <img src="https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1522744066i/39295301.jpg" alt="Crush Book">
-          <h4>Crush</h4>
-          <p>By Svetlana Chmakova</p>
-        </div>
-        
-        <div class="book-card" data-genre="bullying" data-title="Brave" data-author="Svetlana Chmakova" data-rating="4.2" data-desc="Brave by Svetlana Chmakova is a graphic novel about middle schooler Jensen, who daydreams of being a hero while navigating bullying, including from his own friends. He tries to find where he belongs as he gets drawn into the school newspaper's efforts to expose the bullying, forcing him to confront his reality and find his own way to be brave. The book is the second in the Berrybrook Middle School series, following Awkward" data-reviews="*thumbs up* — Isaac">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlGd8itTmnPwlV5w8fSrAIZ_1vKsDDbn9TNQ&s" alt="Brave Book">
-          <h4>Brave</h4>
-          <p>By Svetlana Chmakova</p>
-        </div>
-        
-          <div class="book-card" data-genre="Enemies to Friends" data-title="Enemies" data-author="Svetlana Chmakova" data-rating="4.2" data-desc="Enemies by Svetlana Chmakova is about Felicity, a middle schooler who joins an entrepreneur club to enter a contest to prove she can finish a big project, a skill she lacks in the eyes of her ''perfect'' sister, Letty. As she pushes herself to succeed, she realizes that the pressure of the competition is straining her friendships and creating new rivals, forcing her to question what being enemies really means and whether her ambition is worth the potential cost to her relationships. 
-" data-reviews="*thumbs up* — Isaac">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIrfN19dw7a7ox9UogcADccCMYXKPQshZk4w&s" alt="Enemies Book">
-          <h4>Enemies</h4>
-          <p>By Svetlana Chmakova</p>
-        </div>
-        
-         <div class="book-card" data-genre="Enemies to Friends" data-title="Howl's Moving Castle" data-author="Diana Wayne Jones" data-rating="4.0" data-desc="Sophie Hatter is cursed into an old woman by the Witch of the Waste and seeks to break the spell by going to the moving castle of the notorious Wizard Howl. There, she takes a job as a cleaning lady and, with the help of the fire demon Calcifer, must navigate Howl's chaotic life and eventually confront the witch to find a way to break her curse. The story explores how Sophie and Howl are not what they seem, leading to a resolution where the curse is broken and they find their true feelings for each other.  " data-reviews="*thumbs up* — Isaac">
-          <img src="https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1630502935i/6294.jpg" alt="Enemies Book">
-          <h4>Howl's Moving Castle</h4>
-          <p>By Diana Wayne Jones</p>
-        </div>
-        
-          <div class="book-card" data-genre="Dystopian Wolrd" data-title="City of Ember" data-author="Jeanne duPrau" data-rating="3.5" data-desc="An underground city built to last 200 years, now facing disaster as its lights flicker and resources fail. Twelve-year-olds Lina Mayfleet and Doon Harrow uncover a cryptic, ancient message, racing against time to save their community before darkness falls forever." data-reviews="'' I love reading about dystopian worlds and this was a fine book in my opinion!'' — Isaac">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmoVAdnnIleUEGPIWj_Q8MW2IpCbKH0vJHxQ&s" alt="Enemies Book">
-          <h4>City of Ember</h4>
-          <p>By Jeanne duPrau</p>
-        </div>
-           <div class="book-card" data-genre="Mystery" data-title="The Case of the Missing Marquess" data-author="Nancy Springer" data-rating="4.0" data-desc="14-year-old Enola Holmes wakes on her birthday to find her mother, Eudoria, has vanished from their country estate, leaving behind only cryptic messages and a hidden fortune. Despising the idea of being forced into a proper finishing school by her aloof older brothers, Sherlock and Mycroft, Enola escapes to London to find her mother and forge her own path. While navigating the dangerous streets of 1888 London in various disguises, she discovers her mother has joined a Romani community for a life of freedom, but becomes simultaneously entangled in the kidnapping of the young Viscount Tewkesbury, Marquess of Basilwether. " data-reviews="''It was AMAZING'' - Jamie ''I wanted to re-read it again to experience my childhood!'' - Noa">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSg-RVt2EhewPclbtzmq-WTQ-7wonv4u2ZY7A&s" alt="Enemies Book">
-          <h4>The Case of the Missing Marques</h4>
-          <p>By Nancy Springer</p>
-        </div>
-      </div>
-     
-    
-    </section>
+        <!-- =================================
+             ARCHIVE HEADING
+        ================================== -->
 
-    <!-- Footer -->
-    <footer>© 2026 Reader Society · All Rights Reserved</footer>
-  </main>
+        <div class="archive-heading">
 
-  <!-- Modal -->
-  <div id="bookModal" class="modal">
-    <div class="modal-content">
-      <span class="close-btn">&times;</span>
-      <h3 id="modalTitle"></h3>
-      <p id="modalAuthor"></p>
-      <div id="modalRating" class="rating"></div>
-      <p id="modalDesc"></p>
-      <div class="reviews">
-        <h4>Member Reviews</h4>
-        <p id="modalReviews"></p>
-      </div>
-    </div>
-  </div>
+            <div>
 
-  <!-- JS -->
-  <script>
-    // Scroll animations
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('in-view');
-          observer.unobserve(entry.target);
+                <p class="section-kicker">
+                    THE COLLECTION
+                </p>
+
+                <h2>
+                    The
+                    <em>Archive</em>
+                </h2>
+
+            </div>
+
+            <div class="archive-intro">
+
+                <span class="archive-count">
+                    14 BOOKS
+                </span>
+
+                <p>
+                    A record of the stories that have
+                    made their way through the Society.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================
+             SEARCH + FILTERS
+        ================================== -->
+
+        <div class="archive-tools">
+
+            <label
+                class="archive-search"
+                for="book-search"
+            >
+
+                <span>⌕</span>
+
+                <input
+                    type="search"
+                    id="book-search"
+                    placeholder="Find a story..."
+                    autocomplete="off"
+                >
+
+            </label>
+
+
+            <div
+                class="archive-filters"
+                aria-label="Filter books"
+            >
+
+                <button
+                    class="archive-filter active"
+                    data-filter="all"
+                >
+                    ALL
+                </button>
+
+                <button
+                    class="archive-filter"
+                    data-filter="2026"
+                >
+                    2026
+                </button>
+
+                <button
+                    class="archive-filter"
+                    data-filter="2025"
+                >
+                    2025
+                </button>
+
+                <button
+                    class="archive-filter"
+                    data-filter="fiction"
+                >
+                    FICTION
+                </button>
+
+                <button
+                    class="archive-filter"
+                    data-filter="fantasy"
+                >
+                    FANTASY
+                </button>
+
+                <button
+                    class="archive-filter"
+                    data-filter="mystery"
+                >
+                    MYSTERY
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================
+             BOOK GRID
+        ================================== -->
+
+        <div class="archive-grid" id="book-grid">
+
+
+            <!-- BOOK 01 -->
+
+<article
+    class="archive-book"
+
+    data-year="2026"
+    data-genre="graphic novel"
+
+    data-title="Skip and Loafer Volume 1"
+    data-author="Misaki Takamatsu"
+
+    data-rating="★★★★★"
+    data-readers="10 / 11"
+    data-discussion="April 2026"
+
+    data-description="A warm, funny coming-of-age story about friendship, school life, and the strange little moments that make growing up memorable."
+
+    data-quotes='[
+    "“One of those books that makes ordinary life feel worth paying attention to.”",
+    "“The characters felt like people we could actually know.”",
+    "“Somehow both comforting and completely chaotic.”"
+]'
+    data-read-url="#"
+
+    data-gallery='[
+        {
+            "image": "YOUR-PHOTO-01",
+            "caption": "discussion night"
+        },
+        {
+            "image": "YOUR-PHOTO-02",
+            "caption": "on the table"
+        },
+        {
+            "image": "YOUR-PHOTO-03",
+            "caption": "someone&apos;s favorite page"
         }
-      });
-    }, { threshold: 0.2 });
-    document.querySelectorAll('section').forEach(sec => observer.observe(sec));
+    ]'
+>
+                <div class="archive-cover">
 
-    // Filter
-    const filterButtons = document.querySelectorAll('.filter-btn');
-    const books = document.querySelectorAll('.book-card');
+                    <img
+                        src="https://cdn2.penguin.com.au/covers/original/9781648275883.jpg"
+                        alt="Skip and Loafer: Volume 1"
+                    >
 
-    filterButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        filterButtons.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        const genre = btn.dataset.genre;
-        books.forEach(book => {
-          book.style.display = genre === 'all' || book.dataset.genre === genre ? 'block' : 'none';
+                    <span class="archive-number">
+                        07
+                    </span>
+
+                    <span class="archive-status">
+                        2026
+                    </span>
+
+                </div>
+
+
+                <div class="archive-book-info">
+
+                    <div>
+
+                        <h3>
+                            Skip and Loafer:
+                            Volume 1
+                        </h3>
+
+                        <p>
+                            Misaki Takamatsu
+                        </p>
+
+                    </div>
+
+
+                    <div class="archive-book-bottom">
+
+                        <span class="archive-rating">
+                            ★★★★★
+                        </span>
+
+                        <button
+                            class="view-record"
+                            type="button"
+                        >
+                            VIEW RECORD
+                            <span>↗</span>
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+<article
+    class="archive-book"
+
+    data-year="2026"
+    data-genre="realistic fiction"
+
+    data-title="Homeless Bird"
+    data-author="Gloria Whelan"
+
+    data-rating="★★★½"
+    data-readers="8 / 11"
+    data-discussion="June 2026"
+
+    data-description="Koly’s life is over before it even begins. At just thirteen years old, she is packed away into an arranged marriage to a boy she has never met, only to discover a devastating deception: her new husband is fatally ill, and his family only wanted her dowry. Within days, Koly is left a penniless widow in a culture that views her existence as a curse. Cast out by her bitter mother-in-law, she finds herself abandoned and entirely alone in the chaotic, unforgiving streets of Vrindavan, the city of widows.
+Survival demands an unbroken spirit. Stranded in a world that expects her to fade away, Koly refuses to become another invisible tragedy. With nothing but her courage and a remarkable talent for embroidery, she fights to weave a future out of the threads of her despair. Every stitch becomes an act of defiance, transforming her grief into breathtaking art and carving out a dangerous path toward freedom in a society determined to keep her trapped.
+Will she break, or will she soar? Homeless Bird is a gripping, emotional triumph that will hold you spellbound from the very first page. Gloria Whelan delivers a heart-wrenching yet fiercely inspiring tale of resilience, hidden strength, and the ultimate pursuit of independence. Witness an unforgettable journey of a young girl who loses everything, only to discover that the wings of her own spirit can carry her to heights she never imagined."
+
+    data-quotes='[
+    "“It was like jumping off a cliff and landing very... soft.”-Claudia",
+    "“Who gets married at 13???”-Iris",
+    "*plays ”I Got this.”meme sound* -Isaac"
+]'
+    data-read-url="https://drive.google.com/file/d/1_p82c1brqw9emv2k4tj3BmDZCtf8Qg-K/view?usp=drive_link"
+
+    data-gallery='[
+        {
+            "image": "https://tse4.mm.bing.net/th/id/OIP.qdeP7McRp_KQpZVrOJStngAAAA?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+            "caption": "Meet Gloria Whelan!"
+        },
+        {
+            "image": "https://down-id.img.susercontent.com/file/92263909719756acfc17781aed18e887",
+            "caption": "alternate book cover"
+        },
+        {
+            "image": "YOUR-PHOTO-03",
+            "caption": "theres no fan art to put TT"
+        }
+    ]'
+>
+                <div class="archive-cover">
+
+                    <img
+                        src="https://img2.od-cdn.com/ImageType-100/1191-1/%7BDD34E515-6B17-4C69-BCCE-87B3ADE3E466%7DImg100.jpg"
+                        alt="Homeless Bird"
+                    >
+
+                    <span class="archive-number">
+                        06
+                    </span>
+
+                    <span class="archive-status">
+                        2026
+                    </span>
+
+                </div>
+
+
+                <div class="archive-book-info">
+
+                    <div>
+
+                        <h3>
+                            Homeless Bird
+                        </h3>
+
+                        <p>
+                            Gloria Whelan
+                        </p>
+
+                    </div>
+
+
+                    <div class="archive-book-bottom">
+
+                        <span class="archive-rating">
+                            ★★★½
+                        </span>
+
+                        <button
+                            class="view-record"
+                            type="button"
+                        >
+                            VIEW RECORD
+                            <span>↗</span>
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- Cornelia -->
+	<article
+    class="archive-book"
+    data-year="2026"
+    data-genre="fiction"
+    data-title="Cornelia and the Audacious Escapades of the Somerset Sisters"
+    data-author="Lesley M.M. Blume"
+    data-rating="★★★★"
+    data-readers="10 / 11"
+    data-discussion="May 2026"
+    data-description="Eleven-year-old Cornelia S. Engelheart lives a life built entirely out of walls. As the daughter of world-famous pianists, her world is defined by her mother's constant absence and a crushing loneliness. To protect herself, she barricades her heart inside New York City apartments, using a massive vocabulary, dictionaries, and a love for complex words as her ultimate shield against a disappointing reality. She doesn’t expect her life to change, assuming her solitary routine of reading and hiding will last forever.
+	Everything changes when a whirlwind of color moves in next door. Enter Virginia Somerset: a glamorous, eccentric writer who arrives with a loyal servant, a mischievous French bulldog named Mister Kinyatta, and an apartment where every room is decorated like a different foreign country. Through Virginia's breathtaking, globe-trotting living spaces, Cornelia is introduced to the &quot;audacious escapades&quot; of the four Somerset sisters. From accidental Moroccan weddings to wild plane crashes in Cornwall, these dazzling stories do something Cornelia never thought possible—they make her look past her own shell and fall in love with the vibrant, messy, beautiful world outside."
+    data-quotes='[
+    "“One of those books that makes ordinary life feel worth paying attention to.”",
+    "“The characters felt like people we could actually know.”",
+    "“Somehow both comforting and completely chaotic.”"
+]'
+data-read-url="https://drive.google.com/file/d/1pb_4vVBX9jjLCQyQecdVDRlr4CLyruEw/view?usp=drive_link"
+data-gallery='[
+    {
+        "image": "https://tse4.mm.bing.net/th/id/OIP.x9ay6b9Fr4ahgClhYp_JAQAAAA?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+        "caption": "Alternate Cover Photo"
+    },
+    {
+        "image": "https://www.nypl.org/sites/default/files/lesley_blume_fallout_headshot_color_credit_-_kendall_conrad.jpeg",
+        "caption": "Meet Lesley M. M. Blume!"
+    }
+]'>
+
+    <div class="archive-cover">
+        <img
+            src="https://m.media-amazon.com/images/I/71izJ9QH2CL._SL1200_.jpg"
+            alt="Cornelia and the Audacious Escapades of the Somerset Sisters"
+        >
+ <span class="archive-number">
+                        05
+                    </span>
+        <span class="archive-status">2026</span>
+    </div>
+
+    <!-- Visual Text Information Block -->
+    <div class="archive-book-info">
+        <div>
+            <h3>Cornelia and the Audacious Escapades of the Somerset Sisters</h3>
+            <!-- FIXED: Match author name -->
+            <p>Lesley M.M. Blume</p>
+        </div>
+
+        <div class="archive-book-bottom">
+            <span class="archive-rating">★★★★</span>
+            <button class="view-record" type="button">
+                VIEW RECORD
+                <span>↗</span>
+            </button>
+        </div>
+    </div>
+</article>
+
+<!----- SKYWARD --->
+	<article
+ class="archive-book"
+    data-year="2026"
+    data-genre="sci-fi"
+    data-title="Skyward"
+    data-author="Brandon Sanderson"
+    data-rating="★★★★"
+    data-readers="4 / 11"
+    data-discussion="April 2026"
+    data-description="Defiance is written in the stars, but for seventeen-year-old Spensa, the sky itself is a firing squad. Trailed by the dark shadow of a father who abandoned his post and was branded a coward, she is an outcast on Detritus—a harsh, cavernous planet where the battered remnants of humanity fight a desperate, losing war against relentless alien starfighters called the Krell. While society expects her to live in shame, Spensa harbors a fierce, burning ambition. She does not just want to survive; she wants to pilot a starfighter, pierce the toxic clouds of her prison world, and prove to the universe that her bloodline is made of steel, not glass.
+	But her path to the cockpit is blocked by a military academy designed to see her fail, until fate drops a miracle into her lap. Hidden deep within a forgotten cavern, Spensa discovers the wreckage of an ancient, highly advanced starship. This is no ordinary piece of scrap metal; it possesses a sentient, fiercely snarky artificial intelligence with a bizarre obsession for collecting mushrooms and a vocabulary sharper than any laser cannon. Together, this misfit pilot and her sarcastic, broken ship form an unlikely alliance, unlocking secrets of flight that humanity has long forgotten—and a terrifying truth that could shatter their doomed species forever.
+	CLAIM THE STARS!"
+    data-quotes='[
+        "“Skyward was like eating my favorite food. It was finished right away 😀”-Yumi",
+        "“IS EVERYBODY GONNA DIE????”-Noa",
+        "“Somehow both comforting and completely chaotic.”"
+    ]'
+   data-read-url="https://drive.google.com/drive/folders/11ZefKzRlNoj8K0BElVBZOs3fA_pcAxk2?usp=drive_link"
+    data-gallery='[
+        {
+            "image": "https://m.media-amazon.com/images/I/61RySVhPD3L._SL500_.jpg",
+            "caption": "Alternate Cover Photo"
+        },
+        {
+            "image": "https://wikiofthrones.com/wp-content/uploads/2025/01/Brandon-Sanderson.jpg",
+            "caption": "Meet Brandon Sanderson - perhaps the most famous author in the world as of now"
+        },
+ 	{
+            "image": "https://i.pinimg.com/originals/f2/8c/e8/f28ce818106efe8c39aa17b3afd58174.png",
+            "caption": "Spensa inside M-Bot the ship. All Rights to the Artist."
+        },
+ 	{
+            "image": "https://i.redd.it/4oyn74rw8gv51.jpg",
+            "caption": "“I could hear the stars. They sounded like the horns of battle, calling out, drawing me toward them...” -Spensa Nightshade"
+        },
+ 	{
+            "image": "https://i.pinimg.com/736x/19/ca/25/19ca25599f4cadb7ba02f2d0ff2126f9.jpg",
+            "caption": "Spensa and Doomslug - Credits to the artist"
+        },
+
+{
+            "image": "https://uploads.coppermind.net/thumb/Rig_and_FM_by_Jill_Andersen.png/478px-Rig_and_FM_by_Jill_Andersen.png",
+            "caption": "FM and Rig with other slugs"
+        },
+
+{
+            "image": "https://tse2.mm.bing.net/th/id/OIP.EdI4Fq8XBl6Fjz9_EVEJ3gHaHa?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+            "caption": "I think we all agree: She died to early"
+        },
+{
+            "image": "https://i.pinimg.com/736x/8b/bc/27/8bbc2713ff75a9f69483a8ca1f62072f.jpg",
+            "caption": "Official art of Jorgen Weight. Seriously guys, he gets better."
+        }
+     
+    ]'
+>
+    	
+    <!-- Visual Cover Art Wrapper -->
+    <div class="archive-cover">
+        <img
+            src="https://tse1.mm.bing.net/th/id/OIP.0V_89Rnivl6cysjAUnOTJQHaLG?r=0&rs=1&pid=ImgDetMain&o=7&rm=3"
+            alt="Skyward"
+        >
+<span class="archive-number">
+                        04
+                    </span>
+        <span class="archive-status">2026</span>
+    </div>
+
+    <!-- Visual Text Information Block -->
+    <div class="archive-book-info">
+        <div>
+            <h3>Skyward</h3>
+            <p>Brandon Sanderson</p>
+        </div>
+
+        <div class="archive-book-bottom">
+            <span class="archive-rating">★★★★ ½</span>
+            <button class="view-record" type="button">
+                VIEW RECORD
+                <span>↗</span>
+            </button>
+        </div>
+    </div>
+</article>
+
+  <article
+                class="archive-book archive-book-small"
+                data-year="2025"
+                data-genre="mystery"
+                data-title="Enola Holmes The Case of the Missing Marquess"
+                data-author="Nancy Springer"
+            >
+
+                <div class="archive-cover">
+
+                    <img
+                        src="YOUR-ENOLA-COVER"
+                        alt="Enola Holmes: The Case of the Missing Marquess"
+                    >
+
+                    <span class="archive-number">
+                        04
+                    </span>
+
+                    <span class="archive-status">
+                        2025
+                    </span>
+
+                </div>
+
+
+                <div class="archive-book-info">
+
+                    <h3>
+                        Enola Holmes:
+                        The Case of the Missing Marquess
+                    </h3>
+
+                    <p>
+                        Nancy Springer
+                    </p>
+
+                    <div class="archive-book-bottom">
+
+                        <span class="archive-rating">
+                            ★★★★☆
+                        </span>
+
+                        <button
+                            class="view-record"
+                            type="button"
+                        >
+                            VIEW RECORD
+                            <span>↗</span>
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </article>
+  <article
+                class="archive-book archive-book-small"
+                data-year="2025"
+                data-genre="mystery"
+                data-title="Enola Holmes The Case of the Missing Marquess"
+                data-author="Nancy Springer"
+            >
+
+                <div class="archive-cover">
+
+                    <img
+                        src="YOUR-ENOLA-COVER"
+                        alt="Enola Holmes: The Case of the Missing Marquess"
+                    >
+
+                    <span class="archive-number">
+                        04
+                    </span>
+
+                    <span class="archive-status">
+                        2025
+                    </span>
+
+                </div>
+
+
+                <div class="archive-book-info">
+
+                    <h3>
+                        Enola Holmes:
+                        The Case of the Missing Marquess
+                    </h3>
+
+                    <p>
+                        Nancy Springer
+                    </p>
+
+                    <div class="archive-book-bottom">
+
+                        <span class="archive-rating">
+                            ★★★★☆
+                        </span>
+
+                        <button
+                            class="view-record"
+                            type="button"
+                        >
+                            VIEW RECORD
+                            <span>↗</span>
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </article>
+  <article
+                class="archive-book archive-book-small"
+                data-year="2025"
+                data-genre="mystery"
+                data-title="Enola Holmes The Case of the Missing Marquess"
+                data-author="Nancy Springer"
+            >
+
+                <div class="archive-cover">
+
+                    <img
+                        src="YOUR-ENOLA-COVER"
+                        alt="Enola Holmes: The Case of the Missing Marquess"
+                    >
+
+                    <span class="archive-number">
+                        04
+                    </span>
+
+                    <span class="archive-status">
+                        2025
+                    </span>
+
+                </div>
+
+
+                <div class="archive-book-info">
+
+                    <h3>
+                        Enola Holmes:
+                        The Case of the Missing Marquess
+                    </h3>
+
+                    <p>
+                        Nancy Springer
+                    </p>
+
+                    <div class="archive-book-bottom">
+
+                        <span class="archive-rating">
+                            ★★★★☆
+                        </span>
+
+                        <button
+                            class="view-record"
+                            type="button"
+                        >
+                            VIEW RECORD
+                            <span>↗</span>
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+        </div>
+
+    </div>
+
+  
+
+    </div>
+
+</section>
+
+
+<section class="archive-end-quote">
+
+    <div class="archive-end-portrait">
+        <img
+            src="YOUR-TRANSPARENT-PORTRAIT.png"
+            alt="George R. R. Martin"
+        >
+    </div>
+
+    <div class="archive-end-quote-content">
+
+        <span class="archive-end-eyebrow">
+            BEFORE YOU LEAVE THE SHELVES
+        </span>
+
+        <blockquote>
+            “A reader lives a thousand lives
+            before he dies. The man who never
+            reads lives only one.”
+        </blockquote>
+
+        <cite>
+            — George R. R. Martin
+        </cite>
+
+    </div>
+
+</section>
+
+<!-- =========================================
+     BOOK RECORD MODAL
+========================================= -->
+
+<div
+    class="book-modal"
+    id="book-modal"
+    aria-hidden="true"
+>
+
+    <!-- Backdrop -->
+
+    <div class="book-modal-backdrop"></div>
+
+
+    <!-- Dialog -->
+
+    <div
+        class="book-modal-dialog"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modal-book-title"
+    >
+
+        <!-- =================================
+             CLOSE
+        ================================== -->
+
+        <button
+            class="book-modal-close"
+            type="button"
+            aria-label="Close book record"
+        >
+            <span></span>
+            <span></span>
+        </button>
+
+
+        <!-- =================================
+             MODAL CONTENT
+        ================================== -->
+
+        <div class="book-modal-content">
+
+
+            <!-- =================================
+                 LEFT — BOOK COVER
+            ================================== -->
+
+            <div class="book-modal-cover">
+
+                <img
+                    id="modal-book-cover"
+                    src=""
+                    alt=""
+                >
+
+                <span
+                    class="modal-book-number"
+                    id="modal-book-number"
+                >
+                    01
+                </span>
+
+            </div>
+
+
+            <!-- =================================
+                 RIGHT — BOOK INFORMATION
+            ================================== -->
+
+            <div class="book-modal-info">
+
+
+                <!-- TOPLINE -->
+
+                <div class="modal-book-topline">
+
+                    <span id="modal-book-year">
+                        2026
+                    </span>
+
+                    <span>
+                        READER SOCIETY RECORD
+                    </span>
+
+                </div>
+
+
+                <!-- TITLE -->
+
+                <h2 id="modal-book-title">
+                    Book Title
+                </h2>
+
+
+                <!-- AUTHOR -->
+
+                <p
+                    class="modal-book-author"
+                    id="modal-book-author"
+                >
+                    Author Name
+                </p>
+
+
+                <!-- =================================
+                     RATING
+                ================================== -->
+
+                <div class="modal-rating">
+
+                    <span id="modal-book-rating">
+                        ★★★★★
+                    </span>
+
+                    <small>
+                        SOCIETY RATING
+                    </small>
+
+                </div>
+
+
+                <!-- =================================
+                     DESCRIPTION
+                ================================== -->
+
+                <div class="modal-section">
+
+                    <span class="modal-label">
+                        ABOUT THE BOOK
+                    </span>
+
+                    <p id="modal-book-description">
+                        A short description of the book
+                        will appear here.
+                    </p>
+
+                </div>
+
+
+                <!-- =================================
+                     SOCIETY QUOTES
+                ================================== -->
+
+                <div class="modal-quotes">
+
+                    <div class="modal-quotes-heading">
+
+                        <span class="modal-label">
+                            THE SOCIETY SAID
+                        </span>
+
+                        <span
+                            class="modal-quote-counter"
+                            id="modal-quote-counter"
+                        >
+                            01 / 03
+                        </span>
+
+                    </div>
+
+
+                    <div class="modal-quote-window">
+
+                        <blockquote
+                            id="modal-book-quote"
+                        >
+                            “A memorable story worth discussing.”
+                        </blockquote>
+
+                    </div>
+
+
+                    <div
+                        class="modal-quote-controls"
+                        id="modal-quote-controls"
+                        aria-label="Book quotes"
+                    >
+                        <!-- Quote buttons generated by JavaScript -->
+                    </div>
+
+                </div>
+
+
+                <!-- =================================
+                     MINI BOOK GALLERY
+                ================================== -->
+
+                <div class="modal-gallery">
+
+                    <div class="modal-gallery-heading">
+
+                        <span class="modal-label">
+                            FROM THE SOCIETY'S SHELF
+                        </span>
+
+                        <span
+                            class="modal-gallery-count"
+                            id="modal-gallery-count"
+                        >
+                            03 PHOTOS
+                        </span>
+
+                    </div>
+
+
+                    <div
+                        class="modal-gallery-track"
+                        id="modal-gallery-track"
+                    >
+
+                        <!-- Gallery items generated by JavaScript -->
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================
+                     METADATA
+                ================================== -->
+
+                <div class="modal-meta">
+
+
+                    <div>
+
+                        <span>
+                            READERS
+                        </span>
+
+                        <strong id="modal-book-readers">
+                            8 / 11
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            GENRE
+                        </span>
+
+                        <strong id="modal-book-genre">
+                            FICTION
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            DISCUSSION
+                        </span>
+
+                        <strong id="modal-book-date">
+                            APRIL 2026
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================
+                     ACTIONS
+                ================================== -->
+
+                <div class="modal-actions">
+
+                    <button
+                        class="modal-gallery-button"
+                        type="button"
+                        id="modal-gallery-button"
+                    >
+                        VIEW GALLERY
+
+                        <span>
+                            ↗
+                        </span>
+
+                    </button>
+
+
+                    <a
+                        href="#"
+                        class="modal-read-button"
+                        id="modal-read-button"
+                    >
+                        READ NOW
+
+                        <span>
+                            ↗
+                        </span>
+
+                    </a>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- =========================================
+     EXPANDED GALLERY VIEW
+========================================= -->
+
+<div
+    class="gallery-lightbox"
+    id="gallery-lightbox"
+    aria-hidden="true"
+>
+
+    <div class="gallery-lightbox-backdrop"></div>
+
+
+    <div
+        class="gallery-lightbox-content"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Expanded book club photo"
+    >
+
+        <button
+            class="gallery-lightbox-close"
+            type="button"
+            aria-label="Close photo"
+        >
+            <span></span>
+            <span></span>
+        </button>
+
+
+        <div class="gallery-lightbox-image-wrap">
+
+            <img
+                id="gallery-lightbox-image"
+                src=""
+                alt=""
+            >
+
+        </div>
+
+
+        <p
+            class="gallery-lightbox-caption"
+            id="gallery-lightbox-caption"
+        ></p>
+
+    </div>
+
+</div>
+
+<script>
+
+// Example JavaScript reading the click
+const description = bookElement.getAttribute('data-description');
+const modalContainer = document.querySelector('.modal-description');
+
+// Apply the style via JS directly if you don't want to touch your CSS file
+modalContainer.style.white-space = "pre-wrap";
+modalContainer.textContent = description;
+// 1. Select all your archive book elements
+const bookElements = document.querySelectorAll('.archive-book');
+
+bookElements.forEach(book => {
+    const viewButton = book.querySelector('.view-record');
+
+    viewButton.addEventListener('click', () => {
+        // 2. Fetch the description text from the data attribute
+        const descriptionText = book.getAttribute('data-description');
+
+        // 3. Select the target container where the text should appear
+        // (Replace '.modal-description' with your actual target class)
+        const outputContainer = document.querySelector('.modal-description');
+
+        if (outputContainer) {
+            // 4. Tell the container to respect tabs (\t) and line breaks (\n)
+            outputContainer.style.whiteSpace = "pre-wrap";
+
+            // 5. Inject the text safely using textContent
+            outputContainer.textContent = descriptionText;
+        }
+    });
+});
+// 1. Select all your archive book elements
+const bookElements = document.querySelectorAll('.archive-book');
+
+bookElements.forEach(book => {
+    const viewButton = book.querySelector('.view-record');
+
+    viewButton.addEventListener('click', () => {
+        // 2. Fetch the description text from the data attribute
+        const descriptionText = book.getAttribute('data-description');
+
+        // 3. Select the target container where the text should appear
+        // (Replace '.modal-description' with your actual target class)
+        const outputContainer = document.querySelector('.modal-description');
+
+        if (outputContainer) {
+            // 4. Tell the container to respect tabs (\t) and line breaks (\n)
+            outputContainer.style.whiteSpace = "pre-wrap";
+
+            // 5. Inject the text safely using textContent
+            outputContainer.textContent = descriptionText;
+        }
+    });
+});
+
+/* =========================================
+   SMART ARCHIVE ARRANGEMENT
+   -----------------------------------------
+   Keeps book order intact while creating
+   controlled asymmetry.
+========================================= */
+
+function arrangeArchiveBooks() {
+
+    const books = [
+        ...document.querySelectorAll(".archive-book")
+    ];
+
+
+    /*
+        Each position represents a nearby
+        visual variation.
+
+        Nothing is allowed to jump wildly
+        across the page.
+    */
+
+    const layouts = [
+
+        {
+            column: 1,
+            span: 3,
+            offset: 0,
+            rotate: -1.2
+        },
+
+        {
+            column: 5,
+            span: 3,
+            offset: 35,
+            rotate: 1.4
+        },
+
+        {
+            column: 9,
+            span: 3,
+            offset: -10,
+            rotate: -1.8
+        },
+
+        {
+            column: 3,
+            span: 3,
+            offset: 55,
+            rotate: 1.8
+        },
+
+        {
+            column: 7,
+            span: 3,
+            offset: 15,
+            rotate: -1
+        },
+
+        {
+            column: 10,
+            span: 3,
+            offset: 45,
+            rotate: 1.5
+        }
+
+    ];
+
+
+    books.forEach((book, index) => {
+
+        /*
+            Cycle through the nearby layouts.
+
+            Book order NEVER changes.
+        */
+
+        const layout =
+            layouts[
+                index % layouts.length
+            ];
+
+
+        book.style.gridColumn =
+            `${layout.column} / span ${layout.span}`;
+
+
+        book.style.marginTop =
+            `${layout.offset}px`;
+
+
+        book.style.transform =
+            `rotate(${layout.rotate}deg)`;
+
+    });
+
+}
+
+
+arrangeArchiveBooks();
+
+</script>
+<script>
+
+/* =========================================
+   BOOK RECORD MODAL
+========================================= */
+
+const bookModal =
+    document.querySelector("#book-modal");
+
+const modalBackdrop =
+    document.querySelector(".book-modal-backdrop");
+
+const modalClose =
+    document.querySelector(".book-modal-close");
+
+
+/* -----------------------------------------
+   Book information
+----------------------------------------- */
+
+const modalCover =
+    document.querySelector("#modal-book-cover");
+
+const modalNumber =
+    document.querySelector("#modal-book-number");
+
+const modalYear =
+    document.querySelector("#modal-book-year");
+
+const modalTitle =
+    document.querySelector("#modal-book-title");
+
+const modalAuthor =
+    document.querySelector("#modal-book-author");
+
+const modalRating =
+    document.querySelector("#modal-book-rating");
+
+const modalDescription =
+    document.querySelector("#modal-book-description");
+
+const modalReaders =
+    document.querySelector("#modal-book-readers");
+
+const modalGenre =
+    document.querySelector("#modal-book-genre");
+
+const modalDate =
+    document.querySelector("#modal-book-date");
+
+const modalRead =
+    document.querySelector("#modal-read-button");
+
+const modalGalleryTrack =
+    document.querySelector("#modal-gallery-track");
+
+const modalGalleryCount =
+    document.querySelector("#modal-gallery-count");
+
+/* =========================================
+   GALLERY LIGHTBOX
+========================================= */
+
+const galleryLightbox =
+    document.querySelector("#gallery-lightbox");
+
+const galleryLightboxBackdrop =
+    document.querySelector(
+        ".gallery-lightbox-backdrop"
+    );
+
+const galleryLightboxClose =
+    document.querySelector(
+        ".gallery-lightbox-close"
+    );
+
+const galleryLightboxImage =
+    document.querySelector(
+        "#gallery-lightbox-image"
+    );
+
+const galleryLightboxCaption =
+    document.querySelector(
+        "#gallery-lightbox-caption"
+    );
+
+
+/* -----------------------------------------
+   Open image
+----------------------------------------- */
+
+function openGalleryImage(
+    image,
+    caption
+) {
+
+    galleryLightboxImage.src =
+        image;
+
+    galleryLightboxImage.alt =
+        caption || "Reader Society photo";
+
+    galleryLightboxCaption.textContent =
+        caption || "";
+
+
+    galleryLightbox.classList.add(
+        "is-open"
+    );
+
+
+    galleryLightbox.setAttribute(
+        "aria-hidden",
+        "false"
+    );
+
+}
+
+
+/* -----------------------------------------
+   Close image
+----------------------------------------- */
+
+function closeGalleryImage() {
+
+    galleryLightbox.classList.remove(
+        "is-open"
+    );
+
+
+    galleryLightbox.setAttribute(
+        "aria-hidden",
+        "true"
+    );
+
+
+    galleryLightboxImage.src =
+        "";
+
+}
+
+
+/* -----------------------------------------
+   Gallery click delegation
+----------------------------------------- */
+
+modalGalleryTrack.addEventListener(
+    "click",
+    event => {
+
+        const item =
+            event.target.closest(
+                ".modal-gallery-item"
+            );
+
+
+        if (!item) return;
+
+
+        const image =
+            item.querySelector("img");
+
+
+        const caption =
+            item.querySelector("figcaption");
+
+
+        if (!image) return;
+
+
+        openGalleryImage(
+            image.src,
+            caption?.textContent || ""
+        );
+
+    }
+);
+
+
+/* -----------------------------------------
+   Close controls
+----------------------------------------- */
+
+galleryLightboxClose.addEventListener(
+    "click",
+    closeGalleryImage
+);
+
+
+galleryLightboxBackdrop.addEventListener(
+    "click",
+    closeGalleryImage
+);
+
+
+/* -----------------------------------------
+   Escape key
+----------------------------------------- */
+
+document.addEventListener(
+    "keydown",
+    event => {
+
+        if (
+            event.key === "Escape" &&
+            galleryLightbox.classList.contains(
+                "is-open"
+            )
+        ) {
+
+            closeGalleryImage();
+
+        }
+
+    }
+);
+
+
+
+/* GALLERY *//* =========================================
+   BOOK GALLERY
+========================================= */
+
+function setupGallery(gallery) {
+
+    modalGalleryTrack.innerHTML = "";
+
+
+    /* No gallery */
+
+    if (!Array.isArray(gallery) || !gallery.length) {
+
+        modalGalleryCount.textContent =
+            "NO PHOTOS";
+
+        return;
+
+    }
+
+
+    /* Photo count */
+
+    modalGalleryCount.textContent =
+        `${String(gallery.length).padStart(2, "0")} ${
+            gallery.length === 1
+                ? "PHOTO"
+                : "PHOTOS"
+        }`;
+
+
+    /* Create photos */
+
+    gallery.forEach(photo => {
+
+        const figure =
+            document.createElement("figure");
+
+        figure.className =
+            "modal-gallery-item";
+
+modalGalleryTrack.appendChild(figure);
+
+
+        const imageWrapper =
+            document.createElement("div");
+
+        imageWrapper.className =
+            "modal-gallery-image";
+
+
+        const image =
+            document.createElement("img");
+
+        image.src =
+            photo.image;
+
+        image.alt =
+            photo.caption || "Book club photo";
+
+        image.loading =
+            "lazy";
+
+
+        const caption =
+            document.createElement("figcaption");
+
+        caption.textContent =
+            photo.caption || "";
+
+
+        imageWrapper.appendChild(
+            image
+        );
+
+        figure.appendChild(
+            imageWrapper
+        );
+
+        figure.appendChild(
+            caption
+        );
+
+
+        modalGalleryTrack.appendChild(
+            figure
+        );
+
+
+    });
+
+}
+
+
+/* -----------------------------------------
+   Quotes
+----------------------------------------- */
+
+const modalQuote =
+    document.querySelector("#modal-book-quote");
+
+const modalQuoteCounter =
+    document.querySelector("#modal-quote-counter");
+
+const modalQuoteControls =
+    document.querySelector("#modal-quote-controls");
+
+
+let currentQuote = 0;
+
+let activeQuotes = [];
+
+let quoteTimer;
+
+
+/* =========================================
+   QUOTE CAROUSEL
+========================================= */
+
+
+/* -----------------------------------------
+   Setup quotes
+----------------------------------------- */
+
+function setupQuotes(quotes) {
+
+    activeQuotes =
+        Array.isArray(quotes)
+            ? quotes
+            : [];
+
+    currentQuote = 0;
+
+    modalQuoteControls.innerHTML = "";
+
+
+    /* -------------------------------------
+       No quotes
+    ------------------------------------- */
+
+    if (!activeQuotes.length) {
+
+        modalQuote.textContent =
+            "“A story worth remembering.”";
+
+        modalQuoteCounter.textContent =
+            "01 / 01";
+
+        return;
+
+    }
+
+
+    /* -------------------------------------
+       Create quote controls
+    ------------------------------------- */
+
+    activeQuotes.forEach(
+        (quote, index) => {
+
+            const dot =
+                document.createElement("button");
+
+
+            dot.type =
+                "button";
+
+
+            dot.className =
+                "modal-quote-dot";
+
+
+            dot.setAttribute(
+                "aria-label",
+                `Show quote ${index + 1}`
+            );
+
+
+            dot.addEventListener(
+                "click",
+                () => {
+
+                    showQuote(index);
+
+                    startQuoteTimer();
+
+                }
+            );
+
+
+            modalQuoteControls.appendChild(
+                dot
+            );
+
+        }
+    );
+
+
+    showQuote(0);
+
+    startQuoteTimer();
+
+}
+
+
+/* -----------------------------------------
+   Show quote
+----------------------------------------- */
+
+function showQuote(index) {
+
+    if (!activeQuotes.length) {
+
+        return;
+
+    }
+
+
+    currentQuote =
+        index;
+
+
+    /* -------------------------------------
+       Fade out
+    ------------------------------------- */
+
+    modalQuote.style.opacity =
+        "0";
+
+    modalQuote.style.transform =
+        "translateY(5px)";
+
+
+    /* -------------------------------------
+       Change quote
+    ------------------------------------- */
+
+    setTimeout(() => {
+
+        modalQuote.textContent =
+            activeQuotes[currentQuote];
+
+
+        modalQuote.style.opacity =
+            "1";
+
+        modalQuote.style.transform =
+            "translateY(0)";
+
+    }, 150);
+
+
+    /* -------------------------------------
+       Counter
+    ------------------------------------- */
+
+    modalQuoteCounter.textContent =
+        `${String(currentQuote + 1).padStart(2, "0")} / ${String(activeQuotes.length).padStart(2, "0")}`;
+
+
+    /* -------------------------------------
+       Active dot
+    ------------------------------------- */
+
+    modalQuoteControls
+        .querySelectorAll(".modal-quote-dot")
+        .forEach((dot, dotIndex) => {
+
+            dot.classList.toggle(
+                "active",
+                dotIndex === currentQuote
+            );
+
         });
-      });
+
+}
+
+
+/* -----------------------------------------
+   Start automatic quote rotation
+----------------------------------------- */
+
+function startQuoteTimer() {
+
+    stopQuoteTimer();
+
+
+    if (activeQuotes.length <= 1) {
+
+        return;
+
+    }
+
+
+    quoteTimer =
+        setInterval(() => {
+
+            const nextQuote =
+                (currentQuote + 1)
+                % activeQuotes.length;
+
+
+            showQuote(nextQuote);
+
+        }, 5500);
+
+}
+
+
+/* -----------------------------------------
+   Stop automatic quote rotation
+----------------------------------------- */
+
+function stopQuoteTimer() {
+
+    if (quoteTimer) {
+
+        clearInterval(
+            quoteTimer
+        );
+
+        quoteTimer = null;
+
+    }
+
+}
+
+
+/* =========================================
+   OPEN BOOK MODAL
+========================================= */
+
+function openBookModal(book) {
+
+    const data =
+        book.dataset;
+
+
+    /* -------------------------------------
+       Book cover
+    ------------------------------------- */
+
+    const cover =
+        book.querySelector(
+            ".archive-cover img"
+        );
+
+
+    if (cover) {
+
+        modalCover.src =
+            cover.src;
+
+        modalCover.alt =
+            cover.alt || data.title || "";
+
+    }
+
+
+    /* -------------------------------------
+       Basic information
+    ------------------------------------- */
+
+    modalNumber.textContent =
+        book.querySelector(
+            ".archive-number"
+        )?.textContent.trim()
+        || "";
+
+    modalYear.textContent =
+        data.year || "";
+
+    modalTitle.textContent =
+        data.title || "";
+
+    modalAuthor.textContent =
+        data.author || "";
+
+    modalRating.textContent =
+        data.rating || "★★★★★";
+
+
+    modalDescription.textContent =
+        data.description ||
+        "The Reader Society's record for this book.";
+
+
+    modalReaders.textContent =
+        data.readers ||
+        "—";
+
+
+    modalGenre.textContent =
+        (data.genre || "BOOK")
+            .toUpperCase();
+
+
+    modalDate.textContent =
+        data.discussion ||
+        "—";
+
+
+    modalRead.href =
+        data.readUrl || "#";
+
+
+    /* -------------------------------------
+       Quotes
+    ------------------------------------- */
+
+    let quotes = [];
+
+
+    try {
+
+        quotes =
+            JSON.parse(
+                data.quotes || "[]"
+            );
+
+    } catch (error) {
+
+        console.warn(
+            "Could not read book quotes:",
+            error
+        );
+
+        quotes = [];
+
+    }
+
+
+    setupQuotes(
+        quotes
+    );
+
+let gallery = [];
+
+try {
+
+    gallery =
+        JSON.parse(
+            data.gallery || "[]"
+        );
+
+} catch (error) {
+
+    console.warn(
+        "Could not read book gallery:",
+        error
+    );
+
+    gallery = [];
+
+}
+
+setupGallery(gallery);
+
+
+    /* -------------------------------------
+       Open modal
+    ------------------------------------- */
+
+    bookModal.classList.add(
+        "is-open"
+    );
+
+
+    bookModal.setAttribute(
+        "aria-hidden",
+        "false"
+    );
+
+
+    document.body.classList.add(
+        "modal-open"
+    );
+
+
+    /* -------------------------------------
+       Accessibility
+    ------------------------------------- */
+
+    modalClose.focus();
+
+}
+
+
+/* =========================================
+   CLOSE BOOK MODAL
+========================================= */
+
+function closeBookModal() {
+
+    bookModal.classList.remove(
+        "is-open"
+    );
+
+
+    bookModal.setAttribute(
+        "aria-hidden",
+        "true"
+    );
+
+
+    document.body.classList.remove(
+        "modal-open"
+    );
+
+
+    stopQuoteTimer();
+
+}
+
+
+/* =========================================
+   BOOK RECORD BUTTONS
+========================================= */
+
+document
+    .querySelectorAll(".view-record")
+    .forEach(button => {
+
+        button.addEventListener(
+            "click",
+            () => {
+
+                const book =
+                    button.closest(
+                        ".archive-book"
+                    );
+
+
+                if (book) {
+
+                    openBookModal(
+                        book
+                    );
+
+                }
+
+            }
+        );
+
     });
 
-    // Modal Logic
-    const modal = document.getElementById('bookModal');
-    const closeBtn = document.querySelector('.close-btn');
-    const titleEl = document.getElementById('modalTitle');
-    const authorEl = document.getElementById('modalAuthor');
-    const ratingEl = document.getElementById('modalRating');
-    const descEl = document.getElementById('modalDesc');
-    const reviewsEl = document.getElementById('modalReviews');
 
-    books.forEach(book => {
-      book.addEventListener('click', () => {
-        titleEl.textContent = book.dataset.title;
-        authorEl.textContent = 'by ' + book.dataset.author;
-        descEl.textContent = book.dataset.desc;
-        reviewsEl.textContent = book.dataset.reviews;
+/* =========================================
+   CLOSE CONTROLS
+========================================= */
 
-        // Stars
-        const rating = parseFloat(book.dataset.rating);
-        const stars = '★'.repeat(Math.floor(rating)) + '☆'.repeat(5 - Math.floor(rating));
-        ratingEl.textContent = `${stars} (${rating})`;
 
-        modal.classList.add('show');
-      });
-    });  closeBtn.addEventListener('click', () => modal.classList.remove('show'));
-    modal.addEventListener('click', e => {
-      if (e.target === modal) modal.classList.remove('show');
-    });
-  </script>
-  <script>
-  const header = document.querySelector('header');
-  window.addEventListener('scroll', () => {
-    header.classList.toggle('scrolled', window.scrollY > 50);
-  });
+/* Close button */
+
+modalClose.addEventListener(
+    "click",
+    closeBookModal
+);
+
+
+/* Backdrop */
+
+modalBackdrop.addEventListener(
+    "click",
+    closeBookModal
+);
+
+
+/* =========================================
+   ESCAPE KEY
+========================================= */
+
+document.addEventListener(
+    "keydown",
+    event => {
+
+        if (
+            event.key === "Escape" &&
+            bookModal.classList.contains(
+                "is-open"
+            )
+        ) {
+
+            closeBookModal();
+
+        }
+
+    }
+);
+
+
 </script>
- <script>
-  // Navbar + body scroll effects
-  const header = document.querySelector("header");
-  const body = document.body;
-  window.addEventListener("scroll", () => {
-    header.classList.toggle("scrolled", window.scrollY > 50);
-    body.classList.toggle("scrolled", window.scrollY > 100);
-  });
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    // 1. Grab every single book card and the modal wrapper elements
+    const bookCards = document.querySelectorAll('.archive-book');
+    const modal = document.getElementById('book-modal');
 
-  // Reveal sections on scroll
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add("in-view");
-        observer.unobserve(e.target);
-      }
+    // 2. Map all target nodes inside the modal container
+    const modalTitle = document.querySelector('.modal-content h2'); 
+    const modalAuthor = document.querySelector('.modal-content .author-name');
+    const modalRating = document.querySelector('.modal-content .society-rating');
+    const modalDescription = document.querySelector('.modal-content .modal-description');
+    const modalQuoteContainer = document.querySelector('.modal-content .quotes-list');
+
+    bookCards.forEach(card => {
+        const viewButton = card.querySelector('.view-record');
+
+        viewButton.addEventListener('click', () => {
+            // 3. Extract the basic individual text attributes
+            const title = card.getAttribute('data-title');
+            const author = card.getAttribute('data-author');
+            const rating = card.getAttribute('data-rating');
+            const descriptionText = card.getAttribute('data-description');
+
+            // 4. Extract and parse your text array structures (CRUCIAL)
+            const rawQuotes = card.getAttribute('data-quotes');
+
+            // 5. Safely fill in the simple text blocks if they exist
+            if (modalTitle) modalTitle.textContent = title;
+            if (modalAuthor) modalAuthor.textContent = author;
+            if (modalRating) modalRating.textContent = rating;
+
+            // 6. Format the Multi-Line Paragraph Structure
+            if (modalDescription && descriptionText) {
+                modalDescription.style.whiteSpace = "pre-wrap"; // Forces tab spaces and breaks
+                modalDescription.textContent = descriptionText;
+            }
+
+            // 7. Loop through and render your dynamic array list entries
+            if (modalQuoteContainer && rawQuotes) {
+                modalQuoteContainer.innerHTML = ""; // Clear out previous book quotes
+                try {
+                    const quotesArray = JSON.parse(rawQuotes);
+                    quotesArray.forEach(quote => {
+                        const li = document.createElement('li');
+                        li.textContent = quote;
+                        modalQuoteContainer.appendChild(li);
+                    });
+                } catch (e) {
+                    console.error("Error reading data-quotes format layout:", e);
+                }
+            }
+
+            // 8. Make the popup panel visible on the browser window
+            if (modal) modal.style.display = "block";
+        });
     });
-  }, { threshold: 0.2 });
-  document.querySelectorAll("section").forEach(sec => observer.observe(sec));
+});
 </script>
- <script>
-    const toggle = document.getElementById('menu-toggle');
-    const navLinks = document.getElementById('nav-links');
-    toggle.addEventListener('click', () => {
-      toggle.classList.toggle('active');
-      navLinks.classList.toggle('active');
-    });
-</script>
- 
-
-  <style>
-    /* Modal Styling */
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 999;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(10, 20, 40, 0.85);
-  backdrop-filter: blur(8px);
-  align-items: center;
-  justify-content: center;
-  transition: opacity 0.3s ease;
-}
-
-.modal.show {
-  display: flex;
-  animation: fadeIn 0.3s ease forwards;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: scale(0.95); }
-  to { opacity: 1; transform: scale(1); }
-}
-
-.modal-content {
-  background: var(--surface);
-  color: #fff;
-  padding: 30px;
-  border-radius: 16px;
-  max-width: 600px;
-  width: 90%;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-  position: relative;
-  animation: slideUp 0.4s ease;
-
-  /* --- ADDED FOR SCROLLABILITY --- */
-  max-height: 90vh; /* Limits the modal height to 90% of the screen height */
-  overflow-y: auto; /* Adds vertical scrolling if content exceeds the max-height */
-  /* ------------------------------- */
-}
-
-@keyframes slideUp {
-  from { transform: translateY(20px); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
-}
-
-.close-btn {
-  position: absolute;
-  top: 16px;
-  right: 20px;
-  font-size: 24px;
-  cursor: pointer;
-  color: #ccc;
-  transition: color 0.3s;
-}
-
-.close-btn:hover {
-  color: #fff;
-}
-
-.rating {
-  font-size: 18px;
-  color: gold;
-  margin-bottom: 10px;
-}
-
-.reviews {
-  margin-top: 20px;
-  border-top: 1px solid rgba(255,255,255,0.1);
-  padding-top: 10px;
-}
-
-/* Optional: Improve scrollbar appearance in modern browsers */
-.modal-content::-webkit-scrollbar {
-  width: 8px;
-}
-
-.modal-content::-webkit-scrollbar-thumb {
-  background-color: rgba(255, 255, 255, 0.3);
-  border-radius: 4px;
-}
-
-  </style>
 </body>
 </html>
