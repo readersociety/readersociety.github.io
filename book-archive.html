@@ -1313,8 +1313,9 @@ data-gallery='[
         id="gallery-lightbox-caption"
     ></p>
 
-</div>
+</div><!-- closes .gallery-lightbox-content -->
 
+</div> <!-- closes .gallery-lightbox -->
 <script>
 // 1. Select all your archive book elements
 
@@ -1507,8 +1508,8 @@ const modalGalleryCount =
    GALLERY LIGHTBOX
 ========================================= */
 
-const galleryLightbox =
-    document.querySelector(".gallery-lightbox-content");
+const galleryLightbox = 
+    document.querySelector("#gallery-lightbox");
 
 const galleryLightboxBackdrop =
     document.querySelector(
@@ -2370,24 +2371,31 @@ setupGallery(gallery);
 
 function closeBookModal() {
 
+    /* If the lightbox is open, close it too */
+    if (
+        galleryLightbox.classList.contains("is-open")
+    ) {
+        closeGalleryImage();
+    }
+
     bookModal.classList.remove(
         "is-open"
     );
-
 
     bookModal.setAttribute(
         "aria-hidden",
         "true"
     );
 
-
     document.body.classList.remove(
         "modal-open"
     );
 
+    document.body.classList.remove(
+        "gallery-lightbox-open"
+    );
 
     stopQuoteTimer();
-
 }
 
 
