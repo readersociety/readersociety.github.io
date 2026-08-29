@@ -756,7 +756,7 @@ data-gallery='[
             "caption": "Yeah, I cant imagine Enola like this. Credits to author"
         },
 		{
-            image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQnvuK0QeJcpb7SxD5Gl9QcayzDInwQ4QWSdBAu8-p4X48qTY6VGlaUtqY&s=10",
+            "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQnvuK0QeJcpb7SxD5Gl9QcayzDInwQ4QWSdBAu8-p4X48qTY6VGlaUtqY&s=10",
             "caption": "Did I miss smth cuz who the heck is this guy?!?"
         },
 		{
@@ -1257,48 +1257,57 @@ data-gallery='[
 ========================================= -->
 
 <div
-    class="gallery-lightbox"
-    id="gallery-lightbox"
-    aria-hidden="true"
+    class="gallery-lightbox-content"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Expanded book club photo"
 >
 
-    <div class="gallery-lightbox-backdrop"></div>
-
-
-    <div
-        class="gallery-lightbox-content"
-        role="dialog"
-        aria-modal="true"
-        aria-label="Expanded book club photo"
+    <button
+        class="gallery-lightbox-close"
+        type="button"
+        aria-label="Close photo"
     >
+        <span></span>
+        <span></span>
+    </button>
 
-        <button
-            class="gallery-lightbox-close"
-            type="button"
-            aria-label="Close photo"
+
+    <!-- Previous image -->
+    <button
+        class="gallery-lightbox-arrow gallery-lightbox-prev"
+        type="button"
+        aria-label="Previous photo"
+    >
+        ←
+    </button>
+
+
+    <div class="gallery-lightbox-image-wrap">
+
+        <img
+            id="gallery-lightbox-image"
+            src=""
+            alt=""
         >
-            <span></span>
-            <span></span>
-        </button>
-
-
-        <div class="gallery-lightbox-image-wrap">
-
-            <img
-                id="gallery-lightbox-image"
-                src=""
-                alt=""
-            >
-
-        </div>
-
-
-        <p
-            class="gallery-lightbox-caption"
-            id="gallery-lightbox-caption"
-        ></p>
 
     </div>
+
+
+    <!-- Next image -->
+    <button
+        class="gallery-lightbox-arrow gallery-lightbox-next"
+        type="button"
+        aria-label="Next photo"
+    >
+        →
+    </button>
+
+
+    <p
+        class="gallery-lightbox-caption"
+        id="gallery-lightbox-caption"
+    ></p>
 
 </div>
 
@@ -1546,24 +1555,102 @@ const galleryLightboxCaption =
         "#gallery-lightbox-caption"
     );
 
+const galleryLightboxPrev =
+    document.querySelector(
+        ".gallery-lightbox-prev"
+    );
+
+const galleryLightboxNext =
+    document.querySelector(
+        ".gallery-lightbox-next"
+    );
+
 
 /* -----------------------------------------
-   Open image
+   Lightbox state
 ----------------------------------------- */
 
-function openGalleryImage(
-    image,
-    caption
-) {
+let lightboxImages = [];
+
+let currentLightboxImage = 0;
+
+
+/* =========================================
+   SHOW LIGHTBOX IMAGE
+========================================= */
+
+function showLightboxImage(index) {
+
+    if (!lightboxImages.length) {
+        return;
+    }
+
+
+    /* Loop around */
+
+    currentLightboxImage =
+        (index + lightboxImages.length)
+        % lightboxImages.length;
+
+
+    const photo =
+        lightboxImages[currentLightboxImage];
+
 
     galleryLightboxImage.src =
-        image;
+        photo.image;
+
 
     galleryLightboxImage.alt =
-        caption || "Reader Society photo";
+        photo.caption ||
+        "Reader Society photo";
+
 
     galleryLightboxCaption.textContent =
-        caption || "";
+        photo.caption || "";
+
+
+    /* Hide arrows if there is only one image */
+
+    const hasMultipleImages =
+        lightboxImages.length > 1;
+
+
+    galleryLightboxPrev.hidden =
+        !hasMultipleImages;
+
+    galleryLightboxNext.hidden =
+        !hasMultipleImages;
+
+}
+
+
+/* =========================================
+   OPEN IMAGE
+========================================= */
+
+function openGalleryImage(
+    images,
+    index
+) {
+
+    lightboxImages =
+        Array.isArray(images)
+            ? images
+            : [];
+
+    if (!lightboxImages.length) {
+        return;
+    }
+
+
+    currentLightboxImage =
+        index || 0;
+
+
+    showLightboxImage(
+        currentLightboxImage
+    );
 
 
     galleryLightbox.classList.add(
@@ -1576,12 +1663,24 @@ function openGalleryImage(
         "false"
     );
 
+
+    /* Prevent page scrolling */
+
+    document.body.classList.add(
+        "gallery-lightbox-open"
+    );
+
+
+    /* Focus close button */
+
+    galleryLightboxClose.focus();
+
 }
 
 
-/* -----------------------------------------
-   Close image
------------------------------------------ */
+/* =========================================
+   CLOSE IMAGE
+========================================= */
 
 function closeGalleryImage() {
 
@@ -1596,15 +1695,63 @@ function closeGalleryImage() {
     );
 
 
-    galleryLightboxImage.src =
-        "";
+    document.body.classList.remove(
+        "gallery-lightbox-open"
+    );
+
+
+    galleryLightboxImage.src = "";
+
+
+    galleryLightboxCaption.textContent = "";
+
+
+    lightboxImages = [];
+
+    currentLightboxImage = 0;
 
 }
 
 
-/* -----------------------------------------
-   Gallery click delegation
------------------------------------------ */
+/* =========================================
+   PREVIOUS IMAGE
+========================================= */
+
+function showPreviousGalleryImage() {
+
+    if (!lightboxImages.length) {
+        return;
+    }
+
+
+    showLightboxImage(
+        currentLightboxImage - 1
+    );
+
+}
+
+
+/* =========================================
+   NEXT IMAGE
+========================================= */
+
+function showNextGalleryImage() {
+
+    if (!lightboxImages.length) {
+        return;
+    }
+
+
+    showLightboxImage(
+        currentLightboxImage + 1
+    );
+
+}
+
+
+/* =========================================
+   GALLERY CLICK DELEGATION
+========================================= */
 
 modalGalleryTrack.addEventListener(
     "click",
@@ -1616,32 +1763,88 @@ modalGalleryTrack.addEventListener(
             );
 
 
-        if (!item) return;
+        if (!item) {
+            return;
+        }
 
 
-        const image =
-            item.querySelector("img");
+        const items =
+            Array.from(
+                modalGalleryTrack.querySelectorAll(
+                    ".modal-gallery-item"
+                )
+            );
 
 
-        const caption =
-            item.querySelector("figcaption");
+        const index =
+            items.indexOf(item);
 
 
-        if (!image) return;
+        const images =
+            items.map(galleryItem => {
+
+                const image =
+                    galleryItem.querySelector("img");
+
+                const caption =
+                    galleryItem.querySelector(
+                        "figcaption"
+                    );
+
+
+                return {
+
+                    image:
+                        image?.src || "",
+
+                    caption:
+                        caption?.textContent || ""
+
+                };
+
+            }).filter(photo => photo.image);
 
 
         openGalleryImage(
-            image.src,
-            caption?.textContent || ""
+            images,
+            index
         );
 
     }
 );
 
 
-/* -----------------------------------------
-   Close controls
------------------------------------------ */
+/* =========================================
+   ARROW CONTROLS
+========================================= */
+
+galleryLightboxPrev.addEventListener(
+    "click",
+    event => {
+
+        event.stopPropagation();
+
+        showPreviousGalleryImage();
+
+    }
+);
+
+
+galleryLightboxNext.addEventListener(
+    "click",
+    event => {
+
+        event.stopPropagation();
+
+        showNextGalleryImage();
+
+    }
+);
+
+
+/* =========================================
+   CLOSE CONTROLS
+========================================= */
 
 galleryLightboxClose.addEventListener(
     "click",
@@ -1655,20 +1858,44 @@ galleryLightboxBackdrop.addEventListener(
 );
 
 
-/* -----------------------------------------
-   Escape key
------------------------------------------ */
+/* =========================================
+   KEYBOARD CONTROLS
+========================================= */
 
 document.addEventListener(
     "keydown",
     event => {
 
         if (
-            event.key === "Escape" &&
-            galleryLightbox.classList.contains(
+            !galleryLightbox.classList.contains(
                 "is-open"
             )
         ) {
+            return;
+        }
+
+
+        if (event.key === "ArrowLeft") {
+
+            event.preventDefault();
+
+            showPreviousGalleryImage();
+
+        }
+
+
+        if (event.key === "ArrowRight") {
+
+            event.preventDefault();
+
+            showNextGalleryImage();
+
+        }
+
+
+        if (event.key === "Escape") {
+
+            event.preventDefault();
 
             closeGalleryImage();
 
@@ -1676,9 +1903,6 @@ document.addEventListener(
 
     }
 );
-
-
-
 /* GALLERY *//* =========================================
    BOOK GALLERY
 ========================================= */
