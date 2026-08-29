@@ -212,7 +212,7 @@
 
                 <p>
                     A record of the stories that have
-                    made their way through the Society. Click through the galleries to access a fullscreen photo! If you have any fanart of the charcter, please contact mne through <a url="facebook.com/it.teodoro16">Facebook</a> or <a url="">Instagram</a>. Many thanks and enjoy!
+                    made their way through the Society. Click through the galleries to access a fullscreen photo! If you have any fanart of the charcter, please contact mne through <a href="facebook.com/it.teodoro16">Facebook</a> or <a href="">Instagram</a>. Many thanks and enjoy!
                 </p>
 
             </div>
@@ -1318,54 +1318,33 @@ const description = bookElement.getAttribute('data-description');
 const modalContainer = document.querySelector('.modal-description');
 
 // Apply the style via JS directly if you don't want to touch your CSS file
-modalContainer.style.white-space = "pre-wrap";
+modalContainer.style.whiteSpace = "pre-wrap";
 modalContainer.textContent = description;
 // 1. Select all your archive book elements
-const bookElements = document.querySelectorAll('.archive-book');
 
-bookElements.forEach(book => {
-    const viewButton = book.querySelector('.view-record');
-
-    viewButton.addEventListener('click', () => {
-        // 2. Fetch the description text from the data attribute
-        const descriptionText = book.getAttribute('data-description');
-
-        // 3. Select the target container where the text should appear
-        // (Replace '.modal-description' with your actual target class)
-        const outputContainer = document.querySelector('.modal-description');
-
-        if (outputContainer) {
-            // 4. Tell the container to respect tabs (\t) and line breaks (\n)
-            outputContainer.style.whiteSpace = "pre-wrap";
-
-            // 5. Inject the text safely using textContent
-            outputContainer.textContent = descriptionText;
-        }
-    });
-});
 // 1. Select all your archive book elements
-const bookElements = document.querySelectorAll('.archive-book');
+//const bookElements = document.querySelectorAll('.archive-book');
 
-bookElements.forEach(book => {
-    const viewButton = book.querySelector('.view-record');
+//bookElements.forEach(book => {
+    //const viewButton = book.querySelector('.view-record');
 
-    viewButton.addEventListener('click', () => {
+  //  viewButton.addEventListener('click', () => {
         // 2. Fetch the description text from the data attribute
-        const descriptionText = book.getAttribute('data-description');
+      //  const descriptionText = book.getAttribute('data-description');
 
         // 3. Select the target container where the text should appear
         // (Replace '.modal-description' with your actual target class)
-        const outputContainer = document.querySelector('.modal-description');
+     //   const outputContainer = document.querySelector('.modal-description');
 
-        if (outputContainer) {
+      //  if (outputContainer) {
             // 4. Tell the container to respect tabs (\t) and line breaks (\n)
-            outputContainer.style.whiteSpace = "pre-wrap";
+         //   outputContainer.style.whiteSpace = "pre-wrap";
 
             // 5. Inject the text safely using textContent
-            outputContainer.textContent = descriptionText;
-        }
-    });
-});
+        //    outputContainer.textContent = descriptionText;
+   //     }
+  //  });
+//});
 
 /* =========================================
    SMART ARCHIVE ARRANGEMENT
@@ -1943,8 +1922,6 @@ function setupGallery(gallery) {
 
         figure.className =
             "modal-gallery-item";
-
-modalGalleryTrack.appendChild(figure);
 
 
         const imageWrapper =
