@@ -9840,3 +9840,141 @@ body.modal-open {
         grayscale(1)
         contrast(1.15);
 }
+
+/* =========================================
+   GALLERY LIGHTBOX ARROWS
+========================================= */
+
+.gallery-lightbox-arrow {
+
+    position: absolute;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    width: 54px;
+    height: 54px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid
+        rgba(244, 240, 232, 0.22);
+
+    border-radius: 50%;
+
+    background:
+        rgba(7, 16, 29, 0.72);
+
+    color:
+        var(--color-paper);
+
+    font-family:
+        var(--font-body);
+
+    font-size: 25px;
+
+    line-height: 1;
+
+    cursor: pointer;
+
+    z-index: 20;
+
+    backdrop-filter:
+        blur(12px);
+
+    -webkit-backdrop-filter:
+        blur(12px);
+
+    transition:
+        background 0.25s ease,
+        border-color 0.25s ease,
+        transform 0.25s ease,
+        opacity 0.25s ease;
+}
+
+
+.gallery-lightbox-arrow:hover {
+
+    background:
+        var(--color-blue);
+
+    border-color:
+        var(--color-blue);
+
+}
+
+
+.gallery-lightbox-prev {
+
+    left:
+        clamp(18px, 4vw, 60px);
+}
+
+
+.gallery-lightbox-next {
+
+    right:
+        clamp(18px, 4vw, 60px);
+}
+
+
+.gallery-lightbox-arrow:active {
+
+    transform:
+        translateY(-50%) scale(0.94);
+
+}
+
+
+/* Hide arrows when there is only one image */
+
+.gallery-lightbox-arrow[hidden] {
+
+    display: none;
+
+}
+
+
+/* -----------------------------------------
+   Prevent scrolling while lightbox is open
+----------------------------------------- */
+
+body.gallery-lightbox-open {
+
+    overflow: hidden;
+
+}
+
+
+/* -----------------------------------------
+   Mobile
+----------------------------------------- */
+
+@media (max-width: 600px) {
+
+    .gallery-lightbox-arrow {
+
+        width: 44px;
+        height: 44px;
+
+        font-size: 20px;
+
+    }
+
+    .gallery-lightbox-prev {
+
+        left: 10px;
+
+    }
+
+    .gallery-lightbox-next {
+
+        right: 10px;
+
+    }
+
+}
