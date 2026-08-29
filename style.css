@@ -7518,21 +7518,18 @@ button {
 }
 
 .archive-book:nth-child(1) {
-    grid-column: 1 / span 3;
     margin-top: 10px;
-    transform: rotate(-1deg);
+    transform: rotate(-2deg);
 }
 
 .archive-book:nth-child(2) {
-    grid-column: 5 / span 3;
     margin-top: 45px;
-    transform: rotate(1.5deg);
+    transform: rotate(2.5deg);
 }
 
 .archive-book:nth-child(3) {
-    grid-column: 9 / span 3;
     margin-top: 0;
-    transform: rotate(-1.5deg);
+    transform: rotate(-2.5deg);
 }
 
 /* -----------------------------------------
@@ -8151,6 +8148,325 @@ button {
     .view-record {
         font-size: 8px;
     }
+}
+
+/* =========================================
+   BOOK ARCHIVE — RESPONSIVE OVERRIDE
+   This MUST come after all desktop layout rules
+========================================= */
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 900px) {
+
+    .archive-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        column-gap: 28px;
+        row-gap: 75px;
+    }
+
+    /* Completely cancel desktop positioning */
+    .archive-book,
+    .archive-book:nth-child(n),
+    .archive-book-large,
+    .archive-book-offset,
+    .archive-book-small,
+    .archive-layout-a,
+    .archive-layout-b,
+    .archive-layout-c,
+    .archive-layout-d {
+
+        grid-column: auto;
+        grid-row: auto;
+
+        width: 100%;
+
+        margin-top: 0;
+
+        transform: none;
+    }
+
+    /* Gentle stagger instead of desktop positioning */
+    .archive-book:nth-child(even) {
+        margin-top: 35px;
+    }
+
+    .archive-book:nth-child(odd) {
+        margin-top: 0;
+    }
+
+}
+
+
+/* =========================================
+   PHONE
+========================================= */
+
+@media (max-width: 760px) {
+
+    .books-archive {
+        padding:
+            90px 20px 110px;
+
+        overflow-x: hidden;
+    }
+
+
+    .books-archive-inner {
+        width: 100%;
+    }
+
+
+    /* -----------------------------------------
+       HEADING
+    ----------------------------------------- */
+
+    .archive-heading {
+        display: block;
+        margin-bottom: 45px;
+    }
+
+    .archive-heading h2 {
+        font-size:
+            clamp(68px, 19vw, 92px);
+    }
+
+    .archive-intro {
+        max-width: 320px;
+        margin-top: 35px;
+    }
+
+
+    /* -----------------------------------------
+       SEARCH + FILTERS
+    ----------------------------------------- */
+
+    .archive-tools {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+
+        gap: 18px;
+
+        margin-bottom: 55px;
+    }
+
+    .archive-search {
+        width: 100%;
+    }
+
+    .archive-filters {
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        gap: 6px;
+    }
+
+
+    /* -----------------------------------------
+       TWO-COLUMN MOBILE SHELF
+    ----------------------------------------- */
+
+    .archive-grid {
+        display: grid;
+
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        column-gap: 18px;
+        row-gap: 70px;
+
+        width: 100%;
+    }
+
+
+    /* -----------------------------------------
+       KILL ALL DESKTOP POSITIONING
+       nth-child(n) is intentional
+    ----------------------------------------- */
+
+    .archive-book,
+    .archive-book:nth-child(n),
+    .archive-book-large,
+    .archive-book-offset,
+    .archive-book-small,
+    .archive-layout-a,
+    .archive-layout-b,
+    .archive-layout-c,
+    .archive-layout-d {
+
+        grid-column: auto;
+        grid-row: auto;
+
+        width: 100%;
+
+        margin-top: 0;
+
+        transform: none;
+    }
+
+
+    /* -----------------------------------------
+       MOBILE ASYMMETRY
+    ----------------------------------------- */
+
+    .archive-book:nth-child(even) {
+        margin-top: 30px;
+    }
+
+    .archive-book:nth-child(odd) {
+        margin-top: 0;
+    }
+
+
+    /* -----------------------------------------
+       COVER
+    ----------------------------------------- */
+
+    .archive-cover {
+        width: 100%;
+        aspect-ratio: 2 / 3;
+
+        box-shadow:
+            10px 15px 28px rgba(0, 0, 0, 0.22);
+    }
+
+
+    .archive-cover img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+
+    /* -----------------------------------------
+       BOOK INFORMATION
+    ----------------------------------------- */
+
+    .archive-book-info {
+        padding:
+            15px 1px 0;
+    }
+
+    .archive-book-info h3 {
+        max-width: none;
+
+        font-size:
+            clamp(22px, 6vw, 29px);
+
+        line-height: 0.94;
+    }
+
+    .archive-book-info > p {
+        margin-top: 7px;
+        font-size: 9px;
+    }
+
+
+    /* -----------------------------------------
+       BOTTOM ROW
+    ----------------------------------------- */
+
+    .archive-book-bottom {
+        display: flex;
+
+        align-items: center;
+        justify-content: space-between;
+
+        gap: 8px;
+
+        margin-top: 14px;
+        padding-top: 10px;
+    }
+
+    .archive-rating {
+        font-size: 9px;
+    }
+
+    .view-record {
+        font-size: 7px;
+        white-space: nowrap;
+    }
+
+    .view-record span {
+        font-size: 11px;
+    }
+
+
+    /* -----------------------------------------
+       HOVER
+    ----------------------------------------- */
+
+    .archive-book:hover {
+        transform:
+            translateY(-5px);
+    }
+
+}
+
+
+/* =========================================
+   SMALL PHONES
+========================================= */
+
+@media (max-width: 430px) {
+
+    .books-archive {
+        padding-left: 18px;
+        padding-right: 18px;
+    }
+
+
+    /* ONE LARGE BOOK PER ROW */
+
+    .archive-grid {
+        grid-template-columns: 1fr;
+        row-gap: 70px;
+    }
+
+
+    /* Cancel stagger */
+
+    .archive-book,
+    .archive-book:nth-child(n),
+    .archive-book:nth-child(even),
+    .archive-book:nth-child(odd) {
+
+        grid-column: auto;
+
+        margin-top: 0;
+
+        transform: none;
+
+        width: 100%;
+    }
+
+
+    /* Larger titles */
+
+    .archive-book-info h3 {
+        font-size: 32px;
+    }
+
+    .archive-book-info > p {
+        font-size: 10px;
+    }
+
+
+    .archive-book-bottom {
+        margin-top: 16px;
+    }
+
+    .archive-rating {
+        font-size: 10px;
+    }
+
+    .view-record {
+        font-size: 8px;
+    }
+
 }
 /* =========================================
    BOOK RECORD MODAL
