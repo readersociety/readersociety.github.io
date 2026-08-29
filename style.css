@@ -7517,20 +7517,7 @@ button {
 
 }
 
-.archive-book:nth-child(1) {
-    margin-top: 10px;
-    transform: rotate(-2deg);
-}
 
-.archive-book:nth-child(2) {
-    margin-top: 45px;
-    transform: rotate(2.5deg);
-}
-
-.archive-book:nth-child(3) {
-    margin-top: 0;
-    transform: rotate(-2.5deg);
-}
 
 /* -----------------------------------------
    Hover
