@@ -1920,6 +1920,13 @@ function setupGallery(gallery) {
         figure.className =
             "modal-gallery-item";
 
+	const tapHint = document.createElement("span");
+
+tapHint.className = "modal-gallery-tap-hint";
+tapHint.innerHTML = "↗ <span>TAP TO EXPAND</span>";
+
+figure.appendChild(tapHint);
+
 
         const imageWrapper =
             document.createElement("div");
