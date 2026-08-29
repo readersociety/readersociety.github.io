@@ -9911,14 +9911,14 @@ body.modal-open {
 .gallery-lightbox-prev {
 
     left:
-        clamp(18px, 4vw, 60px);
+        clamp(18px, 2vw, 60px);
 }
 
 
 .gallery-lightbox-next {
 
     right:
-        clamp(18px, 4vw, 60px);
+        clamp(18px, 2vw, 60px);
 }
 
 
@@ -9957,24 +9957,22 @@ body.gallery-lightbox-open {
 @media (max-width: 600px) {
 
     .gallery-lightbox-arrow {
-
         width: 44px;
         height: 44px;
-
         font-size: 20px;
-
     }
 
     .gallery-lightbox-prev {
-
         left: 10px;
-
     }
 
     .gallery-lightbox-next {
-
         right: 10px;
+    }
 
+    .gallery-lightbox-close {
+        top: 8px;
+        right: 8px;
     }
 
 }
