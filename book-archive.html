@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Bookz Archive - Reader Society</title>
+    <title>Books Archive - Reader Society</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1263,6 +1263,8 @@ data-gallery='[
     aria-label="Expanded book club photo"
 >
 
+	  <div class="gallery-lightbox-backdrop"></div>
+
     <button
         class="gallery-lightbox-close"
         type="button"
@@ -1312,14 +1314,6 @@ data-gallery='[
 </div>
 
 <script>
-
-// Example JavaScript reading the click
-const description = bookElement.getAttribute('data-description');
-const modalContainer = document.querySelector('.modal-description');
-
-// Apply the style via JS directly if you don't want to touch your CSS file
-modalContainer.style.whiteSpace = "pre-wrap";
-modalContainer.textContent = description;
 // 1. Select all your archive book elements
 
 // 1. Select all your archive book elements
@@ -1512,7 +1506,7 @@ const modalGalleryCount =
 ========================================= */
 
 const galleryLightbox =
-    document.querySelector("#gallery-lightbox");
+    document.querySelector(".gallery-lightbox-content");
 
 const galleryLightboxBackdrop =
     document.querySelector(
@@ -2471,64 +2465,6 @@ document.addEventListener(
 );
 
 
-</script>
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-    // 1. Grab every single book card and the modal wrapper elements
-    const bookCards = document.querySelectorAll('.archive-book');
-    const modal = document.getElementById('book-modal');
-
-    // 2. Map all target nodes inside the modal container
-    const modalTitle = document.querySelector('.modal-content h2'); 
-    const modalAuthor = document.querySelector('.modal-content .author-name');
-    const modalRating = document.querySelector('.modal-content .society-rating');
-    const modalDescription = document.querySelector('.modal-content .modal-description');
-    const modalQuoteContainer = document.querySelector('.modal-content .quotes-list');
-
-    bookCards.forEach(card => {
-        const viewButton = card.querySelector('.view-record');
-
-        viewButton.addEventListener('click', () => {
-            // 3. Extract the basic individual text attributes
-            const title = card.getAttribute('data-title');
-            const author = card.getAttribute('data-author');
-            const rating = card.getAttribute('data-rating');
-            const descriptionText = card.getAttribute('data-description');
-
-            // 4. Extract and parse your text array structures (CRUCIAL)
-            const rawQuotes = card.getAttribute('data-quotes');
-
-            // 5. Safely fill in the simple text blocks if they exist
-            if (modalTitle) modalTitle.textContent = title;
-            if (modalAuthor) modalAuthor.textContent = author;
-            if (modalRating) modalRating.textContent = rating;
-
-            // 6. Format the Multi-Line Paragraph Structure
-            if (modalDescription && descriptionText) {
-                modalDescription.style.whiteSpace = "pre-wrap"; // Forces tab spaces and breaks
-                modalDescription.textContent = descriptionText;
-            }
-
-            // 7. Loop through and render your dynamic array list entries
-            if (modalQuoteContainer && rawQuotes) {
-                modalQuoteContainer.innerHTML = ""; // Clear out previous book quotes
-                try {
-                    const quotesArray = JSON.parse(rawQuotes);
-                    quotesArray.forEach(quote => {
-                        const li = document.createElement('li');
-                        li.textContent = quote;
-                        modalQuoteContainer.appendChild(li);
-                    });
-                } catch (e) {
-                    console.error("Error reading data-quotes format layout:", e);
-                }
-            }
-
-            // 8. Make the popup panel visible on the browser window
-            if (modal) modal.style.display = "block";
-        });
-    });
-});
 </script>
 </body>
 </html>
