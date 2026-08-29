@@ -10049,3 +10049,14 @@ body.gallery-lightbox-open {
     }
 
 }
+@media (max-width: 760px) {
+
+    .modal-gallery-item:active {
+        transform: scale(0.97);
+    }
+
+    .modal-gallery-item:active .modal-gallery-image img {
+        filter: brightness(0.8);
+    }
+
+}
