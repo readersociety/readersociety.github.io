@@ -10982,9 +10982,9 @@ body.member-modal-open {
         height: 100svh;
     }
 
-    .members-radial-sticky .member-card {
-        width: clamp(125px, 34vw, 165px);
-    }
+  .members-radial-sticky .member-card {
+    width: clamp(260px, 80vw, 380px);
+}
 
     .members-radial-hint {
         font-size: 0.58rem;
