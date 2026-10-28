@@ -11081,4 +11081,54 @@ body.member-modal-open {
         height: calc(100svh - 62px);
     }
 }
+/* Subtle member card interaction hint */
 
+.member-card {
+    position: relative;
+}
+
+.member-card-hint {
+    position: absolute;
+    left: 50%;
+    bottom: 12%;
+    transform: translateX(-50%);
+
+    z-index: 5;
+    padding: 7px 10px;
+
+    font-family: 'Jost', sans-serif;
+    font-size: 0.58rem;
+    font-weight: 600;
+    letter-spacing: 0.13em;
+    white-space: nowrap;
+
+    color: rgba(255, 255, 255, 0.78);
+    background: rgba(35, 31, 27, 0.24);
+    border: 1px solid rgba(255, 255, 255, 0.22);
+
+    opacity: 0.65;
+    pointer-events: none;
+    transition:
+        opacity 0.25s ease,
+        background 0.25s ease;
+}
+
+/* A little more visible when hovering on desktop */
+
+@media (hover: hover) and (pointer: fine) {
+    .member-card:hover .member-card-hint {
+        opacity: 0.95;
+        background: rgba(35, 31, 27, 0.48);
+    }
+}
+
+/* Keep the hint legible on phones */
+
+@media (max-width: 700px) {
+    .member-card-hint {
+        bottom: 10%;
+        padding: 8px 10px;
+        font-size: 0.62rem;
+        opacity: 0.8;
+    }
+}
