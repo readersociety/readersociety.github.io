@@ -1666,7 +1666,7 @@ const memberProfiles = [
     number: "01",
     name: "Elischa Cruz",
     role: "CEO · Society Founder",
-    image: "https://github.com/readersociety/readersociety.github.io/blob/main/rs_images/people_pfps/rs_pfp_noa_main.png?raw=true,
+    image: "https://github.com/readersociety/readersociety.github.io/blob/main/rs_images/people_pfps/rs_pfp_noa_main.png?raw=true,"
     hoverImage: "https://github.com/readersociety/readersociety.github.io/blob/main/rs_images/people_pfps/rs_pfp_noa_alt.png?raw=true", // Replace with the second image
     bio: "Noa is sixteen years old. She is the second born of four kids, and has an older sister and two younger brothers. \n \nIn her free time, she enjoys listening to music, reading, and occasionally learning new kpop dances. She often spends more time than she should looking for new books, even though her reading list is far from finished. Her favorite genres are realistic fiction and fantasy. She will read a range of things though, from novels to manga to reddit posts about the nichest things, and video game walkthroughs (even 39 clues, i'm just sensitive).",
     favoriteBook: "Skip and Loafer (i thinkk?)",
@@ -1753,20 +1753,9 @@ const memberProfiles = [
 {
     number: "08",
     name: "Jamie",
-    role: "Member  · 5 Stages of Grief (ask Iris)"
-    number: "08",
-    name: "Jamie",
-    role: "Member · Aspiring Writer",
+    role: "Member  · 5 Stages of Grief (ask Iris)",
     image: ".https://github.com/readersociety/readersociety.github.io/blob/main/rs_images/people_pfps/rs_pfp_jamie_main.png?raw=true",
     hoverImage: "https://github.com/readersociety/readersociety.github.io/blob/main/rs_images/people_pfps/rs_pfp_jamie_alt.png?raw=true",
-    bio: "Hiii you can call me Jamie or whatever floats your boat.. I’m a 14 year old and a middle child out of 4 children. \n \nThe things I like are: games, watching, singing, and music. My music taste is very mixed but heres some of the artists I like rn: Laufey, Beabadoobee, wave to earth, twice, ILLIT and other kpop groups!! \n \nMy personality (?) I’m sort of quiet and loud at the same time I guess it’ll just depend on my mood and the situation, and I’m really up to anything if you convince me enough LMAO",
-    favoriteBook: "she's alive, go ask her",
-    favoriteGenre: "👆🏼",
-    quote: "Patience is a virtue.",
-    fact: "Anu bayan. She's your friend you should know na."
-},",
-    image: "../rs/rs_pfp_jamie_main.png",
-    hoverImage: "../rs/rs_pfp_jamie_alt.png",
     bio: "Hiii you can call me Jamie or whatever floats your boat.. I’m a 14 year old and a middle child out of 4 children. \n \nThe things I like are: games, watching, singing, and music. My music taste is very mixed but heres some of the artists I like rn: Laufey, Beabadoobee, wave to earth, twice, ILLIT and other kpop groups!! \n \nMy personality (?) I’m sort of quiet and loud at the same time I guess it’ll just depend on my mood and the situation, and I’m really up to anything if you convince me enough LMAO",
     favoriteBook: "she's alive, go ask her",
     favoriteGenre: "👆🏼",
