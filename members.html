@@ -465,5 +465,478 @@
 </section>
 
 <script src="auto.js"></script>
+	<script>
+/* =========================================
+   Members Page JS
+========================================= */
+const memberProfiles = [
+   
+{
+    number: "01",
+    name: "Elischa Cruz",
+    role: "CEO · Society Founder",
+    image: "https://github.com/readersociety/readersociety.github.io/blob/main/rs_images/people_pfps/rs_pfp_noa_main.png?raw=true",
+    hoverImage: "https://github.com/readersociety/readersociety.github.io/blob/main/rs_images/people_pfps/rs_pfp_noa_alt.png?raw=true", // Replace with the second image
+    bio: "Noa is sixteen years old. She is the second born of four kids, and has an older sister and two younger brothers. \n \nIn her free time, she enjoys listening to music, reading, and occasionally learning new kpop dances. She often spends more time than she should looking for new books, even though her reading list is far from finished. Her favorite genres are realistic fiction and fantasy. She will read a range of things though, from novels to manga to reddit posts about the nichest things, and video game walkthroughs (even 39 clues, i'm just sensitive).",
+    favoriteBook: "Skip and Loafer (i thinkk?)",
+    favoriteGenre: "Splice of Life",
+    quote: "Sned the pictures gng :D",
+    fact: "Loves discovering new books"
+},
+
+{
+    number: "02",
+    name: "Elischa Cruz",
+    role: "CEO · Society Founder",
+    image: "https://github.com/readersociety/readersociety.github.io/blob/main/rs_images/people_pfps/rs_pfp_noa_main.png?raw=true",
+    hoverImage: "https://github.com/readersociety/readersociety.github.io/blob/main/rs_images/people_pfps/rs_pfp_noa_main.png?raw=true", // Replace with the second image
+    bio: "Noa is sixteen years old. She is the second born of four kids, and has an older sister and two younger brothers. \n \nIn her free time, she enjoys listening to music, reading, and occasionally learning new kpop dances. She often spends more time than she should looking for new books, even though her reading list is far from finished. Her favorite genres are realistic fiction and fantasy. She will read a range of things though, from novels to manga to reddit posts about the nichest things, and video game walkthroughs (even 39 clues, i'm just sensitive).",
+    favoriteBook: "Skip and Loafer (i thinkk?)",
+    favoriteGenre: "Splice of Life",
+    quote: "Write a memorable quote from this member here.",
+    fact: "Loves discovering new books"
+},
+
+{
+    number: "03",
+    name: "Yumi Aly",
+    role: "Member · CEO's Cousin",
+    image: "https://github.com/readersociety/readersociety.github.io/blob/main/rs_images/people_pfps/rs_pfp_yumi_main.png?raw=true",
+    hoverImage: "https://github.com/readersociety/readersociety.github.io/blob/main/rs_images/people_pfps/rs_pfp_yumi_alt.png?raw=true", // Replace with the second image
+    bio: "to describe myself in a few paragraphs is hard for two reasons: one, there’s so much to say, and two, who am i even. because what defines us even, is it the things we like or the thoughts running in our mind? that’s lowkey a preview as to who i am HAHAHAHA. \n \nI’m naomi mogueis, mostly known as yumi or aly! i’m currently 15, with 16 looming ominously around the corner this december. i have a bunch of interests and hobbies, but the most predominant are: reading, playing instruments/singing, rage/joy-baiting my friends, doing daily puzzles (like sudoku and wordle), arts n' crafts of many sorts, and biking around my neighborhood undisturbed(!), and debatingg!! \n \nI feel self-conscious – but i’m honestly a really opinionated person (which is why i love debate, it grounds me) but at the same time, i’m too emotional for my own good :’)). i laugh, if not cry, at almost everything so i think that sums up a lot of things. i don’t really like talking about myself like this HAHA, so just get to know me teehee✌️ CODER'S EDIT: Wow you do learn something new everyday about your friends...",
+    favoriteBook: "As Long as the Lemon Trees Grow",
+    favoriteGenre: "Knees",
+    quote: "HELP",
+    fact: "Yumi once debated in the UN World Security Council"
+},
+
+{
+    number: "04",
+    name: "Austin ''Jumpsacre'' Arceo",
+    role: "Member · RS' Main Source of Scary Stickers",
+    image: "https://github.com/readersociety/readersociety.github.io/blob/main/rs_images/people_pfps/rs_pfp_au_main.png?raw=true",
+    hoverImage: "https://github.com/readersociety/readersociety.github.io/blob/main/rs_images/people_pfps/rs_pfp_au_alt.png?raw=true", // Replace with the second image
+    bio: "Austin, or Tin, is just a casual 15 year old homeschooler who unintentionally joined the book club, thinking it was a writer's club since he has a knack for writing poetry and literature. Though he eventually decieded on staying, realizing he needed to learn how to do something apart from procrastinating. He is the eldset out of the two other siblings in his family. \n \nHe enjoys playing instruments, doing sports and listening to music. He dreams of becoming a professional athlete in literally any sport (maybe even an Olympian), living a Christ-centered life, and eventually graduating college with honors before becoming a lawyer. CODER EDIT: He'll fr win every case if he keeps doing jumpscares on the judges and stuff.",
+    favoriteBook: "How to Scare Your Friends: The Art of Jumpscaring",
+    favoriteGenre: "Horror",
+    quote: "Write a memorable quote from this member here.",
+    fact: "Loves discovering new books"
+},
+
+{
+    number: "05",
+    name: "Qorein",
+    role: "Member · Photographer",
+    image: "https://github.com/readersociety/readersociety.github.io/blob/main/rs_images/people_pfps/rs_pfp_q_main.png?raw=true",
+    hoverImage: "https://github.com/readersociety/readersociety.github.io/blob/main/rs_images/people_pfps/rs_pfp_q_alt.png?raw=true", // Replace with the second image
+    bio: "Qorein, you can call her Q or banna Q, whichever floats your boat. She is a 15-year-old student-athlete, photographer, and artist. She is the first born daughter, and an older sister to her one and only brother. (Lets face it, one brother is enough for a lifetime). Her faveorite novels are City Spies and the Summer I Turned Pretty, but she enjoys reaing a wide range of genres. In her spare time, she enjoys reading, journaling, taking pictures with her camera, doing art-related hobbies, binge-watching Netflix, and practicing jiu-jitsu.",
+    favoriteBook: "Nang don na sa bio mag-basa ka kasi ngani",
+    favoriteGenre: "-_-",
+    quote: "Someone kick him out!",
+    fact: "She once coached Jackie Chan for Karate Kid in jiu-jitsu"
+},
+{
+    number: "06",
+    name: "Claudia",
+    role: "Member · Cosplayer · Def NOT the AI chatbot model · Cookies",
+    image: "https://github.com/readersociety/readersociety.github.io/blob/main/rs_images/people_pfps/rs_pfp_claudia_main.png?raw=true",
+    hoverImage: "https://github.com/readersociety/readersociety.github.io/blob/main/rs_images/people_pfps/rs_pfp_claudia_alt.png?raw=true", // Replace with the second image
+    bio: "The middle child among three siblings. Claudia is a writer in the making and is currently working on her soon to be published novel, and she runs a blog with miscellaneous arcticles. In her free time, she watches anime and cosplays her favorite characters when she goes to anime events. She is highly interested in things she likes and will most likely share something about it when you talk to her. Though not perfect, shde loves to draw and paint her original chractersm which is the only way she shows the love to them when she's not torturing them in her stories. SHe reads all kinds of media, from novels to mango to newspaper articles and even fanfiction.",
+    favoriteBook: "Dr. Strange.",
+    favoriteGenre: "Does anime count?",
+    quote: "The bond between Nezuko and me, can't be severed by anyone",
+    fact: "In the year 2040, she and her brand CCo. (or Claude's Comics) became Marvel and DC's top competitor."
+},
+{
+    number: "07",
+    name: "Ava",
+    role: "Member · Aspiring Writer",
+    image: "https://github.com/readersociety/readersociety.github.io/blob/main/rs_images/people_pfps/rs_pfp_ava_main.png?raw=true",
+    hoverImage: "https://github.com/readersociety/readersociety.github.io/blob/main/rs_images/people_pfps/rs_pfp_ava_alt.png?raw=true",
+    bio: "Ava is an aspiring artist/writer/actress/singer/songwriter/ (I haven't decided yet.) is the oldest daughter of 2 kids. She writes and draws her original characters and occasionally makes fanart of her favorite characters. Her projects are writing Filipino covers of her favorite songs (Writing on the Wall, Nowhere, etc.).",
+    favoriteBook: "uhmmmm......... (404 Error)",
+    favoriteGenre: "Does anime count?",
+    quote: "I want to cry, but I also don't want to ruin my makeup.",
+    fact: "Anu bayan. She's your friend you should know na."
+},
+{
+    number: "08",
+    name: "Jamie",
+    role: "Member  · 5 Stages of Grief (ask Iris)",
+    image: "https://github.com/readersociety/readersociety.github.io/blob/main/rs_images/people_pfps/rs_pfp_jamie_main.png?raw=true",
+    hoverImage: "https://github.com/readersociety/readersociety.github.io/blob/main/rs_images/people_pfps/rs_pfp_jamie_alt.png?raw=true",
+    bio: "Hiii you can call me Jamie or whatever floats your boat.. I’m a 14 year old and a middle child out of 4 children. \n \nThe things I like are: games, watching, singing, and music. My music taste is very mixed but heres some of the artists I like rn: Laufey, Beabadoobee, wave to earth, twice, ILLIT and other kpop groups!! \n \nMy personality (?) I’m sort of quiet and loud at the same time I guess it’ll just depend on my mood and the situation, and I’m really up to anything if you convince me enough LMAO",
+    favoriteBook: "she's alive, go ask her",
+    favoriteGenre: "👆🏼",
+    quote: "Patience is a virtue.",
+    fact: "Anu bayan. She's your friend you should know na."
+},
+{
+    number: "09",
+    name: "JC",
+    role: "Member · Lola according to some-who-will-not-be-named (NOT ME DON'T KILL ME I DIDN'T HAVE THIS IDEA)",
+    image: "https://github.com/readersociety/readersociety.github.io/blob/main/rs_images/people_pfps/rs_pfp_noa_main.png?raw=true",
+    hoverImage: "https://github.com/readersociety/readersociety.github.io/blob/main/rs_images/people_pfps/rs_pfp_noa_main.png?raw=true",
+    bio: "Hiii you can call me Jamie or whatever floats your boat.. I’m a 14 year old and a middle child out of 4 children. \n \nThe things I like are: games, watching, singing, and music. My music taste is very mixed but heres some of the artists I like rn: Laufey, Beabadoobee, wave to earth, twice, ILLIT and other kpop groups!! \n \nMy personality (?) I’m sort of quiet and loud at the same time I guess it’ll just depend on my mood and the situation, and I’m really up to anything if you convince me enough LMAO",
+    favoriteBook: "she's alive, go ask her",
+    favoriteGenre: "👆🏼",
+    quote: "Patience is a virtue.",
+    fact: "Anu bayan. She's your friend you should know na."
+},
+
+];
+
+const modal = document.getElementById("member-modal");
+const dialog = modal.querySelector(".member-modal-dialog");
+const closeButton = modal.querySelector(".member-modal-close");
+const backdrop = modal.querySelector(".member-modal-backdrop");
+
+const fields = {
+    number: document.getElementById("member-modal-number"),
+    name: document.getElementById("member-modal-name"),
+    role: document.getElementById("member-modal-role"),
+    image: document.getElementById("member-modal-image"),
+    bio: document.getElementById("member-modal-bio"),
+    book: document.getElementById("member-modal-book"),
+    genre: document.getElementById("member-modal-genre"),
+    quote: document.getElementById("member-modal-quote"),
+    fact: document.getElementById("member-modal-fact")
+};
+
+let previouslyFocusedElement = null;
+
+function openMemberModal(index) {
+    const member = memberProfiles[index];
+    if (!member) return;
+
+    previouslyFocusedElement = document.activeElement;
+
+    fields.number.textContent = member.number;
+    fields.name.textContent = member.name;
+    fields.role.textContent = member.role;
+    fields.image.src = member.image;
+    fields.image.alt = member.name;
+    fields.bio.textContent = member.bio;
+    fields.book.textContent = member.favoriteBook;
+    fields.genre.textContent = member.favoriteGenre;
+    fields.quote.textContent = `“${member.quote}”`;
+
+
+    modal.classList.add("is-open");
+    modal.setAttribute("aria-hidden", "false");
+    document.body.classList.add("member-modal-open");
+
+    dialog.focus();
+}
+
+function closeMemberModal() {
+    modal.classList.remove("is-open");
+    modal.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("member-modal-open");
+
+    if (previouslyFocusedElement) {
+        previouslyFocusedElement.focus();
+    }
+}
+
+
+/* Close the member modal */
+
+if (closeButton) {
+    closeButton.addEventListener("click", closeMemberModal);
+}
+
+if (backdrop) {
+    backdrop.addEventListener("click", closeMemberModal);
+}
+
+/* Close with Escape key */
+
+document.addEventListener("keydown", (event) => {
+    if (
+        event.key === "Escape" &&
+        modal.classList.contains("is-open")
+    ) {
+        closeMemberModal();
+    }
+});
+
+
+
+document.querySelectorAll(".member-card").forEach((card, index) => {
+    const member = memberProfiles[index];
+    if (!member) return;
+
+    const button = card.querySelector(".member-photo");
+    if (!button) return;
+
+    let image = button.querySelector("img");
+
+    // Set the primary portrait.
+    if (image) {
+        image.src = member.image;
+        image.alt = member.name;
+        image.classList.add("member-photo-primary");
+    }
+
+    // Add the alternate portrait only when one is provided.
+    if (
+        member.hoverImage &&
+        !member.hoverImage.includes("YOUR-IMAGE-HERE")
+    ) {
+        let hoverImage = button.querySelector(".member-photo-hover");
+
+        if (!hoverImage) {
+            hoverImage = document.createElement("img");
+            hoverImage.className = "member-photo-hover";
+            hoverImage.alt = "";
+            hoverImage.setAttribute("aria-hidden", "true");
+            hoverImage.draggable = false;
+            button.appendChild(hoverImage);
+        }
+
+        hoverImage.src = member.hoverImage;
+    }
+
+    button.setAttribute(
+        "aria-label",
+        `View ${member.name}'s profile`
+    );
+
+    button.addEventListener("click", () => {
+        openMemberModal(index);
+    });
+});
+
+
+
+
+/* =========================================
+   MEMBER GALLERY SWIPE NAVIGATION
+========================================= */
+
+const memberGallery = document.querySelector(".members-gallery");
+const galleryCards = [
+    ...document.querySelectorAll(".members-gallery .member-card")
+];
+
+const galleryProgress = document.getElementById(
+    "members-gallery-progress"
+);
+
+const galleryDots = document.getElementById(
+    "members-gallery-dots"
+);
+
+let activeGalleryIndex = 0;
+let galleryScrollFrame = null;
+
+
+/* Build one dot per member. */
+
+if (memberGallery && galleryProgress && galleryDots) {
+
+    galleryDots.innerHTML = "";
+
+    galleryCards.forEach((card, index) => {
+
+        const dot = document.createElement("button");
+
+        dot.type = "button";
+        dot.className = "members-gallery-dot";
+        dot.setAttribute(
+            "aria-label",
+            `Go to member ${index + 1}`
+        );
+
+        dot.addEventListener("click", () => {
+
+            card.scrollIntoView({
+                behavior: window.matchMedia(
+                    "(prefers-reduced-motion: reduce)"
+                ).matches ? "auto" : "smooth",
+                block: "nearest",
+                inline: "center"
+            });
+
+        });
+
+        galleryDots.appendChild(dot);
+
+    });
+
+
+    const dots = [
+        ...galleryDots.querySelectorAll(".members-gallery-dot")
+    ];
+
+
+    function updateGalleryProgress() {
+
+        if (!galleryCards.length) return;
+
+        const galleryCenter =
+            memberGallery.getBoundingClientRect().left +
+            memberGallery.clientWidth / 2;
+
+        let closestIndex = 0;
+        let closestDistance = Infinity;
+
+        galleryCards.forEach((card, index) => {
+
+            const rect = card.getBoundingClientRect();
+            const cardCenter = rect.left + rect.width / 2;
+            const distance = Math.abs(galleryCenter - cardCenter);
+
+            if (distance < closestDistance) {
+                closestDistance = distance;
+                closestIndex = index;
+            }
+
+        });
+
+        activeGalleryIndex = closestIndex;
+
+        galleryProgress.textContent =
+            `${String(closestIndex + 1).padStart(2, "0")} / ${String(galleryCards.length).padStart(2, "0")}`;
+
+        dots.forEach((dot, index) => {
+
+            const isActive = index === closestIndex;
+
+            dot.classList.toggle("is-active", isActive);
+
+            if (isActive) {
+                dot.setAttribute("aria-current", "step");
+            } else {
+                dot.removeAttribute("aria-current");
+            }
+
+        });
+
+    }
+
+
+    memberGallery.addEventListener("scroll", () => {
+
+        if (galleryScrollFrame !== null) {
+            cancelAnimationFrame(galleryScrollFrame);
+        }
+
+        galleryScrollFrame = requestAnimationFrame(() => {
+            updateGalleryProgress();
+            galleryScrollFrame = null;
+        });
+
+    }, { passive: true });
+
+
+    window.addEventListener("resize", updateGalleryProgress);
+
+    updateGalleryProgress();
+
+}
+
+
+
+/* =========================================
+   MEMBERS: RADIAL CAROUSEL ROTATION
+========================================= */
+
+
+/* =========================================
+   MEMBERS: SEMICIRCLE CAROUSEL
+========================================= */
+
+(() => {
+    const stage = document.getElementById("members-radial-stage");
+    const gallery = stage?.querySelector(".members-gallery");
+    const sticky = stage?.querySelector(".members-radial-sticky");
+
+    if (!stage || !gallery || !sticky) return;
+
+    const cards = [...gallery.querySelectorAll(".member-card")];
+    if (!cards.length) return;
+
+    const count = cards.length;
+    stage.style.setProperty("--member-count", count);
+
+    let frame = null;
+
+    function updateCarousel() {
+        frame = null;
+
+        const rect = stage.getBoundingClientRect();
+        const scrollDistance = stage.offsetHeight - window.innerHeight;
+
+	const startOffset = window.innerHeight * 0.10; // starts 8% of a screen earlier
+
+        const progress = scrollDistance > 0
+            ? Math.max(0, Math.min(1, -rect.top / scrollDistance))
+            : 0;
+
+        // The featured member moves one card at a time.
+        const activePosition = progress * (count - 1);
+
+        const width = window.innerWidth;
+        const height = window.innerHeight;
+        const mobile = width <= 700;
+
+        // Keep the arc within the screen on small devices.
+        const radiusX = mobile
+            ? width * 0.34
+            : Math.min(width * 0.43, height * 0.58);
+
+        const radiusY = mobile
+            ? height * 0.35
+            : height * 0.57;
+
+        const angleStep = mobile ? 11 : 18;
+        const centerX = width / 2;
+        const arcBaseY = mobile ? height * 0.80 : height * 0.91;
+
+        cards.forEach((card, index) => {
+            const offset = index - activePosition;
+            const angle = offset * angleStep * Math.PI / 180;
+
+            const x = centerX + Math.sin(angle) * radiusX;
+            const y = arcBaseY - Math.cos(angle) * radiusY;
+
+            const distance = Math.abs(offset);
+            const visible = distance < (mobile ? 3.2 : 4.2);
+            const focused = distance < 0.48;
+
+            card.style.left = `${x}px`;
+            card.style.top = `${y}px`;
+            card.style.opacity = visible
+                ? String(Math.max(0.12, 1 - distance * 0.24))
+                : "0";
+            card.style.filter = focused
+                ? "none"
+                : `blur(${Math.min(distance * 0.7, 2)}px) grayscale(${Math.min(distance * 0.15, 0.65)})`;
+            card.style.scale = focused
+                ? "1"
+                : String(Math.max(0.68, 1 - distance * 0.075));
+            card.style.zIndex = String(
+                100 - Math.round(distance * 10)
+            );
+            card.style.pointerEvents = visible ? "auto" : "none";
+
+            card.classList.toggle("is-focused", focused);
+            card.setAttribute("aria-hidden", visible ? "false" : "true");
+        });
+    }
+
+    function requestUpdate() {
+        if (frame !== null) return;
+        frame = requestAnimationFrame(updateCarousel);
+    }
+
+    window.addEventListener("scroll", requestUpdate, { passive: true });
+    window.addEventListener("resize", requestUpdate);
+
+    updateCarousel();
+})();
+	</script>
 </body>
 </html>
