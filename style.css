@@ -10363,3 +10363,722 @@ body.gallery-lightbox-open {
     }
 
 }
+
+/* =========================================
+   READER SOCIETY — MEMBERS PAGE
+   Includes:
+   1. Hero section
+   2. Gallery heading
+   3. Scroll-driven semicircle carousel
+   4. Portrait hover crossfade
+   5. Member profile modal
+   6. Mobile and reduced-motion support
+========================================= */
+
+
+/* =========================================
+   1. MEMBERS HERO
+========================================= */
+
+.members-hero {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 78vh;
+    padding: clamp(130px, 13vw, 190px)
+               clamp(24px, 7vw, 120px) 70px;
+    background: var(--color-ink-card);
+    overflow: hidden;
+}
+
+/* Decorative blurred glows */
+
+.members-hero-glow {
+    position: absolute;
+    width: 420px;
+    height: 420px;
+    border-radius: 50%;
+    background: rgba(50, 100, 250, 0.45);
+    filter: blur(70px);
+    pointer-events: none;
+}
+
+.members-hero-glow-one {
+    top: -180px;
+    right: 5%;
+}
+
+.members-hero-glow-two {
+    bottom: -220px;
+    left: -100px;
+}
+
+/* Hero title and description */
+
+.members-hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 850px;
+}
+
+.members-hero-eyebrow {
+    margin: 0 0 25px;
+    font-family: var(--font-body, "Jost", sans-serif);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+}
+
+.members-hero h1 {
+    max-width: 850px;
+    margin: 0;
+    font-family: var(--font-display, "Cormorant Garamond", serif);
+    font-size: clamp(4rem, 9vw, 9rem);
+    font-weight: 500;
+    line-height: 0.82;
+    letter-spacing: -0.045em;
+}
+
+.members-hero h1 span {
+    display: block;
+    margin-left: clamp(30px, 8vw, 120px);
+    font-style: italic;
+}
+
+.members-hero-description {
+    max-width: 430px;
+    margin: clamp(35px, 5vw, 60px) 0 0
+           clamp(5px, 8vw, 110px);
+    font-family: var(--font-body, "Jost", sans-serif);
+    font-size: 0.95rem;
+    line-height: 1.75;
+}
+
+/* Small editorial details along the bottom */
+
+.members-hero-bottom {
+    position: absolute;
+    right: clamp(24px, 7vw, 120px);
+    bottom: 30px;
+    left: clamp(24px, 7vw, 120px);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-family: var(--font-body, "Jost", sans-serif);
+    font-size: 0.62rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+.members-hero-line {
+    flex: 1;
+    height: 1px;
+    background: currentColor;
+    opacity: 0.3;
+}
+
+
+/* =========================================
+   2. GALLERY SECTION AND HEADING
+========================================= */
+
+.members-gallery-section {
+    position: relative;
+    padding: clamp(100px, 12vw, 170px) 0;
+    background: var(--color-paper);
+    overflow: visible; /* Required for the sticky carousel */
+}
+
+.members-gallery-header {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(260px, 400px);
+    align-items: end;
+    gap: 60px;
+    padding: 0 clamp(24px, 7vw, 120px) 70px;
+}
+
+.members-gallery-header h2 {
+    margin: 10px 0 0;
+    color: var(--color-blue-dark);
+    font-family: var(--font-display, "Cormorant Garamond", serif);
+    font-size: clamp(3.5rem, 7vw, 7rem);
+    font-weight: 500;
+    line-height: 0.85;
+    letter-spacing: -0.04em;
+}
+
+.members-gallery-header h2 em {
+    display: block;
+    margin-left: clamp(25px, 5vw, 80px);
+    color: var(--color-blue-bright);
+}
+
+.members-gallery-intro {
+    max-width: 360px;
+    margin: 0;
+    color: var(--color-text-muted);
+    font-family: var(--font-body, "Jost", sans-serif);
+    font-size: 0.9rem;
+    line-height: 1.75;
+}
+
+
+/* =========================================
+   3. SCROLL-DRIVEN SEMICIRCLE CAROUSEL
+
+   JavaScript positions each member card.
+   The stage provides scroll distance while
+   the sticky container stays on screen.
+========================================= */
+
+.members-radial-stage {
+    --member-count: 4; /* JavaScript updates this automatically */
+    position: relative;
+    height: calc(var(--member-count) * 75svh);
+    overflow: visible;
+}
+
+.members-radial-sticky {
+    position: sticky;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100svh;
+    min-height: 0;
+    overflow: hidden;
+}
+
+/* The gallery itself is a viewport for absolutely
+   positioned cards, not a horizontal scrolling row. */
+
+.members-radial-sticky .members-gallery {
+    position: relative;
+    flex: 1;
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    display: block;
+    touch-action: pan-y;
+}
+
+/* Individual cards are moved by the carousel script */
+
+.members-radial-sticky .member-card {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: clamp(170px, 20vw, 250px);
+    margin: 0;
+    transform: translate(-50%, -50%);
+    transform-origin: center;
+    will-change: left, top, opacity, filter, scale;
+    transition:
+        opacity 220ms ease,
+        filter 220ms ease,
+        scale 220ms ease;
+}
+
+/* Keep the portrait button clipped to its card */
+
+.members-radial-sticky .member-photo {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 6;
+    padding: 0;
+    overflow: hidden;
+    border: 0;
+    border-radius: 14px;
+    background: var(--color-paper-warm, #e8e2d7);
+    cursor: pointer;
+    isolation: isolate;
+}
+
+/* Keep the currently focused card above its neighbours */
+
+.members-radial-sticky .member-card.is-focused {
+    z-index: 100;
+}
+
+/* Scroll prompt at the bottom of the pinned section */
+
+.members-radial-hint {
+    position: absolute;
+    right: 0;
+    bottom: max(22px, env(safe-area-inset-bottom));
+    left: 0;
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    font-family: var(--font-body, "Jost", sans-serif);
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    pointer-events: none;
+}
+
+.members-radial-hint .members-gallery-arrow {
+    display: inline-block;
+    font-size: 1rem;
+    animation: radialHintBounce 1.5s ease-in-out infinite;
+}
+
+@keyframes radialHintBounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(5px);
+    }
+}
+
+
+/* =========================================
+   4. MEMBER PORTRAITS AND HOVER CROSSFADE
+
+   JavaScript adds:
+   .member-photo-primary = first image
+   .member-photo-hover   = alternate image
+
+   Both images occupy the same card. Hovering
+   fades between them without moving the card.
+========================================= */
+
+.members-radial-sticky .member-photo img {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    border-radius: inherit;
+    transition:
+        opacity 450ms ease,
+        transform 700ms cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+/* Default portrait */
+
+.members-radial-sticky .member-photo .member-photo-primary {
+    z-index: 1;
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Alternate portrait starts hidden */
+
+.members-radial-sticky .member-photo .member-photo-hover {
+    z-index: 2;
+    opacity: 0;
+    transform: scale(1.06);
+    pointer-events: none;
+}
+
+/* Reveal the alternate portrait on hover or keyboard focus */
+
+.members-radial-sticky .member-photo:hover .member-photo-hover,
+.members-radial-sticky .member-photo:focus-visible .member-photo-hover {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.members-radial-sticky .member-photo:hover .member-photo-primary,
+.members-radial-sticky .member-photo:focus-visible .member-photo-primary {
+    opacity: 0;
+    transform: scale(1.04);
+}
+
+
+/* =========================================
+   5. MEMBER PROFILE MODAL
+
+   The modal sits above the carousel and uses
+   .is-open, which your existing JavaScript toggles.
+========================================= */
+
+.member-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition:
+        opacity 0.3s ease,
+        visibility 0.3s ease;
+}
+
+.member-modal.is-open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+/* Dark, blurred backdrop */
+
+.member-modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(7, 16, 29, 0.78);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+/* Main two-column modal panel */
+
+.member-modal-dialog {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+    width: min(100%, 1000px);
+    max-height: 90vh;
+    overflow-x: hidden;
+    background: var(--color-paper);
+    color: var(--color-ink);
+    box-shadow: 0 35px 90px rgba(0, 0, 0, 0.3);
+    transform: translateY(25px) scale(0.98);
+    transition: transform 0.35s ease;
+}
+
+.member-modal.is-open .member-modal-dialog {
+    transform: translateY(0) scale(1);
+}
+
+/* Close button and its two lines */
+
+.member-modal-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    z-index: 5;
+    width: 42px;
+    height: 42px;
+    border: 0;
+    background: rgba(244, 240, 232, 0.92);
+    cursor: pointer;
+}
+
+.member-modal-close span {
+    position: absolute;
+    top: 20px;
+    left: 11px;
+    width: 20px;
+    height: 1px;
+    background: var(--color-ink);
+}
+
+.member-modal-close span:first-child {
+    transform: rotate(45deg);
+}
+
+.member-modal-close span:last-child {
+    transform: rotate(-45deg);
+}
+
+/* Member portrait in the modal */
+
+.member-modal-portrait {
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    min-height: 520px;
+    overflow: hidden;
+    background: var(--color-paper-warm);
+}
+
+.member-modal-portrait img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-height: 520px;
+    object-fit: contain;
+    object-position: center bottom;
+}
+
+.member-modal-number {
+    position: absolute;
+    top: 24px;
+    left: 24px;
+    z-index: 2;
+    font: 600 0.7rem var(--font-body, "Jost", sans-serif);
+    letter-spacing: 0.15em;
+}
+
+/* Scrollable information column */
+
+.member-modal-content {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    padding: clamp(35px, 5vw, 65px);
+    overflow-y: auto;
+}
+
+.member-modal-eyebrow,
+.member-modal-label {
+    display: block;
+    font: 600 0.62rem var(--font-body, "Jost", sans-serif);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    opacity: 0.55;
+}
+
+.member-modal-heading h2 {
+    margin: 14px 0 4px;
+    font: 500 clamp(3rem, 5vw, 5rem)/0.9
+          var(--font-display, "Cormorant Garamond", serif);
+    letter-spacing: -0.04em;
+}
+
+.member-modal-role {
+    margin: 12px 0 0;
+    font: 0.7rem var(--font-body, "Jost", sans-serif);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    opacity: 0.55;
+}
+
+.member-modal-section {
+    margin-top: 42px;
+}
+
+.member-modal-bio {
+    white-space: pre-wrap;
+    font: 0.9rem/1.75 var(--font-body, "Jost", sans-serif);
+}
+
+/* Favourite book and genre */
+
+.member-modal-details {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+    margin-top: 28px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(7, 16, 29, 0.15);
+}
+
+.member-modal-details span {
+    display: block;
+    margin-bottom: 7px;
+    font: 0.58rem var(--font-body, "Jost", sans-serif);
+    letter-spacing: 0.1em;
+    opacity: 0.55;
+}
+
+.member-modal-details strong {
+    font: 600 1.2rem var(--font-display, "Cormorant Garamond", serif);
+    overflow-wrap: anywhere;
+}
+
+/* Member quote */
+
+.member-modal-quote {
+    margin-top: 32px;
+}
+
+.member-modal-quote blockquote {
+    margin: 12px 0 0;
+    font: italic clamp(1.5rem, 2.5vw, 2.1rem)/1.1
+          var(--font-display, "Cormorant Garamond", serif);
+}
+
+/* Modal footer */
+
+.member-modal-footer {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    margin-top: auto;
+    padding-top: 35px;
+    font: 0.58rem var(--font-body, "Jost", sans-serif);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    opacity: 0.55;
+}
+
+/* Prevent background scrolling while the modal is open */
+
+body.member-modal-open {
+    overflow: hidden;
+}
+
+
+/* =========================================
+   6. MOBILE LAYOUT
+========================================= */
+
+@media (max-width: 700px) {
+
+    /* Hero */
+
+    .members-hero {
+        min-height: 82vh;
+        padding: 120px 24px 80px;
+    }
+
+    .members-hero h1 {
+        font-size: clamp(3.5rem, 16vw, 5.5rem);
+        line-height: 0.86;
+    }
+
+    .members-hero h1 span {
+        margin-left: 25px;
+    }
+
+    .members-hero-description {
+        max-width: 300px;
+        margin: 35px 0 0 25px;
+        font-size: 0.88rem;
+    }
+
+    .members-hero-bottom {
+        right: 24px;
+        bottom: 25px;
+        left: 24px;
+        font-size: 0.55rem;
+    }
+
+    /* Gallery heading */
+
+    .members-gallery-header {
+        display: block;
+        padding: 0 24px 45px;
+    }
+
+    .members-gallery-header h2 {
+        font-size: clamp(3.2rem, 15vw, 5rem);
+    }
+
+    .members-gallery-intro {
+        max-width: 300px;
+        margin: 35px 0 0 25px;
+    }
+
+    /* Give the carousel more scroll distance on mobile */
+
+    .members-radial-stage {
+        height: calc(var(--member-count) * 75svh);
+    }
+
+    .members-radial-sticky {
+        height: 100svh;
+    }
+
+    .members-radial-sticky .member-card {
+        width: clamp(125px, 34vw, 165px);
+    }
+
+    .members-radial-hint {
+        font-size: 0.58rem;
+        letter-spacing: 0.09em;
+    }
+
+    /* Modal becomes a vertically scrolling panel */
+
+    .member-modal {
+        padding: 10px;
+    }
+
+    .member-modal-dialog {
+        display: block;
+        max-height: 95vh;
+        overflow-y: auto;
+    }
+
+    .member-modal-portrait {
+        min-height: 0;
+        height: 42vh;
+        max-height: 420px;
+    }
+
+    .member-modal-portrait img {
+        min-height: 0;
+    }
+
+    .member-modal-content {
+        padding: 32px 24px 26px;
+        overflow: visible;
+    }
+
+    .member-modal-heading h2 {
+        font-size: clamp(3rem, 12vw, 4.5rem);
+    }
+
+    .member-modal-section {
+        margin-top: 32px;
+    }
+
+    .member-modal-footer {
+        flex-direction: column;
+        margin-top: 30px;
+    }
+}
+
+/* Very narrow phones: stack modal details */
+
+@media (max-width: 400px) {
+    .member-modal-details {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+}
+
+
+/* =========================================
+   7. ACCESSIBILITY: REDUCED MOTION
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .members-radial-hint .members-gallery-arrow {
+        animation: none;
+    }
+
+    .members-radial-sticky .member-card,
+    .members-radial-sticky .member-photo img,
+    .member-modal,
+    .member-modal-dialog {
+        transition: none;
+    }
+}
+ 
+/* Keep the members carousel below the sticky navbar */
+.members-radial-sticky {
+    /* The navbar shrinks to 62px after scrolling */
+    top: 62px;
+
+    /* Use the remaining viewport instead of the full viewport */
+    height: calc(100svh - 62px);
+}
+
+/* Keep the carousel cards centered in the visible area */
+.members-radial-sticky .members-gallery {
+    min-height: 0;
+}
+
+/* Give the carousel enough room on smaller screens */
+@media (max-width: 768px) {
+    .members-radial-sticky {
+        top: 62px;
+        height: calc(100svh - 62px);
+    }
+}
+
