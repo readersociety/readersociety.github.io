@@ -1666,7 +1666,7 @@ const memberProfiles = [
     number: "01",
     name: "Elischa Cruz",
     role: "CEO · Society Founder",
-    image: "https://github.com/readersociety/readersociety.github.io/blob/main/rs_images/people_pfps/rs_pfp_noa_main.png?raw=true,"
+    image: "https://github.com/readersociety/readersociety.github.io/blob/main/rs_images/people_pfps/rs_pfp_noa_main.png?raw=true",
     hoverImage: "https://github.com/readersociety/readersociety.github.io/blob/main/rs_images/people_pfps/rs_pfp_noa_alt.png?raw=true", // Replace with the second image
     bio: "Noa is sixteen years old. She is the second born of four kids, and has an older sister and two younger brothers. \n \nIn her free time, she enjoys listening to music, reading, and occasionally learning new kpop dances. She often spends more time than she should looking for new books, even though her reading list is far from finished. Her favorite genres are realistic fiction and fantasy. She will read a range of things though, from novels to manga to reddit posts about the nichest things, and video game walkthroughs (even 39 clues, i'm just sensitive).",
     favoriteBook: "Skip and Loafer (i thinkk?)",
