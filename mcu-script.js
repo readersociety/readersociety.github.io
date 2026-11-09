@@ -13,56 +13,71 @@ document.addEventListener("DOMContentLoaded", () => {
   let previousFocus = null;
   let galleryReturnFocus = null;
 
-  const closingDialogs = new WeakSet();
+ const closeAnimations = new WeakMap();
 
   // ----------------------------------------
   // DIALOG ANIMATIONS AND CLOSING
   // ----------------------------------------
 
-  function closeWithAnimation(dialog) {
-    if (!dialog.open || closingDialogs.has(dialog)) return;
+function cancelPendingClose(dialog) {
+  const animation = closeAnimations.get(dialog);
 
-    closingDialogs.add(dialog);
-
-    // Respect the visitor's reduced-motion preference.
-    const prefersReducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches;
-
-    if (prefersReducedMotion) {
-      dialog.close();
-      closingDialogs.delete(dialog);
-      return;
-    }
-
-    const animation = dialog.animate(
-      [
-        {
-          opacity: 1,
-          transform: "translateY(0) scale(1)"
-        },
-        {
-          opacity: 0,
-          transform: "translateY(18px) scale(0.98)"
-        }
-      ],
-      {
-        duration: 180,
-        easing: "ease-in",
-        fill: "forwards"
-      }
-    );
-
-    animation.finished
-      .catch(() => {})
-      .then(() => {
-        if (dialog.open) {
-          dialog.close();
-        }
-
-        closingDialogs.delete(dialog);
-      });
+  if (animation) {
+    animation.cancel();
+    closeAnimations.delete(dialog);
   }
+}
+
+function closeWithAnimation(dialog) {
+  if (!dialog.open || closeAnimations.has(dialog)) return;
+
+  const prefersReducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  ).matches;
+
+  if (prefersReducedMotion) {
+    dialog.close();
+    return;
+  }
+
+  const animation = dialog.animate(
+    [
+      {
+        opacity: 1,
+        transform: "translateY(0) scale(1)"
+      },
+      {
+        opacity: 0,
+        transform: "translateY(18px) scale(0.98)"
+      }
+    ],
+    {
+      duration: 180,
+      easing: "ease-in",
+      fill: "forwards"
+    }
+  );
+
+  closeAnimations.set(dialog, animation);
+
+  animation.finished
+    .then(() => {
+      // Ignore an animation that was cancelled or replaced.
+      if (closeAnimations.get(dialog) !== animation) return;
+
+      closeAnimations.delete(dialog);
+
+      if (dialog.open) {
+        dialog.close();
+      }
+
+      // IMPORTANT: Remove the animation's final visual state.
+      animation.cancel();
+    })
+    .catch(() => {
+      // Cancellation is expected when a dialog is reopened.
+    });
+}
 
   function configureDialog(dialog, closeButton) {
     closeButton.addEventListener("click", () => {
@@ -110,9 +125,11 @@ document.addEventListener("DOMContentLoaded", () => {
       const movieDetails = movieTemplate.content.cloneNode(true);
       modalContent.replaceChildren(movieDetails);
 
-      if (!movieModal.open) {
-        movieModal.showModal();
-      }
+  cancelPendingClose(movieModal);
+
+if (!movieModal.open) {
+  movieModal.showModal();
+}
 
       // Put keyboard focus on the close button.
       modalClose.focus();
@@ -188,9 +205,11 @@ document.addEventListener("DOMContentLoaded", () => {
     viewerImage.src = image.currentSrc || image.src;
     viewerImage.alt = image.alt || "Expanded movie gallery image";
 
-    if (!galleryViewer.open) {
-      galleryViewer.showModal();
-    }
+cancelPendingClose(galleryViewer);
+
+if (!galleryViewer.open) {
+  galleryViewer.showModal();
+}
 
     viewerClose.focus();
   });
