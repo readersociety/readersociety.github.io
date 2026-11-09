@@ -1,0 +1,580 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#111111">
+
+    <title>Marvel: The Complete History</title>
+
+    <link rel="stylesheet" href="mcu-style.css">
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="site-header">
+        <a href="#" class="logo">
+            <span class="logo-marvel">MARVEL</span>
+            <span class="logo-subtitle">THE COMPLETE HISTORY</span>
+        </a>
+    </header>
+
+
+    <main>
+
+        <!-- INTRODUCTION -->
+        <section class="introduction">
+            <p class="eyebrow">THE MARVEL ARCHIVE</p>
+
+            <h1>A Universe of Stories.</h1>
+
+            <p class="intro-description">
+                From the earliest days of heroes to the rise of the
+                multiverse, explore the complete history of Marvel's
+                cinematic worlds. Follow the events, discover the
+                characters, and experience the stories in chronological
+                order.
+            </p>
+
+            <div class="intro-divider"></div>
+
+            <p class="scroll-hint">
+                SCROLL THROUGH HISTORY
+                <span>→</span>
+            </p>
+        </section>
+
+
+        <!-- MAIN TIMELINE -->
+        <section class="timeline-section">
+
+            <div class="timeline-heading">
+                <h2>The Timeline</h2>
+                <span class="timeline-subtitle">CHRONOLOGICAL ORDER</span>
+            </div>
+
+            <div class="timeline-wrapper">
+
+                <div class="timeline" id="timeline">
+
+                    <!-- TIMELINE ENTRY 1 -->
+                    <article class="timeline-entry">
+
+                        <div class="timeline-date">
+                            <span>1943–1945</span>
+                        </div>
+
+                        <div class="timeline-node"></div>
+
+                        <button
+                            class="movie-poster"
+                            data-movie="captain-america"
+                            aria-label="Read about Captain America: The First Avenger"
+                        >
+                            <img
+                                src="images/captain-america.jpg"
+                                alt="Captain America: The First Avenger poster"
+                                loading="lazy"
+                            >
+                        </button>
+
+                        <h3>Captain America</h3>
+                        <p class="entry-subtitle">The First Avenger</p>
+
+                        <span class="entry-type">FILM</span>
+
+                    </article>
+
+
+                    <!-- TIMELINE ENTRY 2 -->
+                    <article class="timeline-entry">
+
+                        <div class="timeline-date">
+                            <span>1995</span>
+                        </div>
+
+                        <div class="timeline-node"></div>
+
+                        <button
+                            class="movie-poster"
+                            data-movie="captain-marvel"
+                            aria-label="Read about Captain Marvel"
+                        >
+                            <img
+                                src="images/captain-marvel.jpg"
+                                alt="Captain Marvel poster"
+                                loading="lazy"
+                            >
+                        </button>
+
+                        <h3>Captain Marvel</h3>
+                        <p class="entry-subtitle">The Kree-Skrull War</p>
+
+                        <span class="entry-type">FILM</span>
+
+                    </article>
+
+
+                    <!-- TIMELINE ENTRY 3 -->
+                    <article class="timeline-entry">
+
+                        <div class="timeline-date">
+                            <span>2008</span>
+                        </div>
+
+                        <div class="timeline-node"></div>
+
+                        <button
+                            class="movie-poster"
+                            data-movie="iron-man"
+                            aria-label="Read about Iron Man"
+                        >
+                            <img
+                                src="images/iron-man.jpg"
+                                alt="Iron Man poster"
+                                loading="lazy"
+                            >
+                        </button>
+
+                        <h3>Iron Man</h3>
+                        <p class="entry-subtitle">The Birth of a Hero</p>
+
+                        <span class="entry-type">FILM</span>
+
+                    </article>
+
+
+                    <!-- ADD MORE TIMELINE ENTRIES HERE -->
+
+                </div>
+
+            </div>
+
+            <p class="timeline-footer">
+                MORE OF MARVEL'S HISTORY AWAITS...
+            </p>
+
+        </section>
+
+
+    </main>
+
+
+    <!-- MOVIE INFORMATION MODAL -->
+    <dialog class="movie-modal" id="movie-modal">
+
+        <div class="modal-container">
+
+            <!-- MODAL HEADER -->
+            <div class="modal-header">
+
+                <span class="modal-label">MARVEL ARCHIVE</span>
+
+                <button
+                    class="modal-close"
+                    id="modal-close"
+                    aria-label="Close movie information"
+                >
+                    &times;
+                </button>
+
+            </div>
+
+
+            <!-- MODAL CONTENT -->
+            <div class="modal-content" id="modal-content">
+
+                <!-- JavaScript will insert the selected movie template here -->
+
+            </div>
+
+
+            <!-- MODAL FOOTER -->
+            <div class="modal-footer">
+                <span>THE MARVEL ARCHIVE</span>
+                <span>END OF RECORD</span>
+            </div>
+
+        </div>
+
+    </dialog>
+
+
+
+    <!-- ========================================= -->
+    <!-- MOVIE CONTENT TEMPLATES                   -->
+    <!-- Duplicate these templates for new movies. -->
+    <!-- ========================================= -->
+
+
+    <!-- CAPTAIN AMERICA -->
+    <template id="captain-america">
+
+        <div class="movie-detail">
+
+            <div class="modal-hero">
+
+                <div class="modal-poster">
+                    <img
+                        src="images/captain-america.jpg"
+                        alt="Captain America poster"
+                    >
+                </div>
+
+                <div class="modal-title-area">
+
+                    <span class="modal-category">MARVEL CINEMATIC UNIVERSE</span>
+
+                    <h2>Captain America: The First Avenger</h2>
+
+                    <p class="modal-meta">
+                        2011 &nbsp; | &nbsp; 1943–1945 &nbsp; | &nbsp; Phase One
+                    </p>
+
+                    <p class="modal-tagline">
+                        Before the Avengers, there was the First Avenger.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <section class="movie-section synopsis-section">
+
+                <span class="section-number">01 / THE STORY</span>
+
+                <h3>Historical Account</h3>
+
+                <div class="story-text">
+
+                    <p>
+                        Write your first long-form paragraph here. Introduce
+                        the historical setting, the political situation,
+                        and the circumstances surrounding the events of
+                        the film.
+                    </p>
+
+                    <p>
+                        Continue your retelling here. Explain the important
+                        characters, their motivations, and the developments
+                        that shape the story.
+                    </p>
+
+                    <p>
+                        Add as many paragraphs as necessary. The reading
+                        area is designed to accommodate lengthy historical
+                        accounts without overwhelming the reader.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <section class="movie-section">
+
+                <span class="section-number">02 / SIGNIFICANCE</span>
+
+                <h3>Historical Significance</h3>
+
+                <div class="story-text">
+
+                    <p>
+                        Explain why this installment matters to the wider
+                        Marvel timeline. Discuss the characters, events,
+                        organizations, and consequences introduced here.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <section class="movie-section">
+
+                <span class="section-number">03 / KEY EVENTS</span>
+
+                <h3>Important Events</h3>
+
+                <ul class="event-list">
+                    <li>The Super Soldier program begins.</li>
+                    <li>Steve Rogers becomes Captain America.</li>
+                    <li>HYDRA's operations are challenged.</li>
+                    <li>Captain America disappears in the Arctic.</li>
+                </ul>
+
+            </section>
+
+
+            <section class="movie-section gallery-section">
+
+                <span class="section-number">04 / VISUAL RECORD</span>
+
+                <h3>Gallery</h3>
+
+                <div class="movie-gallery">
+
+                    <img
+                        src="images/gallery/captain-america-1.jpg"
+                        alt="Captain America gallery image 1"
+                        loading="lazy"
+                    >
+
+                    <img
+                        src="images/gallery/captain-america-2.jpg"
+                        alt="Captain America gallery image 2"
+                        loading="lazy"
+                    >
+
+                    <img
+                        src="images/gallery/captain-america-3.jpg"
+                        alt="Captain America gallery image 3"
+                        loading="lazy"
+                    >
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </template>
+
+
+
+    <!-- CAPTAIN MARVEL -->
+    <template id="captain-marvel">
+
+        <div class="movie-detail">
+
+            <div class="modal-hero">
+
+                <div class="modal-poster">
+                    <img src="images/captain-marvel.jpg" alt="Captain Marvel poster">
+                </div>
+
+                <div class="modal-title-area">
+
+                    <span class="modal-category">MARVEL CINEMATIC UNIVERSE</span>
+
+                    <h2>Captain Marvel</h2>
+
+                    <p class="modal-meta">
+                        2019 &nbsp; | &nbsp; 1995 &nbsp; | &nbsp; Phase Three
+                    </p>
+
+                    <p class="modal-tagline">
+                        A forgotten past. An unexpected discovery.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <section class="movie-section synopsis-section">
+
+                <span class="section-number">01 / THE STORY</span>
+
+                <h3>Historical Account</h3>
+
+                <div class="story-text">
+
+                    <p>
+                        Write the complete chronological account of
+                        Captain Marvel here.
+                    </p>
+
+                    <p>
+                        Describe Carol Danvers' past, her involvement
+                        in the Kree-Skrull conflict, and the events
+                        that eventually bring her to Earth.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <section class="movie-section">
+
+                <span class="section-number">02 / SIGNIFICANCE</span>
+
+                <h3>Historical Significance</h3>
+
+                <div class="story-text">
+                    <p>
+                        Explain the significance of Carol Danvers,
+                        the Tesseract, and the events that influence
+                        the formation of the Avengers initiative.
+                    </p>
+                </div>
+
+            </section>
+
+
+            <section class="movie-section">
+
+                <span class="section-number">03 / KEY EVENTS</span>
+
+                <h3>Important Events</h3>
+
+                <ul class="event-list">
+                    <li>Carol discovers the truth about her past.</li>
+                    <li>The Kree-Skrull conflict reaches Earth.</li>
+                    <li>Nick Fury encounters Carol Danvers.</li>
+                    <li>The Avengers initiative receives its name.</li>
+                </ul>
+
+            </section>
+
+
+            <section class="movie-section gallery-section">
+
+                <span class="section-number">04 / VISUAL RECORD</span>
+
+                <h3>Gallery</h3>
+
+                <div class="movie-gallery">
+
+                    <img src="images/gallery/captain-marvel-1.jpg" alt="Captain Marvel gallery image 1">
+                    <img src="images/gallery/captain-marvel-2.jpg" alt="Captain Marvel gallery image 2">
+                    <img src="images/gallery/captain-marvel-3.jpg" alt="Captain Marvel gallery image 3">
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </template>
+
+
+
+    <!-- IRON MAN -->
+    <template id="iron-man">
+
+        <div class="movie-detail">
+
+            <div class="modal-hero">
+
+                <div class="modal-poster">
+
+                    <img src="images/iron-man.jpg" alt="Iron Man poster">
+
+                </div>
+
+                <div class="modal-title-area">
+
+                    <span class="modal-category">MARVEL CINEMATIC UNIVERSE</span>
+
+                    <h2>Iron Man</h2>
+
+                    <p class="modal-meta">
+                        2008 &nbsp; | &nbsp; 2008 &nbsp; | &nbsp; Phase One
+                    </p>
+
+                    <p class="modal-tagline">
+                        The beginning of a new era.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <section class="movie-section synopsis-section">
+
+                <span class="section-number">01 / THE STORY</span>
+
+                <h3>Historical Account</h3>
+
+                <div class="story-text">
+
+                    <p>
+                        Write your historical account of Tony Stark's
+                        transformation from weapons manufacturer to
+                        armored superhero.
+                    </p>
+
+                    <p>
+                        Discuss his captivity, the construction of the
+                        Mark I armor, his return to the United States,
+                        and the confrontation with Obadiah Stane.
+                    </p>
+
+                    <p>
+                        Continue with the aftermath and the public
+                        revelation of Tony Stark's identity.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <section class="movie-section">
+
+                <span class="section-number">02 / SIGNIFICANCE</span>
+
+                <h3>Historical Significance</h3>
+
+                <div class="story-text">
+
+                    <p>
+                        Explain how Tony Stark's emergence changes
+                        the modern superhero landscape and eventually
+                        leads to the formation of the Avengers.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <section class="movie-section">
+
+                <span class="section-number">03 / KEY EVENTS</span>
+
+                <h3>Important Events</h3>
+
+                <ul class="event-list">
+                    <li>Tony Stark is captured in Afghanistan.</li>
+                    <li>The first Iron Man armor is constructed.</li>
+                    <li>Obadiah Stane becomes the Iron Monger.</li>
+                    <li>Tony publicly identifies himself as Iron Man.</li>
+                </ul>
+
+            </section>
+
+
+            <section class="movie-section gallery-section">
+
+                <span class="section-number">04 / VISUAL RECORD</span>
+
+                <h3>Gallery</h3>
+
+                <div class="movie-gallery">
+
+                    <img src="images/gallery/iron-man-1.jpg" alt="Iron Man gallery image 1">
+                    <img src="images/gallery/iron-man-2.jpg" alt="Iron Man gallery image 2">
+                    <img src="images/gallery/iron-man-3.jpg" alt="Iron Man gallery image 3">
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </template>
+
+
+
+    <!-- JAVASCRIPT -->
+    <script src="mcu-script.js"></script>
+
+</body>
+</html>
