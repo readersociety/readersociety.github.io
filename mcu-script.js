@@ -113,6 +113,108 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const closeAnimations = new WeakMap();
 
+  // Add authorized theme audio files at these paths (or update the paths here).
+  const movieThemes = {
+    "captain-america": "audio/themes/captain-america.mp3",
+    "captain-marvel": "audio/themes/captain-marvel.mp3",
+    "iron-man": "audio/themes/iron-man.mp3"
+  };
+  const themeAudio = new Audio();
+  themeAudio.preload = "none";
+  themeAudio.volume = 0;
+  let themeAnimationFrame = 0;
+  let themeRequest = 0;
+  let fadingForLoop = false;
+  const THEME_VOLUME = 0.16;
+  const LOOP_FADE_MS = 1400;
+
+  function fadeThemeTo(volume, duration, onComplete) {
+    window.cancelAnimationFrame(themeAnimationFrame);
+    const startVolume = themeAudio.volume;
+    const startTime = performance.now();
+
+    function step(now) {
+      const progress = duration <= 0 ? 1 : Math.min((now - startTime) / duration, 1);
+      themeAudio.volume = startVolume + (volume - startVolume) * progress;
+
+      if (progress < 1) {
+        themeAnimationFrame = window.requestAnimationFrame(step);
+      } else if (onComplete) {
+        onComplete();
+      }
+    }
+
+    themeAnimationFrame = window.requestAnimationFrame(step);
+  }
+
+  function playMovieTheme(movieId) {
+    const themeUrl = movieThemes[movieId];
+    const request = ++themeRequest;
+    fadingForLoop = false;
+
+    // Fade out and stop any previous movie's theme before switching tracks.
+    fadeThemeTo(0, 300, () => {
+      if (request !== themeRequest) return;
+      themeAudio.pause();
+
+      if (!themeUrl) {
+        themeAudio.removeAttribute("src");
+        themeAudio.load();
+        return;
+      }
+
+      themeAudio.src = themeUrl;
+      themeAudio.load();
+      themeAudio.currentTime = 0;
+
+      // This call follows the visitor's poster click, satisfying common
+      // browser audio-playback requirements. Missing files fail quietly.
+      const playback = themeAudio.play();
+      if (playback && typeof playback.catch === "function") {
+        playback.catch(() => {});
+      }
+      fadeThemeTo(THEME_VOLUME, 900);
+    });
+  }
+
+  function stopMovieTheme() {
+    const request = ++themeRequest;
+    fadingForLoop = false;
+    fadeThemeTo(0, 350, () => {
+      if (request !== themeRequest) return;
+      themeAudio.pause();
+      themeAudio.currentTime = 0;
+    });
+  }
+
+  // Fade down at the end of each theme, then restart and fade back in.
+  themeAudio.addEventListener("timeupdate", () => {
+    if (
+      !fadingForLoop &&
+      Number.isFinite(themeAudio.duration) &&
+      themeAudio.duration > 0 &&
+      themeAudio.duration - themeAudio.currentTime <= LOOP_FADE_MS / 1000
+    ) {
+      fadingForLoop = true;
+      const remainingMs = Math.max(
+        100,
+        (themeAudio.duration - themeAudio.currentTime) * 1000
+      );
+      fadeThemeTo(0, remainingMs);
+    }
+  });
+
+  themeAudio.addEventListener("ended", () => {
+    if (!movieModal.open || !themeAudio.src) return;
+    fadingForLoop = false;
+    themeAudio.currentTime = 0;
+    const playback = themeAudio.play();
+    if (playback && typeof playback.catch === "function") {
+      playback.catch(() => {});
+    }
+    fadeThemeTo(THEME_VOLUME, 900);
+  });
+
   // ----------------------------------------
   // DIALOG ANIMATIONS AND CLOSING
   // ----------------------------------------
@@ -222,6 +324,7 @@ document.addEventListener("DOMContentLoaded", () => {
       // Insert a fresh copy of the selected movie template.
       const movieDetails = movieTemplate.content.cloneNode(true);
       modalContent.replaceChildren(movieDetails);
+      playMovieTheme(movieId);
 
       cancelPendingClose(movieModal);
 
@@ -234,8 +337,10 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Restore focus after closing the movie details.
+  // Fade out and stop the movie's theme whenever its modal closes.
   movieModal.addEventListener("close", () => {
+    stopMovieTheme();
+
     if (previousFocus && document.contains(previousFocus)) {
       previousFocus.focus();
     }
