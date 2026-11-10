@@ -115,7 +115,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Add authorized theme audio files at these paths (or update the paths here).
   const movieThemes = {
-    "captain-america": "audio/themes/captain-america.mp3",
+    "captain-america": "https://github.com/readersociety/readersociety.github.io/raw/refs/heads/main/mcu-history/captain-america-1theme.weba",
     "captain-marvel": "audio/themes/captain-marvel.mp3",
     "iron-man": "audio/themes/iron-man.mp3"
   };
