@@ -3,7 +3,7 @@
  * Put the authorized video at videos/mcu-intro.mp4, or change VIDEO_URL below.
  */
 document.addEventListener("DOMContentLoaded", () => {
-  const VIDEO_URL = "videos/mcu-intro.mp4";
+  const VIDEO_URL = "https://github.com/readersociety/readersociety.github.io/raw/refs/heads/main/MARVEL%20STUDIOS%20INTRO.mp4";
 
   // Load the preloader's styles without requiring an edit to mcu-history.html.
   if (!document.querySelector('link[data-mcu-preloader-styles]')) {
