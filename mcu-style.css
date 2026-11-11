@@ -1215,8 +1215,3 @@ img {
     position: relative;
     z-index: 1;
 }
-
-/* Keep the story area see-through so the video can show behind it. */
-.modal-content {
-    background: transparent;
-}
