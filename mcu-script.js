@@ -114,6 +114,15 @@ document.addEventListener("DOMContentLoaded", () => {
   const closeAnimations = new WeakMap();
 
   // Add authorized theme audio files at these paths (or update the paths here).
+
+  const modalBackgroundVideo = document.querySelector("#modal-background-video");
+
+const movieBackgrounds = {
+  "captain-america": "videos/captain-america-background.mp4",
+  "captain-marvel": "videos/captain-marvel-background.mp4",
+  "iron-man": "videos/iron-man-background.mp4"
+};
+  
   const movieThemes = {
     "captain-america": "https://github.com/readersociety/readersociety.github.io/raw/refs/heads/main/mcu-history/captain-america-1theme.weba",
     "captain-marvel": "audio/themes/captain-marvel.mp3",
@@ -311,6 +320,13 @@ document.addEventListener("DOMContentLoaded", () => {
   moviePosters.forEach((poster) => {
     poster.addEventListener("click", () => {
       const movieId = poster.dataset.movie;
+      const backgroundSource = movieBackgrounds[movieId];
+
+if (backgroundSource) {
+  modalBackgroundVideo.src = backgroundSource;
+  modalBackgroundVideo.load();
+  modalBackgroundVideo.play().catch(() => {});
+}
       const movieTemplate = document.getElementById(movieId);
 
       if (!movieTemplate) {
