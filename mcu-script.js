@@ -70,7 +70,7 @@ document.addEventListener("DOMContentLoaded", () => {
     video.src = VIDEO_URL;
     video.muted = muted;
     video.hidden = false;
-    video.controls = true;
+    video.controls = false;
     choices.hidden = true;
     preloader.classList.add("is-playing");
 
