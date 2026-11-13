@@ -15,26 +15,14 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   const preloader = document.createElement("div");
-  preloader.className = "mcu-preloader";
+  preloader.className = "mcu-preloader is-playing";
   preloader.setAttribute("role", "dialog");
   preloader.setAttribute("aria-modal", "true");
-  preloader.setAttribute("aria-labelledby", "mcu-preloader-title");
-  preloader.setAttribute("aria-describedby", "mcu-preloader-description");
+  preloader.setAttribute("aria-label", "Marvel history introduction");
   preloader.innerHTML = `
     <section class="mcu-preloader__panel">
-      <p class="mcu-preloader__eyebrow">THE MARVEL ARCHIVE</p>
-      <h1 class="mcu-preloader__title" id="mcu-preloader-title">A Universe of Stories</h1>
-      <p class="mcu-preloader__description" id="mcu-preloader-description">
-        Choose how you would like to begin.
-      </p>
-      <video class="mcu-preloader__video" playsinline preload="none"
+      <video class="mcu-preloader__video" playsinline preload="auto"
         aria-label="Marvel history introduction"></video>
-      <div class="mcu-preloader__choices">
-        <button class="mcu-preloader__button mcu-preloader__button--primary"
-          type="button" data-intro-sound>Watch with sound</button>
-        <button class="mcu-preloader__button" type="button" data-intro-muted>
-          Watch muted</button>
-      </div>
       <button class="mcu-preloader__skip" type="button" data-intro-skip>
         Skip intro <span aria-hidden="true">→</span>
       </button>
@@ -43,9 +31,6 @@ document.addEventListener("DOMContentLoaded", () => {
   document.body.classList.add("mcu-preloader-open");
 
   const video = preloader.querySelector("video");
-  const choices = preloader.querySelector(".mcu-preloader__choices");
-  const soundButton = preloader.querySelector("[data-intro-sound]");
-  const mutedButton = preloader.querySelector("[data-intro-muted]");
   const skipButton = preloader.querySelector("[data-intro-skip]");
   let dismissed = false;
 
@@ -66,22 +51,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  function startIntro(muted) {
-    video.src = VIDEO_URL;
-    video.muted = muted;
-    video.hidden = false;
-    video.controls = false;
-    choices.hidden = true;
-    preloader.classList.add("is-playing");
-
-    const playback = video.play();
-    if (playback && typeof playback.catch === "function") {
-      playback.catch(() => dismissPreloader());
-    }
-  }
-
-  soundButton.addEventListener("click", () => startIntro(false));
-  mutedButton.addEventListener("click", () => startIntro(true));
   skipButton.addEventListener("click", dismissPreloader);
   video.addEventListener("ended", dismissPreloader);
   video.addEventListener("error", dismissPreloader);
@@ -93,7 +62,24 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  soundButton.focus();
+  // Start immediately. Try audio first, then fall back to muted autoplay if
+  // the browser blocks audible playback without a user gesture.
+  video.src = VIDEO_URL;
+  video.controls = false;
+  video.muted = false;
+  skipButton.focus();
+
+  const playback = video.play();
+  if (playback && typeof playback.catch === "function") {
+    playback.catch(() => {
+      if (dismissed) return;
+      video.muted = true;
+      const mutedPlayback = video.play();
+      if (mutedPlayback && typeof mutedPlayback.catch === "function") {
+        mutedPlayback.catch(dismissPreloader);
+      }
+    });
+  }
 });
 
 
