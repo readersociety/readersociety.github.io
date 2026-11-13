@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#111111">
+
+    <title>Marvel: The Complete History</title>
+
+    <link rel="stylesheet" href="mcu-style.css">
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="site-header">
+        <a href="#" class="logo">
+            <span class="logo-marvel">MARVEL</span>
+            <span class="logo-subtitle">THE COMPLETE HISTORY</span>
+        </a>
+    </header>
+
+
+    <main>
+
+        <!-- INTRODUCTION -->
+        <section class="introduction">
+            <p class="eyebrow">THE MARVEL ARCHIVE</p>
+
+            <h1>A Universe of Stories.</h1>
+
+            <p class="intro-description">
+                From the earliest days of heroes to the rise of the
+                multiverse, explore the complete history of Marvel's
+                cinematic worlds. Follow the events, discover the
+                characters, and experience the stories in chronological
+                order.
+            </p>
+
+            <div class="intro-divider"></div>
+
+            <p class="scroll-hint">
+                SCROLL THROUGH HISTORY
+                <span>→</span>
+            </p>
+        </section>
+
+
+        <!-- MAIN TIMELINE -->
+        <section class="timeline-section">
+
+            <div class="timeline-heading">
+                <h2>The Timeline</h2>
+                <span class="timeline-subtitle">CHRONOLOGICAL ORDER</span>
+            </div>
+
+            <div class="timeline-wrapper">
+
+                <div class="timeline" id="timeline">
+
+                    <!-- TIMELINE ENTRY 1 -->
+                    <article class="timeline-entry">
+
+                        <div class="timeline-date">
+                            <span>1943–1945</span>
+                        </div>
+
+                        <div class="timeline-node"></div>
+
+                        <button
+                            class="movie-poster"
+                            data-movie="captain-america"
+                            aria-label="Read about Captain America: The First Avenger"
+                        >
+                            <img
+                                src="https://upload.wikimedia.org/wikipedia/en/3/37/Captain_America_The_First_Avenger_poster.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled"
+                                alt="Captain America: The First Avenger poster"
+                                loading="lazy"
+                            >
+                        </button>
+
+                        <h3>Captain America</h3>
+                        <p class="entry-subtitle">The First Avenger</p>
+
+                        <span class="entry-type">FILM</span>
+
+                    </article>
+
+
+                    <!-- TIMELINE ENTRY 2 -->
+                    <article class="timeline-entry">
+
+                        <div class="timeline-date">
+                            <span>1995</span>
+                        </div>
+
+                        <div class="timeline-node"></div>
+
+                        <button
+                            class="movie-poster"
+                            data-movie="captain-marvel"
+                            aria-label="Read about Captain Marvel"
+                        >
+                            <img
+                                src="images/captain-marvel.jpg"
+                                alt="Captain Marvel poster"
+                                loading="lazy"
+                            >
+                        </button>
+
+                        <h3>Captain Marvel</h3>
+                        <p class="entry-subtitle">The Kree-Skrull War</p>
+
+                        <span class="entry-type">FILM</span>
+
+                    </article>
+
+
+                    <!-- TIMELINE ENTRY 3 -->
+                    <article class="timeline-entry">
+
+                        <div class="timeline-date">
+                            <span>2008</span>
+                        </div>
+
+                        <div class="timeline-node"></div>
+
+                        <button
+                            class="movie-poster"
+                            data-movie="iron-man"
+                            aria-label="Read about Iron Man"
+                        >
+                            <img
+                                src="https://upload.wikimedia.org/wikipedia/en/0/02/Iron_Man_%282008_film%29_poster.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled"
+                                alt="Iron Man poster"
+                                loading="lazy"
+                            >
+                        </button>
+
+                        <h3>Iron Man</h3>
+                        <p class="entry-subtitle">The Birth of a Hero</p>
+
+                        <span class="entry-type">FILM</span>
+
+                    </article>
+
+
+                    <!-- ADD MORE TIMELINE ENTRIES HERE -->
+
+                </div>
+
+            </div>
+
+            <p class="timeline-footer">
+                MORE OF MARVEL'S HISTORY AWAITS...
+            </p>
+
+        </section>
+
+
+    </main>
+
+
+    <!-- MOVIE INFORMATION MODAL -->
+    <dialog class="movie-modal" id="movie-modal">
+
+        <div class="modal-container">
+ <video
+            class="modal-background-video"
+            id="modal-background-video"
+            autoplay
+            muted
+            loop
+            playsinline
+            aria-hidden="true"
+        ></video>
+            <!-- MODAL HEADER -->
+            <div class="modal-header">
+
+                <span class="modal-label">MARVEL ARCHIVE</span>
+
+                <button
+                    class="modal-close"
+                    id="modal-close"
+                    aria-label="Close movie information"
+                >
+                    &times;
+                </button>
+
+            </div>
+
+
+            <!-- MODAL CONTENT -->
+            <div class="modal-content" id="modal-content">
+
+                <!-- JavaScript will insert the selected movie template here -->
+
+            </div>
+
+
+            <!-- MODAL FOOTER -->
+            <div class="modal-footer">
+                <span>THE MARVEL ARCHIVE</span>
+                <span>END OF RECORD</span>
+            </div>
+
+        </div>
+
+    </dialog>
+
+
+
+    <!-- ========================================= -->
+    <!-- MOVIE CONTENT TEMPLATES                   -->
+    <!-- Duplicate these templates for new movies. -->
+    <!-- ========================================= -->
+
+
+    <!-- CAPTAIN AMERICA -->
+    <template id="captain-america">
+
+       
+
+        <div class="movie-detail">
+
+            <div class="modal-hero">
+
+                <div class="modal-poster">
+                    <img
+                        src="https://upload.wikimedia.org/wikipedia/en/3/37/Captain_America_The_First_Avenger_poster.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled"
+                        alt="Captain America poster"
+                    >
+                </div>
+
+                <div class="modal-title-area">
+
+                    <span class="modal-category">MARVEL CINEMATIC UNIVERSE</span>
+
+                    <h2>Captain America: The First Avenger</h2>
+
+                    <p class="modal-meta">
+                        2011 &nbsp; | &nbsp; 1943–1945 &nbsp; | &nbsp; Phase One
+                    </p>
+
+                    <p class="modal-tagline">
+                        Before the Avengers, there was the First Avenger.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <section class="movie-section synopsis-section">
+
+                <span class="section-number">01 / THE STORY</span>
+
+                <h3>Historical Account</h3>
+
+                <div class="story-text">
+
+                    <p>
+                        In the remote Arctic wilderness, an international research team makes an extraordinary discovery buried beneath the frozen landscape. A massive aircraft lies trapped in the ice. Its structure is unmistakably old, dating back to the Second World War. As the researchers begin excavating the wreckage, they uncover something even more remarkable: a circular shield painted red, white, and blue.
+                    </p>
+
+                     <figure class="story-image">
+                <img
+                    src="https://images.openai.com/static-rsc-4/0COwh17m8UpP4sgTrKKfh9f61ttJcqxjGAu7hPSCK4DA-ENzfrSBEpuDY4QuuCImtEumZEFF7xlqv-5Cyox6QGq9g-NJxVuMEhFohNOe6aURRor_NHcG-NCnH9W3eIzc9YO0agyE02BCvFBswkMpx79d8TAV4nMR1-KQgNlBH8wcQqOrhaI6kOGobdVzDK0i?purpose=fullsize"
+                    alt="Describe what is shown in this scene"
+                    loading="lazy"
+                >
+            <figcaption>Something beneath the ice</figcaption>
+        </figure>
+
+                    <p>
+                        We travel back in time, in the year 1942, and the Second World War is raging across Europe and the Pacific. Nazi Germany has conquered much of Europe, the Allied forces are fighting back, and the United States has officially entered the conflict following Japan's attack on Pearl Harbor. In Brooklyn, New York, one young man is particularly eager to join the fight. His name is <b></b>Steve Rogers</b>, and he has absolutely no intention of sitting out the war. Unfortunately, the military has other ideas. Steve is repeatedly rejected from enlistment because of his small stature, low body weight, and basically every weak health thing in all Creation. Despite attempting to enlist several times, even using different addresses, he simply cannot get past the medical examinations. His best friend, <b>James Buchanan "Bucky" Barnes</b>, is a different story. Tall, physically fit, and confident (not to mention a player for the girls), Bucky has successfully enlisted and is preparing to ship out, much to Roger's absolute envy.
+                    </p>
+     <figure class="story-image">
+                <img
+                    src="https://images.openai.com/static-rsc-4/rd5SKvA92GF6oXaL-hA-WO_vgrZsh9skLVQJ-5Q6QDPRG4h2cI0TMjNpbSDgaV-tjHANpOLlo0SknNg1dT6aHRfxQjBuRhp03Uh19263kjU_SR1PxapJfGm4pBb-AEEZqda7kNNKx4ng--dC-U-nObZlIy7q_VOvXPVygmIv3HHFQEPZipF-giNNNvTOej8C?purpose=fullsize"
+                    alt="Describe what is shown in this scene"
+                    loading="lazy"
+                >
+            <figcaption>You can just see the difference between these too - yet somehow they're best buds</figcaption>
+        </figure>
+                    <p>
+                        Before Bucky goes and becomes the American hero, they go to the Stark Expo, where engineer Howard Stark presnts his latest inventions. Steve however, still laments on his inability to enlists (especially after a failed attempt flirting with Bucky's girlfriend's friend). Even when Bucky encourages him to accept his limitations, Steve insists that he has something to contribute. Then comes an unexpected opportunity. A German scientist named Dr. Abraham Erskine, now working for the American Strategic Scientific Reserve (SSR), notices Steve's repeated attempts to enlist. Rather than judging him by his physical appearance, Erskine recognizes his determination and, more importantly, his character. He approaches Steve with an offer: an opportunity to participate in a classified military experiment that could change the course of the war. Steve accepts. And just like that, the journey of Captain America begins.
+                    </p>
+                    <p>But while Steve Rogers is being recruited in America, something far more sinister is happening in Nazi-occupied Norway.
+
+A special Nazi organization known as HYDRA, led by Johann Schmidt, is searching for an ancient and incredibly powerful artifact called the Tesseract.
+
+Schmidt has sent his forces into a Norwegian village to retrieve it. The artifact is hidden inside an ancient structure, where a local guardian attempts to protect it from the invaders.
+
+Schmidt eventually gets his hands on the object.
+
+The Tesseract is no ordinary relic. It contains an enormous amount of energy, far beyond anything conventional military technology can produce. Schmidt believes it can give him the power to build weapons capable of overwhelming the Allied forces.</p>
+
+                                    </p>
+     <figure class="story-image">
+                <img
+                    src="https://images.openai.com/static-rsc-4/5pACPUcGQpx3K2lrnZ-m-sz8B_suabO1s63QRVZoSTrwPOFrPgwSIZEk8GSyWccU_jkNq2xaTaz8YjQaf_9e4AL0cl2RgIM4fljVRRMfLe3JPMbpjnuV-mWlqq3EVwQrOjE2T8cQ4AUVtyEHDjCAj-QP1T4OzTe_4WKkBFKbiL3RNA7EaqA1z3RSJMwmCnI9?purpose=fullsize"
+                    alt="Describe what is shown in this scene"
+                    loading="lazy"
+                >
+            <figcaption>Schimdt holding the Tesseract - why does he look like a Lord of the Rings elf?</figcaption>
+        </figure>
+
+               
+
+                <p>Of course, being the big bad he is, Schmidt has ambitions far beyond serving Hitler. Let's say it together. 3, 2 ,1 <b><em>World Domination</em></b>! He considers Hitler's vision limited and believes that HYDRA should establish an entirely new world order, with himself at its head. And he has the scientific expertise to begin making that vision a reality. Schmidt's chief scientist, Dr. Arnim Zola, begins developing advanced weapons powered by the Tesseract. HYDRA is effectively building an independent military force, one that may soon become more dangerous than the Nazi regime it supposedly serves.</p>
+
+                <p>Back in America, Steve is transported to a secret military facility in New York, where he meets Colonel Chester Phillips and Agent Peggy Carter.
+
+Phillips is initially skeptical of Steve. He believes the young man is too physically weak to be useful in the military, and he questions why Erskine has selected him over stronger candidates.
+
+Peggy, however, is more interested in seeing what Steve can actually do.
+
+Erskine explains that the experiment is part of Project Rebirth, a program designed to create a new generation of enhanced soldiers using a specially developed Super Soldier Serum.
+
+The serum is intended to dramatically increase the physical capabilities of whoever receives it. Strength, speed, endurance, and other physical attributes could be enhanced to extraordinary levels.
+
+But Erskine warns Steve that the serum does more than simply improve the body.
+
+It amplifies what is already inside a person. <b><em>Good becomes better. Bad becomes worse</em></b>
+
+This is precisely why Erskine chose Steve. He knows that the serum must never fall into the hands of someone who would abuse its power.</p><p>
+
+During training, Steve encounters several other candidates, many of whom are physically superior to him. One particular exercise involves throwing himself onto what appears to be a grenade to protect the others. The grenade turns out to be a training device, but Steve's reaction reveals everything Erskine needs to know. He does not hesitate to sacrifice himself for others. The experiment is approved. On the night of the procedure, Steve enters a specially designed chamber. Howard Stark oversees the machinery, while Erskine prepares the serum. Peggy Carter is also present. The experiment begins. Steve receives several injections of the Super Soldier Serum before being exposed to a special form of vita-ray radiation, which activates the serum within his body. The procedure is painful, but the results are extraordinary. When the chamber opens, the physically weak Steve Rogers has disappeared. In his place stands a dramatically transformed man, taller, stronger, and possessing physical capabilities far beyond those of an ordinary human. Project Rebirth is a success. America has its first Super Soldier.</p>
+
+                <figure class="story-image">
+                <img
+                    src="https://images.openai.com/static-rsc-4/fzAMiJUyvee_WZdj-KNdwsvaCci4VGOW_h0gGMIRCwvsKR474ZE43Cq7HNTTia7tdN-jA9W8pNF3uW0V8MT3-zeMueQ36xpjLp1bvaG1y2PXKk80mnhFtPjLIN6PObrzaY0Dnq3i_dSXf-zoL6Yi4omGsPfvrc4LWFXdj8hdHFlCNERNDtYGUHtIy4QQq6MM?purpose=fullsize"
+                    alt="Describe what is shown in this scene"
+                    loading="lazy"
+                >
+            <figcaption>The ultimate "zero to hero" storyline, I mean, just look at Peggy Carter</figcaption>
+        </figure>
+    <p> But as they say, "No Good thing goes unpunished." One of the observes is actually a HYDRA spy named Kruger. So as soon as he saw the Project was a success, he went loco and shot Erskine, grabbed the remaining samples of the serum and took off like a man on fire. He would've escaped if not for Steve 2.0, who demonstrates his newly enhanced abilities for the first time. He runs down Kruger's vehicle, leaps through obstacles, and eventually chases him into the harbor. But there is one problem: Kruger has a cyanide capsule concealed in one of his teeth. Before he can be properly interrogated, he takes his own life. The remaining serum is destroyed, and Dr. Erskine is dead.
+
+The United States has successfully created one Super Soldier, but the formula is now lost.
+
+Colonel Phillips is left with a difficult situation. He has a physically extraordinary soldier, but no way to reproduce the experiment.
+
+And with the war continuing, Steve's military future is about to take an unexpected turn.</p>
+
+                
+                <figure class="story-image">
+                <img
+                    src="https://images.openai.com/static-rsc-4/rvqW0zyRPuedS7omzjE3dzzr5IxylVCxbAtYdXsnzbW8yd5RQzHnA8IU40Amz94wZWzrrj4dcn3kt6x-9Pv5f5oUzRjjA8pFOXZZxLbAJCkW4uxmtWnZ8GM2F_lnTpn3tcelYbfmmZwX0TyS8ZWJLM9dobCVdX2piJDnFPvwhN4K94h6BmtsAQgndaZTPq-r?purpose=fullsize"
+                    alt="Describe what is shown in this scene"
+                    loading="lazy"
+                >
+            <figcaption>For a spy, he is imppecebly well dressed. Must be where James Bond has his inspiration</figcaption>
+        </figure>
+
+                <p> Much to Steve's charign, USA is too scared to lose their only super soldier in combat, so they decides to use him as a symbol of national morale. Steve is given a colorful costume, a shield, and a stage name: Captain America. He travels across the United States performing in theatrical shows, selling war bonds, and encouraging Americans to support the military effort. The crowds are crazy about him. Steve is going crazy with frustration. He wants to fight, he says to Peggy one nisght, and now he finds himself entertaining audiences while other American soldiers are dying overseas.</p>
+
+                 <figure class="story-image">
+                <img
+                    src="https://images.openai.com/static-rsc-4/WepX6ImzWJYqN4NCLQ3aLlsgbLv4vuawzymOkoBspANUEKvD2tdyFgPdJD0L70uJ9alD5VbPpiZxWXsnZ74kBjApSStemjuQ_V5KgM--7YdXQyhfmAwrHaMOjRBwOQBvkjaId466AgzqZpXdxNDutspqvajFl5hCybCSdrE4YYwXtrrpLIi-L6T7F40WkqiD?purpose=fullsize"
+                    alt="Describe what is shown in this scene"
+                    loading="lazy"
+                >
+            <figcaption>The star spangled man with a plan</figcaption>
+        </figure>
+
+                <p>His frustration becomes especially personal when he learns that Bucky's unit has gone missing during a mission in enemy territory. Steve discovers that Bucky's regiment has been captured by HYDRA forces. He approaches Colonel Phillips and demands permission to organize a rescue mission. Phillips refuses, considering the operation too dangerous and Steve too valuable to risk. But of course, nothing can beat the power of friendship. With Peggy's help and Howard's Stark's amazing flying skills, he travels into enemy lines alone. Steve reaches a HYDRA weapons facility in occupied territory, where hundreds of captured Allied soldiers are being held. He infiltrates the installation, taking advantage of his enhanced strength and speed to fight through the guards. Steve locates Bucky and frees him from captivity. He then proceeds to release the other prisoners, eventually rescuing approximately 400 Allied soldiers from the facility. Among the rescued men are several soldiers who will later become Steve's closest companions in the war.</p>
+
+                  <figure class="story-image">
+                <img
+                    src="https://images.openai.com/static-rsc-4/a2ln95-E8UT46-YkWeqfMiPUcvFYmjEO7WhC7fq8Uh9V0B64ftnNEruo56c3dAytIKSAcc1NRJEnNXFTHwxGpuc8j7yJk7cCTMMiCG7yxDQHYUlG4LHC9jBNlkZViMBi_mZS4c2_JK-5kt_OR_4DjKqQvJZgvdlZfsFBvunfbLyDyb2vdNGMVvoAVmBre5Jp?purpose=fullsize"
+                    alt="Describe what is shown in this scene"
+                    loading="lazy"
+                >
+            <figcaption>Steve and his rescued men returning to base. I can only imagine their boasts to the regular soldiers about this</figcaption>
+        </figure>
+                <p> The rescue is a major success, and Steve returns to the Allied camp with the prisoners. His actions finally convince Colonel Phillips that Steve is more than a propaganda figure. They celebrate (complete with Bucky in awe on how their roles were reversed, where Steve was muscular and attractive and he was the outcast, much to his amusement)
+
+Peggy, meanwhile, has begun to develop a personal connection with Steve. Their relationship is what we say "complicated," Peggy once shot at Steve with a pistol multiple times when they were testing his new vibranium shield.</p>
+                     </div>
+            </section>
+
+
+            <section class="movie-section">
+
+                <span class="section-number">02 / SIGNIFICANCE</span>
+
+                <h3>Historical Significance</h3>
+
+                <div class="story-text">
+
+                    <p>
+                        Explain why this installment matters to the wider
+                        Marvel timeline. Discuss the characters, events,
+                        organizations, and consequences introduced here.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <section class="movie-section">
+
+                <span class="section-number">03 / KEY EVENTS</span>
+
+                <h3>Important Events</h3>
+
+                <ul class="event-list">
+                    <li>The Super Soldier program begins.</li>
+                    <li>Steve Rogers becomes Captain America.</li>
+                    <li>HYDRA's operations are challenged.</li>
+                    <li>Captain America disappears in the Arctic.</li>
+                </ul>
+
+            </section>
+
+
+            <section class="movie-section gallery-section">
+
+                <span class="section-number">04 / VISUAL RECORD</span>
+
+                <h3>Gallery</h3>
+
+                <div class="movie-gallery">
+
+                    <img
+                        src="images/gallery/captain-america-1.jpg"
+                        alt="Captain America gallery image 1"
+                        loading="lazy"
+                    >
+
+                    <img
+                        src="images/gallery/captain-america-2.jpg"
+                        alt="Captain America gallery image 2"
+                        loading="lazy"
+                    >
+
+                    <img
+                        src="images/gallery/captain-america-3.jpg"
+                        alt="Captain America gallery image 3"
+                        loading="lazy"
+                    >
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </template>
+
+
+
+    <!-- CAPTAIN MARVEL -->
+    <template id="captain-marvel">
+
+        <div class="movie-detail">
+
+            <div class="modal-hero">
+
+                <div class="modal-poster">
+                    <img src="images/captain-marvel.jpg" alt="Captain Marvel poster">
+                </div>
+
+                <div class="modal-title-area">
+
+                    <span class="modal-category">MARVEL CINEMATIC UNIVERSE</span>
+
+                    <h2>Captain Marvel</h2>
+
+                    <p class="modal-meta">
+                        2019 &nbsp; | &nbsp; 1995 &nbsp; | &nbsp; Phase Three
+                    </p>
+
+                    <p class="modal-tagline">
+                        A forgotten past. An unexpected discovery.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <section class="movie-section synopsis-section">
+
+                <span class="section-number">01 / THE STORY</span>
+
+                <h3>Historical Account</h3>
+
+                <div class="story-text">
+
+                    <p>
+                        Write the complete chronological account of
+                        Captain Marvel here.
+                    </p>
+
+                    <p>
+                        Describe Carol Danvers' past, her involvement
+                        in the Kree-Skrull conflict, and the events
+                        that eventually bring her to Earth.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <section class="movie-section">
+
+                <span class="section-number">02 / SIGNIFICANCE</span>
+
+                <h3>Historical Significance</h3>
+
+                <div class="story-text">
+                    <p>
+                        Explain the significance of Carol Danvers,
+                        the Tesseract, and the events that influence
+                        the formation of the Avengers initiative.
+                    </p>
+                </div>
+
+            </section>
+
+
+            <section class="movie-section">
+
+                <span class="section-number">03 / KEY EVENTS</span>
+
+                <h3>Important Events</h3>
+
+                <ul class="event-list">
+                    <li>Carol discovers the truth about her past.</li>
+                    <li>The Kree-Skrull conflict reaches Earth.</li>
+                    <li>Nick Fury encounters Carol Danvers.</li>
+                    <li>The Avengers initiative receives its name.</li>
+                </ul>
+
+            </section>
+
+
+            <section class="movie-section gallery-section">
+
+                <span class="section-number">04 / VISUAL RECORD</span>
+
+                <h3>Gallery</h3>
+
+                <div class="movie-gallery">
+
+                    <img src="images/gallery/captain-marvel-1.jpg" alt="Captain Marvel gallery image 1">
+                    <img src="images/gallery/captain-marvel-2.jpg" alt="Captain Marvel gallery image 2">
+                    <img src="images/gallery/captain-marvel-3.jpg" alt="Captain Marvel gallery image 3">
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </template>
+
+
+
+    <!-- IRON MAN -->
+    <template id="iron-man">
+
+        <div class="movie-detail">
+
+            <div class="modal-hero">
+
+                <div class="modal-poster">
+
+                    <img src="https://upload.wikimedia.org/wikipedia/en/0/02/Iron_Man_%282008_film%29_poster.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled" alt="Iron Man poster">
+
+                </div>
+
+                <div class="modal-title-area">
+
+                    <span class="modal-category">MARVEL CINEMATIC UNIVERSE</span>
+
+                    <h2>Iron Man</h2>
+
+                    <p class="modal-meta">
+                        2008 &nbsp; | &nbsp; 2008 &nbsp; | &nbsp; Phase One
+                    </p>
+
+                    <p class="modal-tagline">
+                        The story of Tony Stark, billionaire inventor, weapons manufacturer, and the man who would become Iron Man.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <section class="movie-section synopsis-section">
+
+                <span class="section-number">01 / THE STORY</span>
+
+                <h3>Historical Account</h3>
+
+                <div class="story-text">
+
+                    <p>
+The year is 2008. The United States is heavily involved in military operations in Afghanistan, and one of America's most influential weapons manufacturers is about to demonstrate its latest creation.
+
+Enter Anthony Edward Stark, better known as Tony Stark.
+
+Billionaire industrialist, brilliant engineer, and chief executive of Stark Industries, Tony has inherited his father's company and transformed it into one of the world's leading defense contractors. His weapons are used by the American military, and his technological innovations have made him an internationally recognized figure.
+
+But Tony is not your typical businessman. He is arrogant, charismatic, exceptionally intelligent, and perfectly comfortable living a life of luxury. He enjoys expensive cars, parties, and the attention that comes with being one of the wealthiest men on Earth.
+
+Accompanying him in Afghanistan is Lieutenant Colonel James Rhodes, a military officer and close friend who is responsible for overseeing the relationship between Stark Industries and the United States military.
+
+Tony is there to demonstrate the company's newest and most powerful missile system: the Jericho.
+
+During the demonstration, Stark proudly presents the weapon's capabilities, explaining how a single missile can deliver an enormous amount of explosive firepower across a wide area.
+
+The demonstration is a success. The military is impressed, and Tony has once again proven that Stark Industries remains at the forefront of weapons technology. By all accounts, this was just another Tuesday. And then, just as he was going home and about to enjoy an <em>pina co lada</em> — boom — an ambush. His own weapons, turned against him. The convoy is wiped out, Stark is captured, and a chunk of robotic shrapnel is working its way toward his heart. Ladies and gentlemen, the clock has started, and it is ticking FAST.
+                    </p>
+            <figure class="story-image">
+                <img
+                    src="https://images.openai.com/static-rsc-4/tV8cXflyc6akXMibJvwpIqYS7TdZRVQI5EmcDk2qLALn5lXwaZj9CSzN9Zy31L7b5L0_ylbizPU9rFSp7Yugf7Xrx4gmFtPYCK2-l5_0VrEEdhYs4ehLrVAnM2Up-2Fvs3vP3m6XB2UWFw8uAlwSHBs_RkuVTig1l_K0zHWlGkNxnV-PXuWKIr_k9Ym8vgzm?purpose=fullsize"
+                    alt="Describe what is shown in this scene"
+                    loading="lazy"
+                >
+            <figcaption>The US military convoy with Stark inside, just before the ambush</figcaption>
+        </figure>
+                    <p>
+                        He is the captured by a terrorist group known as the Ten Rings, and this Ten Rings wasn't your next-door jewler. He is thrown in a cave where . Yinsen, a fellow captive and doctor, implants an electromagnet into Stark's chest to keep the shrapnel shards that wounded him from reaching his heart and killing him. Ten Rings leader Raza offers Stark freedom in exchange for building a Jericho missile for the group, but he and Yinsen believe that Raza will not keep his word.
+                    </p>
+
+                    <p>
+                        Having really no choice, Stark and Yinsen builds the Jericho missile - along with a secret project they were cooking up. Under in a cave, wounded, away from and friendly forces, with a box of scraps, Yinsen and Stark builds a literal <b>walking tank</b>, complete with a flamethrower, and powered by a mini <em>arc reactor</em>! How their gurds didn't find out in the whole process, I have no idea. But, i guess they weren't completely dumb because the Ten Rings discover their intentions and attack the workshop. Yinsen sacrifices himself to divert them while the suit powers up. The armored Stark battles his way out of the cave to find the dying Yinsen, then burns the Ten Rings' weapons and flies away, crashing in the desert and destroying the suit. After being rescued by Rhodes, Stark's best friend from the U.S Air Force, Stark returns home. Driven by guilt that his weapons caused all this and by the fact that Yinsen's dying words to him is to not waste the life he has been given, he announces that his company will cease manufacturing weapons. Obadiah Stane, his father's old partner and the company's manager, advises Stark that this will bankrupt Stark Industries and ruin his father's legacy.
+                    </p>
+              <figure class="story-image">
+                <img
+                    src="https://images.openai.com/static-rsc-4/urSSN8P0BxFT39qMc-NIKflTSTqMEjamiBfqYSJIcqsgqKRLXQArjeQU_X8ZARdPROjl6fcCEBs-L8TCSAO4A3gy1ZsaTUrBwV3l2xkt_Uena56d2rJ7DL6hgf2aCCJghmxlbxp-N9-J0NO-AtNyE4C6wdE5tS_qVv9nQcS0TbP5b33Sl7bE7XNeambVaaXL?purpose=fullsize"
+                    alt="Describe what is shown in this scene"
+                    loading="lazy"
+                >
+            <figcaption>Yinsen and Tony working on V1 of what will become the Iron Man</figcaption>
+        </figure>
+
+                     <p>
+        Tony, being Tony, was skittish and wanted to perfect the suit he and Yinsen cooked up. His new prototype is designated the Mark II.
+
+The suit is constructed from a lightweight silver-colored metal and features a more streamlined design than its predecessor.
+
+Tony also begins experimenting with flight.
+
+During his first attempts, he discovers a major problem: the suit experiences icing at high altitudes, causing its flight systems to malfunction.
+
+The result is a spectacular crash.
+
+But Tony is not discouraged. He returns to the drawing board, making adjustments and improving the armor's systems.
+
+Meanwhile, his personal assistant, Virginia "Pepper" Potts, continues managing his daily affairs. Pepper has worked for Tony for years and is one of the few people capable of keeping his chaotic life under control.
+
+She is increasingly concerned about his behavior, especially his growing obsession with the mysterious technology he is developing.. His personal assistant (and ironically the one he loves, although neither of them knows or would admit it yet) Pepper Potts places the old arc reactor in a glass box along with a banner of <em>"Proof that Tony Stark has a Heart"</em>. 
+                    </p>
+
+                     <figure class="story-image">
+                <img
+                    src="https://images.openai.com/static-rsc-4/o4VjMdU7RtnQ-roiP_62TWaqZI5SYJd2yY_G1omsKXFKYJZUJ_lhNtdjtH5x6Dc3ROXraGc5hvU4q0ybsSQcjS6HNoWmi2WT70_TGq9rSV425Trv96jVBCV-wtA17igsWuusieAPMjp_2jI1U1l27w9gQFP0XFCg8EPayygQd7KsvdUiQjCOKuk7vfwZ3QMw?purpose=fullsize"
+                    alt="Describe what is shown in this scene"
+                    loading="lazy"
+                >
+            <figcaption>Tony, along with AI DUME-E, creating the second prototype for Iron Man</figcaption>
+        </figure>
+
+                    <figure class="story-image">
+                <img
+                    src="https://images.openai.com/static-rsc-4/87m8aDoARilApajUqAMs79ccmwndq9yWfQBhlRN4lXMAoTADV0hDY9Btg8l7d949tRhi_FjoZt2zMLI7Gah94Um4ZiRhgHHWet4TEnM82VnYkRrcgGA5KMz6FSLpQIoEdOlAUGOtpJIqH12xIsiXasRypywW9UdI-jNMfXlK_FuMP8poRQqAhLeTZbytBuS3?purpose=fullsize"
+                    alt="Describe what is shown in this scene"
+                    loading="lazy"
+                >
+            <figcaption>Tony and Stane arguing about the future of Stark Industries</figcaption>
+        </figure>
+
+                     <p>
+        Meanwhile, Stane, whose pockets were getting emptier by the minute begs Tony to reveal to him his secret project. Tony listend to his inner angel and decided to keep his suit for himself. And just in time too. At a charity event, reporter Christine Everhart informs Stark that his company's weapons were recently delivered to the Ten Rings and are being used to attack Yinsen's home village. Stark dons his new armor and flies to Afghanistan, where he rains vengence on his former captors and saves the villagers, all the while aura-farming by blasting a tank, turning and walking slowly away while the tank <b>kabooms</b>. On the way home, US jets intercept him (prolly thinking they were gonna catch a UFO) and has a brief firefight with the jets. Tony reveals his secret identity to Rhodes over the phone to end the attack (after all, you can;t be a superhero without your bestie knowing).
+                    </p>
+ <figure class="story-image">
+                <img
+                    src="https://images.openai.com/static-rsc-4/HXhQWUKzCIoUM8SbT1O89s_fp2mPyA0s39GaR3SnKT7MPQOQ-9kYeHe0Zu3tIGv1HRPVyQd-6d2yTNSZ5-Pn47zKFIwctdFMNY0zVICD-foeZdinS4nqgSYujY5B_VlGU-_Te3gVPWgw6qW4Q-pmXwd7V2kf5n-JXjWOTEbccWh4Rrqmmkbqa_tN_vJHdJgt?purpose=fullsize"
+                    alt="Describe what is shown in this scene"
+                    loading="lazy"
+                >
+            <figcaption>See? he invented aura-farming</figcaption>
+        </figure>
+                    <p>
+                        Back at home,  the Ten Rings gather the pieces of Stark's prototype suit and meet with Stane, who <b><em>(suprise!)</em></b> has been trafficking arms to the Ten Rings and has staged a coup to replace Stark as Stark Industries' CEO by hiring the Ten Rings to kill him. He subdues Raza, has his group killed, and reverse-engineers a massive new armor suit from the wreckage. Seeking to track his company's illegal shipments, Stark sends Potts to hack into its database. She discovers that Stane hired the Ten Rings to kill Stark, but the group altered their plans when they realized they had a direct route to Stark's weapons. Potts meets with Agent Phil Coulson of S.H.I.E.L.D., an intelligence agency, to inform him of Stane's activities.
+                    </p>
+
+                     <figure class="story-image">
+                <img
+                    src="https://upload.wikimedia.org/wikipedia/en/4/46/Iron_Monger_in_Iron_Man_%282008_film%29.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled"
+                    alt="The Iron Monger"
+                    loading="lazy"
+                >
+            <figcaption>The Iron Monger - Stane and the Ten Ring's suit. At least give it a paint job am I right?</figcaption>
+        </figure>
+
+                      <p>
+                        Stane's scientists are unable to replicate Stark's miniaturized arc reactor (which was built in a cave with a box of scraps, mid you), so Stane enters Stark's home, and doing it the American way stuns Stark, and steals the one from his chest. Stark manages to replace it with his original reactor. Potts and several S.H.I.E.L.D. agents attempt to arrest Stane, but he dons his suit and overpowers them. Stark fights Stane but is outmatched without his new reactor to run his suit at full capacity.</p>
+
+                     <figure class="story-image">
+                <img
+                    src="https://images.openai.com/static-rsc-4/t3cgVcWc4IQ8yor6AQxg-iNzKUpd0KOWonN9Y4l4I_g4BwaxOvdltc4l2W6EzeCzsqlXFJeyCVRSqH_YDntcpvZ8mOjqcnZ3kLC4_1y8h1w2sz-CnksKF-hjblfRdLskA-jeShssLRbFe5izfaGRB8w0SdGJ4dIf_I4gbkb_Bg1rLEZi0mEJlQiqm8-TmxlU?purpose=fullsize"
+                    alt="The Iron Monger"
+                    loading="lazy"
+                >
+            <figcaption>They say pictures are worth a thousand words</figcaption>
+        </figure>
+                    <p>The fight carries Stark and Stane to the top of the Stark Industries building, where Stark instructs Potts to overload the large arc reactor powering the building. This unleashes a massive electrical surge that causes Barry Allen in the next block to become the speedster, the Flash. Oh wait, wrong universe, sorry! causing Stane to fall into the reactor, and he is killed in the explosion. The next day, at a press conference, Stark publicly admits to being the superhero the press has dubbed "Iron Man".
+                    </p>
+
+                    <p>In a post-credits scene, S.H.I.E.L.D. director Nick Fury visits Stark at his home, telling him that he has become part of a "bigger universe", and that he wants to discuss the "Avenger Initiative".</p>
+                       <figure class="story-image">
+                <img
+                    src="https://upload.wikimedia.org/wikipedia/en/e/ef/Samuel_L._Jackson_as_Nick_Fury_in_Iron_Man_%282008_film%29.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled"
+                    alt="The Iron Monger"
+                    loading="lazy"
+                >
+            <figcaption>This is Nick Fury, and no, he is not a pirate</figcaption>
+        </figure>
+
+                </div>
+
+            </section>
+
+
+            <section class="movie-section">
+
+                <span class="section-number">02 / SIGNIFICANCE</span>
+
+                <h3>Historical Significance</h3>
+
+                <div class="story-text">
+
+                    <p>
+                        Explain how Tony Stark's emergence changes
+                        the modern superhero landscape and eventually
+                        leads to the formation of the Avengers.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <section class="movie-section">
+
+                <span class="section-number">03 / KEY EVENTS</span>
+
+                <h3>Important Events</h3>
+
+                <ul class="event-list">
+                    <li>Tony Stark is captured in Afghanistan.</li>
+                    <li>The first Iron Man armor is constructed.</li>
+                    <li>Obadiah Stane becomes the Iron Monger.</li>
+                    <li>Tony publicly identifies himself as Iron Man.</li>
+                </ul>
+
+            </section>
+
+
+            <section class="movie-section gallery-section">
+
+                <span class="section-number">04 / VISUAL RECORD</span>
+
+                <h3>Gallery</h3>
+
+                <div class="movie-gallery">
+
+                    <img src="https://images.openai.com/static-rsc-4/ppkav1DBoKaPIZd0OAhBUdZMF6m1Mt1mGkm619-hNAvFt8_9DZqTNjzes87iLQmgj1Fr8JGhu41BBNWQRK_H8n1QIkhnsF9TX-_8MrwoiQ73mKEoKd8o11E69udJ273u3cp6x_M4tFtPTcsYsL5hhBjsopR7h00GwNd6fGIvye7RSUJM6LUG0p18RI-3KzjI?purpose=fullsize" alt="Iron Man gallery image 1">
+                    <img src="https://images.openai.com/static-rsc-4/9YuItJ1_A5p8Qrqa6Ikcw14UJ_QzVIfF6-Da0RGMhYXPh0sjhWhf9GPPlTj83bDJj_A3qOnGOTQ43aoNMYblUEEjzW4_luWiO1b36oyz7XQJDJMHHWt5tws-_oaXpsZrEFiSDoKBQyNMIzDMOuBsbMLAftoxU6mzwyu5skuK3tI?purpose=inline" alt="Iron Man gallery image 2">
+                    <img src="https://images.openai.com/static-rsc-4/oatcPeVKr9-EXQ5fuDV9V7XVS6XriDgo3lhpyVGyJNbIws80WyaJ0VF9DaxXDLxH67dWLya4M4CcnCjskvBUtNTJMw5McDVM2vyBBM6rBgfDcT_ipYhTzOw2hhRpxrbJ_CTvM9rvVoXtnYH8QmmgWHZm8CU74XNCyiiodfjOB_2l443WEewhg_gSdTszZTVN?purpose=fullsize" alt="Iron Man gallery image 3">
+                     <img src="https://images.openai.com/static-rsc-4/5c8lQKZlf-zQaS8xb_NZlBrz-giximTU0eFOXhP9xHdLGmu1KqHk0i0chCcxc548AxVOIbNSt3xgfCdMadRm93XyVwZu3nxGwdw8ESzXp6RUe0KoJ4oKVe9ZvjvDlW-rzyf2X23cc8H3XyHRYLSCoU3sbcYmthMTh1FFxNliZ7FvRmLMQ0pm4EQfDDurD9uj?purpose=fullsize" alt="Iron Man gallery image 3">
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </template>
+
+
+
+    <!-- JAVASCRIPT -->
+    <script src="mcu-script.js"></script>
+
+</body>
+</html>
