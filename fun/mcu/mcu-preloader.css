@@ -9,7 +9,12 @@ body.mcu-preloader-open {
   z-index: 10000;
   display: grid;
   place-items: center;
-  padding: clamp(20px, 5vw, 64px);
+  padding: clamp(16px, 5vw, 64px);
+  padding-top: max(16px, env(safe-area-inset-top));
+  padding-right: max(16px, env(safe-area-inset-right));
+  padding-bottom: max(16px, env(safe-area-inset-bottom));
+  padding-left: max(16px, env(safe-area-inset-left));
+  overflow-x: hidden;
   overflow-y: auto;
   color: #eeeeee;
   background:
@@ -26,6 +31,7 @@ body.mcu-preloader-open {
 
 .mcu-preloader__panel {
   width: min(900px, 100%);
+  margin: auto;
   text-align: center;
 }
 
@@ -41,29 +47,32 @@ body.mcu-preloader-open {
   margin: 0;
   color: #ffffff;
   font-family: Impact, "Arial Narrow", sans-serif;
-  font-size: clamp(38px, 7vw, 76px);
+  font-size: clamp(34px, 7vw, 76px);
   font-weight: 400;
   line-height: 1;
   text-transform: uppercase;
+  overflow-wrap: anywhere;
 }
 
 .mcu-preloader__description {
-  margin: 18px 0 28px;
-  color: #999999;
-  font-size: 14px;
+  margin: 18px 0 24px;
+  color: #b7b7b7;
+  font-size: clamp(13px, 2.5vw, 16px);
+  line-height: 1.5;
 }
 
 .mcu-preloader__video {
   display: block;
   width: 100%;
   max-height: 70vh;
+  max-height: min(70vh, 720px);
   margin: 0 auto 20px;
+  aspect-ratio: 16 / 9;
   background: #000000;
   object-fit: contain;
 }
 
-.mcu-preloader__video[hidden],
-.mcu-preloader__choices[hidden] {
+.mcu-preloader__video[hidden] {
   display: none;
 }
 
@@ -73,20 +82,14 @@ body.mcu-preloader-open {
   display: none;
 }
 
-.mcu-preloader__choices {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 12px;
-}
-
-.mcu-preloader__button,
 .mcu-preloader__skip {
   min-height: 46px;
-  border: 1px solid rgba(255, 255, 255, 0.22);
+  margin-top: 20px;
+  padding: 0 18px;
+  border: 1px solid transparent;
   border-radius: 4px;
-  color: #ffffff;
-  background: #1e1e22;
+  color: #bbbbbb;
+  background: transparent;
   font: inherit;
   font-size: 13px;
   font-weight: 800;
@@ -94,34 +97,16 @@ body.mcu-preloader-open {
   transition: background 180ms ease, border-color 180ms ease, transform 180ms ease;
 }
 
-.mcu-preloader__button {
-  padding: 0 22px;
-}
-
-.mcu-preloader__button--primary {
-  border-color: #ed1d24;
-  background: #ed1d24;
-}
-
-.mcu-preloader__button:hover,
 .mcu-preloader__skip:hover {
   border-color: #ed1d24;
   background: #a80e16;
+  color: #ffffff;
   transform: translateY(-2px);
 }
 
-.mcu-preloader__button:focus-visible,
 .mcu-preloader__skip:focus-visible {
   outline: 3px solid #ffffff;
   outline-offset: 4px;
-}
-
-.mcu-preloader__skip {
-  margin-top: 20px;
-  padding: 0 16px;
-  border-color: transparent;
-  background: transparent;
-  color: #bbbbbb;
 }
 
 .mcu-preloader__skip span {
@@ -129,8 +114,7 @@ body.mcu-preloader-open {
   color: #ed1d24;
 }
 
-/* When playback starts, let the video fill the viewport. The intro overlay's
-   existing opacity transition fades the video out when it ends or is skipped. */
+/* Fill the viewport during playback while keeping skip within reach. */
 .mcu-preloader.is-playing {
   display: block;
   padding: 0;
@@ -143,6 +127,7 @@ body.mcu-preloader-open {
   inset: 0;
   width: 100%;
   height: 100%;
+  height: 100dvh;
   text-align: initial;
 }
 
@@ -154,7 +139,7 @@ body.mcu-preloader-open {
   height: 100%;
   max-height: none;
   margin: 0;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .mcu-preloader.is-playing .mcu-preloader__skip {
@@ -163,29 +148,79 @@ body.mcu-preloader-open {
   bottom: max(20px, env(safe-area-inset-bottom));
   z-index: 2;
   margin: 0;
-  padding: 0 18px;
   border-color: rgba(255, 255, 255, 0.35);
   background: rgba(11, 11, 13, 0.78);
+  color: #ffffff;
   backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
 @media (max-width: 600px) {
+  .mcu-preloader {
+    padding: 20px 16px;
+    padding-top: max(20px, env(safe-area-inset-top));
+    padding-right: max(16px, env(safe-area-inset-right));
+    padding-bottom: max(20px, env(safe-area-inset-bottom));
+    padding-left: max(16px, env(safe-area-inset-left));
+  }
+
+  .mcu-preloader__panel {
+    width: min(100%, 520px);
+  }
+
+  .mcu-preloader__eyebrow {
+    margin-bottom: 10px;
+    font-size: 10px;
+    letter-spacing: 3px;
+  }
+
+  .mcu-preloader__description {
+    margin: 14px 0 18px;
+  }
+
   .mcu-preloader__video {
     max-height: 55vh;
+    margin-bottom: 14px;
   }
 
-  .mcu-preloader__choices {
-    flex-direction: column;
+  .mcu-preloader__skip {
+    min-height: 48px;
+    max-width: 100%;
+    padding: 0 16px;
+    touch-action: manipulation;
   }
 
-  .mcu-preloader__button {
-    width: 100%;
+  .mcu-preloader.is-playing .mcu-preloader__skip {
+    right: max(12px, env(safe-area-inset-right));
+    bottom: max(12px, env(safe-area-inset-bottom));
+  }
+}
+
+@media (max-height: 500px) and (orientation: landscape) {
+  .mcu-preloader {
+    padding: 12px 16px;
+  }
+
+  .mcu-preloader__eyebrow {
+    margin-bottom: 6px;
+  }
+
+  .mcu-preloader__title {
+    font-size: clamp(28px, 8vh, 48px);
+  }
+
+  .mcu-preloader__description {
+    margin: 8px 0 12px;
+  }
+
+  .mcu-preloader__video {
+    max-height: 45vh;
+    margin-bottom: 8px;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .mcu-preloader,
-  .mcu-preloader__button,
   .mcu-preloader__skip {
     transition: none;
   }
