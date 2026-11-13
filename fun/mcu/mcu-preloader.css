@@ -1,0 +1,192 @@
+/* Full-screen Marvel history intro */
+body.mcu-preloader-open {
+  overflow: hidden;
+}
+
+.mcu-preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: grid;
+  place-items: center;
+  padding: clamp(20px, 5vw, 64px);
+  overflow-y: auto;
+  color: #eeeeee;
+  background:
+    radial-gradient(ellipse at 50% 20%, rgba(237, 29, 36, 0.18), transparent 55%),
+    #0b0b0d;
+  opacity: 1;
+  transition: opacity 450ms ease;
+}
+
+.mcu-preloader.is-leaving {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.mcu-preloader__panel {
+  width: min(900px, 100%);
+  text-align: center;
+}
+
+.mcu-preloader__eyebrow {
+  margin: 0 0 14px;
+  color: #ed1d24;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 4px;
+}
+
+.mcu-preloader__title {
+  margin: 0;
+  color: #ffffff;
+  font-family: Impact, "Arial Narrow", sans-serif;
+  font-size: clamp(38px, 7vw, 76px);
+  font-weight: 400;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.mcu-preloader__description {
+  margin: 18px 0 28px;
+  color: #999999;
+  font-size: 14px;
+}
+
+.mcu-preloader__video {
+  display: block;
+  width: 100%;
+  max-height: 70vh;
+  margin: 0 auto 20px;
+  background: #000000;
+  object-fit: contain;
+}
+
+.mcu-preloader__video[hidden],
+.mcu-preloader__choices[hidden] {
+  display: none;
+}
+
+.mcu-preloader.is-playing .mcu-preloader__description,
+.mcu-preloader.is-playing .mcu-preloader__eyebrow,
+.mcu-preloader.is-playing .mcu-preloader__title {
+  display: none;
+}
+
+.mcu-preloader__choices {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+}
+
+.mcu-preloader__button,
+.mcu-preloader__skip {
+  min-height: 46px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 4px;
+  color: #ffffff;
+  background: #1e1e22;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: background 180ms ease, border-color 180ms ease, transform 180ms ease;
+}
+
+.mcu-preloader__button {
+  padding: 0 22px;
+}
+
+.mcu-preloader__button--primary {
+  border-color: #ed1d24;
+  background: #ed1d24;
+}
+
+.mcu-preloader__button:hover,
+.mcu-preloader__skip:hover {
+  border-color: #ed1d24;
+  background: #a80e16;
+  transform: translateY(-2px);
+}
+
+.mcu-preloader__button:focus-visible,
+.mcu-preloader__skip:focus-visible {
+  outline: 3px solid #ffffff;
+  outline-offset: 4px;
+}
+
+.mcu-preloader__skip {
+  margin-top: 20px;
+  padding: 0 16px;
+  border-color: transparent;
+  background: transparent;
+  color: #bbbbbb;
+}
+
+.mcu-preloader__skip span {
+  margin-left: 6px;
+  color: #ed1d24;
+}
+
+/* When playback starts, let the video fill the viewport. The intro overlay's
+   existing opacity transition fades the video out when it ends or is skipped. */
+.mcu-preloader.is-playing {
+  display: block;
+  padding: 0;
+  overflow: hidden;
+  background: #000000;
+}
+
+.mcu-preloader.is-playing .mcu-preloader__panel {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  text-align: initial;
+}
+
+.mcu-preloader.is-playing .mcu-preloader__video {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  max-height: none;
+  margin: 0;
+  object-fit: cover;
+}
+
+.mcu-preloader.is-playing .mcu-preloader__skip {
+  position: fixed;
+  right: max(20px, env(safe-area-inset-right));
+  bottom: max(20px, env(safe-area-inset-bottom));
+  z-index: 2;
+  margin: 0;
+  padding: 0 18px;
+  border-color: rgba(255, 255, 255, 0.35);
+  background: rgba(11, 11, 13, 0.78);
+  backdrop-filter: blur(8px);
+}
+
+@media (max-width: 600px) {
+  .mcu-preloader__video {
+    max-height: 55vh;
+  }
+
+  .mcu-preloader__choices {
+    flex-direction: column;
+  }
+
+  .mcu-preloader__button {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mcu-preloader,
+  .mcu-preloader__button,
+  .mcu-preloader__skip {
+    transition: none;
+  }
+}
