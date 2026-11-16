@@ -73,7 +73,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (playback && typeof playback.catch === "function") {
     playback.catch(() => {
       if (dismissed) return;
-      video.muted = true;
+      video.muted = false;
       const mutedPlayback = video.play();
       if (mutedPlayback && typeof mutedPlayback.catch === "function") {
         mutedPlayback.catch(dismissPreloader);
